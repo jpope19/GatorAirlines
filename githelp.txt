@@ -1,0 +1,22 @@
+Get the repository on your local machine
+
+open up git bash
+
+navigate to wamp/www
+
+type: 
+
+git clone git@github.com:jpope19/GatorAirlines.git
+
+
+
+
+before you start working on something, make sure you get the most recent repo
+
+type:
+
+git fetch
+
+
+
+

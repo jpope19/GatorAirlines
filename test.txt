@@ -1,7 +1,0 @@
-How to set up your WAMP server for localhost
-
-1. go to http://www.wampserver.com/en/
-2. to start, click the Green W logo on the lower right corner -> Put Online
-3. blah/wamp/wwww becomes your working directory.
-4. to access those pages, just go to localhost/pagename.php
-
