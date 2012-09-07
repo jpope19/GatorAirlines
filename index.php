@@ -1,6 +1,8 @@
 <?
 session_start();
 include("classes/users.class.php");
+include("templates/header.php");
+include("js/script.js");
 
 $users = new users();
 
