@@ -1,8 +1,34 @@
 <?
 session_start();
+include("classes/users.class.php");
 
-$blah = "blah";
+$users = new users();
+
+$airports = $users->get_airports();
 
 ?>
 
-Just checking if this works <?=$blah?>
+
+<form name="flight" id="flight">
+    <select name="to_airport">
+<?
+    foreach($airports as $airport){
+?>
+        <option><?=$airport['iata']?> : <?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+<?        
+    }                
+?>
+
+    </select>
+    <select name="from_airport">
+<?
+    foreach($airports as $airport){
+?>
+        <option><?=$airport['iata']?> : <?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+<?        
+    }                
+?>
+    </select>
+</form>

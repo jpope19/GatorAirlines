@@ -5,27 +5,35 @@ $output = new display;
 
 class users extends db {
     
-    var $user_id, $department_id;
+    var $user_id;
     
-    function __construct($u_id, $d_id){
+    function __construct($u_id = 1){
         parent::__construct();
         $this->user_id = $u_id;
-        $this->department_id = $d_id;
     }
     
     function fill_database(){
-        $file = fopen("states.txt", 'r');
+        $file = fopen("cities.txt", 'r');
 
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
-            echo $line;
-            $record['name'] = $line;
-            $this->db->AutoExecute("states", $record, "INSERT");
+            echo $line . "<br>";
+            $info = explode(" ." , $line);
+            $record['name'] = trim($info[0]);
+            $record['city'] = trim($info[1]);
+            $record['state'] = trim($info[2]);
+            $record['iata'] = trim($info[3]);
+            $this->db->AutoExecute("airports", $record, "INSERT");
         }
         
         fclose($file);
         
         return "finished";
+    }
+    
+    function get_airports(){
+        $sql = "SELECT * FROM airports";
+        return $this->db->GetArray($sql);
     }
 }
 
