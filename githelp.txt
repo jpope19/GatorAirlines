@@ -1,3 +1,9 @@
+How to setup git:
+Setting up git
+https://help.github.com/articles/set-up-git
+Setting up ssh key
+https://help.github.com/articles/generating-ssh-keys
+
 Get the repository on your local machine
 
 open up git bash
@@ -16,7 +22,4 @@ before you start working on something, make sure you get the most recent repo
 type:
 
 git fetch
-
-
-
 
