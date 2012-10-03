@@ -1,16 +1,14 @@
+
+<?
+
+
+
+
+?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
 
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Title      : Newsprint
-Version    : 1.0
-Released   : 20070824
-Description: A two-column, fixed-width design for blogs and small websites.
-
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -29,13 +27,7 @@ Description: A two-column, fixed-width design for blogs and small websites.
 <!-- star menu -->
 <div id="menu">
 	<ul>
-		<li class="current_page_item"><a href="#">Home</a></li>
-		<li><a href="#">My Account</a></li>
-		<li><a href="#">Reservation</a></li>
-		<li><a href="#">Check-In</a></li>
-		<li><a href="#">Flight Times</a></li>
-		<li><a href="#">Sign Up</a></li>
-		<li><a href="#">Log In</a></li>
+		<?php include 'Menu.php'; ?>
 	</ul>
 </div>
 <!-- end menu -->
