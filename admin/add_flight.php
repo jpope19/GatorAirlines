@@ -47,7 +47,7 @@ $planes = $users->get_planes();
             </option>
         <? } ?>
     </select><br>
-    $<input type=text name="first_class_cost">
-    $<input type=text name="coach_class_cost"><br>
+    First Class Cost <input type=text name="first_class_cost"><br>
+    Coach Class Cost <input type=text name="coach_class_cost"><br>
     <input type=submit>
 </form>
