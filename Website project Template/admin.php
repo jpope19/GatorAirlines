@@ -28,16 +28,10 @@
 <!-- end menu -->
 <!-- start page -->
 <div id="page">
-<!--
-
-
-
-  DO YOUR WORK HERE!!!!!!!!!
-
-
-
-  -->
-
+<!-- DO YOUR WORK HERE!!!!!!!!! -->
+	<ul>
+	<?php include '../admin/add_flight.php'; ?>
+	<ul>
 
 </div>
 	<!-- end content -->
