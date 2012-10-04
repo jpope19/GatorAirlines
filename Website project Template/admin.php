@@ -30,7 +30,7 @@
 <div id="page">
 <!-- DO YOUR WORK HERE!!!!!!!!! -->
 	<ul>
-	<?php include '../admin/add_flight.php'; ?>
+		<?php include '../admin/add_flight.php'; ?>
 	<ul>
 
 </div>
