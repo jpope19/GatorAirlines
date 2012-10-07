@@ -206,7 +206,7 @@ $vip = $users->get_vip();
 		</fieldset>
 	</ol>
 	</fieldset>
-	</div>
+	
 	
 	
 	<!----------------------------------- Developer Style Options ------------------------------------>
