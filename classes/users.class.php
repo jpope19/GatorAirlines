@@ -1,4 +1,4 @@
-<?
+<?php
 include_once("db.class.php");
 include_once("display.class.php");
 $output = new display;
@@ -13,7 +13,7 @@ class users extends db {
     }
     
     function fill_database(){
-        $file = fopen("cities.txt", 'r');
+        $file = fopen("../data/cities.txt", 'r');
 
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
@@ -32,7 +32,7 @@ class users extends db {
     }
     
     function add_airplane($record){
-        $this->db->AutoExecute("airplanes", $record, "INSERT");
+        $this->db->AutoExecute("../data/airplanes", $record, "INSERT");
     }
     
     function get_airports(){

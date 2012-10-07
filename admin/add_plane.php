@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 include("../js/add_plane.js");
 /*

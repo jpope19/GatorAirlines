@@ -1,4 +1,4 @@
-<?
+<?php
 define("LOG_EVENT", "0");
 define("LOG_WARN", "1");
 define("LOG_ERROR", "2");
@@ -21,8 +21,8 @@ class db {
 		include_once("adodb5/adodb-exceptions.inc.php");	// show DB errors -- REMOVE FOR PRODUCTION	
 
 		$this->db = NewADOConnection("mysql"); // A new connection
-	    $this->db->Connect('localhost', 'pma', 'voiture', 'Gator_Airlines');
-        $this->db->SetFetchMode(ADODB_FETCH_ASSOC);
+	    $this->db->Connect('localhost', 'jpope', 'baseball19', 'gatorairlines');
+		$this->db->SetFetchMode(ADODB_FETCH_ASSOC);
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
         }
@@ -42,11 +42,11 @@ class db {
     function log($message = "") {
         $record = array();
         $record['ts'] = $this->ts();
-       if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id'])) {
             $record['user_id'] = $_SESSION['user_id'];        
         } else {
-            $record['user_id'] = 0;                    
-        }
+			$record['user_id'] = 0;                    
+		}
         $record['message'] = $message;
         $this->db->AutoExecute("log", $record, "INSERT");
     }    
