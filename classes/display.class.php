@@ -1,4 +1,4 @@
-<?
+<?php
 class display {
     
     function out($val, $nl = true) {

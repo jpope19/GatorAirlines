@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../classes/users.class.php");
-include("../js/add_flight.js");
+
 
 /* flights db table
            
@@ -20,6 +20,8 @@ include("../js/add_flight.js");
 */
 
 $users = new users();
+
+$users->fill_database();
 
 $airports = $users->get_airports();
 $planes = $users->get_planes();
