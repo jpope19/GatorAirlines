@@ -7,7 +7,7 @@ include("../classes/users.class.php");
 $users = new users();
 
 // Get objects from database to be used in the referenced php files here
-$customers = $users->get_customers();
+$customers = $users->get_customers("email");
 $airports = $users->get_airports();
 $airplanes = $users->get_planes();
 $flights = $users->get_flights();
