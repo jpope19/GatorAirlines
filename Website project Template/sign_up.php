@@ -1,5 +1,10 @@
 
 <?php
+$con = mysql_connect("localhost","jpope","baseball19");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
 
 
 
@@ -29,16 +34,18 @@
 <!-- start page -->
 <div id="page">
 
-<form>
+<form action="sign_up.php" method=POST>
 <!-- <input type="reset"><br>
 -->
 
-First name &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" name="firstname"><br>
-Last name:&nbsp &nbsp &nbsp <input type="text" name ="lastname"><br>
-Address:&nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" name="address"><br>
-City: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" name="city"><br>
-State: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <form action="">
-<select name="states">
+First name: <input type="text" name="first_name"><br>
+Last name: <input type="text" name ="last_name"><br>
+email: <input type="email" name="email"><br>
+Password:	<input type="password" name="password"><br>
+Billing Address: <input type="text" name="addr"><br>
+City: <input type="text" name="city"><br>
+State: <form action="">
+<select name="state">
 <option value="Alabama">AL</option>
 <option value="Alaska">AK</option>
 <option value="Arizona">AZ</option>
@@ -90,19 +97,8 @@ State: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <form action="">
 <option value="Wyoming">WY</option>
 <select>
 </form>
-Zip code:&nbsp &nbsp &nbsp &nbsp <input type="text" name="zip"><br>
-Birthday:&nbsp &nbsp &nbsp &nbsp <input type="date" name="birthday"><br>
-email:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="email" name="email"><br>
-Card Type:<form action="">
-<select name="cardtype">
-<option value="Visa">Visa</option>
-<option value="Mastercard">Mastercard</option>
-<option value="Discover">Discover</option>
-<select>
-</form>
-
-Card Number &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" name="cardnumber"><br>
-Card Holder Name &nbsp &nbsp  &nbsp <input type="text" name="cardname"><br>
+Zip code: <input type="text" name="zip"><br>
+Credit Card Number: <input type="text" name="cc_num"><br>
 
 <input type="submit" value="Submit">
 
