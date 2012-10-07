@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 include("../classes/users.class.php");
 include("../js/add_flight.js");
