@@ -28,9 +28,17 @@
 <!-- end menu -->
 <!-- start page -->
 <div id="page">
-Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="name"><br>
-Ticket Number: <input type="text" name="ticket"><br>
-<input type="submit" value="Submit">
+
+
+<body>
+    <div style= "width:430px; margin:0 auto;"> <!--"text-align:center;"> -->
+        <form action="">
+		Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="name"><br>
+		Ticket Number: <input type="text" name="ticket"><br>
+		<input type="submit" value="Submit">
+		</form>
+    </div>
+</body>
 
 
 </div>
