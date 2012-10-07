@@ -28,7 +28,7 @@
 <!-- end menu -->
 <!-- start page -->
 <div id="page">
-Name: <input type="text" name="name"><br>
+Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="name"><br>
 Ticket Number: <input type="text" name="ticket">
 
 
