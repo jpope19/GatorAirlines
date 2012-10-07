@@ -28,15 +28,8 @@
 <!-- end menu -->
 <!-- start page -->
 <div id="page">
-<!--
-
-
-
-  DO YOUR WORK HERE!!!!!!!!!
-
-
-
-  -->
+Name: <input type="text" name="name"><br>
+Ticket Number: <input type="text" name="ticket">
 
 
 </div>
