@@ -6,8 +6,8 @@ include("js/script.js");
 
 $users = new users();
 
-$airports = $users->get_airports();
 $users->create_db();
+$airports = $users->get_airports();
 
 ?>
 
