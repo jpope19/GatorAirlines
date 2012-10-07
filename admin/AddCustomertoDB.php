@@ -16,4 +16,6 @@ CREATE table if not exists customers
 	cc_num int(16),
 	u_type int(2) 
 */
+
+
 ?>

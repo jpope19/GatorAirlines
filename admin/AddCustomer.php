@@ -16,7 +16,7 @@ CREATE table if not exists customers
 	u_type int(2)    
 */
 ?>
-<form action="../admin/AddCustomertoDB.php" method="post">
+<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
 Email: <input type="text" name="email" /> </br>
 First Name: <input type="text" name="first_name" /> </br>
 Last Name: <input type="text" name="last_name" /> </br>
