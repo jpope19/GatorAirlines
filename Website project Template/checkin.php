@@ -29,7 +29,8 @@
 <!-- start page -->
 <div id="page">
 Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="name"><br>
-Ticket Number: <input type="text" name="ticket">
+Ticket Number: <input type="text" name="ticket"><br>
+<input type="submit" value="Submit">
 
 
 </div>
