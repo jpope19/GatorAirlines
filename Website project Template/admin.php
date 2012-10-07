@@ -1,18 +1,7 @@
 <!-- Admins page -->
 <?php
-session_start();// This session will be used in most of the referenced php files here
 
-// This user will also be used in most of the referenced php files here
-include("../classes/users.class.php");
-$users = new users();
 
-// Get objects from database to be used in the referenced php files here
-$customers = $users->get_customers("email");
-$airports = $users->get_airports();
-$airplanes = $users->get_planes();
-$flights = $users->get_flights();
-$tickets = $users->get_tickets();
-$vip = $users->get_vip();
 ?>
 
 
@@ -21,9 +10,6 @@ $vip = $users->get_vip();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php include 'section/Head.php'; ?>
-	
-	<!-- This is necessarry for the Chosen plugin -->
-	<link rel="stylesheet" href="../css/chosen.css" />
 
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -33,15 +19,6 @@ $vip = $users->get_vip();
 	<script type="text/javascript" src="../js/admin/initiateForm.js"></script>
 	<script type="text/javascript" src="../js/admin/tableRadio.js"></script>
 	
-	<!-- The Chosen JQuery plugin -->
-	<script type="text/javascript" src="../js/chosen/chosen.jquery.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$(".chosen").chosen();
-		$(".chosen-deselect").chosen({allow_single_deselect:true}); <!-- Use for unrequired items -->
-	});
-	</script>
 	<!-------------------------------------- END JQUERY ----------------------------->
 </head>
 <body>
@@ -62,8 +39,8 @@ $vip = $users->get_vip();
 <!-- DO YOUR WORK HERE!!!!!!!!! -->
 	<!-- Choose configuration style -->
 	<label for="AdminStyle">Which options would you like?</label> </br>
-	<input type="radio" id="admin" name="AdminStyle" class="AdminStyle" value="Admin" /> Admin
-	<input type="radio" id="developer" name="AdminStyle" class="AdminStyle" value="Developer" /> Developer <br />
+	<input type="radio" id="customers" name="AdminStyle" class="AdminStyle" value="Admin" /> Admin
+	<input type="radio" id="airports" name="AdminStyle" class="AdminStyle" value="Developer" /> Developer <br />
 
 	<!---------------------------------- Admin Style Options ---------------------------------------->
 	<fieldset>
@@ -88,18 +65,24 @@ $vip = $users->get_vip();
 		<fieldset>
 		<ol id="Customer" class="formset">
 			<ol id="AddCustomer" class="formset">
-			Add a Customer Account:
+			<li>Add a Customer Account:</li>
 				<?php include '../admin/AddCustomer.php'; ?>
 			</ol>
 			
 			<ol id="ModifyCustomer" class="formset">
-			Modify a Customer Account:
-				<?php include '../admin/ModifyCustomer.php'; ?>
+			<li>Modify a Customer Account:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="DeleteCustomer" class="formset">
-			Delete a Customer Account:
-				<?php include '../admin/DeleteCustomer.php'; ?>
+			<li>Delete a Customer Account:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 		</ol>
 		</fieldset>
@@ -108,18 +91,27 @@ $vip = $users->get_vip();
 		<fieldset>
 		<ol id="Airport" class="formset">
 			<ol id="AddAirport" class="formset">
-			Add an Airport:
-				<?php include '../admin/AddAirport.php'; ?>
+			<li>Add an Airport:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="ModifyAirport" class="formset">
-			Modify an Airport:
-				<?php include '../admin/ModifyAirport.php'; ?>
+			<li>Modify an Airport:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="DeleteAirport" class="formset">
-			Delete an Airport:
-				<?php include '../admin/DeleteAirport.php'; ?>
+			<li>Delete an Airport:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 		</ol>
 		</fieldset>
@@ -128,18 +120,27 @@ $vip = $users->get_vip();
 		<fieldset>
 		<ol id="Airplane" class="formset">
 			<ol id="AddAirplane" class="formset">
-			Add an Airplane:
-				<?php include '../admin/AddAirplane.php'; ?>
+			<li>Add an Airplane:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="ModifyAirplane" class="formset">
-			Modify an Airplane:
-				<?php include '../admin/ModifyAirplane.php'; ?>
+			<li>Modify an Airplane:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="DeleteAirplane" class="formset">
-			Delete an Airplane:
-				<?php include '../admin/DeleteAirplane.php'; ?>
+			<li>Delete an Airplane:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 		</ol>
 		</fieldset>
@@ -148,18 +149,27 @@ $vip = $users->get_vip();
 		<fieldset>
 		<ol id="Flight" class="formset">
 			<ol id="AddFlight" class="formset">
-			Add a Flight:
-				<?php include '../admin/AddFlight.php'; ?>
+			<li>Add a Flight:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="ModifyFlight" class="formset">
-			Modify a Flight:
-				<?php include '../admin/ModifyFlight.php'; ?>
+			<li>Modify a Flight:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="DeleteFlight" class="formset">
-			Delete a Flight:
-				<?php include '../admin/DeleteFlight.php'; ?>
+			<li>Delete a Flight:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 		</ol>
 		</fieldset>
@@ -169,18 +179,27 @@ $vip = $users->get_vip();
 		<fieldset>
 		<ol id="Ticket" class="formset">
 			<ol id="AddTicket" class="formset">
-			Add a Ticket:
-				<?php include '../admin/AddTicket.php'; ?>
+			<li>Add a Ticket:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="ModifyTicket" class="formset">
-			Modify a Ticket:
-				<?php include '../admin/ModifyTicket.php'; ?>
+			<li>Modify a Ticket:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="DeleteTicket" class="formset">
-			Delete a Ticket:
-				<?php include '../admin/DeleteTicket.php'; ?>
+			<li>Delete a Ticket:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 		</ol>
 		</fieldset>
@@ -189,24 +208,32 @@ $vip = $users->get_vip();
 		<fieldset>
 		<ol id="VIP" class="formset">
 			<ol id="AddVIP" class="formset">
-			Add a VIP Acount:
-				<?php include '../admin/AddVIP.php'; ?>
+			<li>Add a VIP Acount:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="ModifyVIP" class="formset">
-			Modify a VIP Acount:
-				<?php include '../admin/ModifyVIP.php'; ?>
+			<li>Modify a VIP Acount:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 			
 			<ol id="DeleteVIP" class="formset">
-			Delete a VIP Acount:
-				<?php include '../admin/DeleteVIP.php'; ?>
+			<li>Delete a VIP Acount:</li>
+					<li><label for="pname1">Parent Name: </label>
+				<input type="text" id="pname1" value="" name="pname1"/></li>
+					<li><label for="contact1">Contact No.: </label>
+				<input type="text" id="contact1" value="" name="contact1"/></li>
 			</ol>
 		</ol>
 		</fieldset>
 	</ol>
 	</fieldset>
-	
 	
 	
 	<!----------------------------------- Developer Style Options ------------------------------------>

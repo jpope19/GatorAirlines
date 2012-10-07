@@ -1,45 +1,7 @@
 
-<?
- 
- //connect to the server.
-$con = mysql_connect('localhost','kgeraci','starwars44');
+<?php
 
- //select the database.
- mysql_select_db("Gator_Airlines", $con);
-session_start();
 
-	if (isset($_POST['first']))
-	{
-		
-		//check database for that user.	
-		$query = "select * from customers where email='".$_POST['email']."' and password='".$_POST['password']."'";
-		$result = mysql_query($query,$con);
-    		
-		if(!$result)
-		{
-			die("Invalid query! <br> The query is: " . $query);
-		}
-		 //if the user is valid, redirect to their account.
-		if(mysql_num_rows($result) == 1)
-		{
-			$_SESSION['loggedIn'] = 1;
-			$_SESSION['email'] = $_POST['email'];
-			$row = mysql_fetch_assoc($result);
-			
-					header("Location:myaccount.php"); // redirects
-					
-					
-					}
-					//if bad login, display and error message.
-		else
-		{
-			
-			echo "<center><font class='error'><br /><br />Invalid username and/or password!</font></center>";
-		}
-		
-		//Close connection
-		mysql_close($con);
-	}
 
 
 ?>
@@ -66,12 +28,15 @@ session_start();
 <!-- end menu -->
 <!-- start page -->
 <div id="page">
-
-
 <!--
 
-HTML CODE FOR SIGN IN
---!>
+
+
+  DO YOUR WORK HERE!!!!!!!!!
+
+
+
+  -->
 
 
 </div>
