@@ -80,33 +80,39 @@ class users extends db {
     }
 	
 	// Get Functions
-    function get_customers(){
-        $sql = "SELECT * FROM customers";
+    function get_customers($order=""){
+		if($order != "")$order = "ORDER BY $order ASC";
+        $sql = "SELECT * FROM customers $order";
         return $this->db->GetArray($sql);
     }
 	
-    function get_airports(){
-        $sql = "SELECT * FROM airports";
+    function get_airports($order=""){
+		if($order != "")$order = "ORDER BY $order ASC";
+        $sql = "SELECT * FROM airports $order";
         return $this->db->GetArray($sql);
     }
     
-    function get_planes(){
-        $sql = "SELECT * FROM airplanes";
+    function get_planes($order=""){
+		if($order != "")$order = "ORDER BY $order ASC";
+        $sql = "SELECT * FROM airplanes $order";
         return $this->db->GetArray($sql);
     }
 	
-	function get_flights(){
-        $sql = "SELECT * FROM flights";
+	function get_flights($order=""){
+		if($order != "")$order = "ORDER BY $order ASC";
+        $sql = "SELECT * FROM flights $order";
         return $this->db->GetArray($sql);
     }
 	
-	function get_tickets(){
-        $sql = "SELECT * FROM tickets";
+	function get_tickets($order=""){
+		if($order != "")$order = "ORDER BY $order ASC";
+        $sql = "SELECT * FROM tickets $order";
         return $this->db->GetArray($sql);
     }
 	
-	function get_vip(){
-        $sql = "SELECT * FROM vip";
+	function get_vip($order=""){
+		if($order != "")$order = "ORDER BY $order ASC";
+        $sql = "SELECT * FROM vip $order";
         return $this->db->GetArray($sql);
     }
     

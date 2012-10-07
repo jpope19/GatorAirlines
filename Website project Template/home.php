@@ -1,5 +1,5 @@
 
-<?
+<?php
 
 
 
@@ -12,6 +12,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php include 'section/Head.php'; ?>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$("#advanced").css("display","none");
+		
+		$(".advanced").click(function()
+		{
+			if ($('input[name=advanced]:checked').val() == "Yes" ) 
+			{
+				$("#advanced").slideDown("fast"); //Slide Down Effect
+			}// end if
+			else
+			{
+				$("#advanced").slideUp("fast"); //Slide Up Effect
+			}// end else
+		});
+	});
+	</script>
+	
 </head>
 <body>
 <!-- start header -->
@@ -185,13 +208,19 @@ Passenger &nbsp: <select name="passenger">
 <br><br>
 
 <input type="submit" value="Submit">		<!-- Creates the submit button -->
+<br>
+<br>
+Advanced
+ <br>
+<input type="radio" name="advanced" class="advanced" value="Yes">Yes
+<input type="radio" name="advanced" class="advanced" value="No">No<br>
 
 </form>
 
 <!-- This is the advanced section of the home page -->
 
 <form action="post">
-<div id="content" style="background-color:#EEEEEE; height 200px;width:600px;float:left;">
+<div id="advanced" style="background-color:#EEEEEE; height 200px;width:600px;float:left;">
 <br>
 <hr><b>Advanced	</b> <br>  <!-- hr creates the horizontal line -->
 
