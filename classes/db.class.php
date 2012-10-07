@@ -21,7 +21,7 @@ class db {
 		include_once("adodb5/adodb-exceptions.inc.php");	// show DB errors -- REMOVE FOR PRODUCTION	
 
 		$this->db = NewADOConnection("mysql"); // A new connection
-	    $this->db->Connect('localhost', 'jpope', 'baseball19', 'gatorairlines');
+	    $this->db->Connect('localhost', 'root', '', 'gatorairlines');
         $this->db->SetFetchMode(ADODB_FETCH_ASSOC);
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
@@ -42,6 +42,7 @@ class db {
     function log($message = "") {
         $record = array();
         $record['ts'] = $this->ts();
+
         if (isset($_SESSION['user_id'])) {
             $record['user_id'] = $_SESSION['user_id'];        
         } else {
