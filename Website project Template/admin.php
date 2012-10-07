@@ -10,7 +10,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php include 'section/Head.php'; ?>
-
+	
+	<!-- This is necessarry for the Chosen plugin -->
+ 	<link rel="stylesheet" href="../css/chosen.css" />
+	
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -19,6 +22,14 @@
 	<script type="text/javascript" src="../js/admin/initiateForm.js"></script>
 	<script type="text/javascript" src="../js/admin/tableRadio.js"></script>
 	
+	<!-- The Chosen JQuery plugin -->
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$(".chosen").chosen(); <!-- For multiple items -->
+		$(".chosen-deselect").chosen({allow_single_deselect:true}); <!-- For single items -->
+	});
+	</script>
 	<!-------------------------------------- END JQUERY ----------------------------->
 </head>
 <body>

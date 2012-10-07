@@ -1,4 +1,4 @@
-<?
+<?php
 include_once("db.class.php");
 include_once("display.class.php");
 $output = new display;
