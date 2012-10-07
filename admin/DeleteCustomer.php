@@ -1,6 +1,7 @@
 <!-- Produce the Delete Customer form -->
 <?php
-
+session_start();
+include("../classes/users.class.php");
 /*
 CREATE table if not exists customers 
 (
@@ -14,22 +15,23 @@ CREATE table if not exists customers
 	state varchar(30),
 	zip int(5),
 	cc_num int(16),
-	u_type int(2)     
+	u_type int(2)   
 */
-
 $users = new users();
+$customers = $users->get_customers();
+$option = "";
 
-$airports = $users->get_airports();
-$planes = $users->get_planes();
+// Get the emails of the users from the database
+foreach($customers as $customer)
+{
+	$option .= "<option value=\"" . $customer["cid"] . "\">" . $customer["email"] . "</option>";
+}// end loop
 ?>
 
-<select data-placeholder="Choose a Country" class="chosen" multiple style="width:350px;" tabindex="4">
-		   
-</select>
-
 <form action="../admin/DeleteCustomertoDB.php" method="post">
-	<select data-placeholder="Choose a Country" class="chosen" multiple style="width:350px;" tabindex="4">
-			   
+	<select data-placeholder="Choose a customer (email address)" class="chosen" multiple style="width:350px;">
+		<option value=""></option>
+		<?php echo $option; ?>           
 	</select>
-<input type="submit" />
+	</br> <input type="submit" /> 
 </form>
