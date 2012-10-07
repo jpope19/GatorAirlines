@@ -54,10 +54,37 @@ class users extends db {
         return "finished";
     }
     
-    function add_airplane($record){
+	// Add functions
+    function add_customers($record){
+        $this->db->AutoExecute("customers", $record, "INSERT");
+    }
+	
+	function add_airports($record){
+        $this->db->AutoExecute("airports", $record, "INSERT");
+    }
+	
+	function add_airplane($record){
         $this->db->AutoExecute("airplanes", $record, "INSERT");
     }
-    
+	
+	function add_flights($record){
+        $this->db->AutoExecute("flights", $record, "INSERT");
+    }
+	
+	function add_tickets($record){
+        $this->db->AutoExecute("tickets", $record, "INSERT");
+    }
+	
+	function add_vip($record){
+        $this->db->AutoExecute("vip", $record, "INSERT");
+    }
+	
+	// Get Functions
+    function get_customers(){
+        $sql = "SELECT * FROM customers";
+        return $this->db->GetArray($sql);
+    }
+	
     function get_airports(){
         $sql = "SELECT * FROM airports";
         return $this->db->GetArray($sql);
@@ -68,19 +95,20 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
-	function get_options($table, $val, $text, $where = "", $order = "")
-	{// Used by most php's in admin to create dropdown 
-		if($where != "") $where = "WHERE $where";
-		if($order != "") $order = "ORDER BY $order";
-		$sql = "SELECT * FROM airports";
-		$this->db->query($sql);
-		while($row = mysql_fetch_array($this->db->result, MYSQL_ASSOC))
-		{
-			$out .= "<option value=\"" . $row[$val] . "\">" . $row[$text] . "</option>"; 
-		}
-		return $out; 
-	}
-
+	function get_flights(){
+        $sql = "SELECT * FROM flights";
+        return $this->db->GetArray($sql);
+    }
+	
+	function get_tickets(){
+        $sql = "SELECT * FROM tickets";
+        return $this->db->GetArray($sql);
+    }
+	
+	function get_vip(){
+        $sql = "SELECT * FROM vip";
+        return $this->db->GetArray($sql);
+    }
     
     function create_db(){
         $sql = "CREATE table if not exists customers (

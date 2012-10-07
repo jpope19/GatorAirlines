@@ -1,5 +1,7 @@
+<!-- Produce the Modify Customer form -->
 <?php
-
+session_start();
+include("../classes/users.class.php");
 /*
 CREATE table if not exists customers 
 (
@@ -9,12 +11,25 @@ CREATE table if not exists customers
 	last_name varchar(30),
 	password varchar(30),
 	addr varchar(30),
+	city varchar(30),
+	state varchar(30),
+	zip int(5),
 	cc_num int(16),
-	u_type int(2)    
+	u_type int(2)   
 */
-?>
+$users = new users();
+$customers = $users->get_customers();
+$option = "";
 
- <select data-placeholder="Choose a Country" class="chosen-deselect" multiple style="width:350px;" tabindex="4">
-                <option value=""></option> 
-                
-</select>
+foreach($customers as $customer)
+{
+	$option .= "<option value=\"" . $customer["cid"] . "\">" . $customer["email"] . "</option>";
+}// end loop
+?>
+<form action="../admin/ModifyCustomertoDB.php" method="post">
+	<select data-placeholder="Choose a customer (email address)" class="chosen" multiple style="width:350px;">
+		<option value=""></option>
+		<?php echo $option; ?>           
+	</select>
+	</br> <input type="submit" /> 
+</form>

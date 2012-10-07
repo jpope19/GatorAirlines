@@ -27,8 +27,8 @@
 	<script type="text/javascript">
 	$(document).ready(function()
 	{
-		$(".chosen").chosen(); <!-- For multiple items -->
-		$(".chosen-deselect").chosen({allow_single_deselect:true}); <!-- For single items -->
+		$(".chosen").chosen();
+		$(".chosen-deselect").chosen({allow_single_deselect:true}); <!-- Use for unrequired items -->
 	});
 	</script>
 	<!-------------------------------------- END JQUERY ----------------------------->
