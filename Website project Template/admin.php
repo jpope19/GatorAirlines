@@ -13,6 +13,9 @@ $airplanes = $users->get_planes();
 $flights = $users->get_flights();
 $tickets = $users->get_tickets();
 $vip = $users->get_vip();
+
+// Set the radios initial states
+
 ?>
 
 
@@ -62,26 +65,26 @@ $vip = $users->get_vip();
 <!-- DO YOUR WORK HERE!!!!!!!!! -->
 	<!-- Choose configuration style -->
 	<label for="AdminStyle">Which options would you like?</label> </br>
-	<input type="radio" id="customers" name="AdminStyle" class="AdminStyle" value="Admin" /> Admin
-	<input type="radio" id="airports" name="AdminStyle" class="AdminStyle" value="Developer" /> Developer <br />
+	<input type="radio" id="admin" name="AdminStyle" class="AdminStyle" value="Admin" <?php echo ($_SESSION['AdminStyle'] == "Admin") ? 'checked="checked"' : ''; ?> /> Admin
+	<input type="radio" id="developer" name="AdminStyle" class="AdminStyle" value="Developer" <?php echo ($_SESSION['AdminStyle'] == "Developer") ? 'checked="checked"' : ''; ?> /> Developer <br />
 
 	<!---------------------------------- Admin Style Options ---------------------------------------->
 	<fieldset>
 	<div id="Admin" class="formset">
 		<!-- First, give the admin the tables he can modify -->
 		<label for="table">Which table would you like to modify?</label> </br>
-		<input type="radio" id="customers" name="table" class="table" value="Customer" /> Customers
-		<input type="radio" id="airports" name="table" class="table" value="Airport" /> Airports
-		<input type="radio" id="airplanes" name="table" class="table" value="Airplane" /> Airplanes
-		<input type="radio" id="flights" name="table" class="table" value="Flight" /> Flights
-		<input type="radio" id="tickets" name="table" class="table" value="Ticket" /> Tickets
-		<input type="radio" id="vip" name="table" class="table" value="VIP" /> VIP <br />
+		<input type="radio" id="customers" name="table" class="table" value="Customer" <?php echo ($_SESSION['table'] == "Customer") ? 'checked="checked"' : ''; ?> /> Customers
+		<input type="radio" id="airports" name="table" class="table" value="Airport" <?php echo ($_SESSION['table'] == "Airport") ? 'checked="checked"' : ''; ?> /> Airports
+		<input type="radio" id="airplanes" name="table" class="table" value="Airplane" <?php echo ($_SESSION['table'] == "Airplane") ? 'checked="checked"' : ''; ?> /> Airplanes
+		<input type="radio" id="flights" name="table" class="table" value="Flight" <?php echo ($_SESSION['table'] == "Flight") ? 'checked="checked"' : ''; ?> /> Flights
+		<input type="radio" id="tickets" name="table" class="table" value="Ticket" <?php echo ($_SESSION['table'] == "Ticket") ? 'checked="checked"' : ''; ?> /> Tickets
+		<input type="radio" id="vip" name="table" class="table" value="VIP" <?php echo ($_SESSION['table'] == "VIP") ? 'checked="checked"' : ''; ?> /> VIP <br />
 		
 		<!-- Second, see how the amin wants to modify table -->
 		<label for="action">How would you like to modify the table?</label> </br>
-		<input type="radio" id="add" name="action" class="action" value="Add" /> Add
-		<input type="radio" id="modify" name="action" class="action" value="Modify" /> Modify
-		<input type="radio" id="delete" name="action" class="action" value="Delete" /> Delete <br />
+		<input type="radio" id="add" name="action" class="action" value="Add" <?php echo ($_SESSION['action'] == "Add") ? 'checked="checked"' : ''; ?> /> Add
+		<input type="radio" id="modify" name="action" class="action" value="Modify" <?php echo ($_SESSION['action'] == "Modify") ? 'checked="checked"' : ''; ?> /> Modify
+		<input type="radio" id="delete" name="action" class="action" value="Delete" <?php echo ($_SESSION['action'] == "Delete") ? 'checked="checked"' : ''; ?> /> Delete <br />
 		
 		<!----------------------------------------- Produce forms based on radios ------------------------------->
 		<!-- Customer accounts -->
