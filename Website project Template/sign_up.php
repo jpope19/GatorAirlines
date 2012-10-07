@@ -1,9 +1,43 @@
 
-<?
+<?php
 
 
-
-
+if (isset($_POST['name']))
+	{
+		
+		
+		// check if the email is already taken
+		$query = "select * from userinfo where email = '".$_POST['email']."'";
+		$result = mysql_query($query,$con);	
+		
+		if(!$result)
+		{
+			die("Invalid query! <br> The query is: " . $query);
+		}
+		
+		if(mysql_num_rows($result) == 1)
+		{
+			
+			echo "<center><font class='error'><br /><br />This account already exist!</font></center>";
+		}
+		
+		//if email is valid, insert the user into the customers table.
+		else{
+		$query = "insert into customers values('".$_POST['email']."','".$_POST['first_name']."','".$_POST['last_name']."','".$_POST['password']."','".$_POST['addr']."',
+		                                        '".$_POST['cc_num']."','vip')";
+	
+           	$result = mysql_query($query,$con);
+			
+		if(!$result)
+		{
+			die("Invalid query! <br> The query is: " . $query);
+		}
+		
+		header("Location:myaccount.php"); // redirects
+}
+		
+		
+}		
 ?>
 
 
