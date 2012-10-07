@@ -2,7 +2,7 @@
 <?
  
  //connect to the server.
-$con = mysql_connect('localhost','kgeraci','starwars44');
+$con = mysql_connect('localhost','jpope','baseball');
 
  //select the database.
  mysql_select_db("Gator_Airlines", $con);
