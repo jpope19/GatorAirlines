@@ -67,13 +67,6 @@ session_start();
 <!-- start page -->
 <div id="page">
 
-
-<!--
-
-HTML CODE FOR SIGN IN
---!>
-
-
 </div>
 	<!-- end content -->
 	
