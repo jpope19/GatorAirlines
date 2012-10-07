@@ -20,7 +20,7 @@ include("../classes/users.class.php");
 */
 
 $users = new users();
-
+$users->create_db();
 $users->fill_database();
 
 $airports = $users->get_airports();

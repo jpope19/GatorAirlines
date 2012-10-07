@@ -62,8 +62,8 @@ $vip = $users->get_vip();
 <!-- DO YOUR WORK HERE!!!!!!!!! -->
 	<!-- Choose configuration style -->
 	<label for="AdminStyle">Which options would you like?</label> </br>
-	<input type="radio" id="customers" name="AdminStyle" class="AdminStyle" value="Admin" /> Admin
-	<input type="radio" id="airports" name="AdminStyle" class="AdminStyle" value="Developer" /> Developer <br />
+	<input type="radio" id="admin" name="AdminStyle" class="AdminStyle" value="Admin" /> Admin
+	<input type="radio" id="developer" name="AdminStyle" class="AdminStyle" value="Developer" /> Developer <br />
 
 	<!---------------------------------- Admin Style Options ---------------------------------------->
 	<fieldset>
@@ -206,6 +206,7 @@ $vip = $users->get_vip();
 		</fieldset>
 	</ol>
 	</fieldset>
+	</div>
 	
 	
 	<!----------------------------------- Developer Style Options ------------------------------------>
