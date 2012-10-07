@@ -1,4 +1,4 @@
-<?
+<?php
 define("LOG_EVENT", "0");
 define("LOG_WARN", "1");
 define("LOG_ERROR", "2");

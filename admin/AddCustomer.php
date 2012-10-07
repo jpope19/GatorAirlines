@@ -13,13 +13,4 @@ CREATE table if not exists customers
 	u_type int(2)    
 */
 ?>
-<link rel="stylesheet" href="../css/chosen.css" />
-
-
-<select data-placeholder="Choose a framework" class="chosen" style="width:200px;">
-  <option>Choose...</option>
-  <option>jQuery</option>
-  <option>MooTools</option>
-  <option>Prototype</option>
-  <option>Dojo Toolkit</option>
-</select>
+Add new customer:

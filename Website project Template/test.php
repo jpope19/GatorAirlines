@@ -21,6 +21,8 @@ include("../classes/users.class.php");
 
 $users = new users();
 
+$users->fill_database();
+
 $airports = $users->get_airports();
 $planes = $users->get_planes();
 ?>

@@ -13,7 +13,8 @@ class users extends db {
     }
     
     function fill_database(){
-        $file = fopen("cities.txt", 'r');
+		// Fill with cities
+        $file = fopen("../data/cities.txt", 'r');
 
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
@@ -23,7 +24,29 @@ class users extends db {
             $record['city'] = trim($info[1]);
             $record['state'] = trim($info[2]);
             $record['iata'] = trim($info[3]);
-            $this->db->AutoExecute("../data/airports.txt", $record, "INSERT");
+            $this->db->AutoExecute("airports", $record, "INSERT");
+        }
+        
+        fclose($file);
+		
+		// Fill with customers
+		$file = fopen("../data/customers.txt", 'r');
+
+        while(!feof($file)){
+            $line = utf8_encode(trim(fgets($file)));
+            echo $line . "<br>";
+            $info = explode("," , $line);
+            $record2['email'] = trim($info[0]);
+            $record2['first_name'] = trim($info[1]);
+            $record2['last_name'] = trim($info[2]);
+            $record2['password'] = trim($info[3]);
+			$record2['addr'] = trim($info[4]);
+            $record2['city'] = trim($info[5]);
+            $record2['state'] = trim($info[6]);
+            $record2['zip'] = trim($info[7]);
+			$record2['cc_num'] = trim($info[8]);
+            $record2['u_type'] = 0;
+            $this->db->AutoExecute("customers", $record2, "INSERT");
         }
         
         fclose($file);
@@ -32,7 +55,7 @@ class users extends db {
     }
     
     function add_airplane($record){
-        $this->db->AutoExecute("../data/airplanes.txt", $record, "INSERT");
+        $this->db->AutoExecute("airplanes", $record, "INSERT");
     }
     
     function get_airports(){
@@ -44,6 +67,20 @@ class users extends db {
         $sql = "SELECT * FROM airplanes";
         return $this->db->GetArray($sql);
     }
+	
+	function get_options($table, $val, $text, $where = "", $order = "")
+	{// Used by most php's in admin to create dropdown 
+		if($where != "") $where = "WHERE $where";
+		if($order != "") $order = "ORDER BY $order";
+		$sql = "SELECT * FROM airports";
+		$this->db->query($sql);
+		while($row = mysql_fetch_array($this->db->result, MYSQL_ASSOC))
+		{
+			$out .= "<option value=\"" . $row[$val] . "\">" . $row[$text] . "</option>"; 
+		}
+		return $out; 
+	}
+
     
     function create_db(){
         $sql = "CREATE table if not exists customers (
@@ -53,6 +90,9 @@ class users extends db {
             last_name varchar(30),
             password varchar(30),
             addr varchar(30),
+			city varchar(30),
+			state varchar(30),
+			zip int(5),
             cc_num int(16),
             u_type int(2)    
         )";

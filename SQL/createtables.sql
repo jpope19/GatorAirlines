@@ -6,8 +6,11 @@ CREATE table if not exists customers
 	last_name varchar(30),
 	password varchar(30),
 	addr varchar(30),
+	city varchar(30),
+	state varchar(30),
+	zip int(5),
 	cc_num int(16),
-	u_type int(2)    
+	u_type int(2)  
 );
         
 CREATE table if not exists airports 
