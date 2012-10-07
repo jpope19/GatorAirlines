@@ -2,7 +2,7 @@
 <?
  
  //connect to the server.
-$con = mysql_connect('localhost','kgeraci','starwars44');
+$con = mysql_connect('localhost','jpope','baseball19');
 
  //select the database.
  mysql_select_db("Gator_Airlines", $con);
@@ -66,7 +66,7 @@ session_start();
 <!-- end menu -->
 <!-- start page -->
 
-=======
+
  <div id="page">
 <!--
 <input type="radio" name="admin" class="admin" value="Admin">Admin
@@ -81,11 +81,6 @@ session_start();
     </div>
 </body>
   
-
-
-
- 
->>>>>>> Log-in Page
 
 
 </div> 
