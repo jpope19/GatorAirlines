@@ -2,7 +2,7 @@
 <?
  
  //connect to the server.
-$con = mysql_connect('localhost','pma','voiture');
+$con = mysql_connect('localhost','kgeraci','starwars44');
 
  //select the database.
  mysql_select_db("Gator_Airlines", $con);
@@ -66,15 +66,12 @@ session_start();
 <!-- end menu -->
 <!-- start page -->
 <div id="page">
+
+
 <!--
 
-
-
-  DO YOUR WORK HERE!!!!!!!!!
-
-
-
-  -->
+HTML CODE FOR SIGN IN
+--!>
 
 
 </div>

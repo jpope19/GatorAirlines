@@ -1,7 +1,6 @@
 <!-- Validate Customer data going to DB and Insert it if valid -->
 <!-- DB password is retrieved and compared here and not sent to the server (also hashed here) -->
 <?php
-
 /*
 CREATE table if not exists customers 
 (
