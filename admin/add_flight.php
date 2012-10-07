@@ -26,28 +26,66 @@ $planes = $users->get_planes();
 ?>
 
 <form id="add_flight_form" action="#" method=POST>
-    <select name="plane_id">
-        <? foreach($planes as $plane){ ?>
-            <option value="<?=$plane['plane_id']?>">
-                <?=$plane['type']?>
-            </option>
-        <? } ?>
-    </select>
-    <select name="org_id">
-        <? foreach($airports as $airport){ ?>
-            <option value="<?=$airport['airport_id']?>">
-                <?=$airport['name']?>
-            </option>
-        <? } ?>
-    </select>
-    <select name="dest_id">
-        <? foreach($airports as $airport){ ?>
-            <option value="<?=$airport['airport_id']?>">
-                <?=$airport['name']?>
-            </option>
-        <? } ?>
-    </select><br>
-    $<input type=text name="first_class_cost">
-    $<input type=text name="coach_class_cost"><br>
-    <input type=submit>
+    <table>
+    <tr>
+        <td> Plane </td>
+        <td>
+            <select name="plane_id">
+                <? foreach($planes as $plane){ ?>
+                    <option value="<?=$plane['plane_id']?>">
+                        <?=$plane['type']?>
+                    </option>
+                <? } ?>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td> Origin </td>
+        <td>
+            <select name="org_id">
+                <? foreach($airports as $airport){ ?>
+                    <option value="<?=$airport['airport_id']?>">
+                        <?=$airport['name']?>
+                    </option>
+                <? } ?>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td> Destination </td>
+        <td>
+            <select name="dest_id">
+                <? foreach($airports as $airport){ ?>
+                    <option value="<?=$airport['airport_id']?>">
+                        <?=$airport['name']?>
+                    </option>
+                <? } ?>
+            </select><br>
+        </td>
+    </tr>
+    <tr> 
+        <td> First Class Price </td>
+        <td>
+            $<input type=text name="first_class_cost">
+        </td>
+    </tr>
+    <tr>
+        <td> Coach Price </td>
+        <td>
+            $<input type=text name="coach_class_cost">
+        </td>
+    </tr>
+    <tr>
+        <td> Distance </td>
+        <td>
+            <input type=text maxlength=5 name="distance">
+        </td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td>
+            <input type=submit>
+        </td>
+    </tr>
+    </table>
 </form>

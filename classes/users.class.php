@@ -35,6 +35,10 @@ class users extends db {
         $this->db->AutoExecute("airplanes", $record, "INSERT");
     }
     
+    function add_flight($record){
+        $this->db->AutoExecute("flights", $record, "INSERT");
+    }
+    
     function get_airports(){
         $sql = "SELECT * FROM airports";
         return $this->db->GetArray($sql);
