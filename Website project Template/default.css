@@ -8,7 +8,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 body {
 	margin: 0;
 	padding: 0;
-	background: #FFFFFF /*url(images/img01.jpg) repeat-x*/;
+	background: #FFFFFF url(images/img01.jpg) repeat-x;
 	font: 13px Georgia, "Times New Roman", Times, serif;
 	color: #666666;
 }
@@ -106,7 +106,7 @@ img {1B
 	width: 770px;
 	height: 65px;
 	margin: 0 auto;
-	background: /*url(images/img02.jpg)*/ no-repeat;
+	background: url(images/img02.jpg) no-repeat;
 }
 
 #menu ul {
@@ -318,7 +318,7 @@ img {1B
 
 #holder{
 height:200px;
-width:550px;
+width:795px;
 background-color:#F5F5F5;
 border:1px solid #A4A4A4;
 margin-left:10px;
@@ -328,6 +328,7 @@ position:relative;
 margin:7px;
 }
 #place a{
+margin:26px;
 font-size:0.6em;
 }
 #place li
@@ -341,8 +342,8 @@ background-color:yellow;
 }
 #place .seat{
 background:url("images/available_seat.png") no-repeat scroll 0 0 transparent;
-height:33px;
-width:33px;
+height:24px;
+width:29px;
 display:block;
 }
 #place .selectedSeat
@@ -354,13 +355,14 @@ background-image:url("images/booked_seat.png");
 background-image:url("images/selected_seat.png");
 }
 #place .row-3, #place .row-4{
-margin-top:10px;
+margin-top:8px;
 }
 #seatDescription li{
 verticle-align:middle;
 list-style: none outside none;
-padding-left:35px;
+padding-left:28px;
 height:35px;
 float:left;
 }
+
 
