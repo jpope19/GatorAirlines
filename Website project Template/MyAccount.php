@@ -28,15 +28,16 @@
 <!-- end menu -->
 <!-- start page -->
 <div id="page">
-<!--
 
-
-
-  DO YOUR WORK HERE!!!!!!!!!
-
-
-
-  -->
+<body>
+    <div style= "width:430px; margin:0 auto;"> <!--"text-align:center;"> -->
+        <form action="">
+		Username&nbsp: <input type="text" name="username" /><br />
+		Password&nbsp&nbsp: <input type="password" name="password" /><br>
+		<input type="submit" value="Submit">
+		</form>
+    </div>
+</body>
 
 
 </div>
