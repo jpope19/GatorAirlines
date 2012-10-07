@@ -23,7 +23,7 @@ class users extends db {
             $record['city'] = trim($info[1]);
             $record['state'] = trim($info[2]);
             $record['iata'] = trim($info[3]);
-            $this->db->AutoExecute("airports", $record, "INSERT");
+            $this->db->AutoExecute("airports.txt", $record, "INSERT");
         }
         
         fclose($file);
@@ -32,7 +32,7 @@ class users extends db {
     }
     
     function add_airplane($record){
-        $this->db->AutoExecute("airplanes", $record, "INSERT");
+        $this->db->AutoExecute("airplanes.txt", $record, "INSERT");
     }
     
     function get_airports(){
