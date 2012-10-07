@@ -1,7 +1,5 @@
 <!-- Produce the Delete Customer form -->
 <?php
-session_start();
-include("../classes/users.class.php");
 /*
 CREATE table if not exists customers 
 (
@@ -17,10 +15,7 @@ CREATE table if not exists customers
 	cc_num int(16),
 	u_type int(2)   
 */
-$users = new users();
-$customers = $users->get_customers();
 $option = "";
-
 // Get the emails of the users from the database
 foreach($customers as $customer)
 {
@@ -33,5 +28,5 @@ foreach($customers as $customer)
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>
-	</br> <input type="submit" /> 
+	</br> <input type="submit"/> 
 </form>

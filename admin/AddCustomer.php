@@ -1,6 +1,5 @@
 <!-- Produce the Add Customer form -->
 <?php
-
 /*
 CREATE table if not exists customers 
 (

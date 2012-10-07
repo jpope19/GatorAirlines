@@ -1,7 +1,5 @@
 <!-- Produce the Modify Customer form -->
 <?php
-session_start();
-include("../classes/users.class.php");
 /*
 CREATE table if not exists customers 
 (
@@ -17,10 +15,7 @@ CREATE table if not exists customers
 	cc_num int(16),
 	u_type int(2)   
 */
-$users = new users();
-$customers = $users->get_customers();
 $option = "";
-
 // Get the emails of the users from the database
 foreach($customers as $customer)
 {
@@ -35,14 +30,12 @@ foreach($customers as $customer)
     }
 </script>
 
-Which user would you like to modify? <br>
+<li>Which user would you like to modify?</li>
 <form action="../admin/ModifyCustomertoDB.php" method="post">
 	<select data-placeholder="Choose a customer (email address)" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>
-	</br> <input type="submit" /> 
-	
 <li>Which fields would you like to modify from this user?:</li>
 <tr>
 	<td width="235">
@@ -125,4 +118,5 @@ Which user would you like to modify? <br>
 		User Type: <input type="text" disabled="disabled" id="u_type" >
 	</td>
 </tr>
+</br> <input type="submit" /> 
 </form>

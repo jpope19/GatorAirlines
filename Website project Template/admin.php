@@ -1,7 +1,18 @@
 <!-- Admins page -->
 <?php
+session_start();// This session will be used in most of the referenced php files here
 
+// This user will also be used in most of the referenced php files here
+include("../classes/users.class.php");
+$users = new users();
 
+// Get objects from database to be used in the referenced php files here
+$customers = $users->get_customers();
+$airports = $users->get_airports();
+$airplanes = $users->get_planes();
+$flights = $users->get_flights();
+$tickets = $users->get_tickets();
+$vip = $users->get_vip();
 ?>
 
 
@@ -77,17 +88,17 @@
 		<fieldset>
 		<ol id="Customer" class="formset">
 			<ol id="AddCustomer" class="formset">
-			<li>Add a Customer Account:</li>
+			Add a Customer Account:
 				<?php include '../admin/AddCustomer.php'; ?>
 			</ol>
 			
 			<ol id="ModifyCustomer" class="formset">
-			<li>Modify a Customer Account:</li>
+			Modify a Customer Account:
 				<?php include '../admin/ModifyCustomer.php'; ?>
 			</ol>
 			
 			<ol id="DeleteCustomer" class="formset">
-			<li>Delete a Customer Account:</li>
+			Delete a Customer Account:
 				<?php include '../admin/DeleteCustomer.php'; ?>
 			</ol>
 		</ol>
@@ -97,17 +108,17 @@
 		<fieldset>
 		<ol id="Airport" class="formset">
 			<ol id="AddAirport" class="formset">
-			<li>Add an Airport:</li>
+			Add an Airport:
 				<?php include '../admin/AddAirport.php'; ?>
 			</ol>
 			
 			<ol id="ModifyAirport" class="formset">
-			<li>Modify an Airport:</li>
+			Modify an Airport:
 				<?php include '../admin/ModifyAirport.php'; ?>
 			</ol>
 			
 			<ol id="DeleteAirport" class="formset">
-			<li>Delete an Airport:</li>
+			Delete an Airport:
 				<?php include '../admin/DeleteAirport.php'; ?>
 			</ol>
 		</ol>
@@ -117,17 +128,17 @@
 		<fieldset>
 		<ol id="Airplane" class="formset">
 			<ol id="AddAirplane" class="formset">
-			<li>Add an Airplane:</li>
+			Add an Airplane:
 				<?php include '../admin/AddAirplane.php'; ?>
 			</ol>
 			
 			<ol id="ModifyAirplane" class="formset">
-			<li>Modify an Airplane:</li>
+			Modify an Airplane:
 				<?php include '../admin/ModifyAirplane.php'; ?>
 			</ol>
 			
 			<ol id="DeleteAirplane" class="formset">
-			<li>Delete an Airplane:</li>
+			Delete an Airplane:
 				<?php include '../admin/DeleteAirplane.php'; ?>
 			</ol>
 		</ol>
@@ -137,17 +148,17 @@
 		<fieldset>
 		<ol id="Flight" class="formset">
 			<ol id="AddFlight" class="formset">
-			<li>Add a Flight:</li>
+			Add a Flight:
 				<?php include '../admin/AddFlight.php'; ?>
 			</ol>
 			
 			<ol id="ModifyFlight" class="formset">
-			<li>Modify a Flight:</li>
+			Modify a Flight:
 				<?php include '../admin/ModifyFlight.php'; ?>
 			</ol>
 			
 			<ol id="DeleteFlight" class="formset">
-			<li>Delete a Flight:</li>
+			Delete a Flight:
 				<?php include '../admin/DeleteFlight.php'; ?>
 			</ol>
 		</ol>
@@ -158,17 +169,17 @@
 		<fieldset>
 		<ol id="Ticket" class="formset">
 			<ol id="AddTicket" class="formset">
-			<li>Add a Ticket:</li>
+			Add a Ticket:
 				<?php include '../admin/AddTicket.php'; ?>
 			</ol>
 			
 			<ol id="ModifyTicket" class="formset">
-			<li>Modify a Ticket:</li>
+			Modify a Ticket:
 				<?php include '../admin/ModifyTicket.php'; ?>
 			</ol>
 			
 			<ol id="DeleteTicket" class="formset">
-			<li>Delete a Ticket:</li>
+			Delete a Ticket:
 				<?php include '../admin/DeleteTicket.php'; ?>
 			</ol>
 		</ol>
@@ -178,17 +189,17 @@
 		<fieldset>
 		<ol id="VIP" class="formset">
 			<ol id="AddVIP" class="formset">
-			<li>Add a VIP Acount:</li>
+			Add a VIP Acount:
 				<?php include '../admin/AddVIP.php'; ?>
 			</ol>
 			
 			<ol id="ModifyVIP" class="formset">
-			<li>Modify a VIP Acount:</li>
+			Modify a VIP Acount:
 				<?php include '../admin/ModifyVIP.php'; ?>
 			</ol>
 			
 			<ol id="DeleteVIP" class="formset">
-			<li>Delete a VIP Acount:</li>
+			Delete a VIP Acount:
 				<?php include '../admin/DeleteVIP.php'; ?>
 			</ol>
 		</ol>
