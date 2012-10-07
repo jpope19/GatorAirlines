@@ -65,6 +65,7 @@ session_start();
 </div>
 <!-- end menu -->
 <!-- start page -->
+<<<<<<< HEAD
 <div id="page">
 
 
@@ -72,6 +73,7 @@ session_start();
 
 HTML CODE FOR SIGN IN
 --!>
+=======
  <div id="page"> 
 <!--
 <input type="radio" name="admin" class="admin" value="Admin">Admin
@@ -89,6 +91,8 @@ HTML CODE FOR SIGN IN
 
 
 
+ 
+>>>>>>> Log-in Page
 
 
 </div> 
