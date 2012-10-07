@@ -65,6 +65,7 @@ session_start();
 </div>
 <!-- end menu -->
 <!-- start page -->
+<<<<<<< HEAD
 <div id="page">
 
 
@@ -72,16 +73,36 @@ session_start();
 
 HTML CODE FOR SIGN IN
 --!>
+=======
+ <div id="page"> 
+<!--
+<input type="radio" name="admin" class="admin" value="Admin">Admin
+<input type="radio" name="customer" class="customer" value="Customer">Customer<br>
+-->
+<body>
+    <div style= "width:430px; margin:0 auto;"> <!--"text-align:center;"> -->
+        <form action="">
+		Username&nbsp: <input type="text" name="username" /><br />
+		Password&nbsp&nbsp: <input type="password" name="password" />
+		</form>
+    </div>
+</body>
+  
 
 
-</div>
+
+ 
+>>>>>>> Log-in Page
+
+
+</div> 
 	<!-- end content -->
 	
 	<div id="extra" style="clear: both;">&nbsp;</div>
 </div>
 <!-- end page -->
 <!-- start footer -->
-<div id="footer">
+<div id= "footer">
 	<?php include 'section/Footer.php'; ?>
 </div>
 <!-- end footer -->
