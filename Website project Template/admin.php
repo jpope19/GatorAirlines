@@ -12,8 +12,8 @@
 	<?php include 'section/Head.php'; ?>
 	
 	<!-- This is necessarry for the Chosen plugin -->
- 	<link rel="stylesheet" href="../css/chosen.css" />
-	
+	<link rel="stylesheet" href="../css/chosen.css" />
+
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="../js/admin/tableRadio.js"></script>
 	
 	<!-- The Chosen JQuery plugin -->
+	<script type="text/javascript" src="../js/chosen/chosen.jquery.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function()
 	{

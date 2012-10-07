@@ -15,6 +15,7 @@ CREATE table if not exists customers
 ?>
 <link rel="stylesheet" href="../css/chosen.css" />
 
+
 <select data-placeholder="Choose a framework" class="chosen" style="width:200px;">
   <option>Choose...</option>
   <option>jQuery</option>
@@ -22,10 +23,3 @@ CREATE table if not exists customers
   <option>Prototype</option>
   <option>Dojo Toolkit</option>
 </select>
-  
-<!-- JQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="../js/chosen/chosen.jquery.js" type="text/javascript"></script>
-<!-- Chosen JQuery Plugin -->
-
-
