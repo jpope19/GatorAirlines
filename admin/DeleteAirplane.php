@@ -14,7 +14,7 @@ $option = "";
 // Get the emails of the users from the database
 foreach($airplanes as $airplane)
 {
-	$option .= "<option value=\"" . $airplane["airplane_id"] . "\">" . $airplane["airplane_id"] . "</option>";
+	$option .= "<option value=\"" . $airplane["plane_id"] . "\">" . $airplane["plane_id"] . "</option>";
 }// end loop
 
 if (isset($_POST['DeleteTicketSubmit']))

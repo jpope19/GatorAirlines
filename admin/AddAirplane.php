@@ -42,7 +42,7 @@ if (isset($_POST['AddAirplaneSubmit']))
 }
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-Type: <input type="text" name="type" /> </br>
+Type of Plane: <input type="text" name="type" /> </br>
 Chart Address: <input type="text" name="chart_addr" /> </br>
 Number of First Class Seats: <input type="text" name="num_first_class" /> </br>
 Number of Coach Class Seats: <input type="num_coach_class" name="num_coach_class" /> </br>

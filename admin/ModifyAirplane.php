@@ -11,10 +11,10 @@ CREATE table if not exists airplanes
 );
 */
 $option = "";
-// Get the airplane_ids of the users from the database
+// Get the plane_ids of the users from the database
 foreach($airplanes as $airplane)
 {
-	$option .= "<option value=\"" . $airplane["airplane_id"] . "\">" . $airplane["airplane_id"] . "</option>";
+	$option .= "<option value=\"" . $airplane["plane_id"] . "\">" . $airplane["plane_id"] . "</option>";
 }// end loop
 
 if (isset($_POST['ModifyTicketSubmit']))
@@ -67,7 +67,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 
 <li>Which user would you like to modify?</li>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-	<select data-placeholder="Choose a airplane (airplane_id)" name="modTicket" class="chosen" style="width:350px;">
+	<select data-placeholder="Choose a airplane (plane_id)" name="modTicket" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>
@@ -77,7 +77,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="typeBox" id="typeBox" onClick="enableDisable(this.checked, 'type')" />
 	</td>
 	<td>
-		Customer ID: <input type="text" name="type" disabled="disabled" id="type">
+		Type of Plane: <input type="text" name="type" disabled="disabled" id="type">
 	</td> </br>
 </tr>
 <tr>
@@ -85,7 +85,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="chart_addrBox" id="last_idBox" onClick="enableDisable(this.checked, 'chart_addr')" />
 	</td>
 	<td>
-		Flight ID: <input type="text" name="chart_addr" disabled="disabled" id="chart_addr" >
+		Chart Address: <input type="text" name="chart_addr" disabled="disabled" id="chart_addr" >
 	</td> </br>
 </tr>
 <tr>
@@ -93,7 +93,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="num_first_classBox" id="num_first_classBox" onClick="enableDisable(this.checked, 'num_first_class')" />
 	</td>
 	<td>
-		Seat ID: <input type="num_first_class" name="num_first_class" disabled="disabled" id="num_first_class" >
+		Number of First Class Seats: <input type="num_first_class" name="num_first_class" disabled="disabled" id="num_first_class" >
 	</td> </br>
 </tr>
 <tr>
@@ -101,7 +101,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="num_coach_classBox" id="num_coach_classBox" onClick="enableDisable(this.checked, 'num_coach_class')" />
 	</td>
 	<td>
-		Price: <input type="text" name="num_coach_class" disabled="disabled" id="num_coach_class" >
+		Number of Coach Class Seats: <input type="text" name="num_coach_class" disabled="disabled" id="num_coach_class" >
 	</td> </br>
 </tr>
 </br> <input type="submit" name="ModifyTicketSubmit" /> 
