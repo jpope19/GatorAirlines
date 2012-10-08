@@ -41,7 +41,7 @@ if (isset($_POST['AddTicketSubmit']))
 }
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-CID: <input type="text" name="cid" /> </br>
+Customer ID: <input type="text" name="cid" /> </br>
 Flight ID: <input type="text" name="flight_id" /> </br>
 Seat ID: <input type="text" name="seat_id" /> </br>
 Price: <input type="price" name="price" /> </br>

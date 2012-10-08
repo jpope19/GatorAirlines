@@ -12,35 +12,35 @@ CREATE table if not exists tickets
 */
 $option = "";
 // Get the emails of the users from the database
-foreach($customers as $customer)
+foreach($tickets as $ticket)
 {
-	$option .= "<option value=\"" . $customer["cid"] . "\">" . $customer["email"] . "</option>";
+	$option .= "<option value=\"" . $ticket["ticket_id"] . "\">" . $ticket["ticket_id"] . "</option>";
 }// end loop
 
 if (isset($_POST['DeleteTicketSubmit']))
 {
 	// Save Radio State
 	$_SESSION['AdminStyle']="Admin";
-	$_SESSION['table']="Customer";
+	$_SESSION['table']="Ticket";
 	$_SESSION['action']="Delete";
 	
 	// Process button
-	if(isset($_POST['delCustomer']))
+	if(isset($_POST['delTicket']))
 	{
-		foreach($_POST['delCustomer'] as $del)
+		foreach($_POST['delTicket'] as $del)
 		{
-			$users->delete_customers($del);
+			$users->delete_tickets($del);
 		}
 	}
 	else
 	{
-		echo "No users selected";
+		echo "No ticket(s) selected";
 	}
 }
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-	<select data-placeholder="Choose a customer (email address)" name="delCustomer[]" if="delCustomer" class="chosen" multiple style="width:350px;">
+	<select data-placeholder="Choose a ticket (ticket ID)" name="delTicket[]" if="delTicket" class="chosen" multiple style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>

@@ -46,7 +46,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		}
 		if (isset($_POST['last_nameBox']))
 		{// last name checked
-			$set['last_name'] = $_POST['lsat_name'];
+			$set['last_name'] = $_POST['last_name'];
 		}
 		if (isset($_POST['passwordBox']))
 		{// password checked

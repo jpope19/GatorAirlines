@@ -11,74 +11,48 @@ CREATE table if not exists tickets
 ); 
 */
 $option = "";
-// Get the emails of the users from the database
-foreach($customers as $customer)
+// Get the ticket_ids of the users from the database
+foreach($tickets as $ticket)
 {
-	$option .= "<option value=\"" . $customer["cid"] . "\">" . $customer["email"] . "</option>";
+	$option .= "<option value=\"" . $ticket["ticket_id"] . "\">" . $ticket["ticket_id"] . "</option>";
 }// end loop
 
 if (isset($_POST['ModifyTicketSubmit']))
 {
 	// Save Radio State
 	$_SESSION['AdminStyle']="Admin";
-	$_SESSION['table']="Customer";
+	$_SESSION['table']="Ticket";
 	$_SESSION['action']="Modify";
 	
 	// Process submit
-	if ($_POST['modCustomer']=="")
+	if ($_POST['modTicket']=="")
 	{// no one chosen
-		echo "Please select a customer to modify";
+		echo "Please select a ticket to modify";
 	}
 	else
-	{// customer chosen
-		if (isset($_POST['emailBox']))
-		{// email checked
-			$set['email'] = $_POST['email'];
-		}
-		if (isset($_POST['first_nameBox']))
+	{// ticket chosen
+		if (isset($_POST['cidBox']))
 		{// first name checked
-			$set['first_name'] = $_POST['first_name'];
+			$set['cid'] = $_POST['cid'];
 		}
-		if (isset($_POST['last_nameBox']))
+		if (isset($_POST['flight_idBox']))
 		{// last name checked
-			$set['last_name'] = $_POST['lsat_name'];
+			$set['flight_id'] = $_POST['flight_id'];
 		}
-		if (isset($_POST['passwordBox']))
-		{// password checked
-			$set['password'] = $_POST['password'];
+		if (isset($_POST['seat_idBox']))
+		{// seat_id checked
+			$set['seat_id'] = $_POST['seat_id'];
 		}
-		if (isset($_POST['addrBox']))
-		{// address checked
-			$set['addr'] = $_POST['addr'];
-		}
-		if (isset($_POST['cityBox']))
-		{// city checked
-			$set['city'] = $_POST['city'];
-		}
-		if (isset($_POST['stateBox']))
-		{// state checked
-			$set['state'] = $_POST['state'];
-		}
-		if (isset($_POST['zipBox']))
-		{// zip checked
-			$set['zip'] = $_POST['zip'];
-		}
-		if (isset($_POST['cc_numBox']))
-		{// credit card checked
-			$set['cc_num'] = $_POST['cc_num'];
-		}		
-		if (isset($_POST['u_type']))
-		{// user type checked
-			$set['u_type'] = $_POST['u_type'];
+		if (isset($_POST['priceBox']))
+		{// priceess checked
+			$set['price'] = $_POST['price'];
 		}
 		
 		
-		// The code above still needs to be validated (this can be done below too) 
-		// and we need to verify that check boxes that were checked were also filled
-		// Do this later
-		// Update database
-		$key = $_POST['modCustomer'];
-		$users->modify_customers($set, $key);
+		// The code does not validate the inputs. will need to make sure that the 
+		// inputs are valid and that they do not conflict with the DB
+		$key = $_POST['modTicket'];
+		$users->modify_tickets($set, $key);
 	}
 }
 
@@ -93,91 +67,42 @@ if (isset($_POST['ModifyTicketSubmit']))
 
 <li>Which user would you like to modify?</li>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-	<select data-placeholder="Choose a customer (email address)" name="modCustomer" class="chosen" style="width:350px;">
+	<select data-placeholder="Choose a ticket (ticket_id)" name="modTicket" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>
 <li>Which fields would you like to modify from this user?:</li>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="emailBox" id="emailBox" onclick="enableDisable(this.checked, 'email')" />
+		<input type="checkbox" value="1" name="cidBox" id="cidBox" onClick="enableDisable(this.checked, 'cid')" />
 	</td>
 	<td>
-		Email: <input type="text" name="email" disabled="disabled" id="email" >
+		Customer ID: <input type="text" name="cid" disabled="disabled" id="cid">
 	</td> </br>
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="first_nameBox" id="first_nameBox" onClick="enableDisable(this.checked, 'first_name')" />
+		<input type="checkbox" value="1" name="flight_idBox" id="last_idBox" onClick="enableDisable(this.checked, 'flight_id')" />
 	</td>
 	<td>
-		First Name: <input type="text" name="first_name" disabled="disabled" id="first_name">
+		Flight ID: <input type="text" name="flight_id" disabled="disabled" id="flight_id" >
 	</td> </br>
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="last_nameBox" id="last_idBox" onClick="enableDisable(this.checked, 'last_name')" />
+		<input type="checkbox" value="1" name="seat_idBox" id="seat_idBox" onClick="enableDisable(this.checked, 'seat_id')" />
 	</td>
 	<td>
-		Last Name: <input type="text" name="last_name" disabled="disabled" id="last_name" >
+		Seat ID: <input type="seat_id" name="seat_id" disabled="disabled" id="seat_id" >
 	</td> </br>
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="passwordBox" id="passwordBox" onClick="enableDisable(this.checked, 'password')" />
+		<input type="checkbox" value="1" name="priceBox" id="priceBox" onClick="enableDisable(this.checked, 'price')" />
 	</td>
 	<td>
-		Password: <input type="password" name="password" disabled="disabled" id="password" >
+		Price: <input type="text" name="price" disabled="disabled" id="price" >
 	</td> </br>
-</tr>
-<tr>
-	<td width="235">
-		<input type="checkbox" value="1" name="addrBox" id="addrBox" onClick="enableDisable(this.checked, 'addr')" />
-	</td>
-	<td>
-		Billing Address: <input type="text" name="addr" disabled="disabled" id="addr" >
-	</td> </br>
-</tr>
-<tr>
-	<td width="235">
-		<input type="checkbox" value="1" name="cityBox" id="cityBox" onClick="enableDisable(this.checked, 'city')" />
-	</td>
-	<td>
-		City: <input type="text" name="city" disabled="disabled" id="city" >
-	</td> </br>
-</tr>
-<tr>
-	<td width="235">
-		<input type="checkbox" value="1" name="stateBox" id="stateBox" onClick="enableDisable(this.checked, 'state')" />
-	</td>
-	<td>
-		State: <input type="text" name="state" disabled="disabled" id="state" >
-	</td> </br>      
-</tr>
-<tr>
-	<td width="235">
-		<input type="checkbox" value="1" name="zipBox" id="zipBox" onClick="enableDisable(this.checked, 'zip')" />
-	</td>
-	<td>
-		Zip Code: <input type="text" name="zip" disabled="disabled" id="zip" >
-	</td> </br> 
-</tr>
-<tr>
-	<td width="235">
-		<input type="checkbox" value="1" name="cc_numBox" id="cc_numBox" onClick="enableDisable(this.checked, 'cc_num')" />
-	</td>
-	<td>
-		Credit Card Number: <input type="text" name="cc_num" disabled="disabled" id="cc_num" >
-	</td></br>
-        
-</tr>
-<tr>
-	<td width="235">
-		<input type="checkbox" value="1" name="u_typeBox" id="u_typeBox" onClick="enableDisable(this.checked, 'u_type')" />
-	</td>
-	<td>
-		User Type: <input type="text" name="u_type" disabled="disabled" id="u_type" >
-	</td>
 </tr>
 </br> <input type="submit" name="ModifyTicketSubmit" /> 
 </form>

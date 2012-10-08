@@ -173,7 +173,7 @@ class users extends db {
     }
 	
 	function delete_tickets($obj){
-		$sql = "DELETE FROM ticket WHERE ticket_id=$obj";
+		$sql = "DELETE FROM tickets WHERE ticket_id=$obj";
 		$this->db->Execute($sql);
     }
 	
