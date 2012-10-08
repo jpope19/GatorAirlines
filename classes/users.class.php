@@ -119,7 +119,39 @@ class users extends db {
         $sql = "SELECT * FROM vip $order";
         return $this->db->GetArray($sql);
     }
+	
+	// Modify functions
+	function modify_customers($set, $key){
+        $key = "cid = $key";
+		$this->db->AutoExecute("customers", $set, "UPDATE", $key);
+    }
+	
+	function modify_airports($set, $key){
+		$key = "airport_id = $key";
+		$this->db->AutoExecute("airports", $set, "UPDATE", $key);
+    }
+	
+	function modify_airplanes($set, $key){
+		$key = "plane_id = $key";
+		$this->db->AutoExecute("airplanes", $set, "UPDATE", $key);
+    }
     
+	function modify_flights($set, $key){
+		$key = "flight_id = $key";
+		$this->db->AutoExecute("flights", $set, "UPDATE", $key);
+    }
+	
+	function modify_tickets($set, $key){
+		$key = "ticket_id = $key";
+		$this->db->AutoExecute("tickets", $set, "UPDATE", $key);
+    }
+	
+	function modify_vip($set, $key){
+		$key = "vip_id = $key";
+		$this->db->AutoExecute("vip", $set, "UPDATE", $key);
+    }
+	
+	// Create the database
     function create_db(){
         $sql = "CREATE table if not exists customers (
             cid int auto_increment primary key,
