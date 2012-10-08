@@ -24,18 +24,28 @@ foreach($customers as $customer)
 
 if (isset($_POST['DeleteCustomerSubmit']))
 {
-
-	echo("Hello World");
 	// Save Radio State
 	$_SESSION['AdminStyle']="Admin";
 	$_SESSION['table']="Customer";
 	$_SESSION['action']="Delete";
-	Print_r ($_SESSION);
+	
+	// Process button
+	if(isset($_POST['delCustomer']))
+	{
+		foreach($_POST['delCustomer'] as $del)
+		{
+			$users->delete_customers($del);
+		}
+	}
+	else
+	{
+		echo "No users selected";
+	}
 }
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-	<select data-placeholder="Choose a customer (email address)" class="chosen" multiple style="width:350px;">
+	<select data-placeholder="Choose a customer (email address)" name="delCustomer[]" if="delCustomer" class="chosen" multiple style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>

@@ -151,6 +151,37 @@ class users extends db {
 		$this->db->AutoExecute("vip", $set, "UPDATE", $key);
     }
 	
+	// Delete functions
+	function delete_customers($obj){
+		$sql = "DELETE FROM customers WHERE cid=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_airports($obj){
+		$sql = "DELETE FROM airports WHERE airport_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_airplanes($obj){
+		$sql = "DELETE FROM airplanes WHERE airport_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_flights($obj){
+		$sql = "DELETE FROM flights WHERE flight_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_tickets($obj){
+		$sql = "DELETE FROM ticket WHERE ticket_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_vip($obj){
+		$sql = "DELETE FROM vip WHERE vip_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
 	// Create the database
     function create_db(){
         $sql = "CREATE table if not exists customers (
