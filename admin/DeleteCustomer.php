@@ -21,12 +21,23 @@ foreach($customers as $customer)
 {
 	$option .= "<option value=\"" . $customer["cid"] . "\">" . $customer["email"] . "</option>";
 }// end loop
+
+if (isset($_POST['DeleteCustomerSubmit']))
+{
+
+	echo("Hello World");
+	// Save Radio State
+	$_SESSION['AdminStyle']="Admin";
+	$_SESSION['table']="Customer";
+	$_SESSION['action']="Delete";
+	Print_r ($_SESSION);
+}
 ?>
 
-<form action="../admin/DeleteCustomertoDB.php" method="post">
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 	<select data-placeholder="Choose a customer (email address)" class="chosen" multiple style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>
-	</br> <input type="submit"/> 
+	</br> <input type="submit" name="DeleteCustomerSubmit"/> 
 </form>

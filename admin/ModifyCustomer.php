@@ -21,6 +21,18 @@ foreach($customers as $customer)
 {
 	$option .= "<option value=\"" . $customer["cid"] . "\">" . $customer["email"] . "</option>";
 }// end loop
+
+if (isset($_POST['ModifyCustomerSubmit']))
+{
+
+	echo("Hello World");
+	// Save Radio State
+	$_SESSION['AdminStyle']="Admin";
+	$_SESSION['table']="Customer";
+	$_SESSION['action']="Modify";
+	Print_r ($_SESSION);
+}
+
 ?>
 <!-- Some javascript to enable/disable text boxes based on check boxes -->
 <script language="javascript">
@@ -31,7 +43,7 @@ foreach($customers as $customer)
 </script>
 
 <li>Which user would you like to modify?</li>
-<form action="../admin/ModifyCustomertoDB.php" method="post">
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 	<select data-placeholder="Choose a customer (email address)" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
@@ -66,7 +78,7 @@ foreach($customers as $customer)
 		<input type="checkbox" value="1" id="passwordBox" onClick="enableDisable(this.checked, 'password')" />
 	</td>
 	<td>
-		Password: <input type="text" disabled="password" id="email" >
+		Password: <input type="password" disabled="disabled" id="password" >
 	</td> </br>
 </tr>
 <tr>
@@ -118,5 +130,5 @@ foreach($customers as $customer)
 		User Type: <input type="text" disabled="disabled" id="u_type" >
 	</td>
 </tr>
-</br> <input type="submit" /> 
+</br> <input type="submit" name="ModifyCustomerSubmit" /> 
 </form>

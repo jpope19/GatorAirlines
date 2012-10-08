@@ -346,6 +346,12 @@ height:24px;
 width:29px;
 display:block;
 }
+#place .blank{
+background:url("images/blank.png");
+height:25px;
+width:29px;
+display:block;
+}
 #place .selectedSeat
 {
 background-image:url("images/booked_seat.png");
