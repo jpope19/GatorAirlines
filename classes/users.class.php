@@ -163,7 +163,7 @@ class users extends db {
     }
 	
 	function delete_airplanes($obj){
-		$sql = "DELETE FROM airplanes WHERE airport_id=$obj";
+		$sql = "DELETE FROM airplanes WHERE plane_id=$obj";
 		$this->db->Execute($sql);
     }
 	
