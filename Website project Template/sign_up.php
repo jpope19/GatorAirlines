@@ -7,12 +7,12 @@ if (!$con)
 
 
 
-if (isset($_POST['email']))
+if (isset($_POST['submit']))
 	{
 		
 		
 		// check if the email is already taken
-		$query = "select * from userinfo where email = '".$_POST['email']."'";
+		$query = "select * from customers where email = '".$_POST['email']."'";
 		$result = mysql_query($query,$con);	
 		
 		if(!$result)
@@ -53,6 +53,7 @@ if (isset($_POST['email']))
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="stylesheet" type="text/css" href="../css/chosen.css">
 	<?php include 'section/Head.php'; ?>
 </head>
 <body>
@@ -71,17 +72,25 @@ if (isset($_POST['email']))
 <!-- start page -->
 <div id="page">
 
-<form action="sign_up.php" method=POST>
+<form action="sign_up.php" method="post">
 <!-- <input type="reset"><br>
 -->
 
-First name: <input type="text" name="first_name"><br>
-Last name: <input type="text" name ="last_name"><br>
-email: <input type="email" name="email"><br>
-Password:	<input type="password" name="password"><br>
-Billing Address: <input type="text" name="addr"><br>
-City: <input type="text" name="city"><br>
-State: <form action="">
+First name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" name="first_name"><br>
+Last name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name ="last_name"><br>
+email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="email" name="email"><br>
+Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="password" name="password"><br>
+
+Billing Address:&nbsp;&nbsp;&nbsp; <input type="text" name="addr"><br>
+City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" name="city"><br><br/>
+State: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<form action="">
 <select name="state">
 <option value="Alabama">AL</option>
 <option value="Alaska">AK</option>
@@ -133,11 +142,15 @@ State: <form action="">
 <option value="Wisconsin">WI</option>
 <option value="Wyoming">WY</option>
 <select>
-</form>
-Zip code: <input type="text" name="zip"><br>
-Credit Card Number: <input type="text" name="cc_num"><br>
 
-<input type="submit" value="Submit">
+&nbsp;&nbsp;&nbsp;&nbsp;Zip code:<input type="text" name="zip" size="5"><br>
+</form>
+
+Credit Card Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" name="cc_num"><br>
+
+<br/><input type="submit" value="Submit">
 
 </div>
 	<!-- end content -->
