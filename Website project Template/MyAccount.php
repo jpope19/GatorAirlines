@@ -54,5 +54,5 @@ if (!isset($_SESSION))
 	<?php include 'section/Footer.php'; ?>
 </div>
 <!-- end footer -->
-</body>
+</body> 
 </html>
