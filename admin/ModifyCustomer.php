@@ -19,7 +19,7 @@ $option = "";
 // Get the emails of the users from the database
 foreach($customers as $customer)
 {
-	$option .= "<option value=\"" . $customer["cid"] . "\">" . $customer["email"] . "</option>";
+	$option .= "<option value=\"" . $customer['cid'] . "\">" . $customer['email'] . "</option>";
 }// end loop
 
 if (isset($_POST['ModifyCustomerSubmit']))

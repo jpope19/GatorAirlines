@@ -1,41 +1,47 @@
 <?php
  
- //connect to the server.
-$con = mysql_connect('localhost','jpope','baseball19');
-
-if(!$con){
-
-die('could not connect to database');
-
+if (!isset($_SESSION))
+{
+	session_start();
 }
 
- //select the database.
- mysql_select_db("gatorairlines", $con);
 $the_error =null;
 	if (isset($_POST['submit']))
 	{
 		
 		//check database for that user.	
-		$query = "select u_type from customers where email='".$_POST['email']."' and password='".$_POST['password']."'";
-		$result = mysql_query($query,$con);
+		include("../classes/users.class.php");
+		$users = new users();
+		$result = $users->get_user($_POST["email"],$_POST["password"]);
+		//$query = "SELECT first_name, last_name, u_type FROM customers WHERE email=\"" . $_POST["email"] . "\" and password=\"" . $_POST["password"] . "\"";
+		//$result = mysql_query($query,$con);
     		
-		if(!$result)
+		if($result == false)
 		{
-			die("Invalid query! <br> The query is: " . $query);
+			//die("Invalid query! <br> The query is: " . $query ." and result is: ". $result['u_type']);
+			die($result);
 		}
 		 //if the user is valid, redirect to their account.
-		if(mysql_num_rows($result) == 1)
+		if(count($result) == 1)
 		{
 			$_SESSION['loggedIn'] = 1;
 			$_SESSION['email'] = $_POST['email'];
-			$_SESSION['u_type'] = $result; 
-			$row = mysql_fetch_assoc($result);
+			$_SESSION['first_name'] = $result[0]['first_name'];
+			$_SESSION['last_name'] = $result[0]['last_name'];
+			$_SESSION['u_type'] = $result[0]['u_type']; 
+			//$_SESSION['first_name'] = $result[0]['first_name'];
+			//$_SESSION['last_name'] = $result[0]['last_name'];
+			//$_SESSION['u_type'] = $result[0]['u_type']; 
 			
-					header("Location:myaccount.php"); // redirects
+			header("Location:myaccount.php"); // redirects
+			
+
+
+  
 					
 					
-					}
-					//if bad login, display and error message.
+		}
+		//if bad login, display and error message.
 
 		else
 		{
@@ -46,8 +52,6 @@ $the_error =null;
 		//Close connection
 		mysql_close($con);
 	}
-
-
 ?>
 
 
@@ -99,7 +103,7 @@ $the_error =null;
 	</footer>
 	
 </form>
-	  <?if($the_error!=null){
+	  <?php if($the_error!=null){
 	 
 	 echo '<p style="color: red; text-align: center">
       Invalid email and/or password!

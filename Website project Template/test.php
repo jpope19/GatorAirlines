@@ -21,6 +21,16 @@ include("../classes/users.class.php");
 
 $user = $_SESSION['u_type'];
 echo $user;
+Print_r ($_SESSION);
+/*
+$users = new users();
+$result = $users->get_user("admin@admin.com","rootuser");
+foreach($result as $out)
+{
+	echo $out['u_type'];
+}// end loop
 
+echo $result[0]['u_type'];
+*/
 
 ?>

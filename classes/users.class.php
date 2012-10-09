@@ -84,6 +84,11 @@ class users extends db {
     }
 	
 	// Get Functions
+	function get_user($email, $password){
+		$where = "email = \"" . $email . "\" AND password = \"" . $password . "\"";
+        $sql = "SELECT first_name, last_name, u_type FROM customers WHERE $where";
+        return $this->db->GetArray($sql);
+    }
     function get_customers($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM customers $order";

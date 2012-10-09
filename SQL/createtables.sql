@@ -6,6 +6,9 @@ CREATE table if not exists customers
 	last_name varchar(30),
 	password varchar(30),
 	addr varchar(30),
+	city varchar(30),
+	state varchar(30),
+	zip varchar(30),
 	cc_num int(16),
 	u_type int(2)    
 );

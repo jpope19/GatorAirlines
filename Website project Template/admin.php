@@ -19,17 +19,17 @@ $tickets = $users->get_tickets();
 $vip = $users->get_vip();
 
 // Set the radios initial states by checking if session exists
-if(!isset($_SESSION('AdminStyle')))
+if(!isset($_SESSION['AdminStyle']))
 {
-	$_SESSION('AdminStyle') = "none"
+	$_SESSION['AdminStyle'] = "none";
 }
-if(!isset($_SESSION('table')))
+if(!isset($_SESSION['action']))
 {
-	$_SESSION('table') = "none"
+	$_SESSION['action'] = "none";
 }
-if(!isset($_SESSION('radio')))
+if(!isset($_SESSION['table']))
 {
-	$_SESSION('radio') = "none"
+	$_SESSION['table'] = "none";
 }
 
 ?>
