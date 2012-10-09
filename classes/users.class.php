@@ -121,7 +121,70 @@ class users extends db {
         $sql = "SELECT * FROM vip $order";
         return $this->db->GetArray($sql);
     }
+	
+	// Modify functions
+	function modify_customers($set, $key){
+        $key = "cid = $key";
+		$this->db->AutoExecute("customers", $set, "UPDATE", $key);
+    }
+	
+	function modify_airports($set, $key){
+		$key = "airport_id = $key";
+		$this->db->AutoExecute("airports", $set, "UPDATE", $key);
+    }
+	
+	function modify_airplanes($set, $key){
+		$key = "plane_id = $key";
+		$this->db->AutoExecute("airplanes", $set, "UPDATE", $key);
+    }
     
+	function modify_flights($set, $key){
+		$key = "flight_id = $key";
+		$this->db->AutoExecute("flights", $set, "UPDATE", $key);
+    }
+	
+	function modify_tickets($set, $key){
+		$key = "ticket_id = $key";
+		$this->db->AutoExecute("tickets", $set, "UPDATE", $key);
+    }
+	
+	function modify_vip($set, $key){
+		$key = "vip_id = $key";
+		$this->db->AutoExecute("vip", $set, "UPDATE", $key);
+    }
+	
+	// Delete functions
+	function delete_customers($obj){
+		$sql = "DELETE FROM customers WHERE cid=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_airports($obj){
+		$sql = "DELETE FROM airports WHERE airport_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_airplanes($obj){
+		$sql = "DELETE FROM airplanes WHERE plane_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_flights($obj){
+		$sql = "DELETE FROM flights WHERE flight_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_tickets($obj){
+		$sql = "DELETE FROM tickets WHERE ticket_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	function delete_vip($obj){
+		$sql = "DELETE FROM vip WHERE vip_id=$obj";
+		$this->db->Execute($sql);
+    }
+	
+	// Create the database
     function create_db(){
         $sql = "CREATE table if not exists customers (
             cid int auto_increment primary key,

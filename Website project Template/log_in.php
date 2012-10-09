@@ -4,11 +4,17 @@
  //connect to the server.
 $con = mysql_connect('localhost','jpope','baseball19');
 
- //select the database.
- mysql_select_db("Gator_Airlines", $con);
-session_start();
+if(!$con){
 
-	if (isset($_POST['first']))
+die('could not connect to database');
+
+}
+
+ //select the database.
+ mysql_select_db("gatorairlines", $con);
+session_start();
+$the_error =null;
+	if (isset($_POST['submit']))
 	{
 		
 		//check database for that user.	
@@ -31,10 +37,11 @@ session_start();
 					
 					}
 					//if bad login, display and error message.
+
 		else
 		{
 			
-			echo "<center><font class='error'><br /><br />Invalid username and/or password!</font></center>";
+			$the_error= 'Invalid username and/or password!';
 		}
 		
 		//Close connection
@@ -50,6 +57,7 @@ session_start();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php include 'section/Head.php'; ?>
+	<link rel="stylesheet" type="text/css" href="../css/structure.css">
 </head>
 <body>
 <!-- start header -->
@@ -64,7 +72,8 @@ session_start();
 	</ul>
 </div>
 <!-- end menu -->
-<!-- start page -->
+<!-- start page --> 
+
 
 
  <div id="page">
@@ -74,13 +83,32 @@ session_start();
 -->
 <body>
     <div style= "width:430px; margin:0 auto;"> <!--"text-align:center;"> -->
-        <form action="">
-		Username&nbsp: <input type="text" name="username" /><br />
-		Password&nbsp&nbsp: <input type="password" name="password" /><br>
-		<input type="submit" value="Submit">
-		</form>
+	
+       <form class="box login" method="post" action="log_in.php" >
+	   
+	<fieldset class="boxBody">
+	  <label>Username</label>
+	  <input name="email" type="text" tabindex="1" placeholder="Go Gators!" required>
+	  <label><a href="#" class="rLink" tabindex="5">Forget your password?</a>Password</label>
+	  <input name="password" type="password" tabindex="2" required>
+	</fieldset>
+	
+	<footer>
+	 	  <label><input type="checkbox" tabindex="3">Keep me logged in</label>
+	  <input type="submit" class="btnLogin" value="Login" tabindex="4" name="submit"><br/>
+	 
+	</footer>
+	
+</form>
+	  <?if($the_error!=null){
+	 
+	 echo '<p style="color: red; text-align: center">
+      Invalid email and/or password!
+      </p>';
+	 
+	 }?> 
+	   	   
     </div>
-</body>
   
 
 
@@ -88,9 +116,15 @@ session_start();
 	<!-- end content -->
 	
 	<div id="extra" style="clear: both;">&nbsp;</div>
-</div>
+
 <!-- end page -->
 <!-- start footer -->
+
+
+
+
+
+
 <div id= "footer">
 	<?php include 'section/Footer.php'; ?>
 </div>
