@@ -1,5 +1,4 @@
-
-<?
+<?php
  
  //connect to the server.
 $con = mysql_connect('localhost','jpope','baseball19');
@@ -12,13 +11,12 @@ die('could not connect to database');
 
  //select the database.
  mysql_select_db("gatorairlines", $con);
-session_start();
 $the_error =null;
 	if (isset($_POST['submit']))
 	{
 		
 		//check database for that user.	
-		$query = "select * from customers where email='".$_POST['email']."' and password='".$_POST['password']."'";
+		$query = "select u_type from customers where email='".$_POST['email']."' and password='".$_POST['password']."'";
 		$result = mysql_query($query,$con);
     		
 		if(!$result)
@@ -30,6 +28,7 @@ $the_error =null;
 		{
 			$_SESSION['loggedIn'] = 1;
 			$_SESSION['email'] = $_POST['email'];
+			$_SESSION['u_type'] = $result; 
 			$row = mysql_fetch_assoc($result);
 			
 					header("Location:myaccount.php"); // redirects
@@ -41,7 +40,7 @@ $the_error =null;
 		else
 		{
 			
-			$the_error= 'Invalid username and/or password!';
+			$the_error= 'Invalid email and/or password!';
 		}
 		
 		//Close connection
@@ -87,7 +86,7 @@ $the_error =null;
        <form class="box login" method="post" action="log_in.php" >
 	   
 	<fieldset class="boxBody">
-	  <label>Username</label>
+	  <label>Email</label>
 	  <input name="email" type="text" tabindex="1" placeholder="Go Gators!" required>
 	  <label><a href="#" class="rLink" tabindex="5">Forget your password?</a>Password</label>
 	  <input name="password" type="password" tabindex="2" required>

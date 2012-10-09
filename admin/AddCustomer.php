@@ -32,9 +32,9 @@ if (isset($_POST['AddCustomerSubmit']))
 	else
 	{	
 		// Set up validations for zip and credit card
-		$zipValid = array("options"=>array("min_range"=>10000, "max_range"=>99999));
-		$ccValid = array("options"=>array("min_range"=>1000000000000000, "max_range"=>9999999999999999));
-		$userValid = array("options"=>array("min_range"=>0, "max_range"=>1));
+		$zipValid = array("options"=>array("min_range"=>9999, "max_range"=>99999));
+		$ccValid = array("options"=>array("min_range"=>999999999999999, "max_range"=>9999999999999999));
+		$userValid = array("options"=>array("min_range"=>0, "max_range"=>2));
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{// email is not valid
@@ -64,10 +64,10 @@ if (isset($_POST['AddCustomerSubmit']))
 		{// Zip is not valid
 			echo "Zip is not valid";
 		}
-		else if (!filter_var($_POST['cc_num'], FILTER_VALIDATE_INT, $ccValid))
+		/*else if (!filter_var($_POST['cc_num'], FILTER_VALIDATE_INT, $ccValid))
 		{// Credit Card is not valid
 			echo "Credit Card is not valid";
-		}
+		}*/
 		else if (!filter_var($_POST['u_type'], FILTER_VALIDATE_INT, $userValid))
 		{// Credit Card is not valid
 			echo "User type is not valid";

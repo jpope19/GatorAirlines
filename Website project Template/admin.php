@@ -1,6 +1,10 @@
 <!-- Admins page -->
 <?php
-session_start();// This session will be used in most of the referenced php files here
+// start session
+if (!isset($_SESSION))
+{
+	session_start();
+}
 
 // This user will also be used in most of the referenced php files here
 include("../classes/users.class.php");
@@ -14,7 +18,19 @@ $flights = $users->get_flights();
 $tickets = $users->get_tickets();
 $vip = $users->get_vip();
 
-// Set the radios initial states
+// Set the radios initial states by checking if session exists
+if(!isset($_SESSION('AdminStyle')))
+{
+	$_SESSION('AdminStyle') = "none"
+}
+if(!isset($_SESSION('table')))
+{
+	$_SESSION('table') = "none"
+}
+if(!isset($_SESSION('radio')))
+{
+	$_SESSION('radio') = "none"
+}
 
 ?>
 
