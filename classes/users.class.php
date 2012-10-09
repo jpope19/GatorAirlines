@@ -102,9 +102,11 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
-	function get_flights($order = ""){
-		if ($order != "") $order = "ORDER BY $order ASC";
+	function get_flights($date = "", $order = ""){
+    $next_day = $date + 48*60*60;
+    if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM flights $order";
+        if($date != "") $sql = "{$sql} WHERE e_depart_time BETWEEN {$date} AND {$next_day}";
         return $this->db->GetArray($sql);
     }
 	

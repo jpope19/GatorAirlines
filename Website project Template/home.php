@@ -54,28 +54,28 @@
 
 
 
-<form action="post">
+<form action="search.php" method="post">
 <div id="content" style="background-color:#EEEEEE; height 200px;width:600px;float:left;">
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
 <input type="radio" name="flight" value="One-way" /> One way <br />
 
-Departure : <select name="month">
-<option value="january">January</option>
-<option value="february">February</option>
-<option value="march">March</option>
-<option value="april">April</option>
-<option value="may">May</option>
-<option value="june">June</option>
-<option value="july">July</option>
-<option value="august">August</option>
-<option value="september">September</option>
-<option value="october">October</option>
-<option value="november">November</option>
-<option value="december">December</option>
+Departure : <select name="depart_month">
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
 </select>
 
-<select name="day">
+<select name="depart_day">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
@@ -109,7 +109,7 @@ Departure : <select name="month">
 <option value="31">31</option>
 </select>
 
-<select name="year">
+<select name="depart_year">
 <option value="2012">2012</option>
 <option value="2013">2013</option>
 <option value="2014">2014</option>
@@ -117,22 +117,22 @@ Departure : <select name="month">
 
 <br />
 
-Return &nbsp &nbsp &nbsp &nbsp: <select name="month">
-<option value="january">January</option>
-<option value="february">February</option>
-<option value="march">March</option>
-<option value="april">April</option>
-<option value="may">May</option>
-<option value="june">June</option>
-<option value="july">July</option>
-<option value="august">August</option>
-<option value="september">September</option>
-<option value="october">October</option>
-<option value="november">November</option>
-<option value="december">December</option>
+Return &nbsp &nbsp &nbsp &nbsp: <select name="return_month">
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
 </select>
 
-<select name="day">
+<select name="return_day">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
@@ -166,7 +166,7 @@ Return &nbsp &nbsp &nbsp &nbsp: <select name="month">
 <option value="31">31</option>
 </select>
 
-<select name="year">
+<select name="return_year">
 <option value="2012">2012</option>
 <option value="2013">2013</option>
 <option value="2014">2014</option>
@@ -174,7 +174,7 @@ Return &nbsp &nbsp &nbsp &nbsp: <select name="month">
 
 <br />
 
-From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="desinations">
+From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
 <option value="hawaii">Hawaii</option>
 <option value="newyork">NewYork</option>
 <option value="california">California</option>
@@ -183,7 +183,7 @@ From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="desinations">
 
 <br />
 
-To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="desinations">
+To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="dest">
 <option value="hawaii">Hawaii</option>
 <option value="newyork">NewYork</option>
 <option value="california">California</option>
@@ -192,7 +192,7 @@ To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name=
 
 <br />
 
-Passenger &nbsp: <select name="passenger">
+Passenger &nbsp: <select name="passengers">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
