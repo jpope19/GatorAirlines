@@ -1,47 +1,43 @@
-
-<?
+<?php
  
- //connect to the server.
-$con = mysql_connect('localhost','jpope','baseball19');
+if (!isset($_SESSION))
+{
+	session_start();
+}
 
- //select the database.
- mysql_select_db("Gator_Airlines", $con);
-session_start();
-
-	if (isset($_POST['first']))
+$the_error =null;
+	if (isset($_POST['submit']))
 	{
-		
-		//check database for that user.	
-		$query = "select * from customers where email='".$_POST['email']."' and password='".$_POST['password']."'";
-		$result = mysql_query($query,$con);
+		include("../classes/users.class.php");
+		$users = new users();
+		$result = $users->get_user($_POST["email"],$_POST["password"]);
     		
-		if(!$result)
+		if($result == false)
 		{
-			die("Invalid query! <br> The query is: " . $query);
+			die($result);
 		}
 		 //if the user is valid, redirect to their account.
-		if(mysql_num_rows($result) == 1)
+		if(count($result) == 1)
 		{
 			$_SESSION['loggedIn'] = 1;
 			$_SESSION['email'] = $_POST['email'];
-			$row = mysql_fetch_assoc($result);
+			$_SESSION['first_name'] = $result[0]['first_name'];
+			$_SESSION['last_name'] = $result[0]['last_name'];
+			$_SESSION['u_type'] = $result[0]['u_type']; 
 			
-					header("Location:myaccount.php"); // redirects
-					
-					
-					}
-					//if bad login, display and error message.
+			header("Location:myaccount.php"); // redirects								
+		}
+		//if bad login, display and error message.
+
 		else
 		{
 			
-			echo "<center><font class='error'><br /><br />Invalid username and/or password!</font></center>";
+			$the_error= 'Invalid email and/or password!';
 		}
 		
 		//Close connection
 		mysql_close($con);
 	}
-
-
 ?>
 
 
@@ -50,6 +46,7 @@ session_start();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php include 'section/Head.php'; ?>
+	<link rel="stylesheet" type="text/css" href="../css/structure.css">
 </head>
 <body>
 <!-- start header -->
@@ -64,7 +61,8 @@ session_start();
 	</ul>
 </div>
 <!-- end menu -->
-<!-- start page -->
+<!-- start page --> 
+
 
 
  <div id="page">
@@ -74,13 +72,32 @@ session_start();
 -->
 <body>
     <div style= "width:430px; margin:0 auto;"> <!--"text-align:center;"> -->
-        <form action="">
-		Username&nbsp: <input type="text" name="username" /><br />
-		Password&nbsp&nbsp: <input type="password" name="password" /><br>
-		<input type="submit" value="Submit">
-		</form>
+	
+       <form class="box login" method="post" action="log_in.php" >
+	   
+	<fieldset class="boxBody">
+	  <label>Email</label>
+	  <input name="email" type="text" tabindex="1" placeholder="Go Gators!" required>
+	  <label><a href="#" class="rLink" tabindex="5">Forget your password?</a>Password</label>
+	  <input name="password" type="password" tabindex="2" required>
+	</fieldset>
+	
+	<footer>
+	 	  <label><input type="checkbox" tabindex="3">Keep me logged in</label>
+	  <input type="submit" class="btnLogin" value="Login" tabindex="4" name="submit"><br/>
+	 
+	</footer>
+	
+</form>
+	  <?php if($the_error!=null){
+	 
+	 echo '<p style="color: red; text-align: center">
+      Invalid email and/or password!
+      </p>';
+	 
+	 }?> 
+	   	   
     </div>
-</body>
   
 
 
@@ -88,9 +105,15 @@ session_start();
 	<!-- end content -->
 	
 	<div id="extra" style="clear: both;">&nbsp;</div>
-</div>
+
 <!-- end page -->
 <!-- start footer -->
+
+
+
+
+
+
 <div id= "footer">
 	<?php include 'section/Footer.php'; ?>
 </div>

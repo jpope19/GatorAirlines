@@ -1,4 +1,17 @@
 /* @group Base */
+
+input:focus
+{
+background-color:orange;
+}
+.error{
+
+padding-top:500px;
+color:#000000;
+
+
+
+}
 .chzn-container {
   font-size: 13px;
   position: relative;

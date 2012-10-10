@@ -19,35 +19,18 @@ include("../classes/users.class.php");
 
 */
 
+$user = $_SESSION['u_type'];
+echo $user;
+Print_r ($_SESSION);
+/*
 $users = new users();
+$result = $users->get_user("admin@admin.com","rootuser");
+foreach($result as $out)
+{
+	echo $out['u_type'];
+}// end loop
 
-$airports = $users->get_airports();
-$planes = $users->get_planes();
+echo $result[0]['u_type'];
+*/
+
 ?>
-
-<form id="add_flight_form" action="#" method=POST>
-    <select name="plane_id">
-        <? foreach($planes as $plane){ ?>
-            <option value="<?=$plane['plane_id']?>">
-                <?=$plane['type']?>
-            </option>
-        <? } ?>
-    </select>
-    <select name="org_id">
-        <? foreach($airports as $airport){ ?>
-            <option value="<?=$airport['airport_id']?>">
-                <?=$airport['name']?>
-            </option>
-        <? } ?>
-    </select>
-    <select name="dest_id">
-        <? foreach($airports as $airport){ ?>
-            <option value="<?=$airport['airport_id']?>">
-                <?=$airport['name']?>
-            </option>
-        <? } ?>
-    </select><br>
-    $<input type=text name="first_class_cost">
-    $<input type=text name="coach_class_cost"><br>
-    <input type=submit>
-</form>

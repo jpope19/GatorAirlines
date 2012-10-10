@@ -1,11 +1,20 @@
 
 <?php
 
-
+if (!isset($_SESSION))
+{
+	session_start();
+}
 
 
 ?>
 
+<?php
+include("../classes/users.class.php");
+
+$users = new users();
+$airports = $users->get_airports();
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -54,28 +63,28 @@
 
 
 
-<form action="post">
+<form action="search.php" method="post">
 <div id="content" style="background-color:#EEEEEE; height 200px;width:600px;float:left;">
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
 <input type="radio" name="flight" value="One-way" /> One way <br />
 
-Departure : <select name="month">
-<option value="january">January</option>
-<option value="february">February</option>
-<option value="march">March</option>
-<option value="april">April</option>
-<option value="may">May</option>
-<option value="june">June</option>
-<option value="july">July</option>
-<option value="august">August</option>
-<option value="september">September</option>
-<option value="october">October</option>
-<option value="november">November</option>
-<option value="december">December</option>
+Departure : <select name="depart_month">
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
 </select>
 
-<select name="day">
+<select name="depart_day">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
@@ -109,7 +118,7 @@ Departure : <select name="month">
 <option value="31">31</option>
 </select>
 
-<select name="year">
+<select name="depart_year">
 <option value="2012">2012</option>
 <option value="2013">2013</option>
 <option value="2014">2014</option>
@@ -117,22 +126,22 @@ Departure : <select name="month">
 
 <br />
 
-Return &nbsp &nbsp &nbsp &nbsp: <select name="month">
-<option value="january">January</option>
-<option value="february">February</option>
-<option value="march">March</option>
-<option value="april">April</option>
-<option value="may">May</option>
-<option value="june">June</option>
-<option value="july">July</option>
-<option value="august">August</option>
-<option value="september">September</option>
-<option value="october">October</option>
-<option value="november">November</option>
-<option value="december">December</option>
+Return &nbsp &nbsp &nbsp &nbsp: <select name="return_month">
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
 </select>
 
-<select name="day">
+<select name="return_day">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
@@ -166,7 +175,7 @@ Return &nbsp &nbsp &nbsp &nbsp: <select name="month">
 <option value="31">31</option>
 </select>
 
-<select name="year">
+<select name="return_year">
 <option value="2012">2012</option>
 <option value="2013">2013</option>
 <option value="2014">2014</option>
@@ -174,25 +183,37 @@ Return &nbsp &nbsp &nbsp &nbsp: <select name="month">
 
 <br />
 
-From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="desinations">
-<option value="hawaii">Hawaii</option>
-<option value="newyork">NewYork</option>
-<option value="california">California</option>
-<option value="texas">Texas</option>
+From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
+<?
+    foreach($airports as $airport){
+        if($airport['airport_id'] <= 5) {
+?>
+        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+<?
+        }
+    }                
+?>
 </select>
 
 <br />
 
-To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="desinations">
-<option value="hawaii">Hawaii</option>
-<option value="newyork">NewYork</option>
-<option value="california">California</option>
-<option value="texas">Texas</option>
+To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="dest">
+<?
+    foreach($airports as $airport){
+        if($airport['airport_id'] <= 5) {
+?>
+        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+<?
+        }
+    }                
+?>
 </select>
 
 <br />
 
-Passenger &nbsp: <select name="passenger">
+Passenger &nbsp: <select name="passengers">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
