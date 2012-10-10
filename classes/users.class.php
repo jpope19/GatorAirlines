@@ -14,7 +14,7 @@ class users extends db {
     
     function fill_database(){
 		// Fill with cities
-        $file = fopen("../data/cities.txt", 'r');
+        $file = fopen("data/cities.txt", 'r');
 
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
@@ -30,8 +30,8 @@ class users extends db {
         fclose($file);
 		
 		// Fill with customers
-		$file = fopen("../data/customers.txt", 'r');
-
+        $file = fopen("data/customers.txt", 'r');
+        set_time_limit(6000);
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
             echo $line . "<br>";
@@ -47,6 +47,25 @@ class users extends db {
 			$record2['cc_num'] = trim($info[8]);
             $record2['u_type'] = 0;
             $this->db->AutoExecute("customers", $record2, "INSERT");
+        }
+        
+        $file = fopen("data/flights.txt", 'r');
+
+        while(!feof($file)){
+            $line = utf8_encode(trim(fgets($file)));
+            //echo $line . "<br>";
+            $info = explode(" " , $line);
+            $record3['plane_id'] = trim($info[0]);
+            $record3['org_id'] = trim($info[1]);
+            $record3['dest_id'] = trim($info[2]);
+            $record3['first_class_cost'] = 500;
+            $record3['coach_class_cost'] = 400;
+            $record3['e_depart_time'] = trim($info[3]);
+            $record3['e_arrival_time'] = trim($info[4]);
+            $record3['depart_time'] = 0;
+            $record3['arrival_time'] = 0;
+            $record3['distance'] = 0;
+            $this->db->AutoExecute("flights", $record3, "INSERT");
         }
         
         fclose($file);
@@ -108,8 +127,8 @@ class users extends db {
     }
 	
 	function get_flights($date = "", $order = ""){
-    $next_day = $date + 48*60*60;
-    if ($order != "") $order = "ORDER BY $order ASC";
+        $next_day = $date + 48*60*60;
+        if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM flights $order";
         if($date != "") $sql = "{$sql} WHERE e_depart_time BETWEEN {$date} AND {$next_day}";
         return $this->db->GetArray($sql);

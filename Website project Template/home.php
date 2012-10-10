@@ -6,6 +6,12 @@ if (!isset($_SESSION))
 }
 ?>
 
+<?php
+include("../classes/users.class.php");
+
+$users = new users();
+$airports = $users->get_airports();
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -175,19 +181,31 @@ Return &nbsp &nbsp &nbsp &nbsp: <select name="return_month">
 <br />
 
 From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
-<option value="hawaii">Hawaii</option>
-<option value="newyork">NewYork</option>
-<option value="california">California</option>
-<option value="texas">Texas</option>
+<?
+    foreach($airports as $airport){
+        if($airport['airport_id'] <= 5) {
+?>
+        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+<?
+        }
+    }                
+?>
 </select>
 
 <br />
 
 To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="dest">
-<option value="hawaii">Hawaii</option>
-<option value="newyork">NewYork</option>
-<option value="california">California</option>
-<option value="texas">Texas</option>
+<?
+    foreach($airports as $airport){
+        if($airport['airport_id'] <= 5) {
+?>
+        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+<?
+        }
+    }                
+?>
 </select>
 
 <br />
