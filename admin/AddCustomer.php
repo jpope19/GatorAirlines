@@ -20,6 +20,7 @@ CREATE table if not exists customers
 if (isset($_POST['AddCustomerSubmit']))
 {
 	// Save Radio State
+	
 	$_SESSION['AdminStyle']="Admin";
 	$_SESSION['table']="Customer";
 	$_SESSION['action']="Add";

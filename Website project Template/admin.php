@@ -32,6 +32,18 @@ if(!isset($_SESSION['table']))
 	$_SESSION['table'] = "none";
 }
 
+/* Enable this after production
+if(!isset($_SESSION['u_type']) || $_SESSION['u_type'] != 1)
+{// The user is not an admin, do not allow access
+	header("Location:home.php"); // redirects
+}*/
+
+//if (isset())
+function setAdminStyle($in)
+{	
+	$_SESSION['AdminStyle'] = $in;
+}
+
 ?>
 
 
@@ -47,9 +59,12 @@ if(!isset($_SESSION['table']))
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../js/admin/initiateForm.js"></script>
+	<script type="text/javascript" src="../js/admin/sessionActionRadio.js"></script>
+	<script type="text/javascript" src="../js/admin/sessionAdminStyleRadio.js"></script>
+	<script type="text/javascript" src="../js/admin/sessionTableRadio.js"></script>
 	<script type="text/javascript" src="../js/admin/actionRadio.js"></script>
 	<script type="text/javascript" src="../js/admin/AdminStyleRadio.js"></script>
-	<script type="text/javascript" src="../js/admin/initiateForm.js"></script>
 	<script type="text/javascript" src="../js/admin/tableRadio.js"></script>
 	
 	<!-- The Chosen JQuery plugin -->

@@ -25,6 +25,7 @@ foreach($customers as $customer)
 if (isset($_POST['DeleteCustomerSubmit']))
 {
 	// Save Radio State
+	
 	$_SESSION['AdminStyle']="Admin";
 	$_SESSION['table']="Customer";
 	$_SESSION['action']="Delete";

@@ -8,17 +8,12 @@ if (!isset($_SESSION))
 $the_error =null;
 	if (isset($_POST['submit']))
 	{
-		
-		//check database for that user.	
 		include("../classes/users.class.php");
 		$users = new users();
 		$result = $users->get_user($_POST["email"],$_POST["password"]);
-		//$query = "SELECT first_name, last_name, u_type FROM customers WHERE email=\"" . $_POST["email"] . "\" and password=\"" . $_POST["password"] . "\"";
-		//$result = mysql_query($query,$con);
     		
 		if($result == false)
 		{
-			//die("Invalid query! <br> The query is: " . $query ." and result is: ". $result['u_type']);
 			die($result);
 		}
 		 //if the user is valid, redirect to their account.
@@ -29,17 +24,8 @@ $the_error =null;
 			$_SESSION['first_name'] = $result[0]['first_name'];
 			$_SESSION['last_name'] = $result[0]['last_name'];
 			$_SESSION['u_type'] = $result[0]['u_type']; 
-			//$_SESSION['first_name'] = $result[0]['first_name'];
-			//$_SESSION['last_name'] = $result[0]['last_name'];
-			//$_SESSION['u_type'] = $result[0]['u_type']; 
 			
-			header("Location:myaccount.php"); // redirects
-			
-
-
-  
-					
-					
+			header("Location:myaccount.php"); // redirects								
 		}
 		//if bad login, display and error message.
 

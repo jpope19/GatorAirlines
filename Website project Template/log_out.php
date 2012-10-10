@@ -8,4 +8,6 @@ if (!isset($_SESSION))
 	$sessionID = session_id();
 	session_unset($sessionID);
 	session_destroy();
+	
+	header("Location:home.php"); // redirects
 ?>
