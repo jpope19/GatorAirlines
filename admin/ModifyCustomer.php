@@ -18,7 +18,7 @@ CREATE table if not exists customers
 $option = "";
 // Get the emails of the users from the database
 foreach($customers as $customer)
-{
+{// $customers is declared in admin.php. This will populate the drop down menu with options
 	$option .= "<option value=\"" . $customer['cid'] . "\">" . $customer['email'] . "</option>";
 }// end loop
 
@@ -87,7 +87,6 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		$users->modify_customers($set, $key);
 	}
 }
-
 ?>
 <!-- Some javascript to enable/disable text boxes based on check boxes -->
 <script language="javascript">
