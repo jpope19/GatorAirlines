@@ -8,15 +8,15 @@ if (!isset($_SESSION))
 
 // This user will also be used in most of the referenced php files here
 include("../classes/users.class.php");
-$users = new users();
+$users = new users(); // class from user.class.php that will be used to manipulate the database
 
 // Get objects from database to be used in the referenced php files here
-$customers = $users->get_customers("email");
-$airports = $users->get_airports();
-$airplanes = $users->get_planes();
-$flights = $users->get_flights();
-$tickets = $users->get_tickets();
-$vip = $users->get_vip();
+$customers = $users->get_customers("email"); // this variable is getting an array with the customer information in the database. Used in Add,Modify, and DeleteCustomer.php
+$airports = $users->get_airports(); // this variable is getting an array with the airport information in the database. Used in Add,Modify, and DeleteAirports.php
+$airplanes = $users->get_planes(); // this variable is getting an array with the plane information in the database. Used in Add,Modify, and DeletePlanes.php
+$flights = $users->get_flights(); // this variable is getting an array with the flight information in the database. Used in Add,Modify, and DeleteFlights.php
+$tickets = $users->get_tickets(); // this variable is getting an array with the ticket information in the database. Used in Add,Modify, and DeleteTickets.php
+$vip = $users->get_vip(); // this variable is getting an array with the VIP information in the database. Used in Add,Modify, and DeleteVIP.php
 
 // Set the radios initial states by checking if session exists
 if(!isset($_SESSION['AdminStyle']))
@@ -71,7 +71,7 @@ function setAdminStyle($in)
 	<script type="text/javascript" src="../js/chosen/chosen.jquery.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function()
-	{
+	{// Used to make the cool looking drop down menu
 		$(".chosen").chosen();
 		$(".chosen-deselect").chosen({allow_single_deselect:true}); <!-- Use for unrequired items -->
 	});

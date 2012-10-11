@@ -20,7 +20,6 @@ CREATE table if not exists customers
 if (isset($_POST['AddCustomerSubmit']))
 {
 	// Save Radio State
-	
 	$_SESSION['AdminStyle']="Admin";
 	$_SESSION['table']="Customer";
 	$_SESSION['action']="Add";
@@ -90,7 +89,7 @@ if (isset($_POST['AddCustomerSubmit']))
 				"cc_num"=>$_POST['cc_num'],
 				"u_type"=>$_POST['u_type']
 			);
-			$users->add_customers($record);
+			$users->add_customers($record); // add_customers is a function that comes from the users class in users.class.php
 		}
 	}// end else
 }
