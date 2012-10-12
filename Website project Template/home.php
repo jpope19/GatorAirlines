@@ -21,8 +21,25 @@ $airports = $users->get_airports();
 	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+	<link rel="stylesheet" href="../css/chosen.css" type="text/css" />
+	
 
-	<script type="text/javascript">
+	<script>
+    $(function() {
+        $( "#departure" ).datepicker();
+		   $( "#return" ).datepicker();
+		   $( "#flexibleD" ).datepicker();
+		   $( "#flexibleR" ).datepicker();
+    });
+   	
+	
+	
+	
 	$(document).ready(function()
 	{
 		$("#advanced").css("display","none");
@@ -61,122 +78,17 @@ $airports = $users->get_airports();
 
 
 <form action="search.php" method="post">
-<div id="content" style="background-color:#EEEEEE; height 200px;width:600px;float:left;">
+<div id="content">
+
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
 <input type="radio" name="flight" value="One-way" /> One way <br />
 
-Departure : <select name="depart_month">
-<option value="1">January</option>
-<option value="2">February</option>
-<option value="3">March</option>
-<option value="4">April</option>
-<option value="5">May</option>
-<option value="6">June</option>
-<option value="7">July</option>
-<option value="8">August</option>
-<option value="9">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>
-</select>
-
-<select name="depart_day">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-</select>
-
-<select name="depart_year">
-<option value="2012">2012</option>
-<option value="2013">2013</option>
-<option value="2014">2014</option>
-</select>
+Departure : <input type="text" id="departure" /></p>
 
 <br />
 
-Return &nbsp &nbsp &nbsp &nbsp: <select name="return_month">
-<option value="1">January</option>
-<option value="2">February</option>
-<option value="3">March</option>
-<option value="4">April</option>
-<option value="5">May</option>
-<option value="6">June</option>
-<option value="7">July</option>
-<option value="8">August</option>
-<option value="9">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>
-</select>
-
-<select name="return_day">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-</select>
-
-<select name="return_year">
-<option value="2012">2012</option>
-<option value="2013">2013</option>
-<option value="2014">2014</option>
-</select>
+Return :&nbsp &nbsp&nbsp &nbsp&nbsp<input type="text" id="return" /></p>
 
 <br />
 
@@ -247,121 +159,15 @@ Budget &nbsp &nbsp &nbsp &nbsp : &nbsp Between: <input type="text" name="floorbu
 <!-- Create the radio buttons for tickets -->
 <input type="radio" name="class" value="firstclass">First Class<br>
 <input type="radio" name="class" value="economy">Economy<br>
-<input type="radio" name="class" value="privatejet">Private Jet<br>
+<input type="radio" name="class" value="privatejet">Private Jet<br><br/>
 
 Flexible Depature Date: <br>
-<select name="month">
-<option value="january">January</option>
-<option value="february">February</option>
-<option value="march">March</option>
-<option value="april">April</option>
-<option value="may">May</option>
-<option value="june">June</option>
-<option value="july">July</option>
-<option value="august">August</option>
-<option value="september">September</option>
-<option value="october">October</option>
-<option value="november">November</option>
-<option value="december">December</option>
-</select>
-
-<select name="day">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-</select>
-
-<select name="year">
-<option value="2012">2012</option>
-<option value="2013">2013</option>
-<option value="2014">2014</option>
-</select>
+<input type="text" id="flexibleD" /></p>
 
 <br />
 
 Flexible Return Date: <br>
-<select name="month">
-<option value="january">January</option>
-<option value="february">February</option>
-<option value="march">March</option>
-<option value="april">April</option>
-<option value="may">May</option>
-<option value="june">June</option>
-<option value="july">July</option>
-<option value="august">August</option>
-<option value="september">September</option>
-<option value="october">October</option>
-<option value="november">November</option>
-<option value="december">December</option>
-</select>
-
-<select name="day">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-</select>
-
-<select name="year">
-<option value="2012">2012</option>
-<option value="2013">2013</option>
-<option value="2014">2014</option>
-</select>
+    <input type="text" id="flexibleR" /></p>
 
 <br />
 <br>

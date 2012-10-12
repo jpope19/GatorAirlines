@@ -1,5 +1,14 @@
 /* @group Base */
 
+#content{
+
+background-color:#EEEEEE; 
+height: 200px;
+width:600px;
+float:left;
+}
+
+
 input:focus
 {
 background-color:orange;
