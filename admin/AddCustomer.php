@@ -94,22 +94,16 @@ if (isset($_POST['AddCustomerSubmit']))
 	}// end else
 }
 ?>
-<!--------------------------------------- Include JQuery ------------------------------->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<!-- JS to validate user input -->
-	
-	
-<form id="AddCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-Email: <input id="email" class="req" type="text" name="email" /> </br>
-First Name: <input id="first_name" class="req" type="text" name="first_name" /> </br>
-Last Name: <input id="last_name" class="req" type="text" name="last_name" /> </br>
-Password: <input id="password" class="req" type="password" name="password" /> </br>
-Billing Address: <input id="addr" class="req" type="text" name="addr" /> </br>
-City: <input id="city" class="req" type="text" name="city" /> </br>
-State: <input id="state" class="req" type="text" name="state" /> </br>
-Zip Code: <input id="zip" class="req" type="text" name="zip" /> </br>
-Credit Card Number: <input id="cc_num" class="req" type="text" name="cc_num" /> </br>
-User Type: <input id="u_type" class="req" type="text" name="u_type" /> </br>
-<input type=submit name="AddCustomerSubmit"/>
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+Email: <input type="text" name="email" /> </br>
+First Name: <input type="text" name="first_name" /> </br>
+Last Name: <input type="text" name="last_name" /> </br>
+Password: <input type="password" name="password" /> </br>
+Billing Address: <input type="text" name="addr" /> </br>
+City: <input type="text" name="city" /> </br>
+State: <input type="text" name="state" /> </br>
+Zip Code: <input type="text" name="zip" /> </br>
+Credit Card Number: <input type="text" name="cc_num" /> </br>
+User Type: <input type="text" name="u_type" /> </br>
+<input type="submit" name="AddCustomerSubmit"/>
 </form>
