@@ -94,16 +94,25 @@ if (isset($_POST['AddCustomerSubmit']))
 	}// end else
 }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-Email: <input type="text" name="email" /> </br>
-First Name: <input type="text" name="first_name" /> </br>
-Last Name: <input type="text" name="last_name" /> </br>
-Password: <input type="password" name="password" /> </br>
-Billing Address: <input type="text" name="addr" /> </br>
-City: <input type="text" name="city" /> </br>
-State: <input type="text" name="state" /> </br>
-Zip Code: <input type="text" name="zip" /> </br>
-Credit Card Number: <input type="text" name="cc_num" /> </br>
-User Type: <input type="text" name="u_type" /> </br>
-<input type="submit" name="AddCustomerSubmit"/>
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script>
+$(document).ready(function()
+{
+    $("#AddCustomerForm").validate();
+});
+</script>
+
+
+<form id="AddCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+Email: <input type="text" class="required email" name="email" /> </br>
+First Name: <input type="text" class="required" name="first_name" /> </br>
+Last Name: <input type="text" class="required" name="last_name" /> </br>
+Password: <input type="password" class="required" name="password" /> </br>
+Billing Address: <input type="text" class="required" name="addr" /> </br>
+City: <input type="text" class="required" name="city" /> </br>
+State: <input type="text" class="required" name="state" /> </br>
+Zip Code: <input type="text" class="required" name="zip" /> </br>
+Credit Card Number: <input type="text" class="required" name="cc_num" /> </br>
+User Type: <input type="text" class="required" name="u_type" /> </br>
+<input class="submit" type="submit" name="AddCustomerSubmit"/>
 </form>

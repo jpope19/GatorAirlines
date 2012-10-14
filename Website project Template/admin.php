@@ -76,6 +76,9 @@ function setAdminStyle($in)
 		$(".chosen-deselect").chosen({allow_single_deselect:true}); <!-- Use for unrequired items -->
 	});
 	</script>
+	
+	<!-- The validation plugin -->
+	<script type="text/javascript" src="../js/validation/dist/jquery.validate.js"></script>
 	<!-------------------------------------- END JQUERY ----------------------------->
 </head>
 <body>

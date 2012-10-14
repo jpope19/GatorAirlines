@@ -96,8 +96,16 @@ if (isset($_POST['ModifyCustomerSubmit']))
     }
 </script>
 
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script>
+$(document).ready(function()
+{
+    $("#ModifyCustomerForm").validate();
+});
+</script>
+
 <li>Which user would you like to modify?</li>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<form id="ModifyCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 	<select data-placeholder="Choose a customer (email address)" name="modCustomer" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
@@ -108,7 +116,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="emailBox" id="emailBox" onclick="enableDisable(this.checked, 'email')" />
 	</td>
 	<td>
-		Email: <input type="text" name="email" disabled="disabled" id="email" >
+		Email: <input type="text" name="email" disabled="disabled" class="required email" id="email" >
 	</td> </br>
 </tr>
 <tr>
@@ -116,7 +124,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="first_nameBox" id="first_nameBox" onClick="enableDisable(this.checked, 'first_name')" />
 	</td>
 	<td>
-		First Name: <input type="text" name="first_name" disabled="disabled" id="first_name">
+		First Name: <input type="text" name="first_name" disabled="disabled" class="required" id="first_name">
 	</td> </br>
 </tr>
 <tr>
@@ -124,7 +132,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="last_nameBox" id="last_idBox" onClick="enableDisable(this.checked, 'last_name')" />
 	</td>
 	<td>
-		Last Name: <input type="text" name="last_name" disabled="disabled" id="last_name" >
+		Last Name: <input type="text" name="last_name" disabled="disabled" class="required" id="last_name" >
 	</td> </br>
 </tr>
 <tr>
@@ -132,7 +140,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="passwordBox" id="passwordBox" onClick="enableDisable(this.checked, 'password')" />
 	</td>
 	<td>
-		Password: <input type="password" name="password" disabled="disabled" id="password" >
+		Password: <input type="password" name="password" disabled="disabled" class="required" id="password" >
 	</td> </br>
 </tr>
 <tr>
@@ -140,7 +148,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="addrBox" id="addrBox" onClick="enableDisable(this.checked, 'addr')" />
 	</td>
 	<td>
-		Billing Address: <input type="text" name="addr" disabled="disabled" id="addr" >
+		Billing Address: <input type="text" name="addr" disabled="disabled" class="required" id="addr" >
 	</td> </br>
 </tr>
 <tr>
@@ -148,7 +156,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="cityBox" id="cityBox" onClick="enableDisable(this.checked, 'city')" />
 	</td>
 	<td>
-		City: <input type="text" name="city" disabled="disabled" id="city" >
+		City: <input type="text" name="city" disabled="disabled" class="required" id="city" >
 	</td> </br>
 </tr>
 <tr>
@@ -156,7 +164,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="stateBox" id="stateBox" onClick="enableDisable(this.checked, 'state')" />
 	</td>
 	<td>
-		State: <input type="text" name="state" disabled="disabled" id="state" >
+		State: <input type="text" name="state" disabled="disabled" class="required" id="state" >
 	</td> </br>      
 </tr>
 <tr>
@@ -164,7 +172,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="zipBox" id="zipBox" onClick="enableDisable(this.checked, 'zip')" />
 	</td>
 	<td>
-		Zip Code: <input type="text" name="zip" disabled="disabled" id="zip" >
+		Zip Code: <input type="text" name="zip" disabled="disabled" class="required" id="zip" >
 	</td> </br> 
 </tr>
 <tr>
@@ -172,7 +180,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="cc_numBox" id="cc_numBox" onClick="enableDisable(this.checked, 'cc_num')" />
 	</td>
 	<td>
-		Credit Card Number: <input type="text" name="cc_num" disabled="disabled" id="cc_num" >
+		Credit Card Number: <input type="text" name="cc_num" disabled="disabled" class="required" id="cc_num" >
 	</td></br>
         
 </tr>
@@ -181,7 +189,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		<input type="checkbox" value="1" name="u_typeBox" id="u_typeBox" onClick="enableDisable(this.checked, 'u_type')" />
 	</td>
 	<td>
-		User Type: <input type="text" name="u_type" disabled="disabled" id="u_type" >
+		User Type: <input type="text" name="u_type" disabled="disabled" class="required" id="u_type" >
 	</td>
 </tr>
 </br> <input type="submit" name="ModifyCustomerSubmit" /> 
