@@ -1,4 +1,4 @@
-<!-- Produce the Modify Tickets form -->
+<!-- Produce the Modify Airplanes form -->
 <?php
 /*
 CREATE table if not exists airplanes 
@@ -17,15 +17,15 @@ foreach($airplanes as $airplane)
 	$option .= "<option value=\"" . $airplane["plane_id"] . "\">" . $airplane["plane_id"] . "</option>";
 }// end loop
 
-if (isset($_POST['ModifyTicketSubmit']))
+if (isset($_POST['ModifyAirplaneSubmit']))
 {
 	// Save Radio State
 	$_SESSION['AdminStyle']="Admin";
-	$_SESSION['table']="Ticket";
+	$_SESSION['table']="Airplane";
 	$_SESSION['action']="Modify";
 	
 	// Process submit
-	if ($_POST['modTicket']=="")
+	if ($_POST['modAirplane']=="")
 	{// no one chosen
 		echo "Please select a airplane to modify";
 	}
@@ -51,7 +51,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		
 		// The code does not validate the inputs. will need to make sure that the 
 		// inputs are valid and that they do not conflict with the DB
-		$key = $_POST['modTicket'];
+		$key = $_POST['modAirplane'];
 		$users->modify_airplanes($set, $key);
 	}
 }
@@ -67,7 +67,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 
 <li>Which user would you like to modify?</li>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-	<select data-placeholder="Choose a airplane (plane_id)" name="modTicket" class="chosen" style="width:350px;">
+	<select data-placeholder="Choose a airplane (plane_id)" name="modAirplane" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>
@@ -104,5 +104,5 @@ if (isset($_POST['ModifyTicketSubmit']))
 		Number of Coach Class Seats: <input type="text" name="num_coach_class" disabled="disabled" id="num_coach_class" >
 	</td> </br>
 </tr>
-</br> <input type="submit" name="ModifyTicketSubmit" /> 
+</br> <input type="submit" name="ModifyAirplaneSubmit" /> 
 </form>

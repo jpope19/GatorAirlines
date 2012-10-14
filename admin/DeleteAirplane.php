@@ -1,4 +1,4 @@
-<!-- Produce the Delete Tickets form -->
+<!-- Produce the Delete Airplanes form -->
 <?php
 /*
 CREATE table if not exists airplanes 
@@ -17,17 +17,17 @@ foreach($airplanes as $airplane)
 	$option .= "<option value=\"" . $airplane["plane_id"] . "\">" . $airplane["plane_id"] . "</option>";
 }// end loop
 
-if (isset($_POST['DeleteTicketSubmit']))
+if (isset($_POST['DeleteAirplaneSubmit']))
 {
 	// Save Radio State
 	$_SESSION['AdminStyle']="Admin";
-	$_SESSION['table']="Ticket";
+	$_SESSION['table']="Airplane";
 	$_SESSION['action']="Delete";
 	
 	// Process button
-	if(isset($_POST['delTicket']))
+	if(isset($_POST['delAirplane']))
 	{
-		foreach($_POST['delTicket'] as $del)
+		foreach($_POST['delAirplane'] as $del)
 		{
 			$users->delete_airplanes($del);
 		}
@@ -40,9 +40,9 @@ if (isset($_POST['DeleteTicketSubmit']))
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-	<select data-placeholder="Choose a airplane (airplane ID)" name="delTicket[]" if="delTicket" class="chosen" multiple style="width:350px;">
+	<select data-placeholder="Choose a airplane (airplane ID)" name="delAirplane[]" if="delAirplane" class="chosen" multiple style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
 	</select>
-	</br> <input type="submit" name="DeleteTicketSubmit"/> 
+	</br> <input type="submit" name="DeleteAirplaneSubmit"/> 
 </form>
