@@ -24,15 +24,14 @@ public class temp
 
     String[] action =
     {
-      "Add",
-      "Modify",
+      "Validate",
     }; // end action
 
     int i = 0;
     int j = 0;
     while (i < 6)
     {
-      while (j<2)
+      while (j<1)
       {
         fileName = action[j]+table[i]+".js";
         file = new File(fileName);

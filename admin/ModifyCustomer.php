@@ -33,7 +33,9 @@ if (isset($_POST['ModifyCustomerSubmit']))
 	// Process submit
 	if ($_POST['modCustomer']=="")
 	{// no one chosen
-		echo "Please select a customer to modify";
+		print "<script type=\"text/javascript\">"; 
+		print "alert('No customer was chosen to modify.')"; 
+		print "</script>"; 
 	}
 	else
 	{// customer chosen
@@ -83,8 +85,17 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		// and we need to verify that check boxes that were checked were also filled
 		// Do this later
 		// Update database
-		$key = $_POST['modCustomer'];
-		$users->modify_customers($set, $key);
+		if(isset($set))
+		{// No modifications made
+			$key = $_POST['modCustomer'];
+			$users->modify_customers($set, $key);
+		}
+		else
+		{// Alert that no modification has been made
+			print "<script type=\"text/javascript\">"; 
+			print "alert('No modifications were made to " . $_POST['modCustomer'] . "'.')"; 
+			print "</script>";  
+		}
 	}
 }
 ?>
@@ -97,12 +108,8 @@ if (isset($_POST['ModifyCustomerSubmit']))
 </script>
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script>
-$(document).ready(function()
-{
-    $("#ModifyCustomerForm").validate();
-});
-</script>
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>
 
 <li>Which user would you like to modify?</li>
 <form id="ModifyCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
