@@ -67,8 +67,11 @@ if (isset($_POST['ModifyAirportSubmit']))
     }
 </script>
 
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateAirport.js"></script>
+
 <li>Which Airport would you like to modify?</li>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<form id="ModifyAirportForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 	<select data-placeholder="Choose an Airport" name="modAirport" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           

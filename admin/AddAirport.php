@@ -30,10 +30,13 @@ if (isset($_POST['AddAirportSubmit']))
 	$users->add_airports($record); // add_airports is a function that comes from the users class in users.class.php
 }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-City: <input type="text" name="city" /> </br>
-State: <input type="text" name="state" /> </br>
-IATA: <input type="text" name="iata" /> </br>
-Airport Name: <input type="text" name="name" /> </br>
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateAirport.js"></script>
+
+<form id="AddAirportForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+City: <input type="text" class="required" name="city" /> </br>
+State: <input type="text" class="required" name="state" /> </br>
+IATA: <input type="text" class="required" name="iata" /> </br>
+Airport Name: <input type="text" class="required" name="name" /> </br>
 <input type="submit" name="AddAirportSubmit"/>
 </form>
