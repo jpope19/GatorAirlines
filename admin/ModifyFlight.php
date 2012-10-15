@@ -86,8 +86,11 @@ if (isset($_POST['ModifyFlightSubmit']))
     }
 </script>
 
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateFlight.js"></script>
+
 <li>Which Flight would you like to modify?</li>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<form id="ModifyFlightForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 	<select data-placeholder="Choose a Flight (flight ID)" name="modFlight" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
@@ -98,7 +101,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" value="1" name="plane_idBox" id="plane_idBox" onclick="enableDisable(this.checked, 'plane_id')" />
 	</td>
 	<td>
-		Plane ID: <input type="text" name="plane_id" disabled="disabled" id="plane_id" >
+		Plane ID: <input type="text" class="required" name="plane_id" disabled="disabled" id="plane_id" >
 	</td> </br>
 </tr>
 <tr>
@@ -106,7 +109,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" value="1" name="org_idBox" id="org_idBox" onClick="enableDisable(this.checked, 'org_id')" />
 	</td>
 	<td>
-		Organisation ID: <input type="text" name="org_id" disabled="disabled" id="org_id">
+		Organisation ID: <input type="text" class="required" name="org_id" disabled="disabled" id="org_id">
 	</td> </br>
 </tr>
 <tr>
@@ -114,7 +117,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" value="1" name="dest_idBox" id="dest_idBox" onClick="enableDisable(this.checked, 'dest_id')" />
 	</td>
 	<td>
-		Destination ID: <input type="text" name="dest_id" disabled="disabled" id="dest_id" >
+		Destination ID: <input type="text" class="required" name="dest_id" disabled="disabled" id="dest_id" >
 	</td> </br>
 </tr>
 <tr>
@@ -122,7 +125,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" value="1" name="first_class_costBox" id="first_class_costBox" onClick="enableDisable(this.checked, 'first_class_cost')" />
 	</td>
 	<td>
-		First Class Cost: <input type="first_class_cost" name="first_class_cost" disabled="disabled" id="first_class_cost" >
+		First Class Cost: <input type="text" class="required" name="first_class_cost" disabled="disabled" id="first_class_cost" >
 	</td> </br>
 </tr>
 <tr>
@@ -130,7 +133,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" value="1" name="coach_class_costBox" id="coach_class_costBox" onClick="enableDisable(this.checked, 'coach_class_cost')" />
 	</td>
 	<td>
-		Coach Class Cost: <input type="coach_class_cost" name="coach_class_cost" disabled="disabled" id="coach_class_cost" >
+		Coach Class Cost: <input type="text" class="required" name="coach_class_cost" disabled="disabled" id="coach_class_cost" >
 	</td> </br>
 </tr>
 <tr>
@@ -138,7 +141,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" value="1" name="depart_timeBox" id="depart_timeBox" onClick="enableDisable(this.checked, 'depart_time')" />
 	</td>
 	<td>
-		New Depart Time: <input type="text" name="depart_time" disabled="disabled" id="depart_time" >
+		New Depart Time: <input type="text" class="required" name="depart_time" disabled="disabled" id="depart_time" >
 	</td> </br>
 </tr>
 <tr>
@@ -146,7 +149,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" value="1" name="arrival_timeBox" id="arrival_timeBox" onClick="enableDisable(this.checked, 'arrival_time')" />
 	</td>
 	<td>
-		New Arrival Time: <input type="text" name="arrival_time" disabled="disabled" id="arrival_time" >
+		New Arrival Time: <input type="text" class="required" name="arrival_time" disabled="disabled" id="arrival_time" >
 	</td> </br>
 </tr>
 <tr>
@@ -154,7 +157,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" value="1" name="distanceBox" id="distanceBox" onClick="enableDisable(this.checked, 'distance')" />
 	</td>
 	<td>
-		Distance: <input type="text" name="distance" disabled="disabled" id="distance" >
+		Distance: <input type="text" class="required" name="distance" disabled="disabled" id="distance" >
 	</td> </br>      
 </tr>
 </br> <input type="submit" name="ModifyFlightSubmit" /> 

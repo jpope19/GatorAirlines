@@ -96,7 +96,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		<input type="checkbox" value="1" name="num_first_classBox" id="num_first_classBox" onClick="enableDisable(this.checked, 'num_first_class')" />
 	</td>
 	<td>
-		Number of First Class Seats: <input type="num_first_class" class="required" name="num_first_class" disabled="disabled" id="num_first_class" >
+		Number of First Class Seats: <input type="text" class="required" name="num_first_class" disabled="disabled" id="num_first_class" >
 	</td> </br>
 </tr>
 <tr>

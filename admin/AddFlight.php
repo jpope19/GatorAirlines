@@ -50,14 +50,17 @@ if (isset($_POST['AddFlightSubmit']))
 	}// end else
 }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-Plane ID: <input type="text" name="plane_id" /> </br>
-Organization ID: <input type="text" name="org_id" /> </br>
-Destination ID: <input type="text" name="dest_id" /> </br>
-First Class Cost: <input type="first_class_coeach_cost" name="first_class_cost" /> </br>
-Coach Class Cost: <input type="text" name="coach_class_cost" /> </br>
-Estimated Departure Time: <input type="text" name="e_depart_time" /> </br>
-Estimated Arrival Time: <input type="text" name="e_arrival_time" /> </br>
-Distance: <input type="text" name="distance" /> </br>
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateFlight.js"></script>
+
+<form id="AddFlightForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+Plane ID: <input type="text" class="required" name="plane_id" /> </br>
+Organization ID: <input type="text" class="required" name="org_id" /> </br>
+Destination ID: <input type="text" class="required" name="dest_id" /> </br>
+First Class Cost: <input type="text" class="required" name="first_class_cost" /> </br>
+Coach Class Cost: <input type="text" class="required" name="coach_class_cost" /> </br>
+Estimated Departure Time: <input type="text" class="required" name="e_depart_time" /> </br>
+Estimated Arrival Time: <input type="text" class="required" name="e_arrival_time" /> </br>
+Distance: <input type="text" class="required" name="distance" /> </br>
 <input type="submit" name="AddFlightSubmit"/>
 </form>

@@ -93,7 +93,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="seat_idBox" id="seat_idBox" onClick="enableDisable(this.checked, 'seat_id')" />
 	</td>
 	<td>
-		Seat ID: <input type="seat_id" name="seat_id" disabled="disabled" id="seat_id" >
+		Seat ID: <input type="text" name="seat_id" disabled="disabled" id="seat_id" >
 	</td> </br>
 </tr>
 <tr>
