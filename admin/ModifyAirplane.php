@@ -65,8 +65,11 @@ if (isset($_POST['ModifyAirplaneSubmit']))
     }
 </script>
 
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateAirplane.js"></script>
+
 <li>Which user would you like to modify?</li>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<form id="ModifyAirplaneForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 	<select data-placeholder="Choose a airplane (plane_id)" name="modAirplane" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
@@ -77,7 +80,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		<input type="checkbox" value="1" name="typeBox" id="typeBox" onClick="enableDisable(this.checked, 'type')" />
 	</td>
 	<td>
-		Type of Plane: <input type="text" name="type" disabled="disabled" id="type">
+		Type of Plane: <input type="text" class="required" name="type" disabled="disabled" id="type">
 	</td> </br>
 </tr>
 <tr>
@@ -85,7 +88,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		<input type="checkbox" value="1" name="chart_addrBox" id="last_idBox" onClick="enableDisable(this.checked, 'chart_addr')" />
 	</td>
 	<td>
-		Chart Address: <input type="text" name="chart_addr" disabled="disabled" id="chart_addr" >
+		Chart Address: <input type="text" class="required" name="chart_addr" disabled="disabled" id="chart_addr" >
 	</td> </br>
 </tr>
 <tr>
@@ -93,7 +96,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		<input type="checkbox" value="1" name="num_first_classBox" id="num_first_classBox" onClick="enableDisable(this.checked, 'num_first_class')" />
 	</td>
 	<td>
-		Number of First Class Seats: <input type="num_first_class" name="num_first_class" disabled="disabled" id="num_first_class" >
+		Number of First Class Seats: <input type="num_first_class" class="required" name="num_first_class" disabled="disabled" id="num_first_class" >
 	</td> </br>
 </tr>
 <tr>
@@ -101,7 +104,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		<input type="checkbox" value="1" name="num_coach_classBox" id="num_coach_classBox" onClick="enableDisable(this.checked, 'num_coach_class')" />
 	</td>
 	<td>
-		Number of Coach Class Seats: <input type="text" name="num_coach_class" disabled="disabled" id="num_coach_class" >
+		Number of Coach Class Seats: <input type="text" class="required" name="num_coach_class" disabled="disabled" id="num_coach_class" >
 	</td> </br>
 </tr>
 </br> <input type="submit" name="ModifyAirplaneSubmit" /> 

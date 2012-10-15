@@ -20,7 +20,7 @@ $(document).ready(function()
 			},
 			"iata": {
 				required: true,
-				alphabet: false
+				alphabet: true
 			},
 			"name": {
 				required: true,

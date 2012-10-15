@@ -108,7 +108,6 @@ if (isset($_POST['ModifyCustomerSubmit']))
 </script>
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<!-- Jquery that uses Validation plugin to validate form on client side -->
 <script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>
 
 <li>Which user would you like to modify?</li>

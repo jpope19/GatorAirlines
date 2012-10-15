@@ -41,10 +41,13 @@ if (isset($_POST['AddAirplaneSubmit']))
 	}// end else
 }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-Type of Plane: <input type="text" name="type" /> </br>
-Chart Address: <input type="text" name="chart_addr" /> </br>
-Number of First Class Seats: <input type="text" name="num_first_class" /> </br>
-Number of Coach Class Seats: <input type="num_coach_class" name="num_coach_class" /> </br>
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateAirplane.js"></script>
+
+<form id="AddAirplaneForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+Type of Plane: <input type="text" class="required" name="type" /> </br>
+Chart Address: <input type="text" class="required" name="chart_addr" /> </br>
+Number of First Class Seats: <input type="text" class="required" name="num_first_class" /> </br>
+Number of Coach Class Seats: <input type="text" class="required" name="num_coach_class" /> </br>
 <input type="submit" name="AddAirplaneSubmit"/>
 </form>
