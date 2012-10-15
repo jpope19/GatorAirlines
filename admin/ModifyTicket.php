@@ -65,8 +65,11 @@ if (isset($_POST['ModifyTicketSubmit']))
     }
 </script>
 
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateTicket.js"></script>
+
 <li>Which user would you like to modify?</li>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<form id="ModifyTicketForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 	<select data-placeholder="Choose a ticket (ticket_id)" name="modTicket" class="chosen" style="width:350px;">
 		<option value=""></option>
 		<?php echo $option; ?>           
@@ -77,7 +80,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="cidBox" id="cidBox" onClick="enableDisable(this.checked, 'cid')" />
 	</td>
 	<td>
-		Customer ID: <input type="text" name="cid" disabled="disabled" id="cid">
+		Customer ID: <input type="text" class="required" name="cid" disabled="disabled" id="cid">
 	</td> </br>
 </tr>
 <tr>
@@ -85,7 +88,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="flight_idBox" id="last_idBox" onClick="enableDisable(this.checked, 'flight_id')" />
 	</td>
 	<td>
-		Flight ID: <input type="text" name="flight_id" disabled="disabled" id="flight_id" >
+		Flight ID: <input type="text" class="required" name="flight_id" disabled="disabled" id="flight_id" >
 	</td> </br>
 </tr>
 <tr>
@@ -93,7 +96,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="seat_idBox" id="seat_idBox" onClick="enableDisable(this.checked, 'seat_id')" />
 	</td>
 	<td>
-		Seat ID: <input type="text" name="seat_id" disabled="disabled" id="seat_id" >
+		Seat ID: <input type="text" class="required" name="seat_id" disabled="disabled" id="seat_id" >
 	</td> </br>
 </tr>
 <tr>
@@ -101,7 +104,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		<input type="checkbox" value="1" name="priceBox" id="priceBox" onClick="enableDisable(this.checked, 'price')" />
 	</td>
 	<td>
-		Price: <input type="text" name="price" disabled="disabled" id="price" >
+		Price: <input type="text" class="required" name="price" disabled="disabled" id="price" >
 	</td> </br>
 </tr>
 </br> <input type="submit" name="ModifyTicketSubmit" /> 

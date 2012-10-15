@@ -40,10 +40,13 @@ if (isset($_POST['AddTicketSubmit']))
 	}// end else
 }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-Customer ID: <input type="text" name="cid" /> </br>
-Flight ID: <input type="text" name="flight_id" /> </br>
-Seat ID: <input type="text" name="seat_id" /> </br>
-Price: <input type="price" name="price" /> </br>
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateTicket.js"></script>
+
+<form id="AddTicketForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+Customer ID: <input type="text" class="required" name="cid" /> </br>
+Flight ID: <input type="text" class="required" name="flight_id" /> </br>
+Seat ID: <input type="text" class="required" name="seat_id" /> </br>
+Price: <input type="text" class="required" name="price" /> </br>
 <input type="submit" name="AddTicketSubmit"/>
 </form>
