@@ -7,19 +7,23 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"cid":{
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"flight_id": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"seat_id": {
-				requred: true,
+				required: true,
+				maxlength: 30,
 				digits: true
 			},
 			"price": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			}
 		},
@@ -53,19 +57,23 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"cid":{
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"flight_id": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"seat_id": {
-				requred: true,
+				required: true,
+				maxlength: 30,
 				digits: true
 			},
 			"price": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			}
 		},

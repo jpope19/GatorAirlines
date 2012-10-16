@@ -11,19 +11,23 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"city": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"state": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"iata": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"name": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			}
 		},
@@ -61,19 +65,23 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"acity": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"astate": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"iata": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false
 			},
 			"name": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			}
 		},

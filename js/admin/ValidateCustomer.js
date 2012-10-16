@@ -19,54 +19,64 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"email":{
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false
 			},
 			"first_name": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true,
 				address: false
 			},
 			"last_name": {
-				requred: true,
+				required: true,
+				maxlength: 30,
 				alphabet: true,
 				address: false
 			},
 			"password": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false
 			},
 			"addr": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: true
 			},
 			"city": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true,
 				address: false
 			},
 			"state": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true,
 				address: false
 			},
 			"zip": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false,
 				digits: true,
 				rangelength: [5,5]
 			},
 			"cc_num": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false
 			},
 			"u_type": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false,
 				digits: true,
@@ -136,54 +146,64 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"email":{
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false
 			},
 			"first_name": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true,
 				address: false
 			},
 			"last_name": {
-				requred: true,
+				required: true,
+				maxlength: 30,
 				alphabet: true,
 				address: false
 			},
 			"password": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false
 			},
 			"addr": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: true
 			},
 			"city": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true,
 				address: false
 			},
 			"state": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true,
 				address: false
 			},
 			"zip": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false,
 				digits: true,
 				rangelength: [5,5]
 			},
 			"cc_num": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false
 			},
 			"u_type": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				address: false,
 				digits: true,

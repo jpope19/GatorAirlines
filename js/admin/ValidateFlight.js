@@ -7,36 +7,44 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"plane_id":{
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"org_id": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 				
 			},
 			"dest_id": {
-				requred: true,
+				required: true,
+				maxlength: 30,
 				digits: true
 			},
 			"first_class_cost": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"coach_class_cost": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"e_depart_time": {
-				required: true
+				required: true,
+				maxlength: 30
 				
 			},
 			"e_arrival_time": {
-				required: true
+				required: true,
+				maxlength: 30
 				
 			},
 			"distance": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			}
 		},
@@ -86,36 +94,43 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"plane_id":{
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"org_id": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 				
 			},
 			"dest_id": {
-				requred: true,
+				required: true,
+				maxlength: 30,
 				digits: true
 			},
 			"first_class_cost": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"coach_class_cost": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			},
 			"depart_time": {
-				required: true
-				
+				required: true,
+				maxlength: 30
 			},
 			"arrival_time": {
-				required: true
+				required: true,
+				maxlength: 30
 				
 			},
 			"distance": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				digits: true
 			}
 		},

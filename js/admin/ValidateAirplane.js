@@ -11,20 +11,24 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"type":{
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"chart_addr": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"num_first_class": {
-				requred: true,
+				required: true,
+				maxlength: 30,
 				alphabet: false,
 				digits: true
 			},
 			"num_coach_class": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				digits: true
 			}
@@ -63,20 +67,24 @@ $(document).ready(function()
 		// Apply rules
 		rules: {
 			"type":{
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"chart_addr": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: true
 			},
 			"num_first_class": {
-				requred: true,
+				required: true,
+				maxlength: 30,
 				alphabet: false,
 				digits: true
 			},
 			"num_coach_class": {
-				required: true,
+				required: true, 
+				maxlength: 30,
 				alphabet: false,
 				digits: true
 			}
