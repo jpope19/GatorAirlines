@@ -1,3 +1,5 @@
+
+ 
 var settings = {
                rows: 5,
                cols: 22,
@@ -62,3 +64,4 @@ $('#btnShowNew').click(function () {
     });
     alert(str.join(','));
 })		
+
