@@ -25,7 +25,6 @@ foreach($customers as $customer)
 if (isset($_POST['DeleteCustomerSubmit']))
 {
 	// Save Radio State
-	
 	$_SESSION['AdminStyle']="Admin";
 	$_SESSION['table']="Customer";
 	$_SESSION['action']="Delete";
@@ -34,7 +33,7 @@ if (isset($_POST['DeleteCustomerSubmit']))
 	if(isset($_POST['delCustomer']))
 	{
 		foreach($_POST['delCustomer'] as $del)
-		{
+		{// $customers is declared in admin.php. This will populate the drop down menu with options
 			$users->delete_customers($del);
 		}
 	}

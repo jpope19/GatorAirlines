@@ -35,6 +35,7 @@ else
 
 ?>
 <!-- HTML for menu of all documents -->
+<center>
 <a href="home.php">Home</a>
 <a href="MyAccount.php">My Account</a>
 <a href="reservation.php">Reservation</a>
@@ -42,5 +43,6 @@ else
 <a href="flight_times.php">Flight Times</a>
 <a href="FAQ.php">FAQ</a>
 <?php echo $menu; ?>      
+</center>
 
 
