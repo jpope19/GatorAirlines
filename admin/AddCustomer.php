@@ -25,53 +25,81 @@ if (isset($_POST['AddCustomerSubmit']))
 	$_SESSION['action']="Add";
 	
 	// Filter form
-	if ((empty($_POST['email'])) || (empty($_POST['first_name'])) || (empty($_POST['last_name'])) || (empty($_POST['password'])) ||	(empty($_POST['addr'])) || (empty($_POST['city'])) || (empty($_POST['state'])) || (empty($_POST['zip'])) || (empty($_POST['cc_num'])) || (empty($_POST['u_type'])))
+	if ((empty($_POST['email'])) || (empty($_POST['first_name'])) || (empty($_POST['last_name'])) || (empty($_POST['password'])) ||	(empty($_POST['addr'])) || (empty($_POST['city'])) || (empty($_POST['state'])) || (empty($_POST['zip'])) || (empty($_POST['cc_num'])) || (!isset($_POST['u_type'])))
 	{
-		echo "Please fill out all fields";
+		print "<script type=\"text/javascript\">"; 
+		print "alert('Please fill out all fields.')"; 
+		print "</script>"; 
 	}// end if
 	else
 	{	
-		// Set up validations for zip and credit card
-		$zipValid = array("options"=>array("min_range"=>9999, "max_range"=>99999));
-		$ccValid = array("options"=>array("min_range"=>999999999999999, "max_range"=>9999999999999999));
-		$userValid = array("options"=>array("min_range"=>0, "max_range"=>2));
+		$flag = 0; // flag to check for input errors.
+		$message = ""; // message to be given to user if errors are detected.
+		
+		// Declare rules (patterns) to be evaluated by preg_match
+		$alphabet = '/^[A-Za-z]+$/';
+		$alphaNumeric = '/^[A-Za-z0-9]+$/';
+		$numeric = '/^[0-9]+$/';
+		$address = '/^[A-Za-z0-9 ]+$/';
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{// email is not valid
-			echo "E-mail is not valid";
+			$message .=  "E-mail is not valid\n";
+			$flag = 1;
 		}
-		else if ($_POST['first_name'] != (filter_var($_POST['first_name'], FILTER_SANITIZE_STRING)))
+		if (preg_match($alphabet,$_POST['first_name']) == 0 || strlen($_POST['first_name']) > 30)
 		{// First name is not valid
-			echo "First name is not valid";
+			$message .=  "First name is not valid\n";
+			$flag = 1;
 		}
-		else if ($_POST['last_name'] != (filter_var($_POST['last_name'], FILTER_SANITIZE_STRING)))
+		if (preg_match($alphabet,$_POST['last_name']) == 0 || strlen($_POST['last_name']) > 30)
 		{// last name is not valid
-			echo "Last is not valid";
+			$message .=  "Last is not valid\n";
+			$flag = 1;
 		}
-		else if (strlen($_POST['password'])<8)
+		if (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 30)
 		{// Password is not valid
-			echo "Password must be greater than 8 characters";
+			$message .=  "Password is incorrect size\n";
+			$flag = 1;
 		}
-		else if ($_POST['city'] != (filter_var($_POST['city'], FILTER_SANITIZE_STRING)))
+		if (preg_match($address,$_POST['addr']) == 0 || strlen($_POST['addr']) > 30)
+		{// Address is not valid
+			$message .=  "Address is not valid\n";
+			$flag = 1;
+		}
+		if (preg_match($alphaNumeric,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
 		{// City is not valid
-			echo "City is not valid";
+			$message .=  "City is not valid\n";
+			$flag = 1;
 		}
-		else if ($_POST['state'] != (filter_var($_POST['state'], FILTER_SANITIZE_STRING)))
+		if (preg_match($alphabet,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
 		{// State is not valid
-			echo "State is not valid";
+			$message .=  "State is not valid\n";
+			$flag = 1;
 		}
-		else if (!filter_var($_POST['zip'], FILTER_VALIDATE_INT, $zipValid))
+		if (preg_match($numeric,$_POST['zip']) == 0 || strlen($_POST['zip']) > 5 || strlen($_POST['zip']) < 5)
 		{// Zip is not valid
-			echo "Zip is not valid";
+			$message .=  "Zip is not valid\n";
+			$flag = 1;
 		}
-		/*else if (!filter_var($_POST['cc_num'], FILTER_VALIDATE_INT, $ccValid))
+		if (preg_match($numeric,$_POST['cc_num']) == 0 || strlen($_POST['cc_num']) > 16 || strlen($_POST['cc_num']) < 16)
 		{// Credit Card is not valid
-			echo "Credit Card is not valid";
-		}*/
-		else if (!filter_var($_POST['u_type'], FILTER_VALIDATE_INT, $userValid))
-		{// Credit Card is not valid
-			echo "User type is not valid";
+			$message .=  "Credit Card is not valid\n";
+			$flag = 1;
 		}
+		if (preg_match($numeric,$_POST['u_type']) == 0 || $_POST['u_type'] < 0 || $_POST['u_type'] > 2)
+		{// User Type not valid
+			$message .=  "User type is not valid\n";
+			$flag = 1;
+		}
+		
+		// Deal with errors or lack of errors
+		if ($flag == 1)
+		{// Notify user that there were errors
+			print "<script type=\"text/javascript\">"; 
+			print "alert('There were errors in your input.')"; 
+			print "</script>";
+		}// end if
 		else
 		{// All fields are valid, put into database
 			// For the future, will have to hash and salt password
@@ -90,12 +118,12 @@ if (isset($_POST['AddCustomerSubmit']))
 				"u_type"=>$_POST['u_type']
 			);
 			$users->add_customers($record); // add_customers is a function that comes from the users class in users.class.php
-		}
+		}// end else
 	}// end else
-}
+}// end if
 ?>
-<!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>
+<!-- Jquery that uses Validation plugin to validate form on client side 
+<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>-->
 
 <form id="AddCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Email: <input type="text" class="required email" name="email" /> </br>
