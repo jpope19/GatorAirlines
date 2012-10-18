@@ -11,7 +11,7 @@ CREATE table if not exists airports
 );
 */
 $option = "";
-// Get the emails of the users from the database
+// Get the acitys of the users from the database
 foreach($airports as $airport)
 {// $airports is declared in admin.php. This will populate the drop down menu with options
 	$option .= "<option value=\"" . $airport['airport_id'] . "\">" . $airport['name'] . "</option>";
@@ -20,7 +20,6 @@ foreach($airports as $airport)
 if (isset($_POST['ModifyAirportSubmit']))
 {
 	// Save Radio State
-	
 	$_SESSION['AdminStyle']="Admin";
 	$_SESSION['table']="Airport";
 	$_SESSION['action']="Modify";
@@ -28,35 +27,89 @@ if (isset($_POST['ModifyAirportSubmit']))
 	// Process submit
 	if ($_POST['modAirport']=="")
 	{// no one chosen
-		echo "Please select a airport to modify";
+		print "<script type=\"text/javascript\">"; 
+		print "alert('No airport was chosen to modify.')"; 
+		print "</script>"; 
 	}
 	else
-	{// airport chosen
-		if (isset($_POST['cityBox']))
-		{// city checked
-			$set['city'] = $_POST['acity'];
+	{// customer chosen
+		$flag = 0; // flag to check for input errors.
+		$message = ""; // message to be given to user if errors are detected.
+		
+		// Declare rules (patterns) to be evaluated by preg_match
+		$alphabet = '/^[A-Za-z]+$/';
+		$capAlphabet = '/^[A-Z]+$/';
+		$name = '/^[A-Za-z ]+$/';
+		
+		if (isset($_POST['acityBox']))
+		{// acity checked
+			if (preg_match($name,$_POST['acity']) == 0 || strlen($_POST['acity']) > 30)
+			{// acity is not valid
+				$message .=  "City is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['city'] = $_POST['acity'];
+			}
 		}
-		if (isset($_POST['stateBox']))
-		{// state checked
-			$set['state'] = $_POST['astate'];
+		if (isset($_POST['astateBox']))
+		{// first name checked
+			if (preg_match($name,$_POST['astate']) == 0 || strlen($_POST['astate']) > 30)
+			{// First name is not valid
+				$message .=  "State is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['state'] = $_POST['astate'];
+			}
 		}
 		if (isset($_POST['iataBox']))
 		{// iata checked
-			$set['iata'] = $_POST['iata'];
+			if (preg_match($capAlphabet,$_POST['iata']) == 0 || strlen($_POST['iata']) < 3 || strlen($_POST['iata']) > 3)
+			{// Password is not valid
+				$message .=  "IATA is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['iata'] = $_POST['iata'];
+			}
 		}
 		if (isset($_POST['nameBox']))
-		{// credit card checked
-			$set['name'] = $_POST['name'];
-		}		
+		{// nameess checked
+			if (preg_match($name,$_POST['name']) == 0 || strlen($_POST['name']) > 30)
+			{// Address is not valid
+				$message .=  "Name is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['name'] = $_POST['name'];
+			}
+		}
 		
-		
-		// The code above still needs to be validated (this can be done below too) 
-		// and we need to verify that check boxes that were checked were also filled
-		// Do this later
+		// Still need to verify that acity does not exist in DB
 		// Update database
-		$key = $_POST['modAirport'];
+		if($flag ==1)
+		{// There are errors in input, Notify user that there were errors
+			print "<script type=\"text/javascript\">"; 
+			print "alert('There were errors in your input.')"; 
+			print "</script>";
+		}// end if
+		else if (!isset($set))
+		{// Alert that no modification has been made
+			print "<script type=\"text/javascript\">"; 
+			print "alert('No modifications were made because no options were chosen.')"; 
+			print "</script>";  		
+		}// end else if
+		else
+		{// Valid and existent inputs, modify DB
+			$key = $_POST['modAirport'];
 		$users->modify_airports($set, $key);
-	}
+		}// end else
+	}// end else
 }
 ?>
 <!-- Some javascript to enable/disable text boxes based on check boxes -->
@@ -79,7 +132,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 <li>Which fields would you like to modify from this Airport?:</li>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="cityBox" id="cityBox" onClick="enableDisable(this.checked, 'acity')" />
+		<input type="checkbox" value="1" name="acityBox" id="acityBox" onClick="enableDisable(this.checked, 'acity')" />
 	</td>
 	<td>
 		City: <input type="text" name="acity" disabled="disabled" id="acity" >
@@ -87,7 +140,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="stateBox" id="stateBox" onClick="enableDisable(this.checked, 'astate')" />
+		<input type="checkbox" value="1" name="astateBox" id="astateBox" onClick="enableDisable(this.checked, 'astate')" />
 	</td>
 	<td>
 		State: <input type="text" name="astate" disabled="disabled" id="astate" >
@@ -112,3 +165,10 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 </br> <input type="submit" name="ModifyAirportSubmit" /> 
 </form>
+
+<script type="text/javascript">
+	document.getElementById("acity").value="City";
+	document.getElementById("astate").value="State";
+	document.getElementById("iata").value="ASD";
+	document.getElementById("name").value="Asd Airport";
+</script>
