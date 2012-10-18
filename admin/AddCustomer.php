@@ -55,7 +55,7 @@ if (isset($_POST['AddCustomerSubmit']))
 		}
 		if (preg_match($alphabet,$_POST['last_name']) == 0 || strlen($_POST['last_name']) > 30)
 		{// last name is not valid
-			$message .=  "Last is not valid\n";
+			$message .=  "Last name is not valid\n";
 			$flag = 1;
 		}
 		if (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 30)

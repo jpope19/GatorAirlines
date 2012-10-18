@@ -166,10 +166,3 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 </tr>
 </br> <input type="submit" name="ModifyAirplaneSubmit" /> 
 </form>
-
-<script type="text/javascript">
-	document.getElementById("type").value="type";
-	document.getElementById("chart_addr").value="chart";
-	document.getElementById("num_first_class").value="20";
-	document.getElementById("num_coach_class").value="100";
-</script>

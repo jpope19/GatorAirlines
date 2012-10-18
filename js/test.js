@@ -17,3 +17,21 @@
 	document.getElementById("iata").value="ASD";
 	document.getElementById("name").value="Asd Airport";
 </script>
+
+<script type="text/javascript">
+	document.getElementById("type").value="type";
+	document.getElementById("chart_addr").value="chart";
+	document.getElementById("num_first_class").value="20";
+	document.getElementById("num_coach_class").value="100";
+</script>
+
+<script type="text/javascript">
+	document.getElementById("plane_id").value="69";
+	document.getElementById("org_id").value="69";
+	document.getElementById("dest_id").value="69";
+	document.getElementById("first_class_cost").value="50";
+	document.getElementById("coach_class_cost").value="100 asd ";
+	document.getElementById("e_depart_time").value="50";
+	document.getElementById("e_arrival_time").value="Aug 50 10:60:70";
+	document.getElementById("distance").value="Aug 50 20:60:70";
+</script>
