@@ -106,8 +106,9 @@ if (isset($_POST['ModifyAirportSubmit']))
 		}// end else if
 		else
 		{// Valid and existent inputs, modify DB
+		// Still have to verify against DB items
 			$key = $_POST['modAirport'];
-		$users->modify_airports($set, $key);
+			$users->modify_airports($set, $key);
 		}// end else
 	}// end else
 }
@@ -165,10 +166,3 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 </br> <input type="submit" name="ModifyAirportSubmit" /> 
 </form>
-
-<script type="text/javascript">
-	document.getElementById("acity").value="City";
-	document.getElementById("astate").value="State";
-	document.getElementById("iata").value="ASD";
-	document.getElementById("name").value="Asd Airport";
-</script>
