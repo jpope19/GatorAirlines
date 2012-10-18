@@ -73,9 +73,12 @@ function setAdminStyle($in)
 	$(document).ready(function()
 	{// Used to make the cool looking drop down menu
 		$(".chosen").chosen();
-		$(".chosen-deselect").chosen({allow_single_deselect:true}); <!-- Use for unrequired items -->
+		$(".chosen-deselect").chosen({allow_single_deselect:true}); <!-- Use for unrequired items
 	});
 	</script>
+	
+	<!-- The validation plugin --><!-- enable this after testing!
+	<script type="text/javascript" src="../js/validation/dist/jquery.validate.js"></script>-->
 	<!-------------------------------------- END JQUERY ----------------------------->
 </head>
 <body>
