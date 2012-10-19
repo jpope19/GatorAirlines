@@ -77,7 +77,7 @@ function setAdminStyle($in)
 	});
 	</script>
 	
-	<!-- The validation plugin --><!-- enable this after testing!
+	<!-- The validation plugin --><!-- REENABLE AFTER TESTING!
 	<script type="text/javascript" src="../js/validation/dist/jquery.validate.js"></script>-->
 	<!-------------------------------------- END JQUERY ----------------------------->
 </head>
