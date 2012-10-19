@@ -5,7 +5,15 @@ $(document).ready(function()
 {	// Rule for names
 	$.validator.addMethod("alphabet", function(value, element) {
         return this.optional(element) || /^[a-zA-Z]+$/i.test(value);
-    }, "Your alphabet may only contain letters.");
+    }, "Your input may only contain letters.");
+	
+	$.validator.addMethod("capAlphabet", function(value, element) {
+        return this.optional(element) || /^[A-Z]+$/i.test(value);
+    }, "Your input may only contain letters.");
+	
+	$.validator.addMethod("name", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z ]+$/i.test(value);
+    }, "Your input may only contain letters and a space.");
 	
     $("#AddAirportForm").validate({
 		// Apply rules
@@ -13,22 +21,27 @@ $(document).ready(function()
 			"city": {
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: false,
+				name: true
 			},
 			"state": {
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: false
 			},
 			"iata": {
 				required: true, 
-				maxlength: 30,
-				alphabet: true
+				rangelength: [3,3],
+				alphabet: false,
+				capAlphabet: true,
+				name: false
 			},
 			"name": {
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: true
 			}
 		},
 		
@@ -36,19 +49,20 @@ $(document).ready(function()
 		messages: {
 			"city": {
 				required: "You must provide the city of the airport.",
-				alphabet: "The city may only be letters."
+				name: "The city may only be letters and spaces."
 			},
 			"state": {
 				required: "You must provide the state of the airport.",
-				alphabet: "The state may only be letters."
+				name: "The state may only be letters and spaces."
 			},
 			"iata": {
 				required: "You must provide the IATA.",
-				alphabet: "The IATA can only contain letters." 
+				capAlphabet: "The IATA can only contain capital letters.",
+				rangeLength: "The IATA must be 3 characters long"
 			},
 			"name": {
 				required: "You must provide the name of the airport.",
-				alphabet: "The name of the airport can only contain letters."
+				name: "The name may only be letters and spaces."
 			}
 		}
 	});
@@ -59,7 +73,15 @@ $(document).ready(function()
 {	// Rule for names
 	$.validator.addMethod("alphabet", function(value, element) {
         return this.optional(element) || /^[a-zA-Z]+$/i.test(value);
-    }, "Your alphabet may only contain letters.");
+    }, "Your input may only contain letters.");
+	
+	$.validator.addMethod("capAlphabet", function(value, element) {
+        return this.optional(element) || /^[A-Z]+$/i.test(value);
+    }, "Your input may only contain letters.");
+	
+	$.validator.addMethod("name", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z ]+$/i.test(value);
+    }, "Your input may only contain letters and a space.");
 	
     $("#ModifyAirportForm").validate({
 		// Apply rules
@@ -67,22 +89,27 @@ $(document).ready(function()
 			"acity": {
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: false
 			},
 			"astate": {
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: false
 			},
 			"iata": {
 				required: true, 
-				maxlength: 30,
-				alphabet: false
+				rangelength: [3,3],
+				alphabet: false,
+				capAlphabet: true,
+				name: false
 			},
 			"name": {
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: true
 			}
 		},
 		
@@ -90,19 +117,20 @@ $(document).ready(function()
 		messages: {
 			"acity": {
 				required: "You must provide the city of the airport.",
-				alphabet: "The city may only be letters."
+				name: "The city may only be letters and spaces."
 			},
 			"astate": {
 				required: "You must provide the state of the airport.",
-				alphabet: "The state may only be letters."
+				name: "The state may only be letters and spaces."
 			},
 			"iata": {
 				required: "You must provide the IATA.",
-				alphabet: "The IATA can only contain letters." 
+				capAlphabet: "The IATA can only contain capital letters.",
+				rangeLength: "The IATA must be 3 characters long"
 			},
 			"name": {
 				required: "You must provide the name of the airport.",
-				alphabet: "The name of the airport can only contain letters."
+				name: "The name may only be letters and spaces."
 			}
 		}
 	});
