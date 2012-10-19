@@ -206,40 +206,15 @@ Flexible Return Date: <br>
 		<div class="wrapper pad1">
 			<article class="col1">
 				<div class="box1">
-							<h2 class="top">Offers of the Week</h2>
+							<h2 class="top"></h2>
 							<div class="pad">
 								<strong></strong><br>
-								<ul class="pad_bot1 list1">
-									<li>
-										<span class="right color1">-</span>
-										<a href="Book2.html"></a>
-									</li>
-								</ul>
-								<strong>From London City</strong><br>
-								<ul class="pad_bot1 list1">
-									<li>
-										<span class="right color1">from GBP 176.-</span>
-										<a href="Book2.html">Basel</a>
-									</li>
-									<li>
-										<span class="right color1">from GBP 109.-</span>
-										<a href="Book2.html">Geneva</a>
-									</li>
-								</ul>
-								<strong>From London Heathrow</strong><br>
+								
+								
+								<strong></strong><br>
 								<ul class="pad_bot2 list1">
-									<li>
-										<span class="right color1">from GBP 100.-</span>
-										<a href="Book2.html">Geneva</a>
-									</li>
-									<li>
-										<span class="right color1">from GBP 112.-</span>
-										<a href="Book2.html">Zurich</a>
-									</li>
-									<li>
-										<span class="right color1">from GBP 88.-</span>
-										<a href="Book2.html">Basel</a>
-									</li>
+									
+									
 								</ul>
 							</div>
 							

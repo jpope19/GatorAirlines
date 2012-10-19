@@ -1,7 +1,7 @@
 <?php
-include("../classes/search.class.php");
-include("../classes/airport.class.php");
-include("../classes/users.class.php");
+include("classes/search.class.php");
+include("classes/airport.class.php");
+include("classes/users.class.php");
 var_dump($_POST);
 $user = new users();
 //convert passed in day/month/year into epoch times
