@@ -1,16 +1,16 @@
 <div id="login-box" class="login-popup">
      <a href="#" class="close"><img src="images/close.png" width ="40" height= "40" class="btn_close" title="Close Window" alt="Close" /></a>
-          <form method="post" class="signin" action="#">
+          <form method="post" class="signin" action="log_in.php">
                 <fieldset class="textbox">
             	<label class="username">
-                <span>Username or email</span>
-                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+                <span>Email</span>
+                <input id="username" name="email" value="" type="text" autocomplete="on" placeholder="Username">
                 </label>
                 <label class="password">
                 <span>Password</span>
                 <input id="password" name="password" value="" type="password" placeholder="Password">
                 </label>
-                <button class="submit button" type="button">Sign in</button>
+                <button class="submit button" type="submit" name="submit">Sign in</button>
                 <p>
                 <a class="forgot" href="#">Forgot your password?</a>
                 </p>        
@@ -34,7 +34,7 @@
 	                 {// check if user has been authenticated
 					echo "<li> <a href=#login-box class=login-window>Login</a></li>";
 					
-                       }else{ echo "<li><a href=log_out.php class=nav1>Logout</a></li>"; }
+                       }else{ echo "<li><a href=log_out.php class=nav5>Logout</a></li>"; }
 					   
 					         ?>					
 					<li><a href="Contacts.php" class="nav3">Contact</a></li>
