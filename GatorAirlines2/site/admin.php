@@ -1,4 +1,3 @@
-<!-- Admins page -->
 <?php
 // start session
 if (!isset($_SESSION))
@@ -7,7 +6,7 @@ if (!isset($_SESSION))
 }
 
 // This user will also be used in most of the referenced php files here
-include("../classes/users.class.php");
+include("classes/users.class.php");
 $users = new users(); // class from user.class.php that will be used to manipulate the database
 
 // Get objects from database to be used in the referenced php files here
@@ -47,28 +46,59 @@ function setAdminStyle($in)
 ?>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<?php include 'section/Head.php'; ?>
+  <title>Services</title>
+  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
 	
-	<!-- This is necessarry for the Chosen plugin -->
-	<link rel="stylesheet" href="../css/chosen.css" />
-
+	
+	
+	
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="../js/admin/initiateForm.js"></script>
-	<script type="text/javascript" src="../js/admin/sessionActionRadio.js"></script>
-	<script type="text/javascript" src="../js/admin/sessionAdminStyleRadio.js"></script>
-	<script type="text/javascript" src="../js/admin/sessionTableRadio.js"></script>
-	<script type="text/javascript" src="../js/admin/actionRadio.js"></script>
-	<script type="text/javascript" src="../js/admin/AdminStyleRadio.js"></script>
-	<script type="text/javascript" src="../js/admin/tableRadio.js"></script>
+	<script type="text/javascript" src="js/admin/initiateForm.js"></script>
+	<script type="text/javascript" src="js/admin/sessionActionRadio.js"></script>
+	<script type="text/javascript" src="js/admin/sessionAdminStyleRadio.js"></script>
+	<script type="text/javascript" src="js/admin/sessionTableRadio.js"></script>
+	<script type="text/javascript" src="js/admin/actionRadio.js"></script>
+	<script type="text/javascript" src="js/admin/AdminStyleRadio.js"></script>
+	<script type="text/javascript" src="js/admin/tableRadio.js"></script>
+	
+	 <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+	
 	
 	<!-- The Chosen JQuery plugin -->
-	<script type="text/javascript" src="../js/chosen/chosen.jquery.js"></script>
+	<script type="text/javascript" src="js/chosen/chosen.jquery.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function()
 	{// Used to make the cool looking drop down menu
@@ -80,23 +110,21 @@ function setAdminStyle($in)
 	<!-- The validation plugin --><!-- enable this after testing!
 	<script type="text/javascript" src="../js/validation/dist/jquery.validate.js"></script>-->
 	<!-------------------------------------- END JQUERY ----------------------------->
+
 </head>
-<body>
-<!-- start header -->
-<div id="header">
-	<?php include 'section/Header.php'; ?>
-</div>
-<!-- end header -->
-<!-- star menu -->
-<div id="menu">
-	<ul>
-		<?php include 'section/Menu.php'; ?>
-	</ul>
-</div>
-<!-- end menu -->
-<!-- start page -->
-<div id="page">
-<!-- DO YOUR WORK HERE!!!!!!!!! -->
+<body id="page4">
+
+
+<div class="main">
+<!--header -->
+	<?include('section/header2.php')?>
+<!-- / header -->
+<!--content -->
+	<section id="content">
+		   <div class="wrapper pad1">
+			
+			
+			<!-- DO YOUR WORK HERE!!!!!!!!! -->
 	<!-- Choose configuration style -->
 	<label for="AdminStyle">Which options would you like?</label> </br>
 	<input type="radio" id="admin" name="AdminStyle" class="AdminStyle" value="Admin" <?php echo ($_SESSION['AdminStyle'] == "Admin") ? 'checked="checked"' : ''; ?> /> Admin
@@ -126,17 +154,17 @@ function setAdminStyle($in)
 		<ol id="Customer" class="formset">
 			<ol id="AddCustomer" class="formset">
 			Add a Customer Account:
-				<?php include '../admin/AddCustomer.php'; ?>
+				<?php include 'admin/AddCustomer.php'; ?>
 			</ol>
 			
 			<ol id="ModifyCustomer" class="formset">
 			Modify a Customer Account:
-				<?php include '../admin/ModifyCustomer.php'; ?>
+				<?php include 'admin/ModifyCustomer.php'; ?>
 			</ol>
 			
 			<ol id="DeleteCustomer" class="formset">
 			Delete a Customer Account:
-				<?php include '../admin/DeleteCustomer.php'; ?>
+				<?php include 'admin/DeleteCustomer.php'; ?>
 			</ol>
 		</ol>
 		</fieldset>
@@ -146,17 +174,17 @@ function setAdminStyle($in)
 		<ol id="Airport" class="formset">
 			<ol id="AddAirport" class="formset">
 			Add an Airport:
-				<?php include '../admin/AddAirport.php'; ?>
+				<?php include 'admin/AddAirport.php'; ?>
 			</ol>
 			
 			<ol id="ModifyAirport" class="formset">
 			Modify an Airport:
-				<?php include '../admin/ModifyAirport.php'; ?>
+				<?php include 'admin/ModifyAirport.php'; ?>
 			</ol>
 			
 			<ol id="DeleteAirport" class="formset">
 			Delete an Airport:
-				<?php include '../admin/DeleteAirport.php'; ?>
+				<?php include 'admin/DeleteAirport.php'; ?>
 			</ol>
 		</ol>
 		</fieldset>
@@ -166,17 +194,17 @@ function setAdminStyle($in)
 		<ol id="Airplane" class="formset">
 			<ol id="AddAirplane" class="formset">
 			Add an Airplane:
-				<?php include '../admin/AddAirplane.php'; ?>
+				<?php include 'admin/AddAirplane.php'; ?>
 			</ol>
 			
 			<ol id="ModifyAirplane" class="formset">
 			Modify an Airplane:
-				<?php include '../admin/ModifyAirplane.php'; ?>
+				<?php include 'admin/ModifyAirplane.php'; ?>
 			</ol>
 			
 			<ol id="DeleteAirplane" class="formset">
 			Delete an Airplane:
-				<?php include '../admin/DeleteAirplane.php'; ?>
+				<?php include 'admin/DeleteAirplane.php'; ?>
 			</ol>
 		</ol>
 		</fieldset>
@@ -186,17 +214,17 @@ function setAdminStyle($in)
 		<ol id="Flight" class="formset">
 			<ol id="AddFlight" class="formset">
 			Add a Flight:
-				<?php include '../admin/AddFlight.php'; ?>
+				<?php include 'admin/AddFlight.php'; ?>
 			</ol>
 			
 			<ol id="ModifyFlight" class="formset">
 			Modify a Flight:
-				<?php include '../admin/ModifyFlight.php'; ?>
+				<?php include 'admin/ModifyFlight.php'; ?>
 			</ol>
 			
 			<ol id="DeleteFlight" class="formset">
 			Delete a Flight:
-				<?php include '../admin/DeleteFlight.php'; ?>
+				<?php include 'admin/DeleteFlight.php'; ?>
 			</ol>
 		</ol>
 		</fieldset>
@@ -207,17 +235,17 @@ function setAdminStyle($in)
 		<ol id="Ticket" class="formset">
 			<ol id="AddTicket" class="formset">
 			Add a Ticket:
-				<?php include '../admin/AddTicket.php'; ?>
+				<?php include 'admin/AddTicket.php'; ?>
 			</ol>
 			
 			<ol id="ModifyTicket" class="formset">
 			Modify a Ticket:
-				<?php include '../admin/ModifyTicket.php'; ?>
+				<?php include 'admin/ModifyTicket.php'; ?>
 			</ol>
 			
 			<ol id="DeleteTicket" class="formset">
 			Delete a Ticket:
-				<?php include '../admin/DeleteTicket.php'; ?>
+				<?php include 'admin/DeleteTicket.php'; ?>
 			</ol>
 		</ol>
 		</fieldset>
@@ -227,17 +255,17 @@ function setAdminStyle($in)
 		<ol id="VIP" class="formset">
 			<ol id="AddVIP" class="formset">
 			Add a VIP Acount:
-				<?php include '../admin/AddVIP.php'; ?>
+				<?php include 'admin/AddVIP.php'; ?>
 			</ol>
 			
 			<ol id="ModifyVIP" class="formset">
 			Modify a VIP Acount:
-				<?php include '../admin/ModifyVIP.php'; ?>
+				<?php include 'admin/ModifyVIP.php'; ?>
 			</ol>
 			
 			<ol id="DeleteVIP" class="formset">
 			Delete a VIP Acount:
-				<?php include '../admin/DeleteVIP.php'; ?>
+				<?php include 'admin/DeleteVIP.php'; ?>
 			</ol>
 		</ol>
 		</fieldset>
@@ -255,17 +283,19 @@ function setAdminStyle($in)
 	
 	<!--------------------------------------------------END OF FORM ---------------------------------------->
 
+			
+		  
+				        </div>
+			</section>
+			
+			
+			
+			
+			<!--content end-->
+			<!--footer -->
+			<?include('section/footer2.php')?>
+			<!--footer end-->
+		</div>
 
-</div>
-	<!-- end content -->
-	
-	<div id="extra" style="clear: both;">&nbsp;</div>
-</div>
-<!-- end page -->
-<!-- start footer -->
-<div id="footer">
-	<?php include 'section/Footer.php'; ?>
-</div>
-<!-- end footer -->
 </body>
 </html>
