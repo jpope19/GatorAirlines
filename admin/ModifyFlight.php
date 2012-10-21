@@ -250,14 +250,3 @@ if (isset($_POST['ModifyFlightSubmit']))
 </tr>
 </br> <input type="submit" name="ModifyFlightSubmit" /> 
 </form>
-
-<script type="text/javascript">
-	document.getElementById("plane_id").value="69";
-	document.getElementById("org_id").value="69";
-	document.getElementById("dest_id").value="69";
-	document.getElementById("first_class_cost").value="50";
-	document.getElementById("coach_class_cost").value="100";
-	document.getElementById("depart_time").value="Aug 50 10 60 70";
-	document.getElementById("arrival_time").value="Aug 50 20 60 70";
-	document.getElementById("distance").value="5000";
-</script>
