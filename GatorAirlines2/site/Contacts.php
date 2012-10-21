@@ -1,31 +1,40 @@
+
+<?include("mail/sendMail.php"); //include mailing function (in mail folder).
+
+$to = "gatorairlines@hotmail.com"; //where to send email.
+
+if(isset($_POST['submit'])){
+
+mail_attachment(null,$to, $_POST['name'], 'Client Mail', $_POST['textarea']);
+}
+
+  ?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Contacts</title>
-<meta charset="utf-8">
+ <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>  
-<script type="text/javascript" src="js/Cabin_400.font.js"></script>
-<script type="text/javascript" src="js/tabs.js"></script> 
-<script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
-<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
-<script type="text/javascript" src="js/atooltip.jquery.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<style type="text/css">
-	.main, .tabs ul.nav a, .content, .button1, .box1, .top { behavior:url(js/PIE.htc)}
-</style>
-<![endif]-->
-<!--[if lt IE 7]>
-	<div style=' clear: both; text-align:center; position: relative;'>
-		<a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/images/upgrade.jpg" border="0"  alt="" /></a>
-	</div>
-<![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+
 </head>
 
 <body id="page6">
@@ -46,35 +55,36 @@
 										Address:<br>
 										Email:</strong></p>
 									<p class="color1 pad_bot2">USA<br>
-										San Diego<br>
-										Beach st. 54<br>
-										<a href="mailto:">airlines@mail.com</a></p>
+										Gainesville<br>
+										<br>
+										<a href="mailto:">gatorairlines@hotmail.</a></p>
 								</div>
 							</div>
-							<h2>Miscellaneous Info</h2>
+							<h2></h2>
 							<div class="pad pad_bot1">
-								<p class="pad_bot2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inven- tore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat volup- tatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+								<p class="pad_bot2">We will get back to you as soon as possible. </p><br>
+								
 							</div>
 						</div>
 					</article>
 					<article class="col2">
 						<h3 class="pad_top1">Contact Form</h3>
-						<form id="ContactForm">
+						<form id="ContactForm" action="contacts.php" method="post">
 							<div>
 								<div  class="wrapper">
 									<span>Name:</span>
-									<input type="text" class="input" >
+									<input type="text" class="input" name="name">
 								</div>
 								<div  class="wrapper">
 									<span>Email:</span>
-									<input type="text" class="input" >								
+									<input type="text" class="input" name ="email" >								
 								</div>
 								<div  class="textarea_box">
 									<span>Message:</span>
 									<textarea name="textarea" cols="1" rows="1"></textarea>								
-								</div>
-								<a href="#" class="button1" onClick="document.getElementById('ContactForm').submit()"><strong>Send</strong></a>
-								<a href="#" class="button1" onClick="document.getElementById('ContactForm').reset()"><strong>Clear</strong></a>
+								</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button class = "button1" type="submit" name="submit">Send</button>
+						
 							</div>
 						</form>
 					</article>

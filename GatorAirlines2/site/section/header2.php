@@ -50,7 +50,7 @@
 				<li><a href="Services.php"><span><span>Services</span></span></a></li>
 				<li><a href="Safety.php"><span><span>Safety</span></span></a></li>
 				<?
-				if(isset($_SESSION['u_type']) && $_SESSION['u_type']==1){ echo "<li><a href=safety.php><span><span>Transaction</span></span></a></li>";}
+				if(isset($_SESSION['u_type']) && $_SESSION['u_type']==1){ echo "<li><a href=admin.php><span><span>Admin</span></span></a></li>";}
 				?>
 				
   

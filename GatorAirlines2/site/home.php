@@ -91,11 +91,11 @@ $airports = $users->get_airports();
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
 <input type="radio" name="flight" value="One-way" /> One way <br />
 
-Departure : <input type="text" id="departure" /></p>
+Departure : <input type="text" id="departure" name ="depart" /></p>
 
 <br />
 
-Return :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="return" /></p>
+Return :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="return" name="return"/></p>
 
 <br />
 
