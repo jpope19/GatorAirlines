@@ -12,8 +12,12 @@ $(document).ready(function()
     }, "The address may only contain letters and numbers.");
 	
 	$.validator.addMethod("zip", function(value, element) {
-        return this.optional(element) || /^[]+$/i.test(value);
+        return this.optional(element) || /^[0-9]+$/i.test(value);
     }, "The address may only contain letters and numbers.");
+	
+	$.validator.addMethod("name", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z ]+$/i.test(value);
+    }, "Your input may only contain letters and a space.");
 	
     $("#AddCustomerForm").validate({
 		// Apply rules
@@ -22,43 +26,50 @@ $(document).ready(function()
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				address: false
+				address: false,
+				name: false
 			},
 			"first_name": {
 				required: true, 
 				maxlength: 30,
 				alphabet: true,
-				address: false
+				address: false,
+				name: false
 			},
 			"last_name": {
 				required: true,
 				maxlength: 30,
 				alphabet: true,
-				address: false
+				address: false,
+				name: false
 			},
 			"password": {
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				address: false
+				address: false,
+				name: false
 			},
 			"addr": {
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				address: true
+				address: true,
+				name: false
 			},
 			"city": {
 				required: true, 
 				maxlength: 30,
 				alphabet: true,
-				address: false
+				address: false,
+				name: true
 			},
 			"state": {
 				required: true, 
 				maxlength: 30,
 				alphabet: true,
-				address: false
+				address: false,
+				name: true
 			},
 			"zip": {
 				required: true, 
@@ -66,13 +77,15 @@ $(document).ready(function()
 				alphabet: false,
 				address: false,
 				digits: true,
-				rangelength: [5,5]
+				rangelength: [5,5],
+				name: false
 			},
 			"cc_num": {
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				address: false
+				address: false,
+				name: false
 			},
 			"u_type": {
 				required: true, 
@@ -80,7 +93,8 @@ $(document).ready(function()
 				alphabet: false,
 				address: false,
 				digits: true,
-				rangelength: [1,1]
+				rangelength: [1,1],
+				name: false
 			}
 		},
 		
@@ -105,11 +119,11 @@ $(document).ready(function()
 			},
 			"city": {
 				required: "You must provide the city of the billing address.",
-				alphabet: "The city may only be letters."
+				name: "The city may only be letters and spaces."
 			},
 			"state": {
 				required: "You must provide the state of the billing address.",
-				alphabet: "The state may only be letters."
+				name: "The state may only be letters and letters."
 			},
 			"zip": {
 				required: "You must provide the zip of the billing addrss.",
@@ -139,8 +153,12 @@ $(document).ready(function()
     }, "The address may only contain letters and numbers.");
 	
 	$.validator.addMethod("zip", function(value, element) {
-        return this.optional(element) || /^[]+$/i.test(value);
+        return this.optional(element) || /^[0-9]+$/i.test(value);
     }, "The address may only contain letters and numbers.");
+	
+	$.validator.addMethod("name", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z ]+$/i.test(value);
+    }, "Your input may only contain letters and a space.");
 	
     $("#ModifyCustomerForm").validate({
 		// Apply rules
@@ -149,43 +167,50 @@ $(document).ready(function()
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				address: false
+				address: false,
+				name: false
 			},
 			"first_name": {
 				required: true, 
 				maxlength: 30,
 				alphabet: true,
-				address: false
+				address: false,
+				name: false
 			},
 			"last_name": {
 				required: true,
 				maxlength: 30,
 				alphabet: true,
-				address: false
+				address: false,
+				name: false
 			},
 			"password": {
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				address: false
+				address: false,
+				name: false
 			},
 			"addr": {
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				address: true
+				address: true,
+				name: false
 			},
 			"city": {
 				required: true, 
 				maxlength: 30,
 				alphabet: true,
-				address: false
+				address: false,
+				name: true
 			},
 			"state": {
 				required: true, 
 				maxlength: 30,
 				alphabet: true,
-				address: false
+				address: false,
+				name: true
 			},
 			"zip": {
 				required: true, 
@@ -193,13 +218,15 @@ $(document).ready(function()
 				alphabet: false,
 				address: false,
 				digits: true,
-				rangelength: [5,5]
+				rangelength: [5,5],
+				name: false
 			},
 			"cc_num": {
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				address: false
+				address: false,
+				name: false
 			},
 			"u_type": {
 				required: true, 
@@ -207,7 +234,8 @@ $(document).ready(function()
 				alphabet: false,
 				address: false,
 				digits: true,
-				rangelength: [1,1]
+				rangelength: [1,1],
+				name: false
 			}
 		},
 		
@@ -232,11 +260,11 @@ $(document).ready(function()
 			},
 			"city": {
 				required: "You must provide the city of the billing address.",
-				alphabet: "The city may only be letters."
+				name: "The city may only be letters and spaces."
 			},
 			"state": {
 				required: "You must provide the state of the billing address.",
-				alphabet: "The state may only be letters."
+				name: "The state may only be letters and spaces."
 			},
 			"zip": {
 				required: "You must provide the zip of the billing addrss.",

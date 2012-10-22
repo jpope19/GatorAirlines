@@ -33,48 +33,136 @@ if (isset($_POST['ModifyFlightSubmit']))
 	// Process submit
 	if ($_POST['modFlight']=="")
 	{// no one chosen
-		echo "Please select a Flight to modify";
+		print "<script type=\"text/javascript\">"; 
+		print "alert('No customer was chosen to modify.')"; 
+		print "</script>"; 
 	}
 	else
-	{// Flight chosen
+	{// customer chosen
+		$flag = 0; // flag to check for input errors.
+		$message = ""; // message to be given to user if errors are detected.
+		
+		// Declare rules (patterns) to be evaluated by preg_match
+		$timeDate = '/^[A-Za-z0-9 ]+$/';
+		$numeric = '/^[0-9]+$/';
+		
 		if (isset($_POST['plane_idBox']))
 		{// plane_id checked
-			$set['plane_id'] = $_POST['plane_id'];
+			if (preg_match($numeric,$_POST['plane_id']) == 0 || strlen($_POST['plane_id']) > 30)
+			{// plane_id is not valid
+				$message .=  "Plane ID is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['plane_id'] = $_POST['plane_id'];
+			}
 		}
 		if (isset($_POST['org_idBox']))
 		{// first name checked
-			$set['org_id'] = $_POST['org_id'];
+			if (preg_match($numeric,$_POST['org_id']) == 0 || strlen($_POST['org_id']) > 30)
+			{// First name is not valid
+				$message .=  "Organizaiton ID is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['org_id'] = $_POST['org_id'];
+			}
 		}
 		if (isset($_POST['dest_idBox']))
 		{// last name checked
-			$set['dest_id'] = $_POST['dest_id'];
+			if (preg_match($numeric,$_POST['dest_id']) == 0 || strlen($_POST['dest_id']) > 30)
+			{// last name is not valid
+				$message .=  "Destination ID is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['dest_id'] = $_POST['dest_id'];
+			}
 		}
 		if (isset($_POST['first_class_costBox']))
-		{// first_class_coeach_cost checked
-			$set['first_class_cost'] = $_POST['first_class_cost'];
+		{// first_class_cost checked
+			if (preg_match($numeric,$_POST['first_class_cost']) == 0 || strlen($_POST['first_class_cost']) > 30)
+			{// Password is not valid
+				$message .=  "First class cost is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['first_class_cost'] = $_POST['first_class_cost'];
+			}
 		}
 		if (isset($_POST['coach_class_costBox']))
-		{// zip checked
-			$set['coach_class_cost'] = $_POST['coach_class_cost'];
+		{// coach_class_costess checked
+			if (preg_match($numeric,$_POST['coach_class_cost']) == 0 || strlen($_POST['coach_class_cost']) > 30)
+			{// Address is not valid
+				$message .=  "Coach class cost is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['coach_class_cost'] = $_POST['coach_class_cost'];
+			}
 		}
 		if (isset($_POST['depart_timeBox']))
-		{// e_depart_timeess checked
-			$set['depart_time'] = $_POST['depart_time'];
+		{// depart_time checked
+			if (preg_match($timeDate,$_POST['depart_time']) == 0 || strlen($_POST['depart_time']) > 30)
+			{// City is not valid
+				$message .=  "Departure time is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['depart_time'] = $_POST['depart_time'];
+			}
 		}
 		if (isset($_POST['arrival_timeBox']))
-		{// e_arrival_time checked
-			$set['arrival_time'] = $_POST['arrival_time'];
+		{// arrival_time checked
+			if (preg_match($timeDate,$_POST['arrival_time']) == 0 || strlen($_POST['arrival_time']) > 30)
+			{// State is not valid
+				$message .=  "Arrival time is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['arrival_time'] = $_POST['arrival_time'];
+			}
 		}
 		if (isset($_POST['distanceBox']))
 		{// distance checked
-			$set['distance'] = $_POST['distance'];
+			if (preg_match($numeric,$_POST['distance']) == 0 || strlen($_POST['distance']) > 30)
+			{// Zip is not valid
+				$message .=  "Distance is not valid\n";
+				$flag = 1;
+			}
+			else
+			{
+				$set['distance'] = $_POST['distance'];
+			}
 		}
 		
-		// The inputs still need to be validated and 
-		// database conflicts need to be checked
-		$key = $_POST['modFlight'];
-		$users->modify_Flights($set, $key);
-	}
+		// Still need to verify that plane_id does not exist in DB
+		// Update database
+		if($flag ==1)
+		{// There are errors in input, Notify user that there were errors
+			print "<script type=\"text/javascript\">"; 
+			print "alert('There were errors in your input.')"; 
+			print "</script>";
+		}// end if
+		else if (!isset($set))
+		{// Alert that no modification has been made
+			print "<script type=\"text/javascript\">"; 
+			print "alert('No modifications were made because no options were chosen.')"; 
+			print "</script>";  		
+		}// end else if
+		else
+		{// Valid and existent inputs, modify DB
+			$key = $_POST['modFlight'];
+			$users->modify_Flights($set, $key);
+		}// end else
+	}// end else
 }
 
 ?>
