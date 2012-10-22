@@ -1,4 +1,23 @@
 /* @group Base */
+
+#content{
+
+background-color:#EEEEEE; 
+height: 200px;
+width:600px;
+float:left;
+}
+
+
+input:focus
+{
+background-color:orange;
+}
+.error{
+
+color:#E3170D;
+
+}
 .chzn-container {
   font-size: 13px;
   position: relative;

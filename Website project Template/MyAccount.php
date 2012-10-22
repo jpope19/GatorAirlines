@@ -1,7 +1,10 @@
 
 <?php
-
-
+// Start session
+if (!isset($_SESSION))
+{
+	session_start();
+}
 
 
 ?>
@@ -51,5 +54,5 @@
 	<?php include 'section/Footer.php'; ?>
 </div>
 <!-- end footer -->
-</body>
+</body> 
 </html>
