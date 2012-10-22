@@ -33,11 +33,12 @@ var init = function (reservedSeat) {
 				
             };
             //case I: Show from starting
-            init();
+            //init();
  
-            //Case II: If already booked
-          //  var bookedSeats = [5, 10, 25];
-          //  init(bookedSeats);		   
+            Case II: If already booked
+			  
+			  // var bookedSeats = new Array(<?php echo json_encode(',',$bookedseats);?>);
+			  // init(bookedSeats);		   
 			
 $('.' + settings.seatCss).click(function () {
 if ($(this).hasClass(settings.selectedSeatCss)){
