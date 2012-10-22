@@ -1,48 +1,30 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
 
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Title      : Newsprint
-Version    : 1.0
-Released   : 20070824
-Description: A two-column, fixed-width design for blogs and small websites.
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Newsprint by FCT</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
-</head>
-<body>
-<script src="http://code.jquery.com/jquery-1.4.1.js" type="text/javascript"></script>
-<!-- start header -->
-<div id="header">
-	<h1><a href="#">Gator Airlines</a></h1>
-	
-</div>
-<!-- end header -->
-<!-- star menu -->
-<div id="menu">
-	<ul>
-		<li class="current_page_item"><a href="#">Home</a></li>
-		<li><a href="#">My Account</a></li>
-		<li><a href="#">Reservation</a></li>
-		<li><a href="#">Check-In</a></li>
-		<li><a href="#">Flight Times</a></li>
-		<li><a href="#">Sign Up</a></li>
-		<li><a href="#">Log In</a></li>
-	</ul>
-</div>
-<!-- end menu -->
-<!-- start page -->
-<div id="page">
+  <title>Contacts</title>
+ <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
 
+</head>
+
+<body id="page6">
+<div class="main">
+<!--header -->
+	<?include('section/header2.php')?>
+<!-- / header -->
+<!--content -->
 <!-- Starting Content -->
 <br >
 </br>
@@ -77,7 +59,13 @@ Description: A two-column, fixed-width design for blogs and small websites.
 <!-- end footer -->
 
 <!-- JAVASCRIPT REFERENCE -->
-<script type="text/javascript" src="seat.js"></script>
-
+<script type="text/javascript" src="js/seat.js"></script>
+			<!--content end-->
+			<!--footer -->
+			
+			<?include('section/footer2.php')?>
+			<!--footer end-->
+		</div>
+<script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>
