@@ -1,13 +1,13 @@
 var settings = {
                rows: 5,
-               cols: 22,
+               cols:20,
 			   brek: 12,
                rowCssPrefix: 'row-',
                colCssPrefix: 'col-',
                seatWidth: 35,
                seatHeight: 35,
                seatCss: 'seat',
-			   blankCss: 'blank',
+			   blankCss: 'blank_row',
                selectedSeatCss: 'selectedSeat',
                selectingSeatCss: 'selectingSeat'
            };
@@ -34,8 +34,8 @@ var init = function (reservedSeat) {
             init();
  
             //Case II: If already booked
-          //  var bookedSeats = [5, 10, 25];
-          //  init(bookedSeats);		   
+           // var bookedSeats = [5, 10, 25];
+           // init(bookedSeats);		   
 			
 $('.' + settings.seatCss).click(function () {
 if ($(this).hasClass(settings.selectedSeatCss)){
