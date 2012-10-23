@@ -140,6 +140,14 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
+	//CHECK!
+	function get_tickets_seat($flight_id, $order = "") {
+		if ($order != "") $order = "ORDER BY $order ASC";
+		$sql = "SELCT seat_id FROM tickets WHERE flight_id = $flight_id $order";
+		return $this->db->GetArray($sql);
+	}
+	
+	
 	function get_vip($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM vip $order";
