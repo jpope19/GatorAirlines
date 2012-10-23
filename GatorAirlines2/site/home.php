@@ -85,6 +85,7 @@ $airports = $users->get_airports();
 								<div class="tab-content" id="Flight">
 									
 									<form action="search.php" method="post">
+									
 <div id="content" style="background-color:green; height 200px;width:287px;float:left;">
 
 <b>Book A Flight</b> <br>
