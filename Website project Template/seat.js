@@ -1,3 +1,5 @@
+
+
 var settings = {
                rows: 5,
                cols:20,
@@ -30,8 +32,11 @@ var init = function (reservedSeat) {
                 $('#place').html(str.join(''));
 				
             };
+				
+			init(data);	
+				
             //case I: Show from starting
-            init();
+            //init();
  
             //Case II: If already booked
            // var bookedSeats = [5, 10, 25];

@@ -143,10 +143,21 @@ class users extends db {
 	//CHECK!
 	function get_tickets_seat($flight_id, $order = "") {
 		if ($order != "") $order = "ORDER BY $order ASC";
-		$sql = "SELCT seat_id FROM tickets WHERE flight_id = $flight_id $order";
+		$sql = "SELECT seat_id FROM tickets WHERE flight_id = $flight_id $order";
 		return $this->db->GetArray($sql);
 	}
 	
+	function check_ticket($ticket_id)
+	{
+		$sql = "SELECT cid FROM tickets WHERE ticket_id = $ticket_id";
+		return $this ->db->GetArray($sql);
+	}
+	
+	function check_name($name,$cid)
+	{
+		$sql = "SELECT last_name FROM customers WHERE cid_id = $cid_id";
+		return $this ->db->GetArray($sql);
+	}
 	
 	function get_vip($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
