@@ -89,3 +89,62 @@ form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #
 	width:214px;
 }
 .button:hover { background:#ddd; }
+
+/* SEAT SELECTION */
+
+#holder{
+height:200px;
+width:795px;
+background-color:#F5F5F5;
+border:1px solid #A4A4A4;
+margin-left:10px;
+}
+#place {
+position:relative;
+margin:7px;
+}
+#place a{
+margin:26px;
+font-size:0.6em;
+}
+#place li
+{
+ list-style: none outside none;
+ position: absolute;
+}
+#place li:hover
+{
+background-color:yellow;
+}
+#place .seat{
+background:url("../images/available_seat.png") no-repeat scroll 0 0 transparent;
+height:24px;
+width:29px;
+display:block;
+}
+#place .blank{
+background:url("../images/blank.png");
+height:25px;
+width:29px;
+display:block;
+}
+#place .selectedSeat
+{
+background-image:url("../images/booked_seat.png");
+}
+#place .selectingSeat
+{
+background-image:url("../images/selected_seat.png");
+}
+#place .row-3, #place .row-4{
+margin-top:8px;
+}
+#seatDescription li{
+verticle-align:middle;
+list-style: none outside none;
+padding-left:28px;
+height:35px;
+float:left;
+}
+
+
