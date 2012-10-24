@@ -38,5 +38,42 @@ $the_error =null;
 		//Close connection
 		mysql_close($con);
 	}
+	
+	   else if (isset($_POST['recovery'])) //come here if user forgot his/her password.
+	   {
+	     
+		 $con = mysql_connect('localhost','jpope','baseball19');
+		 mysql_select_db("gatorairlines", $con);
+
+         include("mail/sendMail.php"); //include mailing function (in mail folder).
+
+          $to = $_POST['email']; //where to send email.
+
+         $query = "select * from customers where email = '".$_POST['email']."'"; //get the password for that email.
+
+		$result = mysql_query($query,$con);	
+		
+		if(!$result)
+		{
+			die("Invalid query! <br> The query is: " . $query);
+		}
+		
+	$password = null;
+	
+
+    if(count($result)>0){
+	
+	$row = mysql_fetch_assoc($result);
+	$password = $row['password'];
+	
+	$message = "Your current password with GatorAirlines is ".$password."/n Hope to hear from you soon!!";
+	
+	mail_attachment(null,$to, null, 'Account Recovery', $message);
+	
+	}
+
+
+
+  }
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-
+//this might take a while to run
 session_start();
 include("classes/users.class.php");
 
