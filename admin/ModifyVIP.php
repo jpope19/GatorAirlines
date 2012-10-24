@@ -35,16 +35,16 @@ if (isset($_POST['ModifyVIPSubmit']))
 		$address = '/^[A-Za-z0-9 ]+$/';
 		$name = '/^[A-Za-z ]+$/';
 		
-		if (isset($_POST['emailBox']))
+		if (isset($_POST['vemailBox']))
 		{// email checked
-			if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+			if (!filter_var($_POST['vemail'], FILTER_VALIDATE_EMAIL))
 			{// email is not valid
 				$message .=  "E-mail is not valid\n";
 				$flag = 1;
 			}
 			else
 			{
-				$set['email'] = $_POST['email'];
+				$set['email'] = $_POST['vemail'];
 			}
 		}
 		if (isset($_POST['total_distance_traveledBox']))
@@ -130,10 +130,10 @@ if (isset($_POST['ModifyVIPSubmit']))
 <li>Which fields would you like to modify from this user?:</li>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="emailBox" id="emailBox" onclick="enableDisable(this.checked, 'email')" />
+		<input type="checkbox" value="1" name="vemailBox" id="vemailBox" onclick="enableDisable(this.checked, 'vemail')" />
 	</td>
 	<td>
-		Email: <input type="text" name="email" id="email" disabled="disabled" class="required email" id="email" >
+		Email: <input type="text" name="vemail" id="vemail" disabled="disabled" class="required email" id="vemail" >
 	</td> </br>
 </tr>
 <tr>

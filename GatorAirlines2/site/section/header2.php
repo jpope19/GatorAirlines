@@ -4,15 +4,16 @@
                 <fieldset class="textbox">
             	<label class="username">
                 <span>Email</span>
-                <input id="username" name="email" value="" type="text" autocomplete="on" placeholder="Username">
+                <input id="username" name="email" value="" type="text" autocomplete="on" placeholder="Username" required>
                 </label>
                 <label class="password">
                 <span>Password</span>
                 <input id="password" name="password" value="" type="password" placeholder="Password">
                 </label>
                 <button class="submit button" type="submit" name="submit">Sign in</button>
-                <p>
-                <a class="forgot" href="#">Forgot your password?</a>
+                <p> 
+				<br/><br/>
+                <button class="button1" name="recovery">Send password to my email</button>
                 </p>        
                 </fieldset>
           </form>
