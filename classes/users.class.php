@@ -34,7 +34,6 @@ class users extends db {
         set_time_limit(6000);
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
-            echo $line . "<br>";
             $info = explode("," , $line);
             $record2['email'] = trim($info[0]);
             $record2['first_name'] = trim($info[1]);
@@ -48,6 +47,7 @@ class users extends db {
             $record2['u_type'] = 0;
             $this->db->AutoExecute("customers", $record2, "INSERT");
         }
+        echo "Created some flights";
         
         $file = fopen("data/flights.txt", 'r');
 
@@ -58,13 +58,13 @@ class users extends db {
             $record3['plane_id'] = trim($info[0]);
             $record3['org_id'] = trim($info[1]);
             $record3['dest_id'] = trim($info[2]);
-            $record3['first_class_cost'] = 500;
-            $record3['coach_class_cost'] = 400;
-            $record3['e_depart_time'] = trim($info[3]);
-            $record3['e_arrival_time'] = trim($info[4]);
-            $record3['depart_time'] = 0;
-            $record3['arrival_time'] = 0;
-            $record3['distance'] = 0;
+            $record3['first_class_cost'] = trim($info[3]);
+            $record3['coach_class_cost'] = trim($info[4]);
+            $record3['e_depart_time'] = trim($info[5]);
+            $record3['e_arrival_time'] = trim($info[6]);
+            $record3['depart_time'] = trim($info[5]);
+            $record3['arrival_time'] = trim($info[6]);
+            $record3['distance'] = trim($info[7]);
             $this->db->AutoExecute("flights", $record3, "INSERT");
         }
         
@@ -282,6 +282,17 @@ class users extends db {
             points_left int  
         )";
         $this->db->Execute($sql);
+    }
+    
+    function clear_db() {
+    	$tables = { 'vip', 'tickets', 'flights', 'airplanes', 'airports', 'customers'};
+    	
+    	
+    }
+    
+    function clear_table($table) {
+    	$sql = "TRUNCATE TABLE `$table`";
+    	$this->db->Exectue($sql);
     }
     
     
