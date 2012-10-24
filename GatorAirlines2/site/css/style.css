@@ -39,7 +39,7 @@ h4 {font-size:20px;color:#000;line-height:1.2em;padding:0 0 14px 0;letter-spacin
 p {padding-bottom:18px}
 /* header */
 header {height:230px;width:100%;overflow:hidden;background:url(../images/bg_top.jpg) 0 0 no-repeat}
-#logo {display:block;background:url(../images/my.png) 0 0 no-repeat;width:120px;height:104px;text-indent:-9999px}
+#logo {display:block;background:url(../images/my.jpg) 0 0 no-repeat;width:120px;height:104px;text-indent:-9999px}
 #slogan {font-size:20px;line-height:1.2em;color:#fff;float:left;padding:95px 0 0 18px;letter-spacing:-1px}
 #top_nav {float:right;padding:38px 56px 0 0}
 #top_nav li {float:left;padding-left:25px;width:50px;text-align:center}
