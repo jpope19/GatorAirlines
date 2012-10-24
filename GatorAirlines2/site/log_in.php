@@ -70,6 +70,8 @@ $the_error =null;
 	
 	mail_attachment(null,$to, null, 'Account Recovery', $message);
 	
+	header("Location:home.php");
+	
 	}
 
 

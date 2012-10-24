@@ -69,7 +69,6 @@ class users extends db {
         }
         
         fclose($file);
-		
         
         return "finished";
     }
@@ -279,6 +278,5 @@ class users extends db {
     
     
 }
-
 
 ?>
