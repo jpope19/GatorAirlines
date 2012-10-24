@@ -9,7 +9,7 @@ if (!isset($_SESSION))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Offers</title>
+  <title>Reservations</title>
  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="js/test.js"></script>
@@ -128,7 +128,7 @@ if (!isset($_SESSION))
 						</div>
 					</article>
 					<article class="col2">
-						<h3 class="pad_top1">UK Europe Specials</h3>
+						<!--<h3 class="pad_top1">UK Europe Specials</h3>
 						<div class="wrapper pad_bot3">
 							<figure class="left marg_right1"><img src="images/page2_img1.jpg" alt=""></figure>
 							<div class="cols">
@@ -242,8 +242,9 @@ if (!isset($_SESSION))
 								</li>
 							</ul>
 							Book by 15 May 2011 and travel between 16 April and 30 September 2011.
+							
 							</div>
-						</div>
+						</div> -->
 					</article>
 				</div>
 			</section>

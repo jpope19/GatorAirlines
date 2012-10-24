@@ -46,7 +46,7 @@
 		<nav>
 			<ul id="menu">
 				<li><a href="home.php"><span><span>Home</span></span></a></li>
-				<li><a href="Offers.php"><span><span>Offers</span></span></a></li>
+				<li><a href="Offers.php"><span><span>Reservations</span></span></a></li>
 				<li><a href="Book.php"><span><span>Book</span></span></a></li>
 				<li><a href="Services.php"><span><span>Services</span></span></a></li>
 				<li><a href="Safety.php"><span><span>Safety</span></span></a></li>

@@ -85,8 +85,12 @@ $airports = $users->get_airports();
 								<div class="tab-content" id="Flight">
 									
 									<form action="search.php" method="post">
+
+<div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
+
 									
-<div id="content" style="background-color:green; height 200px;width:287px;float:left;">
+
+
 
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
