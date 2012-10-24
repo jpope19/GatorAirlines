@@ -49,32 +49,55 @@ if (isset($_POST['submit']))
 ?>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" type="text/css" href="../css/chosen.css">
-	<?php include 'section/Head.php'; ?>
+  <title>Services</title>
+  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/chosen.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+
 </head>
-<body>
-<!-- start header -->
-<div id="header">
-	<?php include 'section/Header.php'; ?>
-</div>
-<!-- end header -->
-<!-- star menu -->
-<div id="menu">
-	<ul>
-		<?php include 'section/Menu.php'; ?>
-	</ul>
-</div>
-<!-- end menu -->
-<!-- start page -->
-<div id="page">
 
 
+<body id="page4">
+
+
+<div class="main">
+<!--header -->
+	<?include('section/header2.php')?>
+<!-- / header -->
+
+
+<!--content -->
+	<section id="content">
+		   <div class="wrapper pad1">
+		   
+		 <!--  DO YOU WORK HERE !!!! -->  
+		   
+		   
+		   
+		   
+		   
 <table width="74%" border="0" cellpadding="5">
     <tr>
+	<br>
+	</br>
     <form action="sign_up" method="post">
       <td width="19%">First name</td>
       <td width="81%"><input type="text" name="first_name" id="first_name" /></td>
@@ -175,17 +198,44 @@ if (isset($_POST['submit']))
       <td><div align="center"></div></td>
     </tr>
   </table>
+		   
+		   
+		   
+		   
+		   
+		   
+	  
+				        </div>
+			</section>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!--content end-->
+			
+		</div>
 
 
-</div>
+
+
+
 	<!-- end content -->
 	
 	<div id="extra" style="clear: both;">&nbsp;</div>
-</div>
+
 <!-- end page -->
 <!-- start footer -->
-<div id="footer">
-	<?php include 'section/Footer.php'; ?>
+<!--footer -->
+			<?include('section/footer2.php')?>
+			<!--footer end-->
 </div>
 <!-- end footer -->
 </body>
