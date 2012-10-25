@@ -24,7 +24,7 @@
   <header>
 		<div class="wrapper">
 			<h1><a href="home.php" id="logo">Air lines</a></h1>
-			<span id="slogan">Fly Safe with a Gator</span>
+			<span id="slogan"><i>"Fly Safe with a Gator!"</i></span>
 			<nav id="top_nav">
 				<ul>
 					<li><a href="home.php" class="nav1">Home</a></li>
