@@ -34,7 +34,7 @@
 					
 	                 {// check if user has been authenticated
 					echo "<li> <a href=#login-box class=login-window>Login</a></li>";
-					
+					echo "<li> <a href=sign_up.php class=nav6>Sign up</a></li>";
                        }else{ echo "<li><a href=log_out.php class=nav5>Logout</a></li>"; }
 					   
 					         ?>					
