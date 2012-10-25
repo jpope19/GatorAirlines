@@ -68,7 +68,7 @@ mail_attachment(null,$to, $_POST['name'], 'Client Mail', $_POST['textarea']);
 						</div>
 					</article>
 					<article class="col2">
-						<h3 class="pad_top1">Contact Form</h3>
+						<h3 class="pad_top1">We love to hear from you!</h3>
 						<form id="ContactForm" action="contacts.php" method="post">
 							<div>
 								<div  class="wrapper">
