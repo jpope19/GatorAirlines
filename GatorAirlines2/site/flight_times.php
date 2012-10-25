@@ -1,58 +1,79 @@
-
 <?php
-// start session
-if (!isset($_SESSION))
-{
-	session_start();
-}
-
 
 
 ?>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<?php include 'section/Head.php'; ?>
+  <title>Services</title>
+  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+
 </head>
-<body>
-<!-- start header -->
-<div id="header">
-	<?php include 'section/Header.php'; ?>
-</div>
-<!-- end header -->
-<!-- star menu -->
-<div id="menu">
-	<ul>
-		<?php include 'section/Menu.php'; ?>
-	</ul>
-</div>
-<!-- end menu -->
-<!-- start page -->
-<div id="page">
-<!--
 
 
-
-  DO YOUR WORK HERE!!!!!!!!!
-
+<body id="page4">
 
 
-  -->
+<div class="main">
+<!--header -->
+	<?include('section/header2.php')?>
+<!-- / header -->
 
 
-</div>
-	<!-- end content -->
-	
-	<div id="extra" style="clear: both;">&nbsp;</div>
-</div>
-<!-- end page -->
-<!-- start footer -->
-<div id="footer">
-	<?php include 'section/Footer.php'; ?>
-</div>
-<!-- end footer -->
+<!--content -->
+	<section id="content">
+		   <div class="wrapper pad1">
+		   
+		 <!--  DO YOU WORK HERE !!!! -->  
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+	  
+				        </div>
+			</section>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!--content end-->
+			<!--footer -->
+			<?include('section/footer2.php')?>
+			<!--footer end-->
+		</div>
+
 </body>
 </html>
