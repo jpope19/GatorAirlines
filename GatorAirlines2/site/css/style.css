@@ -1,4 +1,16 @@
+input:focus
+{
+background-color:orange;
+}
+
+
 .formset{
+
+background-color:#ffe4c4;
+
+}
+
+.signup_div{
 
 background-color:#ffe4c4;
 
@@ -48,6 +60,7 @@ header {height:230px;width:100%;overflow:hidden;background:url(../images/bg_top.
 #top_nav li a {display:inline-block;padding-top:13px;color:#fff}
 .nav1 {background:url(../images/img_top1.gif) center 0 no-repeat}
 .nav5 {background:url(../images/logout.png) center 0 no-repeat}
+.nav6 {background:url(../images/signup.png) center 0 no-repeat}
 .login-window {background:url(../images/login.png) center 0 no-repeat}
 .nav2 {background:url(../images/img_top2.gif) center 0 no-repeat}
 .nav3 {background:url(../images/img_top3.gif) center 0 no-repeat}

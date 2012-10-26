@@ -184,8 +184,8 @@ header("Location:myaccount.php"); // redirects
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td><label>
-<input type="submit" name="submit" id="submit" value="Submit" />
+<td><label><br/>
+<button type="submit" name="submit" id="submit" class="button1"> Submit</button>
 </label></td>
 </tr></form>
 </tr>

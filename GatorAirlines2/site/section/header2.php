@@ -34,7 +34,7 @@
 					
 	                 {// check if user has been authenticated
 					echo "<li> <a href=#login-box class=login-window>Login</a></li>";
-					
+					echo "<li> <a href=sign_up.php class=nav6>Sign up</a></li>";
                        }else{ echo "<li><a href=log_out.php class=nav5>Logout</a></li>"; }
 					   
 					         ?>					
@@ -50,7 +50,6 @@
 				<li><a href="reservation.php"><span><span>Reservations</span></span></a></li>
 				<li><a href="checkin.php"><span><span>Check-In</span></span></a></li>
 				<li><a href="flight_times.php"><span><span>Flight Times</span></span></a></li>
-				<li><a href="sign_up.php"><span><span>Sign Up</span></span></a></li>
 				<?
 				if(isset($_SESSION['u_type']) && $_SESSION['u_type']==1){ echo "<li><a href=admin.php><span><span>Admin</span></span></a></li>";}
 				?>

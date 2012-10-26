@@ -140,17 +140,17 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
-	//CHECK!
-	function get_tickets_seat($flight_id, $order = "") {
-		if ($order != "") $order = "ORDER BY $order ASC";
-		$sql = "SELCT seat_id FROM tickets WHERE flight_id = $flight_id $order";
-		return $this->db->GetArray($sql);
-	}
-	
-	
 	function get_vip($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM vip $order";
+        return $this->db->GetArray($sql);
+    }
+	
+	function get_emails_from_flight($flight_id, $order = ""){
+        $sql = "SELECT email
+		FROM customers, tickets
+		WHERE flight_id = $flight_id AND tickets.cid = customers.cid
+		ORDER BY email ASC";
         return $this->db->GetArray($sql);
     }
 	
@@ -286,11 +286,5 @@ class users extends db {
     
     
 }
-
-     //$user = new users();
-	 
-	 //$user->create_db();
-	 
-	 //$user->fill_database();
 
 ?>
