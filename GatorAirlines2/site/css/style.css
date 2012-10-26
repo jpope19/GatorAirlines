@@ -37,6 +37,8 @@ h3 {font-size:30px;color:#000;line-height:1.2em;margin-top:-4px;letter-spacing:-
 h3 span {font-size:20px;color:#767676;line-height:1.2em;display:block;margin-top:-5px}
 h4 {font-size:20px;color:#000;line-height:1.2em;padding:0 0 14px 0;letter-spacing:-1px}
 p {padding-bottom:18px}
+
+
 /* header */
 header {height:230px;width:100%;overflow:hidden;background:url(../images/bg_top.jpg) 0 0 no-repeat}
 #logo {display:block;background:url(../images/my.png) 0 0 no-repeat;width:120px;height:104px;text-indent:-9999px}
