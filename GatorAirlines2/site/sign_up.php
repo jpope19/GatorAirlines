@@ -1,12 +1,15 @@
 <?php
 
+$error = null;
 $con = mysql_connect("localhost","jpope","baseball19");
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-
-
+  
+  mysql_select_db('gatorairlines', $con);
+  
+  
 
 if (isset($_POST['submit']))
 {
@@ -24,29 +27,26 @@ die("Invalid query! <br> The query is: " . $query);
 if(mysql_num_rows($result) == 1)
 {
 
-echo "<center><font class='error'><br /><br />This account already exist!</font></center>";
+$error = "<p style=color:red>An account already exists with ".$_POST['email']."</p>";
 }
 
 //if email is valid, insert the user into the customers table.
 else{
-$query = "insert into customers values('".$_POST['email']."','".$_POST['first_name']."','".$_POST['last_name']."','".$_POST['password']."','".$_POST['addr']."',
-'".$_POST['cc_num']."','0')";
+$query = "insert into customers values (0,'".$_POST['email']."','".$_POST['first_name']."','".$_POST['last_name']."','".$_POST['password']."','".$_POST['address']."','".$_POST['city']."','".$_POST['state']."',".$_POST['zip'].",".$_POST['cc_num'].",0)";
 
             $result = mysql_query($query,$con);
 
 if(!$result)
 {
-die("Invalid query! <br> The query is: " . $query);
+die("Invalid query! <br> The query is: " . $query.mysql_error());
 }
+
 
 header("Location:myaccount.php"); // redirects
 }
 
 
 }	
-
-
-
 
 ?>
 
@@ -91,26 +91,31 @@ header("Location:myaccount.php"); // redirects
 		   <div class="signup_div">
 		   
 		 <!--  DO YOU WORK HERE !!!! -->  
-		   
+		 <br/><br/> <?if($error!=null){echo $error;}?> 
+		  
 		   <table width="74%" border="0" cellpadding="5">
 <tr>
 <br>
 </br>
-<form action="sign_up" method="post">
+<form action="sign_up.php" method="post">
 <td width="19%">First name</td>
-<td width="81%"><input type="text" name="first_name" id="first_name" /></td>
+<td width="81%"><input type="text" name="first_name" id="first_name"  required/></td>
 </tr>
 <tr>
 <td>Last name</td>
-<td><input type="text" name="last_name" id="last_name" /></td>
+<td><input type="text" name="last_name" id="last_name" required/></td>
 </tr>
 <tr>
 <td>Email</td>
-<td><input type="text" name="email" id="email" /></td>
+<td><input type="text" name="email" id="email" required/></td>
+</tr>
+<tr>
+<td>Password</td>
+<td><input type="password" name="password" id="password" required/></td>
 </tr>
 <tr>
 <td>Billing address</td>
-<td><input type="text" name="address" id="address" /></td>
+<td><input type="text" name="address" id="address" required/></td>
 </tr>
 <tr>
 <td>City
@@ -176,11 +181,11 @@ header("Location:myaccount.php"); // redirects
 </tr>
 <tr>
 <td>Zip code</td>
-<td><input type="text" name="zip" id="zip" size="5"/></td>
+<td><input type="text" name="zip" id="zip" size="5" required/></td>
 </tr>
 <tr>
 <td>Credit card number </td>
-<td><input type="text" name="cc_num" id="cc_num" /></td>
+<td><input type="text" name="cc_num" id="cc_num"  required/></td>
 </tr>
 <tr>
 <td>&nbsp;</td>
