@@ -57,7 +57,7 @@ function setAdminStyle($in)
   <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/adminStyle.css" type="text/css" media="all">
     <link rel="stylesheet" href="/resources/demos/style.css" /> 
 	
 	
@@ -269,7 +269,7 @@ function setAdminStyle($in)
 			
 			<!--content end-->
 			<!--footer -->
-			<?include('section/footer2.php')?>
+		
 			<!--footer end-->
 		
 		</div>
