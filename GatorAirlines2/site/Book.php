@@ -37,7 +37,7 @@ if (!isset($_SESSION))
 		<div class="wrapper pad1">
 			<article class="col1">
 				<div class="box1">
-					<h2 class="top">Hot Offers of the Week</h2>
+				<!--	<h2 class="top">Hot Offers of the Week</h2>
 					<div class="pad">
 						<strong>Birmingham</strong><br>
 						<ul class="pad_bot1 list1">
@@ -80,13 +80,13 @@ if (!isset($_SESSION))
 						</ul>
 					</div>
 				</div>
-			</article>
+			</article>-->
 			<article class="col2">
 					<div class="tabs2">
 							<ul class="nav">
 								<li class="selected"><a href="#Flight">Flight</a></li>
-								<li><a href="#Hotel">Hotel</a></li>
-								<li class="end"><a href="#Rental">Rental</a></li>
+								<!--<li><a href="#Hotel">Hotel</a></li>-->
+								<!--<li class="end"><a href="#Rental">Rental</a></li>-->
 							</ul>
 							<div class="content">
 								<div class="tab-content" id="Flight">

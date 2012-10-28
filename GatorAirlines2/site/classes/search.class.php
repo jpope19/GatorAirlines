@@ -18,9 +18,10 @@ class Search {
     # one_way: is it one way
     # class: what class of ticket
     public function __construct($params, $user) {
-        $this->default_opts = array('class' => 'economy','passengers' => 1);
+        $this->default_opts = array('class' => 'coach','passengers' => 1, 'max_results' => 10);
         $this->user = $user;
         $this->opts = array_merge($this->default_opts, $params);
+        $this->route_opts = $this->opts;
         $this->set_routes();
     }
     
@@ -34,36 +35,36 @@ class Search {
     
     private function find_routes($org, $dest, &$flights) {
         $result = Array();
-        $queue = new SplQueue();
+        $queue = new SplPriorityQueue();
         foreach($flights as $flight) {
             if($flight['org_id'] == $this->opts['org']) {
-                $route = new Route();
+                $route = new Route($this->route_opts);
                 $route->add_flight($flight);
-                $queue->enqueue($route);
+                $queue->insert($route, $route->get_joy());
             }
         }
         
         //BFS to find all routes that take < 10 hours
-        while($queue->count() >0)
+        $count = 0;
+        while($queue->count() >0 && $count < $this->opts['max_results'])
         {
-            $cur_route = $queue->dequeue();
+            $cur_route = $queue->extract();
+            if($cur_route->get_dest() == $this->opts['dest']) {
+                $result[] = $cur_route;
+                $count++;
+                continue;
+            }
             foreach($flights as $flight) {
                 if($flight['org_id'] == $cur_route->get_dest() && $flight['e_depart_time'] > 30*60 + $cur_route->get_arrival_time()) {
                     $new_route = $cur_route->copy();
                     $new_route->add_flight($flight);
-                    if($new_route->get_trip_time() < 6*60*60) {
-                        if($new_route->get_dest() == $this->opts['dest']) {
-                            $result[] = $new_route;
-                        } else {
-                            $queue->enqueue($new_route);
-                        }
+                    if($new_route->get_trip_time() < 24*60*60) {
+                        $queue->insert($new_route,$new_route->get_joy());
                     }
                 }
             }
         }
         return $result;
     }
-    
-    
 }
 ?>

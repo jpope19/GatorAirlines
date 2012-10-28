@@ -3,6 +3,7 @@
 include("classes/search.class.php");
 include("classes/airport.class.php");
 include("classes/users.class.php");
+$time = microtime(true);
 var_dump($_POST);
 $user = new users();
 //convert passed in day/month/year into epoch times
@@ -13,9 +14,13 @@ $_POST['e_return_time'] = mktime(0,0,0,intval(substr($_POST['return'],0,2)),intv
 //convert airport iata names to IDs
 $_POST['org'] = Airport::get_id_by_name($_POST['org'], $user);
 $_POST['dest'] = Airport::get_id_by_name($_POST['dest'], $user);
-
 //find routes
 $routes = new Search($_POST, $user);
+
+$time = microtime(true)- $time;
+
+echo "total time to run is: $time seconds";
+echo '</br>';
 
 //output routes
 var_dump($routes->depart_routes);

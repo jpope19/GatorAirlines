@@ -34,6 +34,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
 		$name = '/^[A-Za-z ]+$/';
+		$date = '/^(1[0-2]|0?[1-9])/(3[01]|[12][0-9]|0?[1-9])/(?:[0-9]{2})?[0-9]{2}$/';
 		
 		if (isset($_POST['vemailBox']))
 		{// email checked
@@ -71,11 +72,10 @@ if (isset($_POST['ModifyVIPSubmit']))
 				$set['rewardPoints'] = $_POST['rewardPoints'];
 			}
 		}
-		//MODIFY LATER
-		/*
+		
 		if (isset($_POST['join_dateBox']))
 		{// join date checked
-			if ()
+			if (preg_match($date))
 			{// Join date is not valid
 				$message .=  "Join date is not valid\n";
 				$flag = 1;
@@ -85,7 +85,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 				$set['joinDate'] = $_POST['joinDate'];
 			}
 		}
-		*/
+		
 		
 		
 		// Still need to verify that email does not exist in DB
@@ -110,6 +110,16 @@ if (isset($_POST['ModifyVIPSubmit']))
 	}// end else
 }
 ?>
+
+<!-- Calendar JQuery -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+<script>
+$(function() {
+	$( "#joinDate" ).datepicker();
+});
+</script>
+
+
 <!-- Some javascript to enable/disable text boxes based on check boxes -->
 <script language="javascript">
     function enableDisable(bEnable, textBoxID)

@@ -58,11 +58,11 @@ function setAdminStyle($in)
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <link rel="stylesheet" href="/resources/demos/style.css" /> 
 	
 	
 	<!-- This is necessarry for the Chosen plugin -->
-	<link rel="stylesheet" href="css/chosen.css" />
+	<<link rel="stylesheet" href="css/chosen.css" />
 	
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -93,16 +93,16 @@ function setAdminStyle($in)
 	<!-------------------------------------- END JQUERY ----------------------------->
 
 </head>
-<body id="page4">
+<body id="page1">
 
 
-<div class="main">
+<div class="main" >
 <!--header -->
 	<?include('section/header2.php')?>
 <!-- / header -->
 <!--content -->
 	<section id="content">
-		   <div class="wrapper pad1">
+		   
 			
 			
 			<!-- DO YOUR WORK HERE!!!!!!!!! -->
@@ -263,18 +263,15 @@ function setAdminStyle($in)
 	</fieldset>
 	
 	<!--------------------------------------------------END OF FORM ---------------------------------------->
-
-			
-			
-		  
-				        </div>
+		
 			</section>
-			
+		
 			
 			<!--content end-->
 			<!--footer -->
 			<?include('section/footer2.php')?>
 			<!--footer end-->
+		
 		</div>
 
 </body>

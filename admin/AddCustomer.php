@@ -123,8 +123,8 @@ if (isset($_POST['AddCustomerSubmit']))
 	}// end else
 }// end if
 ?>
-<!-- Jquery that uses Validation plugin to validate form on client side 
-<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>-->
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>
 
 <form id="AddCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Email: <input type="text" class="required email" name="email" /> </br>
