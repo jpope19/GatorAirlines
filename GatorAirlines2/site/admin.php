@@ -50,26 +50,19 @@ function setAdminStyle($in)
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html>  
 <html lang="en">
 <head>
-  <title>Services</title>
+  <title>Admin</title>
   <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" src="js/test.js"></script>
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="/resources/demos/style.css" />
 	
 	
-	
+	<!-- This is necessarry for the Chosen plugin -->
+	<link rel="stylesheet" href="css/chosen.css" />
 	
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -82,19 +75,7 @@ function setAdminStyle($in)
 	<script type="text/javascript" src="js/admin/AdminStyleRadio.js"></script>
 	<script type="text/javascript" src="js/admin/tableRadio.js"></script>
 	
-	 <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" src="js/test.js"></script>
-<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css" />
+
 	
 	
 	<!-- The Chosen JQuery plugin -->
@@ -284,11 +265,10 @@ function setAdminStyle($in)
 	<!--------------------------------------------------END OF FORM ---------------------------------------->
 
 			
+			
 		  
 				        </div>
 			</section>
-			
-			
 			
 			
 			<!--content end-->

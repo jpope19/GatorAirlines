@@ -48,7 +48,7 @@ h2.top {border-radius:6px 6px 0 0;-moz-border-radius:6px 6px 0 0;-webkit-border-
 h3 {font-size:30px;color:#000;line-height:1.2em;margin-top:-4px;letter-spacing:-1px;padding:0 0 21px 0}
 h3 span {font-size:20px;color:#767676;line-height:1.2em;display:block;margin-top:-5px}
 h4 {font-size:20px;color:#000;line-height:1.2em;padding:0 0 14px 0;letter-spacing:-1px}
-p {padding-bottom:18px}
+p {padding-bottom:15px} 
 
 
 /* header */
@@ -136,7 +136,7 @@ header {height:230px;width:100%;overflow:hidden;background:url(../images/bg_top.
 .box2 strong {font-size:13px}
 /* footer */
 footer {padding:33px 0 37px 70px;background:url(../images/bg_footer.gif) top repeat-x #d7dce6;font-size:12px;color:#3a3a3a}
-footer a {color:#1d77e9}
+footer a {color:#1d77e9}  /*Root of the drop down problem*/
 footer a:hover {}
 #icons {float:left;padding-top:7px}
 #icons li {float:left;padding-right:9px}

@@ -4,10 +4,6 @@
 ?>
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +39,7 @@
 		   <div class="wrapper pad1">
 				<h2>Redeem Customer Rewards</h2> 
  
-		<FONT FACE="chiller"><p style="font-size:17px">&#160;&#160;&#160;&#160;&#160;Gator Coins(C) Rewards can be redeemed for travel on select Gator Airlines(C) flights.</p></FONT>    
+		<FONT FACE="courier"><p style="font-size:17px">&#160;&#160;&#160;&#160;&#160;Gator Coins(C) Rewards can be redeemed for travel on select Gator Airlines(C) flights.</p></FONT>    
 				<img src="images/gator_cash.jpg" width="130" height="122" align="left"></body>
 				
 		<FONT FACE="courier"><p style="font-size:17px">&#160;Gator Flight(C) members may redeem and manage their Gator Coins through this &#160;page.</p></FONT>
