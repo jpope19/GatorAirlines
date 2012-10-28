@@ -23,6 +23,10 @@ $(document).ready(function()
 		return this.optional(element) || /^[0-9]+$/i.test(value);
 	}, "Your input may only contain numbers.");
 	
+	$.validator.addMethod("date", function(value, element) {
+		return this.optional(element) || /(?P<year>[0-9]{4})(?P<month>[0-9]{2})(?P<day>[0-9]{2})/i.test(value);
+	}, "Your input may only contain numbers and slashes.");
+	
     $("#AddVIPForm").validate({
 		// Apply rules
 		rules: {
@@ -51,11 +55,15 @@ $(document).ready(function()
 				rangelength: [1,30],
 				name: false
 			}
-			/*
+			
 			"joinDate": {
-				//conditions
+				required: true,
+				alphabet: false,
+				address: false,
+				name: false,
+				date: true
 			}
-			*/
+			
 		},
 		
 		// Messages for the rules
@@ -71,11 +79,11 @@ $(document).ready(function()
 				required: "You must provide the reward points for this VIP.",
 				rangelength: "Reward points must be between 1 and 30 digits."
 			}
-			/*
+			
 			"joinDate": {
 				required: "You must provide the date this VIP signed up for an account.",
 			}
-			*/
+			
 		}
 	});
 });
