@@ -29,8 +29,11 @@ class Search {
     private function set_routes() {
         $flights = $this->user->get_flights($this->opts['e_depart_time']);
         $this->depart_routes = $this->find_routes($this->opts['org'], $this->opts['dest'], $flights);
-        $flights = $this->user->get_flights($this->opts['e_return_time']);
-        $this->return_routes = $this->find_routes($this->opts['dest'], $this->opts['org'], $flights);
+        $this->return_routes = null;
+        if($this->opts['flight'] == 'Round-Trip') {
+            $flights = $this->user->get_flights($this->opts['e_return_time']);
+            $this->return_routes = $this->find_routes($this->opts['dest'], $this->opts['org'], $flights);
+        }
     }
     
     private function find_routes($org, $dest, &$flights) {

@@ -90,10 +90,6 @@ $airports = $users->get_airports();
 
 <div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
 
-									
-
-
-
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
 <input type="radio" name="flight" value="One-way" /> One way <br />
@@ -109,13 +105,12 @@ Return :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="return" name=
 From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
 <?
     foreach($airports as $airport){
-        if($airport['airport_id'] <= 5) {
+        if($airport['airport_id'] <= 50) {
 ?>
         <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
-
 <?
         }
-    }                
+    }
 ?>
 </select>
 
@@ -124,13 +119,12 @@ From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
 To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="dest">
 <?
     foreach($airports as $airport){
-        if($airport['airport_id'] <= 5) {
+        if($airport['airport_id'] <= 50) {
 ?>
         <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
-
 <?
         }
-    }                
+    }
 ?>
 </select>
 

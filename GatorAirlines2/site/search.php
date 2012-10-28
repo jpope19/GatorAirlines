@@ -23,7 +23,29 @@ echo "total time to run is: $time seconds";
 echo '</br>';
 
 //output routes
-var_dump($routes->depart_routes);
-
-var_dump($routes->return_routes);
+$to_routes = $routes->depart_routes;
+$a = Airport::get_name_by_id($_POST['org'], $user);
+$b = Airport::get_name_by_id($_POST['dest'], $user);
+echo "Routes from $a to $b </br>";
+$option_num = 1;
+foreach($to_routes as $option) {
+    echo "Option $option_num <br/>";
+    $val = $option->to_string();
+    echo "$val";
+    $option_num++;
+}
+echo"<br/><br/><br/><br/><br/>";
+if($_POST['flight'] == 'Round-Trip') {
+    $to_routes = $routes->return_routes;
+    $a = Airport::get_name_by_id($_POST['org'], $user);
+    $b = Airport::get_name_by_id($_POST['dest'], $user);
+    echo "Routes from $a to $b </br>";
+    $option_num = 1;
+    foreach($to_routes as $option) {
+        echo "Option $option_num <br/>";
+        $val = $option->to_string();
+        echo "$val";
+        $option_num++;
+    }
+}
 ?>

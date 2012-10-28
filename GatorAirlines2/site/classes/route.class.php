@@ -58,5 +58,21 @@ class Route {
     public function get_Joy() {
         return -1*($this->cost + $this->get_trip_time()/60000 * $this->num_flights);
     }
+    
+    public function to_string() {
+        $res = "Total cost: $this->cost</br>";
+        $res = "$res Total flights: $this->num_flights</br>";
+        $fuck_php = $this->get_trip_time();
+        $res = "$res Total time (milliseconds): $fuck_php</br>";
+        $res = "$res Flights: </br>";
+        $count = 1;
+        foreach($this->flights as $flight) {
+            $a = Airport::get_name_by_id($flight['org_id'],new users());
+            $b = Airport::get_name_by_id($flight['dest_id'],new users());
+            $res = "$res           $count : $a to $b </br>";
+            $count++;
+        }
+        return $res;
+    }
 }
 ?>
