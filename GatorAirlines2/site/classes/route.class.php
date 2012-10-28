@@ -3,10 +3,12 @@ class Route {
     var $avail_tickets;
     var $layover_time;
     var $num_flights;
+    var $cost;
     
-    function __construct() {
+    function __construct($opts) {
         $this->num_flights = 0;
-        $ths->flights = array();
+        $this->flights = array();
+        $this->opts = $opts;
     }
     
     public function add_flight($flight) {
@@ -15,12 +17,16 @@ class Route {
         if($this->num_flights >= 2) {
             $this->layover_time += ($flight['e_depart_time']) - $this->flights[$this->num_flights-2]['e_arrival_time'];
         }
+        if($this->opts['class'] == 'first_class') {
+            $this->cost += $flight['first_class_cost'];
+        } else {
+            $this->cost += $flight['coach_class_cost'];
+        }
     }
     
     public function get_trip_time() {
         if($this->num_flights == 0) return 0;
         else {
-            //echo $this->flights[$this->num_flights-1]['e_arrival_time'] - $this->flights[0]['e_depart_time'];
             return $this->flights[$this->num_flights-1]['e_arrival_time'] - $this->flights[0]['e_depart_time'];
         }
     }
@@ -42,11 +48,15 @@ class Route {
     }
     
     public function copy() {
-        $copy = new Route();
+        $copy = new Route($this->opts);
         foreach($this->flights as $flight) {
             $copy->add_flight($flight);
         }
         return $copy;
+    }
+    
+    public function get_Joy() {
+        return -1*($this->cost + $this->get_trip_time()/60000 * $this->num_flights);
     }
 }
 ?>
