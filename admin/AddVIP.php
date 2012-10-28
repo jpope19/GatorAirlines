@@ -86,17 +86,14 @@ if (isset($_POST['AddVIPSubmit']))
 }
 ?>
 
-<head>
+<!-- Calendar JQuery -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css" />
-    <script>
-    $(function() {
-        $( "#date" ).datepicker();
-    });
-    </script>
-</head>
+<script>
+$(function() {
+	$( "#joinDate" ).datepicker();
+});
+</script>
+
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
 <script type="text/javascript" src="../js/admin/ValidateVIP.js"></script>
@@ -105,7 +102,7 @@ if (isset($_POST['AddVIPSubmit']))
 Email: <input type="text" class="required email" name="email" /> </br>
 Total Distance Traveled: <input type="text" class="required" name="totalDistanceTraveled" /> </br>
 Reward Points: <input type="text" class="required" name="rewardPoints" /> </br>
-Join Date: <input type="text" class="required" name="joinDate" id="date" /> </br>
+Join Date: <input type="text" class="required" name="joinDate" id="joinDate" /> </br>
 <input class="submit" type="submit" name="AddVIPSubmit"/>
 </form>
 
