@@ -49,11 +49,13 @@ class users extends db {
         }
         echo "Created some flights";
         
+        
+        fclose($file);
+        
         $file = fopen("data/flights.txt", 'r');
 
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
-            //echo $line . "<br>";
             $info = explode(" " , $line);
             $record3['plane_id'] = trim($info[0]);
             $record3['org_id'] = trim($info[1]);
@@ -285,14 +287,17 @@ class users extends db {
     }
     
     function clear_db() {
-    	$tables = { 'vip', 'tickets', 'flights', 'airplanes', 'airports', 'customers'};
+    	$tables = array( 'vip', 'tickets', 'flights', 'airplanes', 'airports', 'customers');
+        foreach ($tables as $table) {
+            $this->clear_table($table);
+        }
     	
     	
     }
     
     function clear_table($table) {
     	$sql = "TRUNCATE TABLE `$table`";
-    	$this->db->Exectue($sql);
+    	$this->db->Execute($sql);
     }
     
     
