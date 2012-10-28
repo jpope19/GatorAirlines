@@ -1,0 +1,51 @@
+Gainesville International Airport . Gainesville . FL . GVL
+Hartsfield Jackson Atlanta International Airport . Atlanta . GA . ATL
+O'Hare International Airport . Chicago . IL . ORD
+Los Angeles International Airport . Los Angeles . CA . LAX
+Dallas/Fort Worth International Airport . Dallas/Fort Worth . TX . DFW
+Denver International Airport . Denver . CO . DEN
+John F. Kennedy International Airport . New York . NY . JFK
+George Bush International Airport . Houston . TX . IAH
+San Francisco International Airport . San Francisco . CA . SFO
+McCarran International Airport . Las Vegas . NV . LAS
+Phoenix Sky Harbor International Airport . Phoenix . AZ . PHX
+Charlotte/Douglas International Airport . Charlotte . NC . CLT
+Miami International Airport . Miami . FL . MIA
+Orlando International Airport . Orlando . FL . MCO
+Newark Liberty International Airport . Newark . NJ . EWR
+Detroit Metropolitan Wayne County Airport . Detroit . MI . DTW
+Minneapolis-St. Paul International Airport/World-Chamberlain Airport . Minneapolis/St. Paul . MN . MSP
+Seattle-Tacoma International Airport . Seattle . WA . SEA
+Philadelphia International Airport . Philadelphia . PA . PHL
+Logan International Airport . Boston . MA . BOS
+LaGuardia Airport . New York . NY . LGA
+Washington Dulles International Airport . Washington, D.C. . VA . IAD
+Baltimore-Washington International Thurgood Marshall Airport . Baltimore . MD . BWI
+Fort Lauderdale/Hollywood International Airport . Fort Lauderdale . FL . FLL
+Salt Lake City International Airport . Salt Lake City . UT . SLC
+Honolulu International Airport . Honolulu . HI . HNL
+Ronald Reagan Washington National Airport . Washington, D.C. . VA . DCA
+Midway International Airport . Chicago . IL . MDW
+San Diego International Airport . San Diego . CA . SAN
+Tampa International Airport . Tampa . FL . TPA
+Portland International Airport . Portland . OR . PDX
+Lambert-St. Louis International Airport . St. Louis . MO . STL
+Kansas City International Airport . Kansas City . MO . MCI
+Memphis International Airport . Memphis . TN . MEM
+General Mitchell International Airport . Milwaukee . WI . MKE
+Metropolitan Oakland International Airport . Oakland . CA . OAK
+Cleveland-Hopkins International Airport . Cleveland . OH . CLE
+Raleigh-Durham International Airport . Raleigh and Durham . NC . RDU
+Nashville International Airport . Nashville . TN . BNA
+Sacramento International Airport . Sacramento . CA . SMF
+William P. Hobby Airport . Houston . TX . HOU
+John Wayne Airport-Orange County . Orange County . CA . SNA
+Luis Munoz Marin International Airport . San Juan . PR . SJU
+Austin-Bergstrom International Airport . Austin . TX . AUS
+Louis Armstrong New Orleans International Airport . New Orleans . LA . MSY
+San Jose International Airport . San Jose . CA . SJC
+Pittsburgh International Airport . Pittsburgh . PA . PIT
+San Antonio International Airport . San Antonio . TX . SAT
+Cincinnati/Northern Kentucky International Airport . Cincinnati . OH . CVG
+Dallas Love Field . Dallas . TX . DAL
+Indianapolis International Airport . Indianapolis . IN . IND
