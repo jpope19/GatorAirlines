@@ -34,7 +34,6 @@ class users extends db {
         set_time_limit(6000);
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
-            echo $line . "<br>";
             $info = explode("," , $line);
             $record2['email'] = trim($info[0]);
             $record2['first_name'] = trim($info[1]);
@@ -48,23 +47,26 @@ class users extends db {
             $record2['u_type'] = 0;
             $this->db->AutoExecute("customers", $record2, "INSERT");
         }
+        echo "Created some flights";
+        
+        
+        fclose($file);
         
         $file = fopen("data/flights.txt", 'r');
 
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
-            //echo $line . "<br>";
             $info = explode(" " , $line);
             $record3['plane_id'] = trim($info[0]);
             $record3['org_id'] = trim($info[1]);
             $record3['dest_id'] = trim($info[2]);
-            $record3['first_class_cost'] = 500;
-            $record3['coach_class_cost'] = 400;
-            $record3['e_depart_time'] = trim($info[3]);
-            $record3['e_arrival_time'] = trim($info[4]);
-            $record3['depart_time'] = 0;
-            $record3['arrival_time'] = 0;
-            $record3['distance'] = 0;
+            $record3['first_class_cost'] = trim($info[3]);
+            $record3['coach_class_cost'] = trim($info[4]);
+            $record3['e_depart_time'] = trim($info[5]);
+            $record3['e_arrival_time'] = trim($info[6]);
+            $record3['depart_time'] = trim($info[5]);
+            $record3['arrival_time'] = trim($info[6]);
+            $record3['distance'] = trim($info[7]);
             $this->db->AutoExecute("flights", $record3, "INSERT");
         }
         
@@ -143,6 +145,14 @@ class users extends db {
 	function get_vip($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM vip $order";
+        return $this->db->GetArray($sql);
+    }
+	
+	function get_emails_from_flight($flight_id, $order = ""){
+        $sql = "SELECT email
+		FROM customers, tickets
+		WHERE flight_id = $flight_id AND tickets.cid = customers.cid
+		ORDER BY email ASC";
         return $this->db->GetArray($sql);
     }
 	
@@ -276,7 +286,20 @@ class users extends db {
         $this->db->Execute($sql);
     }
     
+    function clear_db() {
+    	$tables = array( 'vip', 'tickets', 'flights', 'airplanes', 'airports', 'customers');
+        foreach ($tables as $table) {
+            $this->clear_table($table);
+        }
+    	
+    	
+    }
+    
+    function clear_table($table) {
+    	$sql = "TRUNCATE TABLE `$table`";
+    	$this->db->Execute($sql);
+    }
+    
     
 }
-
 ?>
