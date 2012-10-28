@@ -2,9 +2,10 @@
 #content{
 
 background-color:#EEEEEE; 
-height: 200px;
-width:600px;
-float:left;
+
+height: 250px;
+width:960px;
+float:center;
 }
 
 
@@ -12,6 +13,7 @@ input:focus
 {
 background-color:orange;
 }
+
 .error{
 
 padding-top:500px;
@@ -42,6 +44,7 @@ color:#000000;
 /* @end */
 
 /* @group Single Chosen */
+
 .chzn-container-single .chzn-single {
   background-color: #ffffff;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0 );   

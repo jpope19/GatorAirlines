@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Contacts</title>
- <link rel="stylesheet" href="default.css" type="text/css" media="all">
+  <title>Seat Selection</title>
+ <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="js/test.js"></script>
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
@@ -22,7 +22,7 @@
 <body id="page6">
 <div class="main">
 <!--header -->
-	<?include('section/header2.php')?>
+	<?include('section/header2.php')?> 
 <!-- / header -->
 <!--content -->
 <!-- Starting Content -->
