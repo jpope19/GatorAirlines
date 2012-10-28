@@ -250,10 +250,10 @@ class users extends db {
             dest_id int,
             first_class_cost int(4),
             coach_class_cost int(4),
-            e_depart_time varchar(30),
-            e_arrival_time varchar(30),
-            depart_time varchar(30),
-            arrival_time varchar(30),
+            e_depart_time int(11),
+            e_arrival_time int(11),
+            depart_time int(11),
+            arrival_time int(11),
             distance int(5)
         )";
         $this->db->Execute($sql);
@@ -275,14 +275,6 @@ class users extends db {
         )";
         $this->db->Execute($sql);
     }
-    
-    
 }
-
-     //$user = new users();
-	 
-	 //$user->create_db();
-	 
-	 //$user->fill_database();
 
 ?>

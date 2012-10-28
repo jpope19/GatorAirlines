@@ -24,7 +24,7 @@
   <header>
 		<div class="wrapper">
 			<h1><a href="home.php" id="logo">Air lines</a></h1>
-			<span id="slogan">Fast, Frequent &amp; Safe Flights</span>
+			<span id="slogan"><i>"Fly Safe with a Gator!"</i></span>
 			<nav id="top_nav">
 				<ul>
 					<li><a href="home.php" class="nav1">Home</a></li>
@@ -34,7 +34,7 @@
 					
 	                 {// check if user has been authenticated
 					echo "<li> <a href=#login-box class=login-window>Login</a></li>";
-					
+					echo "<li> <a href=sign_up.php class=nav6>Sign up</a></li>";
                        }else{ echo "<li><a href=log_out.php class=nav5>Logout</a></li>"; }
 					   
 					         ?>					
@@ -46,10 +46,10 @@
 		<nav>
 			<ul id="menu">
 				<li><a href="home.php"><span><span>Home</span></span></a></li>
-				<li><a href="Offers.php"><span><span>Reservations</span></span></a></li>
-				<li><a href="Book.php"><span><span>Book</span></span></a></li>
-				<li><a href="Services.php"><span><span>Services</span></span></a></li>
-				<li><a href="Safety.php"><span><span>Safety</span></span></a></li>
+				<li><a href="MyAccount.php"><span><span>My Account</span></span></a></li>
+				<li><a href="reservation.php"><span><span>Reservations</span></span></a></li>
+				<li><a href="checkin.php"><span><span>Check-In</span></span></a></li>
+				<li><a href="flight_times.php"><span><span>Flight Times</span></span></a></li>
 				<?
 				if(isset($_SESSION['u_type']) && $_SESSION['u_type']==1){ echo "<li><a href=admin.php><span><span>Admin</span></span></a></li>";}
 				?>
