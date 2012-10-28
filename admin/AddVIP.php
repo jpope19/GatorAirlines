@@ -29,7 +29,7 @@ if (isset($_POST['AddVIPSubmit']))
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
 		$name = '/^[A-Za-z ]+$/';
-		$date = '/^(1[0-2]|0?[1-9])/(3[01]|[12][0-9]|0?[1-9])/(?:[0-9]{2})?[0-9]{2}$/';
+		$date = '/(?P<year>[0-9]{4})(?P<month>[0-9]{2})(?P<day>[0-9]{2})/';
 		
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
@@ -52,8 +52,7 @@ if (isset($_POST['AddVIPSubmit']))
 			$flag = 1;
 		}
 		//NEED TO DO ERROR CHECKING FOR JOIN DATE
-		
-		if (preg_match($date))
+		if (preg_match($date, $_POST['joinDate']) < 0)
 		{
 			//join date is not valid
 			$message .= "Join date is not valid\n";
@@ -98,6 +97,9 @@ if (isset($_POST['AddVIPSubmit']))
     });
     </script>
 </head>
+
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateVIP.js"></script>
 
 <form id="AddVIPForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Email: <input type="text" class="required email" name="email" /> </br>
