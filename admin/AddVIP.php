@@ -1,5 +1,8 @@
 <?php
 
+	
+
+
 // Code for when submit button is hit
 if (isset($_POST['AddVIPSubmit']))
 {
@@ -26,7 +29,8 @@ if (isset($_POST['AddVIPSubmit']))
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
 		$name = '/^[A-Za-z ]+$/';
-		$timeDate = '/^[A-Za-z0-9 ]+$/';
+		$date = '/(?P<year>[0-9]{4})(?P<month>[0-9]{2})(?P<day>[0-9]{2})/';
+		
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{
@@ -48,14 +52,13 @@ if (isset($_POST['AddVIPSubmit']))
 			$flag = 1;
 		}
 		//NEED TO DO ERROR CHECKING FOR JOIN DATE
-		/*
-		if (conditions)
+		if (preg_match($date, $_POST['joinDate']) < 0)
 		{
 			//join date is not valid
 			$message .= "Join date is not valid\n";
 			$flag = 1;
 		}
-		*/
+		
 		
 		//Deal with errors or lack of errors
 		if ($flag == 1)
@@ -83,11 +86,23 @@ if (isset($_POST['AddVIPSubmit']))
 }
 ?>
 
+<!-- Calendar JQuery -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+<script>
+$(function() {
+	$( "#joinDate" ).datepicker();
+});
+</script>
+
+
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateVIP.js"></script>
+
 <form id="AddVIPForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Email: <input type="text" class="required email" name="email" /> </br>
 Total Distance Traveled: <input type="text" class="required" name="totalDistanceTraveled" /> </br>
 Reward Points: <input type="text" class="required" name="rewardPoints" /> </br>
-Join Date: <input type="text" class="required" name="joinDate" /> </br>
+Join Date: <input type="text" class="required" name="joinDate" id="joinDate" /> </br>
 <input class="submit" type="submit" name="AddVIPSubmit"/>
 </form>
 

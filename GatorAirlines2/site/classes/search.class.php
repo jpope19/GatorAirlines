@@ -22,7 +22,6 @@ class Search {
         $this->user = $user;
         $this->opts = array_merge($this->default_opts, $params);
         $this->route_opts = $this->opts;
-        var_dump($this->opts);
         $this->set_routes();
     }
     
