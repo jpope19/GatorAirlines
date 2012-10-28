@@ -21,7 +21,6 @@ class Search {
         $this->default_opts = array('class' => 'economy','passengers' => 1);
         $this->user = $user;
         $this->opts = array_merge($this->default_opts, $params);
-        var_dump($this->opts);
         $this->set_routes();
     }
     
