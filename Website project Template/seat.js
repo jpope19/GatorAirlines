@@ -33,14 +33,18 @@ var init = function (reservedSeat) {
 				
             };
 				
-			init(data);	
+			//var bookedSeats = [];
+			//for( number in data){
+			//	bookedSeats.push(data[number]);
+			//	}
+			//init(bookedSeats);	
 				
             //case I: Show from starting
             //init();
  
             //Case II: If already booked
-           // var bookedSeats = [5, 10, 25];
-           // init(bookedSeats);		   
+            //var bookedSeats = ;
+            //init(bookedSeats);		   
 			
 $('.' + settings.seatCss).click(function () {
 if ($(this).hasClass(settings.selectedSeatCss)){

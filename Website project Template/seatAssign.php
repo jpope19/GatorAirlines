@@ -77,11 +77,12 @@ Description: A two-column, fixed-width design for blogs and small websites.
 <!-- end footer -->
 
 <!-- PHP AND JAVASCRIPT REFERENCE -->
+<script type="text/javascript" src="seat.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script type="text/php" src="seat_selection.php">
+
 
 <ul>
-
+<!-- <script type="text/php" src="seat_selection.php"></script> -->
 </ul>
 			<script type='text/javascript'>
 				$(document).ready(function(){
@@ -89,12 +90,12 @@ Description: A two-column, fixed-width design for blogs and small websites.
 					/* call the php that has the php array which is json_encoded */
                 $.getJSON("seat_selection.php", function(data) {
 					$.each(data, function(key,val) {
-						$('ul').append('<li id="' + key + '">' + val.number + '</li>'); });
+						$('ul').append('<li id="number">' + val.number + '</li>'); });
 											 });
 											 });
 			</script>
-</script>
-<script type="text/javascript" src="seat.js"></script>
+
+
 
 </body>
 </html>

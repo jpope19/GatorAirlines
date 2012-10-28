@@ -10,7 +10,11 @@ $users = new users(); // class from user.class.php that will be used to manipula
 
 //echo json_encode($reserved_seats);
 
-$array = array( "number" => "1");
+$array = array( 
+	array(
+		"number" => "10000"
+	)
+);
 
 echo json_encode($array);
  ?>
