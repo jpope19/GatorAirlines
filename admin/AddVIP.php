@@ -1,5 +1,8 @@
 <?php
 
+	
+
+
 // Code for when submit button is hit
 if (isset($_POST['AddVIPSubmit']))
 {
@@ -26,7 +29,8 @@ if (isset($_POST['AddVIPSubmit']))
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
 		$name = '/^[A-Za-z ]+$/';
-		$timeDate = '/^[A-Za-z0-9 ]+$/';
+		$date = '/^(1[0-2]|0?[1-9])/(3[01]|[12][0-9]|0?[1-9])/(?:[0-9]{2})?[0-9]{2}$/';
+		
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{
@@ -48,14 +52,14 @@ if (isset($_POST['AddVIPSubmit']))
 			$flag = 1;
 		}
 		//NEED TO DO ERROR CHECKING FOR JOIN DATE
-		/*
-		if (conditions)
+		
+		if (preg_match($date))
 		{
 			//join date is not valid
 			$message .= "Join date is not valid\n";
 			$flag = 1;
 		}
-		*/
+		
 		
 		//Deal with errors or lack of errors
 		if ($flag == 1)
@@ -83,11 +87,23 @@ if (isset($_POST['AddVIPSubmit']))
 }
 ?>
 
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script>
+    $(function() {
+        $( "#date" ).datepicker();
+    });
+    </script>
+</head>
+
 <form id="AddVIPForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Email: <input type="text" class="required email" name="email" /> </br>
 Total Distance Traveled: <input type="text" class="required" name="totalDistanceTraveled" /> </br>
 Reward Points: <input type="text" class="required" name="rewardPoints" /> </br>
-Join Date: <input type="text" class="required" name="joinDate" /> </br>
+Join Date: <input type="text" class="required" name="joinDate" id="date" /> </br>
 <input class="submit" type="submit" name="AddVIPSubmit"/>
 </form>
 
