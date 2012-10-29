@@ -41,6 +41,7 @@ if (isset($_POST['AddCustomerSubmit']))
 		$alphaNumeric = '/^[A-Za-z0-9]+$/';
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
+		$name = '/^[A-Za-z ]+$/';
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{// email is not valid
@@ -54,7 +55,7 @@ if (isset($_POST['AddCustomerSubmit']))
 		}
 		if (preg_match($alphabet,$_POST['last_name']) == 0 || strlen($_POST['last_name']) > 30)
 		{// last name is not valid
-			$message .=  "Last is not valid\n";
+			$message .=  "Last name is not valid\n";
 			$flag = 1;
 		}
 		if (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 30)
@@ -64,15 +65,15 @@ if (isset($_POST['AddCustomerSubmit']))
 		}
 		if (preg_match($address,$_POST['addr']) == 0 || strlen($_POST['addr']) > 30)
 		{// Address is not valid
-			$message .=  "Address is not valid\n";
+			$message .=  "Address is not valid\n";
 			$flag = 1;
 		}
-		if (preg_match($alphaNumeric,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
+		if (preg_match($name,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
 		{// City is not valid
 			$message .=  "City is not valid\n";
 			$flag = 1;
 		}
-		if (preg_match($alphabet,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
+		if (preg_match($name,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
 		{// State is not valid
 			$message .=  "State is not valid\n";
 			$flag = 1;
@@ -122,17 +123,18 @@ if (isset($_POST['AddCustomerSubmit']))
 	}// end else
 }// end if
 ?>
-<!-- Jquery that uses Validation plugin to validate form on client side 
-<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>-->
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="js/admin/ValidateCustomer.js"></script>
 
 <form id="AddCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-Email: <input type="text" class="required email" name="email" /> </br>
-First Name: <input type="text" class="required" name="first_name" /> </br>
+First Name: <input type="text" class="required" name="first_name" /> 
 Last Name: <input type="text" class="required" name="last_name" /> </br>
+Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="required email" name="email" /> 
 Password: <input type="password" class="required" name="password" /> </br>
-Billing Address: <input type="text" class="required" name="addr" /> </br>
-City: <input type="text" class="required" name="city" /> </br>
-State: <input type="text" class="required" name="state" /> </br>
+Billing Address: <input type="text" class="required" name="addr" /> 
+City: <input type="text" class="required" name="city" />
+State: <input type="text" class="required" name="state" /> 
 Zip Code: <input type="text" class="required" name="zip" /> </br>
 Credit Card Number: <input type="text" class="required creditcard" name="cc_num" /> </br>
 User Type: <input type="text" class="required" name="u_type" /> </br>

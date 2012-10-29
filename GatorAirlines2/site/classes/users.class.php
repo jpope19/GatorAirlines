@@ -107,9 +107,21 @@ class users extends db {
 	// Get Functions
 	function get_user($email, $password){
 		$where = "email = \"" . $email . "\" AND password = \"" . $password . "\"";
-        $sql = "SELECT first_name, last_name, u_type FROM customers WHERE $where";
+        $sql = "SELECT first_name,cid, last_name, u_type FROM customers WHERE $where";
         return $this->db->GetArray($sql);
     }
+	
+	//get reservations for a particular user fron Tickets and Flights table.
+	
+	function get_reservation($cid)
+	          {
+			  
+			  $where = "T.flight_id = F.flight_id and cid =$cid";
+			  $sql = "select * FROM tickets as T,flights as F WHERE $where";
+        return $this->db->GetArray($sql);
+			  
+			  }
+	
     function get_customers($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM customers $order";
