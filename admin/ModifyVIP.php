@@ -34,7 +34,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
 		$name = '/^[A-Za-z ]+$/';
-		$date = '/^(1[0-2]|0?[1-9])/(3[01]|[12][0-9]|0?[1-9])/(?:[0-9]{2})?[0-9]{2}$/';
+		//$date = '/^[0-9\/]+$/';
 		
 		if (isset($_POST['vemailBox']))
 		{// email checked
@@ -75,15 +75,9 @@ if (isset($_POST['ModifyVIPSubmit']))
 		
 		if (isset($_POST['join_dateBox']))
 		{// join date checked
-			if (preg_match($date))
-			{// Join date is not valid
-				$message .=  "Join date is not valid\n";
-				$flag = 1;
-			}
-			else
-			{
-				$set['joinDate'] = $_POST['joinDate'];
-			}
+			
+			$set['joinDate'] = $_POST['modjoinDate'];
+			
 		}
 		
 		
@@ -112,12 +106,14 @@ if (isset($_POST['ModifyVIPSubmit']))
 ?>
 
 <!-- Calendar JQuery -->
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 <script>
 $(function() {
-	$( "#joinDate" ).datepicker();
+	$( "#modjoinDate" ).datepicker();
 });
 </script>
+
 
 
 <!-- Some javascript to enable/disable text boxes based on check boxes -->
@@ -164,10 +160,10 @@ $(function() {
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="join_dateBox" id="join_dateBox" onClick="enableDisable(this.checked, 'joinDate')" />
+		<input type="checkbox" value="1" name="join_dateBox" id="join_dateBox" onClick="enableDisable(this.checked, 'modjoinDate')" />
 	</td>
 	<td>
-		Join Date: <input type="text" name="joinDate" id="joinDate" disabled="disabled" class="required" id="joinDate" >
+		Join Date: <input type="text" name="modjoinDate" id="modjoinDate" disabled="disabled" class="required" id="modjoinDate" >
 	</td> </br>
 </tr>
 </br> <input type="submit" name="ModifyVIPSubmit" /> 
