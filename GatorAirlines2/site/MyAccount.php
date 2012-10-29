@@ -19,20 +19,6 @@ if($results!=false)
 }
 ?>
  
- 
-<?
-//delete reservation after the user click "cancel" button.
-if(isset($_GET['id']))
-   {
-       $ticket_id = $_GET['id'];
-	  $users->delete_tickets($ticket_id); //this function remove reserv. from tickets table.
-      
-     }
-
-
-?>
-
-
 
 
 
