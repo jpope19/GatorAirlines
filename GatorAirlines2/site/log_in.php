@@ -24,6 +24,7 @@ $the_error =null;
 			$_SESSION['first_name'] = $result[0]['first_name'];
 			$_SESSION['last_name'] = $result[0]['last_name'];
 			$_SESSION['u_type'] = $result[0]['u_type']; 
+			$_SESSION['cid'] = $result[0]['cid']; 
 			
 			header("Location:myaccount.php"); // redirects								
 		}

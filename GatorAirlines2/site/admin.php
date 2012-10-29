@@ -62,7 +62,7 @@ function setAdminStyle($in)
 	
 	
 	<!-- This is necessarry for the Chosen plugin -->
-	<<link rel="stylesheet" href="css/chosen.css" />
+	<link rel="stylesheet" href="css/chosen.css" />
 	
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -93,7 +93,7 @@ function setAdminStyle($in)
 	<!-------------------------------------- END JQUERY ----------------------------->
 
 </head>
-<body id="page1">
+<body id="page4">
 
 
 <div class="main" >

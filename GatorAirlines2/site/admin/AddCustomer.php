@@ -126,13 +126,14 @@ if (isset($_POST['AddCustomerSubmit']))
 <script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>-->
 
 <form id="AddCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-Email: <input type="text" class="required email" name="email" /> </br>
-First Name: <input type="text" class="required" name="first_name" /> </br>
+First Name: <input type="text" class="required" name="first_name" /> 
 Last Name: <input type="text" class="required" name="last_name" /> </br>
+Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="required email" name="email" /> 
 Password: <input type="password" class="required" name="password" /> </br>
-Billing Address: <input type="text" class="required" name="addr" /> </br>
-City: <input type="text" class="required" name="city" /> </br>
-State: <input type="text" class="required" name="state" /> </br>
+Billing Address: <input type="text" class="required" name="addr" /> 
+City: <input type="text" class="required" name="city" />
+State: <input type="text" class="required" name="state" /> 
 Zip Code: <input type="text" class="required" name="zip" /> </br>
 Credit Card Number: <input type="text" class="required creditcard" name="cc_num" /> </br>
 User Type: <input type="text" class="required" name="u_type" /> </br>
