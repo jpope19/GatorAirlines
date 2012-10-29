@@ -47,6 +47,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		$alphaNumeric = '/^[A-Za-z0-9]+$/';
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
+		$name = '/^[A-Za-z ]+$/';
 		
 		if (isset($_POST['emailBox']))
 		{// email checked
@@ -100,7 +101,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// address checked
 			if (preg_match($address,$_POST['addr']) == 0 || strlen($_POST['addr']) > 30)
 			{// Address is not valid
-				$message .=  "Address is not valid\n";
+				$message .=  "Address is not valid\n";
 				$flag = 1;
 			}
 			else
@@ -110,7 +111,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		}
 		if (isset($_POST['cityBox']))
 		{// city checked
-			if (preg_match($alphaNumeric,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
+			if (preg_match($name,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
 			{// City is not valid
 				$message .=  "City is not valid\n";
 				$flag = 1;
@@ -122,7 +123,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		}
 		if (isset($_POST['stateBox']))
 		{// state checked
-			if (preg_match($alphabet,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
+			if (preg_match($name,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
 			{// State is not valid
 				$message .=  "State is not valid\n";
 				$flag = 1;
@@ -188,7 +189,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 			$key = $_POST['modCustomer'];
 			$users->modify_customers($set, $key);
 		}// end else
-	}
+	}// end else
 }
 ?>
 <!-- Some javascript to enable/disable text boxes based on check boxes -->
@@ -200,7 +201,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 </script>
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>
+<script type="text/javascript" src="js/admin/ValidateCustomer.js"></script>
 
 <li>Which user would you like to modify?</li>
 <form id="ModifyCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">

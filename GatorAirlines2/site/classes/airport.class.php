@@ -18,5 +18,9 @@ class Airport {
             }
         }
     }
+    
+    public static function get_total_airports($user) {
+        return 0;
+    }
 }
 ?>
