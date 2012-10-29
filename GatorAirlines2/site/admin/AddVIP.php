@@ -29,7 +29,7 @@ if (isset($_POST['AddVIPSubmit']))
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
 		$name = '/^[A-Za-z ]+$/';
-		$date = '/(?P<year>[0-9]{4})(?P<month>[0-9]{2})(?P<day>[0-9]{2})/';
+		//$date = '/^[0-9\/]+$/';
 		
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
@@ -51,13 +51,14 @@ if (isset($_POST['AddVIPSubmit']))
 			$message .= "Reward Points are not valid\n";
 			$flag = 1;
 		}
-		//NEED TO DO ERROR CHECKING FOR JOIN DATE
-		if (preg_match($date, $_POST['joinDate']) < 0)
+		/*
+		if (preg_match($date, strlen($_POST['joinDate']) > 10))
 		{
 			//join date is not valid
 			$message .= "Join date is not valid\n";
 			$flag = 1;
 		}
+		*/
 		
 		
 		//Deal with errors or lack of errors
@@ -86,13 +87,16 @@ if (isset($_POST['AddVIPSubmit']))
 }
 ?>
 
+
 <!-- Calendar JQuery -->
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 <script>
 $(function() {
 	$( "#joinDate" ).datepicker();
 });
 </script>
+
 
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
