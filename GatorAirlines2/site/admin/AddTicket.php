@@ -77,7 +77,7 @@ if (isset($_POST['AddTicketSubmit']))
 }
 ?>
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateTicket.js"></script>
+<script type="text/javascript" src="js/admin/ValidateTicket.js"></script>
 
 <form id="AddTicketForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Customer ID: <input type="text" class="required" name="cid" /> </br>

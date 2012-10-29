@@ -100,7 +100,7 @@ $(function() {
 
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateVIP.js"></script>
+<script type="text/javascript" src="js/admin/ValidateVIP.js"></script>
 
 <form id="AddVIPForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Email: <input type="text" class="required email" name="email" /> </br>

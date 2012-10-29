@@ -80,7 +80,7 @@ if (isset($_POST['AddAirplaneSubmit']))
 }
 ?>
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateAirplane.js"></script>
+<script type="text/javascript" src="js/admin/ValidateAirplane.js"></script>
 
 <form id="AddAirplaneForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Type of Plane: <input type="text" class="required" name="type" /> </br>

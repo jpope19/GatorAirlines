@@ -121,7 +121,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 </script>
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateTicket.js"></script>
+<script type="text/javascript" src="js/admin/ValidateTicket.js"></script>
 
 <li>Which user would you like to modify?</li>
 <form id="ModifyTicketForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">

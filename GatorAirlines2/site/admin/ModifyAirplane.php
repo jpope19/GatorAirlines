@@ -123,7 +123,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 </script>
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateAirplane.js"></script>
+<script type="text/javascript" src="js/admin/ValidateAirplane.js"></script>
 
 <li>Which user would you like to modify?</li>
 <form id="ModifyAirplaneForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">

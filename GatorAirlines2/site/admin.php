@@ -89,7 +89,7 @@ function setAdminStyle($in)
 	</script>
 	
 	<!-- The validation plugin -->
-	<script type="text/javascript" src="../js/validation/dist/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/validation/dist/jquery.validate.js"></script>
 	<!-------------------------------------- END JQUERY ----------------------------->
 
 </head>

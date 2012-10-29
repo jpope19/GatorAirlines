@@ -125,7 +125,7 @@ $(function() {
 </script>
 
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateVIP.js"></script>
+<script type="text/javascript" src="js/admin/ValidateVIP.js"></script>
 
 <li>Which VIP would you like to modify?</li>
 <form id="ModifyVIPForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">

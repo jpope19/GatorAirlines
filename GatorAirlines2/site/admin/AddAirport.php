@@ -79,7 +79,7 @@ if (isset($_POST['AddAirportSubmit']))
 }// end if
 ?>
 <!-- Jquery that uses Validation plugin to validate form on client side -->
-<script type="text/javascript" src="../js/admin/ValidateAirport.js"></script>
+<script type="text/javascript" src="js/admin/ValidateAirport.js"></script>
 
 <form id="AddAirportForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 City: <input type="text" class="required" name="city" /> </br>
