@@ -49,17 +49,15 @@ $airports = $users->get_airports();
 	{
 		$("#advanced").css("display","none");
 		
-		$(".advanced").live('click', function()
+		$(".advanced").click(function()
 		{
 			if ($('input[name=advanced]:checked').val() == "Yes" ) 
 			{
 				$("#advanced").slideDown("fast"); //Slide Down Effect
-				$("#submit_button").hide();
 			}// end if
 			else
 			{
-				$("#advanced").hide(); //Slide Up Effect
-				$("#submit_button").show();
+				$("#advanced").slideUp("fast"); //Slide Up Effect
 			}// end else
 		});
 	});
@@ -72,7 +70,9 @@ $airports = $users->get_airports();
 <body id="page1">
 <div class="main">
 <!--header -->
-	<?include('section/header2.php')?>
+
+	<?PHP include('section/header2.php')?>
+
 <!-- / header -->
 <!--content -->
 	<section id="content">
@@ -86,7 +86,10 @@ $airports = $users->get_airports();
 							<div class="content">
 								<div class="tab-content" id="Flight">
 									
-									<form action="jeffs_stuff/flight_results.php" method="post">
+									<form action="jeffs_stuff\flight_results.php" method="post">
+
+
+<div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
 
 <div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
 
@@ -102,12 +105,16 @@ Return :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="return" name=
 
 <br />
 
-From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
+
+From:  <br/>
+<select name="org">
 <?php
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
-        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+        <option value=<?= $airport['iata']?>><?=$airport['iata']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
 <?php
         }
     }
@@ -116,13 +123,16 @@ From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
 
 <br />
 
-To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="dest">
+To:  <br/>
+<select name="dest">
 <?php
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
-        
-		 <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+        <option value=<?= $airport['iata']?>><?=$airport['iata']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+
 <?php
         }
     }
@@ -145,17 +155,20 @@ Passenger &nbsp: <select name="passengers">
 </select>
 
 <br><br>
-<div id="submit_button">
+
 <input type="submit" class="button1" value="Submit">		<!-- Creates the submit button -->
-</div>
+<br>
 <br>
 Advanced
  <br>
 <input type="radio" name="advanced" class="advanced" value="Yes">Yes
 <input type="radio" name="advanced" class="advanced" value="No">No<br>
 
+</form>
+
 <!-- This is the advanced section of the home page -->
 
+<form action="post">
 <div id="advanced" style="background-color:#EEEEEE; height 200px;width:600px;float:left;">
 <br>
 <hr><b>Advanced	</b> <br>  <!-- hr creates the horizontal line -->
@@ -223,7 +236,7 @@ Flexible Return Date: <br>
 			</section>
 			<!--content end-->
 			<!--footer -->
-			<?phpinclude('section/footer2.php')?>
+			<?php include('section/footer2.php')?>
 			<!--footer end-->
 		</div>
 <script type="text/javascript"> Cufon.now(); </script>

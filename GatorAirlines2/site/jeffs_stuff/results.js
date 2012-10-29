@@ -6,14 +6,14 @@ $(function(){
         i = $(this).attr("ref");
         $("#layover_div_" + i).show();
         $("#layover_link_" + i).hide();
-        $("#layover_div_" + i).append("<a href='#' class='hide_layovers_link' id='hide_layover_link_" + i + "' ref='" + i + "'>Hide Layovers</a><br>");
+        $(".link_" + i).html("<a href='#' class='hide_layovers_link' id='hide_layover_link_" + i + "' ref='" + i + "'>Hide Layovers</a><br><br>");
         return false;
     });
     $(".hide_layovers_link").live("click", function(){
         i = $(this).attr("ref");
         $("#layover_div_" + i).hide();
         $("#hide_layover_link_" + i).hide();
-        $("#layover_link_" + i).show();
+         $(".link_" + i).html("<a href='#' class='layovers_link' id='layover_link_" + i + "' ref='" + i + "'>See Layovers</a><br><br>");
         return false;
     });
     
