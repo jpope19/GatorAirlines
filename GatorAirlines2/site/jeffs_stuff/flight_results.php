@@ -15,13 +15,15 @@ $flying_distance;
 $org;
 $dest;
 
+var_dump($_POST);
+
 $user = new users();
 $airport = new airport();
 //convert passed in day/month/year into epoch times
 
 //we use substr since now we have mm/dd/yyyy in one string.
 $_POST['e_depart_time'] = mktime(0,0,0,intval(substr($_POST['depart'],0,1)),intval(substr($_POST['depart'],3,4)),intval(substr($_POST['depart'],6,9)));
-$_POST['e_return_time'] = mktime(0,0,0,intval(substr($_POST['return'],0,1)),intval(substr($_POST['return'],3,4)),intval(substr($_POST['return'],6,9)));
+$_POST['e_return_time']= mktime(0,0,0,intval(substr($_POST['return'],0,1)),intval(substr($_POST['return'],3,4)),intval(substr($_POST['return'],6,9)));
 
 $org = $_POST['org'];
 $dest = $_POST['dest'];
@@ -31,10 +33,13 @@ $_POST['org'] = $airport->get_id_by_name($_POST['org'], $user);
 $_POST['dest'] = $airport->get_id_by_name($_POST['dest'], $user);
 
 //find routes
+
+print_r($_POST);
+
 $routes = new Search($_POST, $user);
 
 //output routes
-//var_dump($routes->depart_routes);
+var_dump($routes->depart_routes);
 
 //var_dump($routes->return_routes);
 

@@ -72,7 +72,7 @@ $airports = $users->get_airports();
 <body id="page1">
 <div class="main">
 <!--header -->
-	<?phpinclude('section/header2.php')?>
+	<?php include('section/header2.php')?>
 <!-- / header -->
 <!--content -->
 	<section id="content">
@@ -86,7 +86,7 @@ $airports = $users->get_airports();
 							<div class="content">
 								<div class="tab-content" id="Flight">
 									
-									<form action="jeffs_stuff/flight_results.php" method="post">
+									<form action="search.php" method="post">
 
 <div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
 
@@ -103,12 +103,12 @@ Return :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="return" name=
 <br />
 
 From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
-<?php
+<?
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
-        <option value=<?php= $airport['iata']?>><?php=$airport['name']?> - <?php=$airport['city']?>, <?php=$airport['state']?></option>
-<?php
+        <option value=<?=$airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+<?
         }
     }
 ?>
@@ -121,7 +121,7 @@ To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name=
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
-        <option value=<?php= $airport['iata']?>><?php=$airport['name']?> - <?php=$airport['city']?>, <?php=$airport['state']?></option>
+        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
 <?php
         }
     }
