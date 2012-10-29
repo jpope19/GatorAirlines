@@ -49,17 +49,15 @@ $airports = $users->get_airports();
 	{
 		$("#advanced").css("display","none");
 		
-		$(".advanced").live('click', function()
+		$(".advanced").click(function()
 		{
 			if ($('input[name=advanced]:checked').val() == "Yes" ) 
 			{
 				$("#advanced").slideDown("fast"); //Slide Down Effect
-				$("#submit_button").hide();
 			}// end if
 			else
 			{
-				$("#advanced").hide(); //Slide Up Effect
-				$("#submit_button").show();
+				$("#advanced").slideUp("fast"); //Slide Up Effect
 			}// end else
 		});
 	});
@@ -88,6 +86,8 @@ $airports = $users->get_airports();
 									
 									<form action="jeffs_stuff\flight_results.php" method="post">
 
+
+<div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
 
 <div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
 
@@ -149,17 +149,20 @@ Passenger &nbsp: <select name="passengers">
 </select>
 
 <br><br>
-<div id="submit_button">
+
 <input type="submit" class="button1" value="Submit">		<!-- Creates the submit button -->
-</div>
+<br>
 <br>
 Advanced
  <br>
 <input type="radio" name="advanced" class="advanced" value="Yes">Yes
 <input type="radio" name="advanced" class="advanced" value="No">No<br>
 
+</form>
+
 <!-- This is the advanced section of the home page -->
 
+<form action="post">
 <div id="advanced" style="background-color:#EEEEEE; height 200px;width:600px;float:left;">
 <br>
 <hr><b>Advanced	</b> <br>  <!-- hr creates the horizontal line -->
