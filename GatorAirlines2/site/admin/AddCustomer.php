@@ -41,6 +41,7 @@ if (isset($_POST['AddCustomerSubmit']))
 		$alphaNumeric = '/^[A-Za-z0-9]+$/';
 		$numeric = '/^[0-9]+$/';
 		$address = '/^[A-Za-z0-9 ]+$/';
+		$name = '/^[A-Za-z ]+$/';
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{// email is not valid
@@ -54,7 +55,7 @@ if (isset($_POST['AddCustomerSubmit']))
 		}
 		if (preg_match($alphabet,$_POST['last_name']) == 0 || strlen($_POST['last_name']) > 30)
 		{// last name is not valid
-			$message .=  "Last is not valid\n";
+			$message .=  "Last name is not valid\n";
 			$flag = 1;
 		}
 		if (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 30)
@@ -64,15 +65,15 @@ if (isset($_POST['AddCustomerSubmit']))
 		}
 		if (preg_match($address,$_POST['addr']) == 0 || strlen($_POST['addr']) > 30)
 		{// Address is not valid
-			$message .=  "Address is not valid\n";
+			$message .=  "Address is not valid\n";
 			$flag = 1;
 		}
-		if (preg_match($alphaNumeric,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
+		if (preg_match($name,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
 		{// City is not valid
 			$message .=  "City is not valid\n";
 			$flag = 1;
 		}
-		if (preg_match($alphabet,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
+		if (preg_match($name,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
 		{// State is not valid
 			$message .=  "State is not valid\n";
 			$flag = 1;
@@ -122,8 +123,8 @@ if (isset($_POST['AddCustomerSubmit']))
 	}// end else
 }// end if
 ?>
-<!-- Jquery that uses Validation plugin to validate form on client side 
-<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>-->
+<!-- Jquery that uses Validation plugin to validate form on client side -->
+<script type="text/javascript" src="../js/admin/ValidateCustomer.js"></script>
 
 <form id="AddCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Email: <input type="text" class="required email" name="email" /> </br>
