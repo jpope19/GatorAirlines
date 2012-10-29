@@ -9,6 +9,8 @@ class Route {
         $this->num_flights = 0;
         $this->flights = array();
         $this->opts = $opts;
+        $this->visited = array();
+
     }
     
     public function add_flight($flight) {

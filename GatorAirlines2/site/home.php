@@ -32,7 +32,7 @@ $airports = $users->get_airports();
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css" />
+
 
 	<script>
     $(function() {
@@ -72,7 +72,7 @@ $airports = $users->get_airports();
 <body id="page1">
 <div class="main">
 <!--header -->
-	<?include('section/header2.php')?>
+	<?phpinclude('section/header2.php')?>
 <!-- / header -->
 <!--content -->
 	<section id="content">
@@ -103,12 +103,12 @@ Return :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="return" name=
 <br />
 
 From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
-<?
+<?php
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
-        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
-<?
+        <option value=<?php= $airport['iata']?>><?php=$airport['name']?> - <?php=$airport['city']?>, <?php=$airport['state']?></option>
+<?php
         }
     }
 ?>
@@ -117,12 +117,12 @@ From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
 <br />
 
 To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="dest">
-<?
+<?php
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
-        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
-<?
+        <option value=<?php= $airport['iata']?>><?php=$airport['name']?> - <?php=$airport['city']?>, <?php=$airport['state']?></option>
+<?php
         }
     }
 ?>
@@ -222,7 +222,7 @@ Flexible Return Date: <br>
 			</section>
 			<!--content end-->
 			<!--footer -->
-			<?include('section/footer2.php')?>
+			<?phpinclude('section/footer2.php')?>
 			<!--footer end-->
 		</div>
 <script type="text/javascript"> Cufon.now(); </script>
