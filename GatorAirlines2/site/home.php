@@ -72,7 +72,7 @@ $airports = $users->get_airports();
 <body id="page1">
 <div class="main">
 <!--header -->
-	<?phpinclude('section/header2.php')?>
+	<?include('section/header2.php')?>
 <!-- / header -->
 <!--content -->
 	<section id="content">
@@ -107,7 +107,7 @@ From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
-        <option value=<?php= $airport['iata']?>><?php=$airport['name']?> - <?php=$airport['city']?>, <?php=$airport['state']?></option>
+        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
 <?php
         }
     }
@@ -121,7 +121,8 @@ To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name=
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
-        <option value=<?php= $airport['iata']?>><?php=$airport['name']?> - <?php=$airport['city']?>, <?php=$airport['state']?></option>
+        
+		 <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
 <?php
         }
     }
