@@ -46,7 +46,7 @@
 		<nav>
 			<ul id="menu">
 				<li><a href="home.php"><span><span>Home</span></span></a></li>
-				<li><a href="MyAccount.php"><span><span>My Account</span></span></a></li>
+				<?if(isset($_SESSION['u_type']) ) {echo "<li><a href=MyAccount.php><span><span>My Account</span></span></a></li>";}  ?>
 				<li><a href="reservation.php"><span><span>Reservations</span></span></a></li>
 				<li><a href="checkin.php"><span><span>Check-In</span></span></a></li>
 				<li><a href="flight_times.php"><span><span>Flight Times</span></span></a></li>

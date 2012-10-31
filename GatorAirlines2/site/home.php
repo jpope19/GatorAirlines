@@ -32,7 +32,7 @@ $airports = $users->get_airports();
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css" />
+
 
 	<script>
     $(function() {
@@ -70,7 +70,9 @@ $airports = $users->get_airports();
 <body id="page1">
 <div class="main">
 <!--header -->
-	<?include('section/header2.php')?>
+
+	<?PHP include('section/header2.php')?>
+
 <!-- / header -->
 <!--content -->
 	<section id="content">
@@ -84,13 +86,12 @@ $airports = $users->get_airports();
 							<div class="content">
 								<div class="tab-content" id="Flight">
 									
-									<form action="search.php" method="post">
+									<form action="jeffs_stuff\flight_results.php" method="post">
+
 
 <div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
 
-									
-
-
+<div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
 
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
@@ -104,31 +105,37 @@ Return :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="return" name=
 
 <br />
 
-From &nbsp &nbsp &nbsp &nbsp &nbsp :  <select name="org">
-<?
-    foreach($airports as $airport){
-        if($airport['airport_id'] <= 5) {
-?>
-        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
 
-<?
+From:  <br/>
+<select name="org">
+<?php
+    foreach($airports as $airport){
+        if($airport['airport_id'] <= 50) {
+?>
+
+        <option value=<?= $airport['iata']?>><?=$airport['iata']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+<?php
         }
-    }                
+    }
 ?>
 </select>
 
 <br />
 
-To &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :  <select name="dest">
-<?
+To:  <br/>
+<select name="dest">
+<?php
     foreach($airports as $airport){
-        if($airport['airport_id'] <= 5) {
+        if($airport['airport_id'] <= 50) {
 ?>
-        <option value=<?= $airport['iata']?>><?=$airport['name']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
 
-<?
+        <option value=<?= $airport['iata']?>><?=$airport['iata']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
+
+<?php
         }
-    }                
+    }
 ?>
 </select>
 
@@ -229,7 +236,7 @@ Flexible Return Date: <br>
 			</section>
 			<!--content end-->
 			<!--footer -->
-			<?include('section/footer2.php')?>
+			<?php include('section/footer2.php')?>
 			<!--footer end-->
 		</div>
 <script type="text/javascript"> Cufon.now(); </script>

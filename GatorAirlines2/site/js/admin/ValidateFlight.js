@@ -9,43 +9,48 @@ $(document).ready(function()
 			"plane_id":{
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"org_id": {
 				required: true, 
 				maxlength: 30,
-				digits: true
-				
+				digits: true,
+				name: false
 			},
 			"dest_id": {
 				required: true,
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"first_class_cost": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"coach_class_cost": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"e_depart_time": {
 				required: true,
-				maxlength: 30
-				
+				maxlength: 30,
+				name: false	
 			},
 			"e_arrival_time": {
 				required: true,
-				maxlength: 30
-				
+				maxlength: 30,
+				name: false
 			},
 			"distance": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			}
 		},
 		
@@ -92,22 +97,25 @@ $(document).ready(function()
 {	
     $("#ModifyFlightForm").validate({
 		// Apply rules
+		ignore: ".checkbox, .date, .chosen",
 		rules: {
 			"plane_id":{
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"org_id": {
 				required: true, 
 				maxlength: 30,
-				digits: true
-				
+				digits: true,
+				name: false
 			},
 			"dest_id": {
 				required: true,
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"first_class_cost": {
 				required: true, 
@@ -117,21 +125,24 @@ $(document).ready(function()
 			"coach_class_cost": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"depart_time": {
 				required: true,
-				maxlength: 30
+				maxlength: 30,
+				name: false
 			},
 			"arrival_time": {
 				required: true,
-				maxlength: 30
-				
+				maxlength: 30,
+				name: false
 			},
 			"distance": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			}
 		},
 		

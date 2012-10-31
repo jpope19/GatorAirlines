@@ -53,16 +53,14 @@ function setAdminStyle($in)
 <!DOCTYPE html>  
 <html lang="en">
 <head>
-  <title>Admin</title>
-  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-    <link rel="stylesheet" href="/resources/demos/style.css" /> 
-	
+	<title>Admin</title>
+	<link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+	<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+	<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+	<link rel="stylesheet" href="css/adminStyle.css" type="text/css" media="all">
 	
 	<!-- This is necessarry for the Chosen plugin -->
-	<<link rel="stylesheet" href="css/chosen.css" />
+	<link rel="stylesheet" href="css/chosen.css" />
 	
 	<!--------------------------------------- Include JQuery ------------------------------->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -88,12 +86,19 @@ function setAdminStyle($in)
 	});
 	</script>
 	
-	<!-- The validation plugin --><!-- enable this after testing!
-	<script type="text/javascript" src="../js/validation/dist/jquery.validate.js"></script>-->
+	<!-- The validation plugin -->
+	<script type="text/javascript" src="js/validation/dist/jquery.validate.js"></script>
+	
+	<!-- Jquery for calendar and validaiton of dates -->
+	<script>
+	$(function() {
+		$( ".date" ).datepicker();
+	});
+	</script>
 	<!-------------------------------------- END JQUERY ----------------------------->
 
 </head>
-<body id="page1">
+<body id="page4">
 
 
 <div class="main" >
@@ -269,7 +274,7 @@ function setAdminStyle($in)
 			
 			<!--content end-->
 			<!--footer -->
-			<?include('section/footer2.php')?>
+		
 			<!--footer end-->
 		
 		</div>
