@@ -34,6 +34,7 @@ class users extends db {
         set_time_limit(6000);
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
+            echo $line . "<br>";
             $info = explode("," , $line);
             $record2['email'] = trim($info[0]);
             $record2['first_name'] = trim($info[1]);
@@ -47,26 +48,23 @@ class users extends db {
             $record2['u_type'] = 0;
             $this->db->AutoExecute("customers", $record2, "INSERT");
         }
-        echo "Created some flights";
-        
-        
-        fclose($file);
         
         $file = fopen("data/flights.txt", 'r');
 
         while(!feof($file)){
             $line = utf8_encode(trim(fgets($file)));
+            //echo $line . "<br>";
             $info = explode(" " , $line);
             $record3['plane_id'] = trim($info[0]);
             $record3['org_id'] = trim($info[1]);
             $record3['dest_id'] = trim($info[2]);
-            $record3['first_class_cost'] = trim($info[3]);
-            $record3['coach_class_cost'] = trim($info[4]);
-            $record3['e_depart_time'] = trim($info[5]);
-            $record3['e_arrival_time'] = trim($info[6]);
-            $record3['depart_time'] = trim($info[5]);
-            $record3['arrival_time'] = trim($info[6]);
-            $record3['distance'] = trim($info[7]);
+            $record3['first_class_cost'] = 500;
+            $record3['coach_class_cost'] = 400;
+            $record3['e_depart_time'] = trim($info[3]);
+            $record3['e_arrival_time'] = trim($info[4]);
+            $record3['depart_time'] = 0;
+            $record3['arrival_time'] = 0;
+            $record3['distance'] = 0;
             $this->db->AutoExecute("flights", $record3, "INSERT");
         }
         
@@ -107,21 +105,9 @@ class users extends db {
 	// Get Functions
 	function get_user($email, $password){
 		$where = "email = \"" . $email . "\" AND password = \"" . $password . "\"";
-        $sql = "SELECT first_name,cid, last_name, u_type FROM customers WHERE $where";
+        $sql = "SELECT first_name, last_name, u_type FROM customers WHERE $where";
         return $this->db->GetArray($sql);
     }
-	
-	//get reservations for a particular user fron Tickets and Flights table.
-	
-	function get_reservation($cid)
-	          {
-			  
-			  $where = "T.flight_id = F.flight_id and cid =$cid";
-			  $sql = "select * FROM tickets as T,flights as F WHERE $where";
-        return $this->db->GetArray($sql);
-			  
-			  }
-	
     function get_customers($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM customers $order";
@@ -154,27 +140,30 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
+	//CHECK!
+	function get_tickets_seat($flight_id, $order = "") {
+		if ($order != "") $order = "ORDER BY $order ASC";
+		$sql = "SELECT seat_id FROM tickets WHERE flight_id = $flight_id $order";
+		return $this->db->GetArray($sql);
+	}
+	
+	function check_ticket($ticket_id)
+	{
+		$sql = "SELECT cid FROM tickets WHERE ticket_id = $ticket_id";
+		return $this ->db->GetArray($sql);
+	}
+	
+	function check_name($name,$cid)
+	{
+		$sql = "SELECT last_name FROM customers WHERE cid_id = $cid_id";
+		return $this ->db->GetArray($sql);
+	}
+	
 	function get_vip($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM vip $order";
         return $this->db->GetArray($sql);
     }
-	
-	function get_emails_from_flight($flight_id, $order = ""){
-        $sql = "SELECT email, SUM(ticket_id)
-			FROM customers, tickets
-			WHERE flight_id = 1 AND tickets.cid = customers.cid
-            GROUP BY ticket_id";
-			// Group by so that only one email is returned for each flight, even if a customer
-			// has multiple tickets
-        return $this->db->GetArray($sql);
-    }
-	
-	//Returns all of the seat numbers that have been booked for a particular flight.
-	function get_seat($flight_id){
-		$sql = "SELECT seat_id FROM tickets WHERE {$flight_id} = flight_id";
-		return $this->db->GetArray($sql);
-	}
 	
 	// Modify functions
 	function modify_customers($set, $key){
@@ -306,20 +295,13 @@ class users extends db {
         $this->db->Execute($sql);
     }
     
-    function clear_db() {
-    	$tables = array( 'vip', 'tickets', 'flights', 'airplanes', 'airports', 'customers');
-        foreach ($tables as $table) {
-            $this->clear_table($table);
-        }
-    	
-    	
-    }
-    
-    function clear_table($table) {
-    	$sql = "TRUNCATE TABLE `$table`";
-    	$this->db->Execute($sql);
-    }
-    
     
 }
+
+     //$user = new users();
+	 
+	 //$user->create_db();
+	 
+	 //$user->fill_database();
+
 ?>

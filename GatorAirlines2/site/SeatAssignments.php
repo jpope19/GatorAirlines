@@ -79,6 +79,29 @@
 			<?include('section/footer2.php')?>
 			<!--footer end-->
 		</div>
+
+<!-- PHP AND JAVASCRIPT REFERENCE -->		
+<script type="text/javascript" src="seat.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+
+<ul>
+<!-- <script type="text/php" src="seat_selection.php"></script> -->
+</ul>
+
+			    <script type='text/javascript'>
+				$(document).ready(function(){
+				var array = [];
+						/* call the php that has the php array which is json_encoded */
+					$.getJSON("seat_selection.php", function(data) {
+						$.each(data, function(key,val) {
+							array.push(parseInt(val));
+						});
+						init(array);
+					});
+						
+				});
+			 </script>
 <script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>
