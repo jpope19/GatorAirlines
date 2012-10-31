@@ -10,7 +10,7 @@ $users = new users(); // class from user.class.php that will be used to manipula
 //goes to the selection page, I need a variable $POST that
 //contains the flight id.
 //
-//$reserved_seats = $users->get_tickets_seat($POST);
+//$reserved_seats = $users->get_seat($_POST);
 
 //echo json_encode($reserved_seats);
 
