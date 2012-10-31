@@ -34,7 +34,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 	if ($_POST['modFlight']=="")
 	{// no one chosen
 		print "<script type=\"text/javascript\">"; 
-		print "alert('No customer was chosen to modify.')"; 
+		print "alert('No flight was chosen to modify.')"; 
 		print "</script>"; 
 	}
 	else
@@ -43,7 +43,8 @@ if (isset($_POST['ModifyFlightSubmit']))
 		$message = ""; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
-		$timeDate = '/^[A-Za-z0-9 ]+$/';
+		$date = '/^[0-9\/\\\\]+$/'; // modify
+		$time = '/^[0-9:]+$/'; // modify
 		$numeric = '/^[0-9]+$/';
 		
 		if (isset($_POST['plane_idBox']))
@@ -108,26 +109,42 @@ if (isset($_POST['ModifyFlightSubmit']))
 		}
 		if (isset($_POST['depart_timeBox']))
 		{// depart_time checked
-			if (preg_match($timeDate,$_POST['depart_time']) == 0 || strlen($_POST['depart_time']) > 30)
+			if (preg_match($date,$_POST['depart_date']) == 0 || strlen($_POST['depart_date']) < 10 || strlen($_POST['depart_date']) > 10)
+			{// City is not valid
+				$message .=  "Departure date is not valid\n";
+				$flag = 1;
+			}
+			if (preg_match($time,$_POST['depart_time']) == 0 || strlen($_POST['depart_time']) > 30)
 			{// City is not valid
 				$message .=  "Departure time is not valid\n";
 				$flag = 1;
 			}
-			else
-			{
-				$set['depart_time'] = $_POST['depart_time'];
+			
+			if ($flag != 1)
+			{// Both date and time are valid
+				$date = explode("/", $_POST['depart_date']);
+				$time = explode(":", $_POST['depart_time']);
+				$set['depart_time'] = mktime($time[0], $time[1], 0, $date[0], $date[1], $date[2]);
 			}
 		}
 		if (isset($_POST['arrival_timeBox']))
 		{// arrival_time checked
-			if (preg_match($timeDate,$_POST['arrival_time']) == 0 || strlen($_POST['arrival_time']) > 30)
+			if (preg_match($date,$_POST['arrival_date']) == 0 || strlen($_POST['arrival_date']) < 10 || strlen($_POST['arrival_date']) > 10)
+			{// State is not valid
+				$message .=  "Arrival date is not valid\n";
+				$flag = 1;
+			}	
+			if (preg_match($time,$_POST['arrival_time']) == 0 || strlen($_POST['arrival_time']) > 30)
 			{// State is not valid
 				$message .=  "Arrival time is not valid\n";
 				$flag = 1;
 			}
-			else
-			{
-				$set['arrival_time'] = $_POST['arrival_time'];
+			
+			if ($flag != 1)
+			{// Both date and time are valid
+				$date = explode("/", $_POST['arrival_date']);
+				$time = explode(":", $_POST['arrival_time']);
+				$set['arrival_time'] = mktime($time[0], $time[1], 0, $date[0], $date[1], $date[2]);
 			}
 		}
 		if (isset($_POST['distanceBox']))
@@ -168,11 +185,11 @@ if (isset($_POST['ModifyFlightSubmit']))
 				$message ="The following have been changed for flight " . $_POST['modFlight'] .":";
 				if (isset($_POST['depart_timeBox']))
 				{
-					$message .="\n The departure time is now " . $_POST['depart_time'];
+					$message .="\n The departure is now on " . $_POST['depart_date'] . " at " . $_POST['depart_time'];
 				}// end if
 				if (isset($_POST['arrival_timeBox']))
 				{
-					$message .="\n The arrival time is now " . $_POST['arrival_time'];
+					$message .="\n The arrival is now on " . $_POST['arrival_date'] . " at " . $_POST['arrival_time'];
 				}// end if
 				
 					include("classes/email.class.php");
@@ -255,18 +272,18 @@ if (isset($_POST['ModifyFlightSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" class="checkbox" value="1" name="depart_timeBox" id="depart_timeBox" onClick="enableDisable(this.checked, 'depart_time')" />
+		<input type="checkbox" class="checkbox" value="1" name="depart_timeBox" id="depart_timeBox" onClick="enableDisable(this.checked, 'depart_date'); enableDisable(this.checked, 'depart_time')" />
 	</td>
 	<td>
-		New Depart Time: <input type="text" class="required" name="depart_time" disabled="disabled" id="depart_time" >
+		New Depart Date: <input type="text" class="date" name="depart_date" disabled="disabled" id="depart_date" > Time: <input type="text" class="required" name="depart_time" disabled="disabled" id="depart_time" >
 	</td> </br>
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" class="checkbox" value="1" name="arrival_timeBox" id="arrival_timeBox" onClick="enableDisable(this.checked, 'arrival_time')" />
+		<input type="checkbox" class="checkbox" value="1" name="arrival_timeBox" id="arrival_timeBox" onClick="enableDisable(this.checked, 'arrival_date'); enableDisable(this.checked, 'arrival_time')" />
 	</td>
 	<td>
-		New Arrival Time: <input type="text" class="required" name="arrival_time" disabled="disabled" id="arrival_time" >
+		New Arrival Date: <input type="text" class="date" name="arrival_date" disabled="disabled" id="arrival_date" > Time: <input type="text" class="required" name="arrival_time" disabled="disabled" id="arrival_time" >
 	</td> </br>
 </tr>
 <tr>

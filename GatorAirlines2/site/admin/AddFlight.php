@@ -26,7 +26,7 @@ if (isset($_POST['AddFlightSubmit']))
 	$_SESSION['action']="Add";
 	
 	// Filter form
-	if ((empty($_POST['plane_id'])) || (empty($_POST['org_id'])) || (empty($_POST['dest_id'])) || (empty($_POST['first_class_cost'])) ||	(empty($_POST['coach_class_cost'])) || (empty($_POST['e_depart_time'])) || (empty($_POST['e_arrival_time'])) || (empty($_POST['distance'])))
+	if ((empty($_POST['plane_id'])) || (empty($_POST['org_id'])) || (empty($_POST['dest_id'])) || (empty($_POST['first_class_cost'])) ||	(empty($_POST['coach_class_cost'])) || (empty($_POST['e_depart_date'])) || (empty($_POST['e_depart_time'])) || (empty($_POST['e_arrival_date'])) || (empty($_POST['e_arrival_time'])) || (empty($_POST['distance'])))
 	{
 		print "<script type=\"text/javascript\">"; 
 		print "alert('Please fill out all fields.')"; 
@@ -38,7 +38,8 @@ if (isset($_POST['AddFlightSubmit']))
 		$message = ""; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
-		$timeDate = '/^[A-Za-z0-9 ]+$/';
+		$time = '/^[A-Za-z0-9 ]+$/'; //modify
+		$date = '/^[A-Za-z0-9 ]+$/'; //modify
 		$numeric = '/^[0-9]+$/';
 		
 		if (preg_match($numeric,$_POST['plane_id']) == 0 || strlen($_POST['plane_id']) > 30)
@@ -66,12 +67,22 @@ if (isset($_POST['AddFlightSubmit']))
 			$message .=  "Coach class cost is not valid\n";
 			$flag = 1;
 		}
-		if (preg_match($timeDate,$_POST['e_depart_time']) == 0 || strlen($_POST['e_depart_time']) > 30)
+		if (preg_match($date,$_POST['e_depart_date']) == 0 || strlen($_POST['e_depart_date']) < 10 || strlen($_POST['e_depart_date']) > 10)
+		{// City is not valid
+			$message .=  "Estimated departure date is not valid\n";
+			$flag = 1;
+		}
+		if (preg_match($time,$_POST['e_depart_time']) == 0 || strlen($_POST['e_depart_time']) > 30)
 		{// City is not valid
 			$message .=  "Estimated departure time is not valid\n";
 			$flag = 1;
 		}
-		if (preg_match($timeDate,$_POST['e_arrival_time']) == 0 || strlen($_POST['e_arrival_time']) > 30)
+		if (preg_match($date,$_POST['e_arrival_date']) == 0 || strlen($_POST['e_arrival_date']) < 10 || strlen($_POST['e_arrival_date']) > 10)
+		{// State is not valid
+			$message .=  "Estimated arrival date is not valid\n";
+			$flag = 1;
+		}
+		if (preg_match($time,$_POST['e_arrival_time']) == 0 || strlen($_POST['e_arrival_time']) > 30)
 		{// State is not valid
 			$message .=  "Estimated arrival time is not valid\n";
 			$flag = 1;
@@ -118,8 +129,8 @@ Organization ID: <input type="text" class="required" name="org_id" /> </br>
 Destination ID: <input type="text" class="required" name="dest_id" /> </br>
 First Class Cost: <input type="text" class="required" name="first_class_cost" /> </br>
 Coach Class Cost: <input type="text" class="required" name="coach_class_cost" /> </br>
-Estimated Departure Time: <input type="text" class="required" name="e_depart_time" /> </br>
-Estimated Arrival Time: <input type="text" class="required" name="e_arrival_time" /> </br>
+Estimated Departure Date: <input type="text" class="date" name="e_depart_date" /> Time: <input type="text" class="required" name="e_depart_time" /> </br>
+Estimated Arrival Time: <input type="text" class="date" name="e_arrival_date" /> Time: <input type="text" class="required" name="e_arrival_time" /> </br>
 Distance: <input type="text" class="required" name="distance" /> </br>
 <input type="submit" name="AddFlightSubmit"/>
 </form>

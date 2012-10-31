@@ -97,7 +97,7 @@ $(document).ready(function()
 {	
     $("#ModifyFlightForm").validate({
 		// Apply rules
-		ignore: ".checkbox"
+		ignore: ".checkbox, .date, .chosen",
 		rules: {
 			"plane_id":{
 				required: true, 
