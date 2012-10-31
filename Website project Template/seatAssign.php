@@ -84,16 +84,20 @@ Description: A two-column, fixed-width design for blogs and small websites.
 <ul>
 <!-- <script type="text/php" src="seat_selection.php"></script> -->
 </ul>
-			<script type='text/javascript'>
+
+			    <script type='text/javascript'>
 				$(document).ready(function(){
-			
-					/* call the php that has the php array which is json_encoded */
-                $.getJSON("seat_selection.php", function(data) {
-					$.each(data, function(key,val) {
-						$('ul').append('<li id="number">' + val.number + '</li>'); });
-											 });
-											 });
-			</script>
+				var array = [];
+						/* call the php that has the php array which is json_encoded */
+					$.getJSON("seat_selection.php", function(data) {
+						$.each(data, function(key,val) {
+							array.push(parseInt(val));
+						});
+						init(array);
+					});
+						
+				});
+			 </script>
 
 
 

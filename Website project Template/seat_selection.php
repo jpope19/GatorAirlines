@@ -6,14 +6,21 @@ header("Content-type: text/javascript");
 include("../classes/users.class.php");
 $users = new users(); // class from user.class.php that will be used to manipulate the database
 	
+//When this page is linked up to the site when a customer
+//goes to the selection page, I need a variable $POST that
+//contains the flight id.
+//
 //$reserved_seats = $users->get_tickets_seat($POST);
 
 //echo json_encode($reserved_seats);
 
+//This is a test array commet everything below and uncommet above
+//once this page has been linked.
 $array = array( 
-	array(
-		"number" => "10000"
-	)
+	
+		"number" => "1",
+		"num" => "2"
+	
 );
 
 echo json_encode($array);

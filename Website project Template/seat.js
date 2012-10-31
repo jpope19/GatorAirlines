@@ -32,19 +32,8 @@ var init = function (reservedSeat) {
                 $('#place').html(str.join(''));
 				
             };
-				
-			//var bookedSeats = [];
-			//for( number in data){
-			//	bookedSeats.push(data[number]);
-			//	}
-			//init(bookedSeats);	
-				
-            //case I: Show from starting
-            //init();
- 
-            //Case II: If already booked
-            //var bookedSeats = ;
-            //init(bookedSeats);		   
+			
+					   
 			
 $('.' + settings.seatCss).click(function () {
 if ($(this).hasClass(settings.selectedSeatCss)){
