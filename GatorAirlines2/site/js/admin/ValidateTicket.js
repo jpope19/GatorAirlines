@@ -59,6 +59,7 @@ $(document).ready(function()
 {	
     $("#ModifyTicketForm").validate({
 		// Apply rules
+		ignore: ".checkbox"
 		rules: {
 			"cid":{
 				required: true, 

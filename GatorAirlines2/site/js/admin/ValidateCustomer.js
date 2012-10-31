@@ -17,6 +17,7 @@ $(document).ready(function()
 	
     $("#AddCustomerForm").validate({
 		// Apply rules
+		ignore: ".checkbox"
 		rules: {
 			"email":{
 				required: true, 

@@ -132,7 +132,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 <li>Which fields would you like to modify from this user?:</li>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="cidBox" id="cidBox" onClick="enableDisable(this.checked, 'cid')" />
+		<input type="checkbox" class="checkbox" value="1" name="cidBox" id="cidBox" onClick="enableDisable(this.checked, 'cid')" />
 	</td>
 	<td>
 		Customer ID: <input type="text" class="required" name="cid" disabled="disabled" id="cid">
@@ -140,7 +140,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="flight_idBox" id="last_idBox" onClick="enableDisable(this.checked, 'flight_id')" />
+		<input type="checkbox" class="checkbox" value="1" name="flight_idBox" id="last_idBox" onClick="enableDisable(this.checked, 'flight_id')" />
 	</td>
 	<td>
 		Flight ID: <input type="text" class="required" name="flight_id" disabled="disabled" id="flight_id" >
@@ -148,7 +148,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="seat_idBox" id="seat_idBox" onClick="enableDisable(this.checked, 'seat_id')" />
+		<input type="checkbox" class="checkbox" value="1" name="seat_idBox" id="seat_idBox" onClick="enableDisable(this.checked, 'seat_id')" />
 	</td>
 	<td>
 		Seat ID: <input type="text" class="required" name="seat_id" disabled="disabled" id="seat_id" >
@@ -156,7 +156,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="priceBox" id="priceBox" onClick="enableDisable(this.checked, 'price')" />
+		<input type="checkbox" class="checkbox" value="1" name="priceBox" id="priceBox" onClick="enableDisable(this.checked, 'price')" />
 	</td>
 	<td>
 		Price: <input type="text" class="required" name="price" disabled="disabled" id="price" >

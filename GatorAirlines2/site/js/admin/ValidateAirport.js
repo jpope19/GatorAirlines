@@ -17,6 +17,7 @@ $(document).ready(function()
 	
     $("#AddAirportForm").validate({
 		// Apply rules
+		ignore: ".checkbox"
 		rules: {
 			"city": {
 				required: true, 

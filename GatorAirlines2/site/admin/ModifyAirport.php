@@ -133,7 +133,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 <li>Which fields would you like to modify from this Airport?:</li>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="acityBox" id="acityBox" onClick="enableDisable(this.checked, 'acity')" />
+		<input type="checkbox" class="checkbox" value="1" name="acityBox" id="acityBox" onClick="enableDisable(this.checked, 'acity')" />
 	</td>
 	<td>
 		City: <input type="text" name="acity" disabled="disabled" id="acity" >
@@ -141,7 +141,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="astateBox" id="astateBox" onClick="enableDisable(this.checked, 'astate')" />
+		<input type="checkbox" class="checkbox" value="1" name="astateBox" id="astateBox" onClick="enableDisable(this.checked, 'astate')" />
 	</td>
 	<td>
 		State: <input type="text" name="astate" disabled="disabled" id="astate" >
@@ -149,7 +149,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="iataBox" id="iataBox" onClick="enableDisable(this.checked, 'iata')" />
+		<input type="checkbox" class="checkbox" value="1" name="iataBox" id="iataBox" onClick="enableDisable(this.checked, 'iata')" />
 	</td>
 	<td>
 		IATA: <input type="text" name="iata" disabled="disabled" id="iata" >
@@ -157,7 +157,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="nameBox" id="nameBox" onClick="enableDisable(this.checked, 'name')" />
+		<input type="checkbox" class="checkbox" value="1" name="nameBox" id="nameBox" onClick="enableDisable(this.checked, 'name')" />
 	</td>
 	<td>
 		Airport Name: <input type="text" name="name" disabled="disabled" id="name" >
