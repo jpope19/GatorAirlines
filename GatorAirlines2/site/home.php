@@ -86,7 +86,7 @@ $airports = $users->get_airports();
 							<div class="content">
 								<div class="tab-content" id="Flight">
 									
-									<form action="jeffs_stuff\flight_results.php" method="post">
+									<form action="search.php" method="post">
 
 
 <div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
