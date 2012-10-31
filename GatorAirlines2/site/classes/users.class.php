@@ -161,10 +161,12 @@ class users extends db {
     }
 	
 	function get_emails_from_flight($flight_id, $order = ""){
-        $sql = "SELECT email
-		FROM customers, tickets
-		WHERE flight_id = $flight_id AND tickets.cid = customers.cid
-		ORDER BY email ASC";
+        $sql = "SELECT email, SUM(ticket_id)
+			FROM customers, tickets
+			WHERE flight_id = 1 AND tickets.cid = customers.cid
+            GROUP BY ticket_id";
+			// Group by so that only one email is returned for each flight, even if a customer
+			// has multiple tickets
         return $this->db->GetArray($sql);
     }
 	

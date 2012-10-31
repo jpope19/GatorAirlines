@@ -23,9 +23,9 @@ class email {
                     
         foreach($this->addresses as $address){
             if(mail($address, $this->subject, $this->message, $headers)){
-                echo "Email sent to " . $address . ".<br>";
+                //echo "Email sent to " . $address . ".<br>";
             }else{
-                echo "Email sending to " . $address . " failed.<br>";
+                //echo "Email sending to " . $address . " failed.<br>";
             }
         }
     }

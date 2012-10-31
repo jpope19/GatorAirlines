@@ -165,9 +165,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 			// email customers if flight times are changed
 			if (isset($_POST['depart_timeBox']) || isset($_POST['arrival_timeBox']))
 			{
-				$subject = 'Flight time changes';
-				$emails = $users->get_emails_from_flight($_POST['modFlight']);
-				$message ="The following have been changed for flight" . $_POST['modFlight'] .":";
+				$message ="The following have been changed for flight " . $_POST['modFlight'] .":";
 				if (isset($_POST['depart_timeBox']))
 				{
 					$message .="\n The departure time is now " . $_POST['depart_time'];
@@ -176,14 +174,22 @@ if (isset($_POST['ModifyFlightSubmit']))
 				{
 					$message .="\n The arrival time is now " . $_POST['arrival_time'];
 				}// end if
-				foreach($emails as $email)
-				{
-					// In case any of our lines are larger than 70 characters, we should use wordwrap()
-					$message = wordwrap($message, 70);
-					mail($email,$subject,$message);
-				}// end loop
-			}// end if
-			
+				
+					include("classes/email.class.php");
+					$emails = $users->get_emails_from_flight($_POST['modFlight']);
+					$addresses = array();
+					foreach($emails as $email)
+					{
+						echo $email['email'];
+						$addresses[] = $email['email'];
+					}// end loop
+					
+					$subject = 'Flight time changes';
+					$message = wordwrap($message, 70); // In case any of our lines are larger than 70 characters, we should use wordwrap()
+					$mail = new email($addresses, $message, $subject);
+					$mail->send_email();
+				
+			}// end if	
 		}// end else
 	}// end else
 }
