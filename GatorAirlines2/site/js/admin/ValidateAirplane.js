@@ -13,24 +13,28 @@ $(document).ready(function()
 			"type":{
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: false
 			},
 			"chart_addr": {
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: false
 			},
 			"num_first_class": {
 				required: true,
 				maxlength: 30,
 				alphabet: false,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"num_coach_class": {
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				digits: true
+				digits: true,
+				name: false
 			}
 		},
 		
@@ -69,24 +73,28 @@ $(document).ready(function()
 			"type":{
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: false
 			},
 			"chart_addr": {
 				required: true, 
 				maxlength: 30,
-				alphabet: true
+				alphabet: true,
+				name: false
 			},
 			"num_first_class": {
 				required: true,
 				maxlength: 30,
 				alphabet: false,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"num_coach_class": {
 				required: true, 
 				maxlength: 30,
 				alphabet: false,
-				digits: true
+				digits: true,
+				name: false
 			}
 		},
 		

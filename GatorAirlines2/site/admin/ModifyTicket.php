@@ -65,7 +65,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		}
 		if (isset($_POST['seat_idBox']))
 		{// seat_id checked
-			if (preg_match($numeric,$_POST['seat_id']) == 0 || strlen($_POST['seat_id']) < 3 || strlen($_POST['seat_id']) > 3)
+			if (preg_match($numeric,$_POST['seat_id']) == 0 || strlen($_POST['seat_id']) < 0 || strlen($_POST['seat_id']) > 3)
 			{// Password is not valid
 				$message .=  "Seat ID is not valid\n";
 				$flag = 1;

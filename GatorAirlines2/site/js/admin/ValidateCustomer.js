@@ -11,10 +11,6 @@ $(document).ready(function()
         return this.optional(element) || /^[a-zA-Z0-9 ]+$/i.test(value);
     }, "The address may only contain letters and numbers.");
 	
-	$.validator.addMethod("zip", function(value, element) {
-        return this.optional(element) || /^[0-9]+$/i.test(value);
-    }, "The address may only contain letters and numbers.");
-	
 	$.validator.addMethod("name", function(value, element) {
         return this.optional(element) || /^[a-zA-Z ]+$/i.test(value);
     }, "Your input may only contain letters and a space.");
@@ -27,7 +23,7 @@ $(document).ready(function()
 				maxlength: 30,
 				alphabet: false,
 				address: false,
-				name: false
+				name: false,
 			},
 			"first_name": {
 				required: true, 
@@ -82,7 +78,7 @@ $(document).ready(function()
 			},
 			"cc_num": {
 				required: true, 
-				maxlength: 30,
+				maxlength: 19,
 				alphabet: false,
 				address: false,
 				name: false
@@ -150,10 +146,6 @@ $(document).ready(function()
 	
 	$.validator.addMethod("address", function(value, element) {
         return this.optional(element) || /^[a-zA-Z0-9 ]+$/i.test(value);
-    }, "The address may only contain letters and numbers.");
-	
-	$.validator.addMethod("zip", function(value, element) {
-        return this.optional(element) || /^[0-9]+$/i.test(value);
     }, "The address may only contain letters and numbers.");
 	
 	$.validator.addMethod("name", function(value, element) {

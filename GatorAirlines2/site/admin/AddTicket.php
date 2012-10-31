@@ -35,7 +35,7 @@ if (isset($_POST['AddTicketSubmit']))
 		$numeric = '/^[0-9]+$/';
 		
 		if (preg_match($numeric,$_POST['cid']) == 0 || strlen($_POST['cid']) > 30)
-		{// acid is not valid
+		{// cid is not valid
 			$message .=  "Customer ID is not valid\n";
 			$flag = 1;
 		}
@@ -44,7 +44,7 @@ if (isset($_POST['AddTicketSubmit']))
 			$message .=  "Flight ID is not valid\n";
 			$flag = 1;
 		}
-		if (preg_match($numeric,$_POST['seat_id']) == 0 || strlen($_POST['seat_id']) < 3 || strlen($_POST['seat_id']) > 3)
+		if (preg_match($numeric,$_POST['seat_id']) == 0 || strlen($_POST['seat_id']) < 0 || strlen($_POST['seat_id']) > 3)
 		{// Password is not valid
 			$message .=  "Seat ID is not valid\n";
 			$flag = 1;

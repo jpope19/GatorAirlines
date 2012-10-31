@@ -161,20 +161,20 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// Valid and existent inputs, modify DB
 			$key = $_POST['modFlight'];
 			$users->modify_Flights($set, $key);
-			/*
+			
 			// email customers if flight times are changed
 			if (isset($_POST['depart_timeBox']) || isset($_POST['arrival_timeBox']))
 			{
 				$subject = 'Flight time changes';
 				$emails = $users->get_emails_from_flight($_POST['modFlight']);
-				$message ="The following have been changed for flight $_POST['modFlight']:";
+				$message ="The following have been changed for flight" . $_POST['modFlight'] .":";
 				if (isset($_POST['depart_timeBox']))
 				{
-					$message .="\n The departure time is now $_POST['depart_time']";
+					$message .="\n The departure time is now " . $_POST['depart_time'];
 				}// end if
 				if (isset($_POST['arrival_timeBox']))
 				{
-					$message .="\n The arrival time is now $_POST['arrival_time']";
+					$message .="\n The arrival time is now " . $_POST['arrival_time'];
 				}// end if
 				foreach($emails as $email)
 				{
@@ -183,7 +183,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 					mail($email,$subject,$message);
 				}// end loop
 			}// end if
-			*/
+			
 		}// end else
 	}// end else
 }

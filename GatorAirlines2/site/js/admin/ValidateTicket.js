@@ -9,22 +9,26 @@ $(document).ready(function()
 			"cid":{
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"flight_id": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"seat_id": {
 				required: true,
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"price": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			}
 		},
 		
@@ -59,22 +63,26 @@ $(document).ready(function()
 			"cid":{
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"flight_id": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"seat_id": {
 				required: true,
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			},
 			"price": {
 				required: true, 
 				maxlength: 30,
-				digits: true
+				digits: true,
+				name: false
 			}
 		},
 		
