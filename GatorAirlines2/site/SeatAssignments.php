@@ -67,21 +67,20 @@
 </form>
 <FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;If you are unsure of the total weight of your luggage, please use the
 <a href="baggage_calc.php">baggage calculator.</a></p></FONT>    
-</div>
+<!--</div>-->
 <!-- end page -->
 
 
 <!-- JAVASCRIPT REFERENCE -->
-<script type="text/javascript" src="js/seat.js"></script>
+<!--<script type="text/javascript" src="js/seat.js"></script>-->
 			<!--content end-->
 			<!--footer -->
 			
-			<?include('section/footer2.php')?>
-			<!--footer end-->
-		</div>
+
+		<!--</div>-->
 
 <!-- PHP AND JAVASCRIPT REFERENCE -->		
-<script type="text/javascript" src="seat.js"></script>
+<script type="text/javascript" src="js/seat.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
 
@@ -102,6 +101,11 @@
 						
 				});
 			 </script>
+			 </div>
+			 
+			 <?include('section/footer2.php')?>
+			<!--footer end-->
+			
 <script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>
