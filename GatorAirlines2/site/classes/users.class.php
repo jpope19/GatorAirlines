@@ -181,6 +181,12 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
+	function get_user2($email){
+		$where = "email ='$email'";
+        $sql = "SELECT * FROM customers WHERE $where";
+        return $this->db->GetArray($sql);
+    }
+	
 	//get reservations for a particular user fron Tickets and Flights table
 	function get_reservation($cid){	  
 		$where = "T.flight_id = F.flight_id and cid =$cid";
