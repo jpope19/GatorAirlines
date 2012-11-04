@@ -5,7 +5,6 @@
   <title>Seat Selection</title>
  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>-->
 <script type="text/javascript" src="js/test.js"></script>
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
@@ -16,7 +15,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <!--<link rel="stylesheet" href="/resources/demos/style.css" />-->
+    <link rel="stylesheet" href="/resources/demos/style.css" />
 
 </head>
 
@@ -48,40 +47,30 @@
         </div>
 	
 	<div id="extra" style="clear: both;">&nbsp;</div>
-
-<h2>Baggage Cost</h2> 
-<FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;Estimate the total cost of your trip, baggage included!</p></FONT> 
-<form>   
-&nbsp&nbspTotal Number of Bags &nbsp: <select name="bags">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-</select><br></br>
-&nbsp&nbspTotal Weight: <input type="text" name="firstname">&nbsp Lbs &nbsp <input type="submit" value="Calculate"><br></br>
-</form>
-<FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;If you are unsure of the total weight of your luggage, please use the
-<a href="baggage_calc.php">baggage calculator.</a></p></FONT>    
-<!--</div>-->
+</div>
 <!-- end page -->
-
+<!-- start footer -->
+<div id="footer">
+	<p class="legal"> &copy;2007 Newsprint. All Rights Reserved.
+		&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+		Design by <a href="http://www.freecsstemplates.org">FCT</a> </p>
+	<p class="links"> <a href="http://validator.w3.org/check/referer" class="xhtml" title="This page validates as XHTML">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> &nbsp;&bull;&nbsp; <a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="This page validates as CSS">Valid <abbr title="Cascading Style Sheets">CSS</abbr></a> </p>
+</div>
+<!-- end footer -->
 
 <!-- JAVASCRIPT REFERENCE -->
-<!--<script type="text/javascript" src="js/seat.js"></script>-->
+<script type="text/javascript" src="js/seat.js"></script>
 			<!--content end-->
 			<!--footer -->
-			
+			<!-- PHP AND JAVASCRIPT REFERENCE -->		
 
-		<!--</div>-->
+			<?include('section/footer2.php')?>
+			<!--footer end-->
+		</div>
 
-<!-- PHP AND JAVASCRIPT REFERENCE -->		
-<script type="text/javascript" src="js/seat.js"></script>
+
+<!-- <script type="text/javascript"> Cufon.now(); </script> -->
+<script type="text/javascript" src="seat.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
 
@@ -89,24 +78,6 @@
 <!-- <script type="text/php" src="seat_selection.php"></script> -->
 </ul>
 
-			    <script type='text/javascript'>
-				$(document).ready(function(){
-				var array = [];
-						/* call the php that has the php array which is json_encoded */
-					$.getJSON("seat_selection.php", function(data) {
-						$.each(data, function(key,val) {
-							array.push(parseInt(val));
-						});
-						init(array);
-					});
-						
-				});
-			 </script>
-			 </div>
-			 
-			 <?include('section/footer2.php')?>
-			<!--footer end-->
-			
-<script <type="text/javascript"> Cufon.now(); </script>
+			    
 </body>
 </html>

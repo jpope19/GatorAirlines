@@ -198,11 +198,15 @@ Flexible Return Date: <br>
 							</div>
 						</div>	
 					</article>
+					
 					<div id="slider">
 						<img src="images/banner1.jpg" alt="">
+						<!--
 						<img src="images/banner2.jpg" alt="">
 						<img src="images/banner3.jpg" alt="">
+						-->
 					</div>
+					
 				</div>
 		<div class="wrapper pad1">
 			<article class="col1">
