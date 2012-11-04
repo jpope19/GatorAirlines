@@ -695,7 +695,7 @@ class users extends db {
 		if (isset($record['seat_id']) && !isset($record['flight_id']))
 		{// This will only happen during a modify. Still need to check if seat is taken.
 			$array = get_flight_from_ticket();
-			if (isset($array) $$ $array[0][$key == $record['seat_id'])
+			if (isset($array) && $array[0][$key] == $record['seat_id'])
 			{// This would mean there is a conflict
 				$message = "'$count'. The provided seat ID is already taken. Please choose a different seat ID.\n";
 				$count++;
