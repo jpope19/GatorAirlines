@@ -82,6 +82,8 @@ class users extends db {
 		
 		if ($db_conflicts == false)
 		{
+			$record['salt'] = generateSalt();
+			$record['password'] = generateHash($record['password'], $record['salt']);
 			$this->db->AutoExecute("customers", $record, "INSERT");
 			$insert = true;
 		}
@@ -248,12 +250,25 @@ class users extends db {
 		return $this->db->GetArray($sql);
 	}
 	
+	function get_salt($cid)
+	{
+		$sql = "SELECT salt 
+			FROM customers
+			WHERE cid = $cid";
+		return $this->db->GetArray($sql);
+	}
+	
 	//------------------------------------------------ Modify functions ------------------------------------------------
 	function modify_customers($set, $key){
 		$db_conflicts = db_conflicts_customers($record, $key); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
+			if (isset($set['password']))
+			{// need to hash
+				$salt = get_salt($key);
+				$set['password'] = generateHash($set['password'], $salt[0]['salt']);
+			}
 			$key = "cid = $key";
 			$this->db->AutoExecute("customers", $set, "UPDATE", $key);
 			$modify = true;
@@ -744,6 +759,32 @@ class users extends db {
 		return $insert;
 	}// end db conflicts vip
 	
+	//------------------------------------------------ Password Hashing ------------------------------------------------
+	function generateSalt($saltLength = 16) 
+	{// Generate salt (default 16 character length) from the provided character list
+        $characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?_-/"; // Characters for the salt
+        $index = 0;
+        $salt = "";
+        while ($index < $saltLength) {
+            $salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
+            $i++;
+        }
+        return $salt;
+	}// end generateSalt
+	
+	function generateHash($password, $salt = "") 
+	{// Generate hash provided the salt and plain text password
+        if ($salt == "")
+		{// Salt needs to be generated
+			$salt = generateSalt();
+		}// end if
+		
+		$password .= $salt;
+		$hash = hash('sha256', $password);
+		
+        return $hash;
+	}// end generateHash
+	
 	//------------------------------------------------ Create the database ------------------------------------------------
     function create_db(){
         $sql = "CREATE table if not exists customers (
@@ -751,13 +792,14 @@ class users extends db {
             email varchar(30) not null,
             first_name varchar(30),
             last_name varchar(30),
-            password varchar(30),
+            password varchar(256),
             addr varchar(30),
 			city varchar(30),
 			state varchar(30),
 			zip int(5),
             cc_num int(16),
-            u_type int(2)    
+            u_type int(2),
+			salt varchar(16)
         )";
         $this->db->Execute($sql);
         
