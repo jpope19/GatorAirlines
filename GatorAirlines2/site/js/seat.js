@@ -33,7 +33,7 @@ var init = function (reservedSeat) {
 				
             };
 			
-					   
+		   
 			
 $('.' + settings.seatCss).click(function () {
 if ($(this).hasClass(settings.selectedSeatCss)){
