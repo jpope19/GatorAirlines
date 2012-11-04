@@ -63,7 +63,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// first name checked
 			if (preg_match($numeric,$_POST['org_id']) == 0 || strlen($_POST['org_id']) > 30)
 			{// First name is not valid
-				$message .=  "Organizaiton ID is not valid\n";
+				$message .=  "Origin ID is not valid\n";
 				$flag = 1;
 			}
 			else
@@ -165,7 +165,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		if($flag ==1)
 		{// There are errors in input, Notify user that there were errors
 			print "<script type=\"text/javascript\">"; 
-			print "alert('There were errors in your input.')"; 
+			print "alert('$message')"; 
 			print "</script>";
 		}// end if
 		else if (!isset($set))
@@ -243,7 +243,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		<input type="checkbox" class="checkbox" value="1" name="org_idBox" id="org_idBox" onClick="enableDisable(this.checked, 'org_id')" />
 	</td>
 	<td>
-		Organisation ID: <input type="text" class="required" name="org_id" disabled="disabled" id="org_id">
+		Origin ID: <input type="text" class="required" name="org_id" disabled="disabled" id="org_id">
 	</td> </br>
 </tr>
 <tr>

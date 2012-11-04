@@ -42,7 +42,7 @@ die("Invalid query! <br> The query is: " . $query.mysql_error());
 }
 
 
-header("Location:myaccount.php"); // redirects
+header("Location:home.php"); // redirects
 }
 
 

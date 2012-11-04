@@ -49,7 +49,7 @@ if (isset($_POST['AddFlightSubmit']))
 		}
 		if (preg_match($numeric,$_POST['org_id']) == 0 || strlen($_POST['org_id']) > 30)
 		{// First name is not valid
-			$message .=  "organization ID is not valid\n";
+			$message .=  "Origin ID is not valid\n";
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['dest_id']) == 0 || strlen($_POST['dest_id']) > 30)
@@ -97,7 +97,7 @@ if (isset($_POST['AddFlightSubmit']))
 		if ($flag == 1)
 		{// Notify user that there were errors
 			print "<script type=\"text/javascript\">"; 
-			print "alert('There were errors in your input.')"; 
+			print "alert('$message')"; 
 			print "</script>";
 		}// end if
 		else
@@ -125,7 +125,7 @@ if (isset($_POST['AddFlightSubmit']))
 
 <form id="AddFlightForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Plane ID: <input type="text" class="required" name="plane_id" /> </br>
-Organization ID: <input type="text" class="required" name="org_id" /> </br>
+Origin ID: <input type="text" class="required" name="org_id" /> </br>
 Destination ID: <input type="text" class="required" name="dest_id" /> </br>
 First Class Cost: <input type="text" class="required" name="first_class_cost" /> </br>
 Coach Class Cost: <input type="text" class="required" name="coach_class_cost" /> </br>
