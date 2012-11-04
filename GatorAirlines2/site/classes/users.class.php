@@ -77,31 +77,189 @@ class users extends db {
     
 	// Add functions
     function add_customers($record){
-        $this->db->AutoExecute("customers", $record, "INSERT");
+		$error = false;
+		$message = "There were errors with your input:";
+		// Check for conflicts with DB
+		if (email_exists($record['email']) == true)
+		{// There is an existing key, do not insert
+			$message = "The email entered already exists. Please choose a different email.\n";
+			$error = true;
+		}
+		
+		// Insert into DB if no errors were found or print error message
+		if ($error == true)
+		{// There was an error during insertion, do not insert to table
+			print "<script type=\"text/javascript\">"; 
+			print "alert('$message')"; 
+			print "</script>";
+			$insert = false;
+		}
+		else
+		{// No conflicts, we can insert into the table
+			$this->db->AutoExecute("customers", $record, "INSERT");
+			$insert = true;
+		}
+		return $insert;
     }
 	
 	function add_airports($record){
-        $this->db->AutoExecute("airports", $record, "INSERT");
+		$error = false;
+		$message = "There were errors with your input:";
+		// Check for conflicts with DB
+		if (iata_exists($record['email']) == true)
+		{// There is an existing iata, do not insert
+			$message = "The IATA entered already exists. Please choose a different IATA.\n";
+			$error = true;
+		}
+		
+		// Insert into DB if no errors were found or print error message
+		if ($error == true)
+		{// There was an error during insertion, do not insert to table
+			print "<script type=\"text/javascript\">"; 
+			print "alert('$message')"; 
+			print "</script>";
+			$insert = false;
+		}
+		else
+		{// No conflicts, we can insert into the table
+			$this->db->AutoExecute("airports", $record, "INSERT");
+			$insert = true;
+		}
+		return $insert;
     }
 	
 	function add_airplane($record){
-        $this->db->AutoExecute("airplanes", $record, "INSERT");
+		$error = false;
+		$message = "There were errors with your input:";
+		// Check for conflicts with DB
+		if (type_exists($record['type']) == true)
+		{// There is an existing type, do not insert
+			$message = "The airplane type entered already exists. Please choose a different airplane type.\n";
+			$error = true;
+		}
+		
+		// Insert into DB if no errors were found or print error message
+		if ($error == true)
+		{// There was an error during insertion, do not insert to table
+			print "<script type=\"text/javascript\">"; 
+			print "alert('$message')"; 
+			print "</script>";
+			$insert = false;
+		}
+		else
+		{// No conflicts, we can insert into the table
+			$this->db->AutoExecute("airplanes", $record, "INSERT");
+			$insert = true;
+		}
+		return $insert;
     }
     
     function add_flight($record){
-        $this->db->AutoExecute("flights", $record, "INSERT");
-    }
-    
-	function add_flights($record){
-        $this->db->AutoExecute("flights", $record, "INSERT");
+		$error = false;
+		$message = "There were errors with your input: ";
+		$count = 1;
+		// Check for conflicts with DB
+		if (plane_exists($record['plane_id']) == false)
+		{// The plane does not exist, so it cannot be referenced
+			$message = "'$count'. The provided plane ID does not exist. Please enter an existing plane ID.\n";
+			$count++;
+			$error = true;
+		}
+		if (flight_id_exists($record['org_id']) == false)
+		{// The airport does not exist, so it cannot be referenced
+			$message = "'$count'. The provided origin ID does not exist. Please enter an existing airport ID.\n";
+			$count++;
+			$error = true;
+		}
+		if (seat_id_exists($record['seat_id'], $record['flight_id']))
+		{// The airport does not exist, so it cannot be referenced
+			$message = "'$count'. The provided destination ID does not exist. Please enter an existing airport ID.\n";
+			$count++;
+			$error = true;
+		}
+		
+		// Insert into DB if no errors were found or print error message
+		if ($error == true)
+		{// There was an error during insertion, do not insert to table
+			print "<script type=\"text/javascript\">"; 
+			print "alert('$message')"; 
+			print "</script>";
+			$insert = false;
+		}
+		else
+		{// No conflicts, we can insert into the table
+			$this->db->AutoExecute("flights", $record, "INSERT");
+			$insert = true;
+		}
+		return $insert;
     }
 	
 	function add_tickets($record){
-        $this->db->AutoExecute("tickets", $record, "INSERT");
+		$error = false;
+		$message = "There were errors with your input: ";
+		$count = 1;
+		// Check for conflicts with DB
+		
+		if (cid_exists($record['cid']) == false)
+		{// The customer does not exist, so it cannot be referenced
+			$message = "'$count'. The provided customer ID does not exist. Please enter an customer plane ID.\n";
+			$count++;
+			$error = true;
+		}
+		if (flight_id_exists($record['flight_id']) == false)
+		{// The flight does not exist, so it cannot be referenced
+			$message = "'$count'. The provided flight ID does not exist. Please enter an flight airport ID.\n";
+			$count++;
+			$error = true;
+		}
+		else if (airport_id_exists($record['seat_id'], $record['flight_id']) == true)
+		{// The seat referenced already exist in the table with the same flight id, so it will cause a conflict.
+			// Note that this is an else if because if the flight id is not valid, then it's not worth checking the seat id
+			$message = "'$count'. The provided seat ID is already taken. Please choose a different seat ID.\n";
+			$count++;
+			$error = true;
+		}
+		
+		// Insert into DB if no errors were found or print error message
+		if ($error == true)
+		{// There was an error during insertion, do not insert to table
+			print "<script type=\"text/javascript\">"; 
+			print "alert('$message')"; 
+			print "</script>";
+			$insert = false;
+		}
+		else
+		{// No conflicts, we can insert into the table
+			$this->db->AutoExecute("tickets", $record, "INSERT");
+			$insert = true;
+		}
+		return $insert;
     }
 	
 	function add_vip($record){
-        $this->db->AutoExecute("vip", $record, "INSERT");
+		$error = false;
+		$message = "There were errors with your input:";
+		// Check for conflicts with DB
+		if (cid_exists($record['cid']) == false)
+		{// The cid does not exist, so it cannot be referenced 
+			$message = "The customer ID does not exist. Please choose and existing customer ID.\n";
+			$error = true;
+		}
+		
+		// Insert into DB if no errors were found or print error message
+		if ($error == true)
+		{// There was an error during insertion, do not insert to table
+			print "<script type=\"text/javascript\">"; 
+			print "alert('$message')"; 
+			print "</script>";
+			$insert = false;
+		}
+		else
+		{// No conflicts, we can insert into the table
+			$this->db->AutoExecute("vip", $record, "INSERT");
+			$insert = true;
+		}
+		return $insert;
     }
 	
 	// Get Functions
@@ -235,6 +393,23 @@ class users extends db {
     }
 	
 	// Check to see if a key is in it's database
+	function cid_exists($key){
+		$sql = "SELECT COUNT(cid)
+			FROM customers
+			WHERE cid = '$key'
+			GROUP BY cid";
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
 	function email_exists($key){
 		$sql = "SELECT COUNT(email)
 			FROM customers
@@ -286,6 +461,40 @@ class users extends db {
 		return $response;
 	}
 	
+	function type_exists($key){
+		$sql = "SELECT COUNT(type)
+			FROM airplanes
+			WHERE type = $key
+			GROUP BY type";
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
+	function iata_exists($key){
+		$sql = "SELECT COUNT(iata)
+			FROM airplanes
+			WHERE iata = '$key'
+			GROUP BY iata";
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
 	function flight_id_exists($key){
 		$sql = "SELECT COUNT(flight_id)
 			FROM flights
@@ -307,6 +516,23 @@ class users extends db {
 		$sql = "SELECT COUNT(ticket_id)
 			FROM tickets
 			WHERE ticket_id = $key
+			GROUP BY ticket_id";
+		$this->db->GetArray($sql);
+		if (isset($this[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
+	function seat_id_exists($key, $flight){
+		$sql = "SELECT COUNT(ticket_id)
+			FROM tickets
+			WHERE ticket_id = $key AND flight_id = $flight
 			GROUP BY ticket_id";
 		$this->db->GetArray($sql);
 		if (isset($this[0]))
