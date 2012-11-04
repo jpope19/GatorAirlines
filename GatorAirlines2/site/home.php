@@ -95,7 +95,7 @@ $airports = $users->get_airports();
 
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
-<input type="radio" name="flight" value="One-way" /> One way <br />
+<input type="radio" name="flight" value="One-way" checked /> One way <br />
 
 Departure : <input type="text" id="departure" name ="depart" /></p>
 
