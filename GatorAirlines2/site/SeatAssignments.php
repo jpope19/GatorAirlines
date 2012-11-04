@@ -51,7 +51,7 @@
 	
 	<h2>Baggage Cost</h2> 
 <FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;Estimate the total cost of your trip, baggage included!</p></FONT> 
-<form>   
+<form name ="baggageCalc" action="bagcalc.asp" method="get">   
 &nbsp&nbspTotal Number of Bags &nbsp: <select name="bags">
 <option value="1">1</option>
 <option value="2">2</option>
@@ -64,10 +64,14 @@
 <option value="9">9</option>
 <option value="10">10</option>
 </select><br></br>
-&nbsp&nbspTotal Weight: <input type="text" name="firstname">&nbsp Lbs &nbsp <input type="submit" value="Calculate"><br></br>
+&nbsp&nbspTotal Weight: <input type="text" name="weight">&nbsp Lbs &nbsp <input type="submit" value="Calculate"><br></br>
 </form>
 <FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;If you are unsure of the total weight of your luggage, please use the
 <a href="baggage_calc.php">baggage calculator.</a></p></FONT>  
+	
+
+	
+	
 	
 </div>
 <!-- end page -->
