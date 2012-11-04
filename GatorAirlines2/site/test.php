@@ -1,28 +1,31 @@
 <?php
-session_start();
+
+
 include("classes/users.class.php");
-/*
-$user = $_SESSION['u_type'];
-echo $user;
-Print_r ($_SESSION);
-*/
-$users = new users();
-$testvar = "cavasquez@ufl.edu";
-//$test = $users->email_exists($testvar);
-//echo $test;
-//echo $test[0]['COUNT(email)'];
-//Print_r($test);
-$message = "hello";
-if (isset($test) && $test == 1)
-{
-	echo 'yes';
+$users = new users(); // class from user.class.php that will be used to manipulate the database
+	
+//When this page is linked up to the site when a customer
+//goes to the selection page, I need a variable $POST that
+//contains the flight id.
+//
+$reserved_seats = $users->get_seat(10);
+$length = count($reserved_seats);
+$array = array($reserved_seats);
+//Print_r($array);
+//Print_r($reserved_seats);
+for($i=0; $i < $length; $i++){
+	$array[$i] = $reserved_seats[$i]['seat_id'];
 }
-else
-{
-	echo 'no';
-}
+//echo json_encode($array[0]);
+Print_r($array);
 
-
+$arrayq = array( 
+	
+		"number" => "1",
+		"num" => "2"
+	
+);
+Print_r($arrayq);
 ?>
 
 
