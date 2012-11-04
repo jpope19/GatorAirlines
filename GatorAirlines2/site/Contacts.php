@@ -1,18 +1,23 @@
-
-<?include("mail/sendMail.php"); //include mailing function (in mail folder).
-
-$to = "gatorairlines@hotmail.com"; //where to send email.
-
+<?
+include("classes/email.class.php");  //that's where the email function is..
+if (!isset($_SESSION))
+{
+	session_start();
+    
+	}
+  //send us an email from customer.
 if(isset($_POST['submit'])){
 
-mail_attachment(null,$to, $_POST['name'], 'Client Mail', $_POST['textarea']);
+ // email(array of addresses, message, subject);
+	 $message = $_POST['textarea'];	
+     $addresses[] = "";	 
+	 $email = new email($addresses, $message, "User Email: ".$_POST['email']); //function to send email.
+     $email->send_email();
+	 
+     header("Location:home.php");
 }
 
   ?>
-
-
-
-
 
 
 
@@ -57,7 +62,7 @@ mail_attachment(null,$to, $_POST['name'], 'Client Mail', $_POST['textarea']);
 									<p class="color1 pad_bot2">USA<br>
 										Gainesville<br>
 										<br>
-										<a href="mailto:">gatorairlines@hotmail.</a></p>
+										<a href="mailto:">gatorairlines@hotmail.com</a></p>
 								</div>
 							</div>
 							<h2></h2>
@@ -73,16 +78,16 @@ mail_attachment(null,$to, $_POST['name'], 'Client Mail', $_POST['textarea']);
 							<div>
 								<div  class="wrapper">
 									<span>Name:</span>
-									<input type="text" class="input" name="name">
+									<input type="text" class="input" name="name" required>
 								</div>
 								<div  class="wrapper">
 									<span>Email:</span>
-									<input type="text" class="input" name ="email" >								
+									<input type="text" class="input" name ="email" required>								
 								</div>
 								<div  class="textarea_box">
 									<span>Message:</span>
-									<textarea name="textarea" cols="1" rows="1"></textarea>								
-								</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<textarea name="textarea" cols="1" rows="1" required></textarea>								
+								</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<button class = "button1" type="submit" name="submit">Send</button>
 						
 							</div>
