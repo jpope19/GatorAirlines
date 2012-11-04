@@ -77,13 +77,12 @@ class users extends db {
     
 	//------------------------------------------------ Add functions ------------------------------------------------
     function add_customers($record){
-		$key = $record['cid'];
-		$db_conflicts = db_conflicts_customers($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_customers($record); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
-			$record['salt'] = generateSalt();
-			$record['password'] = generateHash($record['password'], $record['salt']);
+			$record['salt'] = $this->generateSalt();
+			$record['password'] = $this->generateHash($record['password'], $record['salt']);
 			$this->db->AutoExecute("customers", $record, "INSERT");
 			$insert = true;
 		}
@@ -95,8 +94,7 @@ class users extends db {
     }// end add customers function
 	
 	function add_airports($record){
-	$key = $record['airport_id'];
-		$db_conflicts = db_conflicts_airports($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_airports($record); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -111,8 +109,7 @@ class users extends db {
     }// end add airport function
 	
 	function add_airplane($record){
-		$key = $record['plane_id'];
-		$db_conflicts = db_conflicts_airplanes($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_airplanes($record); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -127,8 +124,7 @@ class users extends db {
     }// end add airplane function
     
     function add_flight($record){
-		$key = $record['flight_id'];
-		$db_conflicts = db_conflicts_flights($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_flights($record); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -143,8 +139,7 @@ class users extends db {
     }// end add flight function
 	
 	function add_tickets($record){
-		$key = $record['ticket_id'];
-		$db_conflicts = db_conflicts_tickets($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_tickets($record); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -159,8 +154,7 @@ class users extends db {
     }// end add ticket function
 	
 	function add_vip($record){
-		$key = $record['vip_id'];
-		$db_conflicts = db_conflicts_vip($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_vip($record); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -569,12 +563,12 @@ class users extends db {
 	}
 	
 	//------------------------------------------------ Check for DB conflicts ------------------------------------------------
-	function db_conflicts_customers($record, $key)
+	function db_conflicts_customers($record, $key = "")
 	{
 		$error = false;
 		$message = "There were errors with your input:";
 		// Check for conflicts with DB
-		if (isset($record['email']) && email_exists($record['email']) == true)
+		if (isset($record['email']) && $this->email_exists($record['email']) == true)
 		{// There is an existing key, do not insert
 			$message = "The email entered already exists. Please choose a different email.\n";
 			$error = true;
@@ -586,21 +580,16 @@ class users extends db {
 			print "<script type=\"text/javascript\">"; 
 			print "alert('$message')"; 
 			print "</script>";
-			$insert = false;
 		}
-		else
-		{// No conflicts, we can insert into the table
-			$insert = true;
-		}
-		return $insert;
+		return $error;
 	}// end db conflicts customers
 	
-	function db_conflicts_airports($record, $key)
+	function db_conflicts_airports($record, $key = "")
 	{
 		$error = false;
 		$message = "There were errors with your input:";
 		// Check for conflicts with DB
-		if (isset($record['iata']) && iata_exists($record['iata']) == true)
+		if (isset($record['iata']) && $this->iata_exists($record['iata']) == true)
 		{// There is an existing iata, do not insert
 			$message = "The IATA entered already exists. Please choose a different IATA.\n";
 			$error = true;
@@ -612,21 +601,16 @@ class users extends db {
 			print "<script type=\"text/javascript\">"; 
 			print "alert('$message')"; 
 			print "</script>";
-			$insert = false;
 		}
-		else
-		{// No conflicts, we can insert into the table
-			$insert = true;
-		}
-		return $insert;
+		return $error;
 	}// end db conflicts airports
 	
-	function db_conflicts_airplanes($record, $key)
+	function db_conflicts_airplanes($record, $key = "")
 	{
 		$error = false;
 		$message = "There were errors with your input:";
 		// Check for conflicts with DB
-		if (isset($record['type']) && type_exists($record['type']) == true)
+		if (isset($record['type']) && $this->type_exists($record['type']) == true)
 		{// There is an existing type, do not insert
 			$message = "The airplane type entered already exists. Please choose a different airplane type.\n";
 			$error = true;
@@ -638,34 +622,29 @@ class users extends db {
 			print "<script type=\"text/javascript\">"; 
 			print "alert('$message')"; 
 			print "</script>";
-			$insert = false;
 		}
-		else
-		{// No conflicts, we can insert into the table
-			$insert = true;
-		}
-		return $insert;
+		return $error;
 	}// end db conflicts airplanes
 	
-	function db_conflicts_flights($record, $key)
+	function db_conflicts_flights($record, $key = "")
 	{
 		$error = false;
 		$message = "There were errors with your input: ";
 		$count = 1;
 		// Check for conflicts with DB
-		if (isset($record['plane_id']) && plane_exists($record['plane_id']) == false)
+		if (isset($record['plane_id']) && $this->plane_exists($record['plane_id']) == false)
 		{// The plane does not exist, so it cannot be referenced
 			$message = "'$count'. The provided plane ID does not exist. Please enter an existing plane ID.\n";
 			$count++;
 			$error = true;
 		}
-		if (isset($record['org_id']) && flight_id_exists($record['org_id']) == false)
+		if (isset($record['org_id']) && $this->flight_id_exists($record['org_id']) == false)
 		{// The airport does not exist, so it cannot be referenced
 			$message = "'$count'. The provided origin ID does not exist. Please enter an existing airport ID.\n";
 			$count++;
 			$error = true;
 		}
-		if (isset($record['dest_id']) && seat_id_exists($record['seat_id'], $key))
+		if (isset($record['dest_id']) && $this->seat_id_exists($record['dest_id'], $key))
 		{// The airport does not exist, so it cannot be referenced
 			$message = "'$count'. The provided destination ID does not exist. Please enter an existing airport ID.\n";
 			$count++;
@@ -678,35 +657,30 @@ class users extends db {
 			print "<script type=\"text/javascript\">"; 
 			print "alert('$message')"; 
 			print "</script>";
-			$insert = false;
 		}
-		else
-		{// No conflicts, we can insert into the table
-			$insert = true;
-		}
-		return $insert;
+		return $error;
 	}// end db conflicts flights
 	
-	function db_conflicts_tickets($record, $key)
+	function db_conflicts_tickets($record, $key = "")
 	{
 		$error = false;
 		$message = "There were errors with your input: ";
 		$count = 1;
 		// Check for conflicts with DB
 		
-		if (isset($record['cid']) && cid_exists($record['cid']) == false)
+		if (isset($record['cid']) && $this->cid_exists($record['cid']) == false)
 		{// The customer does not exist, so it cannot be referenced
 			$message = "'$count'. The provided customer ID does not exist. Please enter an customer plane ID.\n";
 			$count++;
 			$error = true;
 		}
-		if (isset($record['flight_id']) && flight_id_exists($record['flight_id']) == false)
+		if (isset($record['flight_id']) && $this->flight_id_exists($record['flight_id']) == false)
 		{// The flight does not exist, so it cannot be referenced
 			$message = "'$count'. The provided flight ID does not exist. Please enter an flight airport ID.\n";
 			$count++;
 			$error = true;
 		}
-		else if (isset($record['seat_id']) && airport_id_exists($record['seat_id'], $record['flight_id']) == true)
+		else if (isset($record['seat_id']) && $this->airport_id_exists($record['seat_id'], $record['flight_id']) == true)
 		{// The seat referenced already exist in the table with the same flight id, so it will cause a conflict.
 			// Note that this is an else if because if the flight id is not valid, then it's not worth checking the seat id
 			$message = "'$count'. The provided seat ID is already taken. Please choose a different seat ID.\n";
@@ -730,21 +704,16 @@ class users extends db {
 			print "<script type=\"text/javascript\">"; 
 			print "alert('$message')"; 
 			print "</script>";
-			$insert = false;
 		}
-		else
-		{// No conflicts, we can insert into the table
-			$insert = true;
-		}
-		return $insert;
+		return $error;
 	}// end db conflicts tickets
 	
-	function db_conflicts_vip($record, $key)
+	function db_conflicts_vip($record, $key = "")
 	{
 		$error = false;
 		$message = "There were errors with your input:";
 		// Check for conflicts with DB
-		if (isset($record['cid']) && cid_exists($record['cid']) == false)
+		if (isset($record['cid']) && $this->cid_exists($record['cid']) == false)
 		{// The cid does not exist, so it cannot be referenced 
 			$message = "The customer ID does not exist. Please choose and existing customer ID.\n";
 			$error = true;
@@ -756,13 +725,8 @@ class users extends db {
 			print "<script type=\"text/javascript\">"; 
 			print "alert('$message')"; 
 			print "</script>";
-			$insert = false;
 		}
-		else
-		{// No conflicts, we can insert into the table
-			$insert = true;
-		}
-		return $insert;
+		return $error;
 	}// end db conflicts vip
 	
 	//------------------------------------------------ Password Hashing ------------------------------------------------
@@ -773,7 +737,7 @@ class users extends db {
         $salt = "";
         while ($index < $saltLength) {
             $salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
-            $i++;
+            $index++;
         }
         return $salt;
 	}// end generateSalt
@@ -782,7 +746,7 @@ class users extends db {
 	{// Generate hash provided the salt and plain text password
         if ($salt == "")
 		{// Salt needs to be generated
-			$salt = generateSalt();
+			$salt = $this->generateSalt();
 		}// end if
 		
 		$password .= $salt;

@@ -30,9 +30,11 @@ $b = Airport::get_name_by_id($_POST['dest'], $user);
 echo "Routes from $a to $b </br>";
 $option_num = 1;
 foreach($to_routes as $option) {
-    echo "Option $option_num <br/>";
+    echo "Option $option_num ";
+	echo "<button class = button1>Click</button> <br/>";
     $val = $option->to_string();
     echo "$val";
+	
     $option_num++;
 	echo '<br/>';
 }
@@ -45,6 +47,7 @@ if($_POST['flight'] == 'Round-Trip') {
     $option_num = 1;
     foreach($to_routes as $option) {
         echo "Option $option_num <br/>";
+		
         $val = $option->to_string();
         echo "$val";
         $option_num++;
