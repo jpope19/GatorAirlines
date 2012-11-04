@@ -61,7 +61,7 @@ if (isset($_POST['AddAirplaneSubmit']))
 		if ($flag == 1)
 		{// Notify user that there were errors
 			print "<script type=\"text/javascript\">"; 
-			print "alert('There were errors in your input.')"; 
+			print "alert('$message')"; 
 			print "</script>";
 		}// end if
 		else
