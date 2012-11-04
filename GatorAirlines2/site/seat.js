@@ -1,10 +1,10 @@
 
 			
 
-				$(document).ready(function(){
-				var array = [];
-						/* call the php that has the php array which is json_encoded */
-					$.getJSON("seat_selection.php", function(data) {
+$(document).ready(function(){
+	var array = [];
+		/* call the php that has the php array which is json_encoded */
+	$.getJSON("seat_selection.php", function(data) {
 						$.each(data, function(key,val) {
 							array.push(parseInt(val));
 						});
