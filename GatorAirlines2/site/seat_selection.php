@@ -10,22 +10,28 @@ $users = new users(); // class from user.class.php that will be used to manipula
 //goes to the selection page, I need a variable $POST that
 //contains the flight id.
 //
-//$reserved_seats = $users->get_seat($_POST);
+$reserved_seats = $users->get_seat(10);
+$length = count($reserved_seats);
+$array = array($reserved_seats);
+for($i=0; $i < $length; $i++){
+	$array[$i] = $reserved_seats[$i]['seat_id'];
+}
+echo json_encode($array);
 
-//echo json_encode($reserved_seats);
+
 
 //This is a test array commet everything below and uncommet above
 //once this page has been linked.
-$array = array( 
+// $array = array( 
 	
-		"number" => "1",
-		"num" => "2"
+		// "number" => "1",
+		// "num" => "2"
 	
-);
+// );
 
-echo json_encode($array);
+// echo json_encode($array);
  ?>
- 
+
 
  
  

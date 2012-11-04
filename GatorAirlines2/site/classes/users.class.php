@@ -244,7 +244,7 @@ class users extends db {
 	
 	//Returns all of the seat numbers that have been booked for a particular flight.
 	function get_seat($flight_id){
-		$sql = "SELECT seat_id FROM tickets WHERE {$flight_id} = flight_id";
+		$sql = "SELECT seat_id FROM tickets WHERE $flight_id = flight_id";
 		return $this->db->GetArray($sql);
 	}
 	
