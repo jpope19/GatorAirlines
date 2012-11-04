@@ -793,6 +793,21 @@ class users extends db {
 	
 	//------------------------------------------------ Create the database ------------------------------------------------
     function create_db(){
+		$sql = "DROP TABLE IF EXISTS customers";
+		$this->db->Execute($sql);
+		
+		$sql = "DROP TABLE IF EXISTS airports";
+		$this->db->Execute($sql);
+		
+		$sql = "DROP TABLE IF EXISTS airplanes";
+		$this->db->Execute($sql);
+		
+		$sql = "DROP TABLE IF EXISTS flights";
+		$this->db->Execute($sql);
+		
+		$sql = "DROP TABLE IF EXISTS vip";
+		$this->db->Execute($sql);
+		
         $sql = "CREATE table if not exists customers (
             cid int auto_increment primary key,
             email varchar(30) not null,
