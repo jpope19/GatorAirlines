@@ -185,7 +185,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 																		</tr>
 																		<tr>
 																			<td colspan="3">
-																				<input type="image" id="calculate" src="images/buttons_calculate.jpg" width="105" height="23" hspace="25" align="right" />
+																				<input type="image" id="calculate" src="images/buttons_calculate.png" width="105" height="23" hspace="25" align="right" />
 																			</td>
 																		</tr>
 																		<tr>
