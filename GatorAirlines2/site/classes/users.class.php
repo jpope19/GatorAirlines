@@ -111,16 +111,12 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
-	//get reservations for a particular user fron Tickets and Flights table.
-	
-	function get_reservation($cid)
-	          {
-			  
-			  $where = "T.flight_id = F.flight_id and cid =$cid";
-			  $sql = "select * FROM tickets as T,flights as F WHERE $where";
+	//get reservations for a particular user fron Tickets and Flights table
+	function get_reservation($cid){	  
+		$where = "T.flight_id = F.flight_id and cid =$cid";
+		$sql = "select * FROM tickets as T,flights as F WHERE $where";
         return $this->db->GetArray($sql);
-			  
-			  }
+	}
 	
     function get_customers($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
@@ -237,6 +233,109 @@ class users extends db {
 		$sql = "DELETE FROM vip WHERE vip_id=$obj";
 		$this->db->Execute($sql);
     }
+	
+	// Check to see if a key is in it's database
+	function email_exists($key){
+		$sql = "SELECT COUNT(email)
+			FROM customers
+			WHERE email = '$key'
+			GROUP BY email";
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
+	function airport_id_exists($key){
+		$sql = "SELECT COUNT(airport_id)
+			FROM airports
+			WHERE airport_id = $key
+			GROUP BY airport_id";
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
+	function plane_id_exists($key){
+		$sql = "SELECT COUNT(plane_id)
+			FROM airplanes
+			WHERE plane_id = $key
+			GROUP BY plane_id";
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
+	function flight_id_exists($key){
+		$sql = "SELECT COUNT(flight_id)
+			FROM flights
+			WHERE flight_id = $key
+			GROUP BY flight_id";
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
+	function ticket_id_exists($key){
+		$sql = "SELECT COUNT(ticket_id)
+			FROM tickets
+			WHERE ticket_id = $key
+			GROUP BY ticket_id";
+		$this->db->GetArray($sql);
+		if (isset($this[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
+	function vip_id_exists($key){
+		$sql = "SELECT COUNT(vip_id)
+			FROM VIP
+			WHERE vip_id = $key
+			GROUP BY vip_id";
+		$this->db->GetArray($sql);
+		if (isset($this[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
 	
 	// Create the database
     function create_db(){
