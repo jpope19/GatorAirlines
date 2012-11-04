@@ -47,16 +47,31 @@
         </div>
 	
 	<div id="extra" style="clear: both;">&nbsp;</div>
+	
+	
+	<h2>Baggage Cost</h2> 
+<FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;Estimate the total cost of your trip, baggage included!</p></FONT> 
+<form>   
+&nbsp&nbspTotal Number of Bags &nbsp: <select name="bags">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select><br></br>
+&nbsp&nbspTotal Weight: <input type="text" name="firstname">&nbsp Lbs &nbsp <input type="submit" value="Calculate"><br></br>
+</form>
+<FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;If you are unsure of the total weight of your luggage, please use the
+<a href="baggage_calc.php">baggage calculator.</a></p></FONT>  
+	
 </div>
 <!-- end page -->
-<!-- start footer -->
-<div id="footer">
-	<p class="legal"> &copy;2007 Newsprint. All Rights Reserved.
-		&nbsp;&nbsp;&bull;&nbsp;&nbsp;
-		Design by <a href="http://www.freecsstemplates.org">FCT</a> </p>
-	<p class="links"> <a href="http://validator.w3.org/check/referer" class="xhtml" title="This page validates as XHTML">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> &nbsp;&bull;&nbsp; <a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="This page validates as CSS">Valid <abbr title="Cascading Style Sheets">CSS</abbr></a> </p>
-</div>
-<!-- end footer -->
+
 
 <!-- JAVASCRIPT REFERENCE -->
 <script type="text/javascript" src="js/seat.js"></script>
