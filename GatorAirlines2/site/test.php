@@ -7,20 +7,22 @@ echo $user;
 Print_r ($_SESSION);
 */
 $users = new users();
-$testvar = "cavasquez@ufl.edu";
-//$test = $users->email_exists($testvar);
+$record['email'] = "cavasquez@ufl.edu";
+$record['first_name'] = "Carlos";
+$record['last_name'] = "Vasquez";
+$record['password'] = "password";
+$record['addr'] = "123 4th St";
+$record['city'] = "Gainesville";
+$record['state'] = "FL";
+$record['zip'] = "33029";
+$record['cc_num'] = "341335673042097";
+$record['u_type'] = "1";
+
+//$res = $users->db_conflicts_customers ($record);
+//$test = $users->email_exists($record['email']);
+//echo $res;
 //echo $test;
-//echo $test[0]['COUNT(email)'];
-//Print_r($test);
-$message = "hello";
-if (isset($test) && $test == 1)
-{
-	echo 'yes';
-}
-else
-{
-	echo 'no';
-}
+$test = $users->add_customers($record);
 
 
 ?>
