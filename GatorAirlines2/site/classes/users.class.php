@@ -691,17 +691,17 @@ class users extends db {
 			$count++;
 			$error = true;
 		}
-		else if (isset($record['seat_id']) && $this->seat_id_exists($record['seat_id'], $record['flight_id']) == true)
+		else if (isset($record['flight_id']) && isset($record['seat_id']) && $this->seat_id_exists($record['seat_id'], $record['flight_id']) == true)
 		{// The seat referenced already exist in the table with the same flight id, so it will cause a conflict.
 			// Note that this is an else if because if the flight id is not valid, then it's not worth checking the seat id
 			$message .= $count . '. The provided seat ID is already taken. Please choose a different seat ID.\n';
 			$count++;
 			$error = true;
 		}
-		if (isset($record['seat_id']) && !isset($record['flight_id']))
+		else if (isset($record['seat_id']) && !isset($record['flight_id']))
 		{// This will only happen during a modify. Still need to check if seat is taken.
-			$array = get_flight_from_ticket();
-			if (isset($array) && $array[0][$key] == $record['seat_id'])
+			$array = $this->get_flight_from_ticket($key);
+			if (isset($array) && $this->seat_id_exists($record['seat_id'], $array[0]['flight_id']) == true )
 			{// This would mean there is a conflict
 				$message .= $count . '. The provided seat ID is already taken. Please choose a different seat ID.\n';
 				$count++;

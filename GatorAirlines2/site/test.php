@@ -11,8 +11,8 @@ $users = new users();
 
 $key = 5;
 $record['cid'] = 10;
-$record['flight_id'] = 14;
-$record['seat_id'] = 15;
+// $record['flight_id'] = 14;
+$record['seat_id'] = 20;
 $record['price'] = 10;
 // $record['coach_class_cost'] = 100;
 // $record['e_depart_time'] = 65464954;
