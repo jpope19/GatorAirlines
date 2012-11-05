@@ -45,7 +45,7 @@ class users extends db {
             $record2['zip'] = trim($info[7]);
 			$record2['cc_num'] = trim($info[8]);
             $record2['u_type'] = 0;
-            $this->db->add_customers($record2);
+            $this->add_customers($record2);
         }
         echo "Created some flights";
         
@@ -489,7 +489,7 @@ class users extends db {
 	
 	function iata_exists($key){
 		$sql = "SELECT COUNT(iata)
-			FROM airplanes
+			FROM airports
 			WHERE iata = '$key'
 			GROUP BY iata";
 		$count = $this->db->GetArray($sql);
