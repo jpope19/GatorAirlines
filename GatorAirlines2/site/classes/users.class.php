@@ -620,12 +620,13 @@ class users extends db {
 		$error = false;
 		$message = "There were errors with your input:";
 		// Check for conflicts with DB
+		/*
 		if (isset($record['type']) && $this->type_exists($record['type']) == true)
 		{// There is an existing type, do not insert
 			$message = "The airplane type entered already exists. Please choose a different airplane type.\n";
 			$error = true;
 		}
-		
+		I'm not sure if multiple planes should be allowed to have the same type. The code is here if necessarry*/
 		// Insert into DB if no errors were found or print error message
 		if ($error == true)
 		{// There was an error during insertion, do not insert to table
@@ -642,19 +643,19 @@ class users extends db {
 		$message = "There were errors with your input: ";
 		$count = 1;
 		// Check for conflicts with DB
-		if (isset($record['plane_id']) && $this->plane_exists($record['plane_id']) == false)
+		if (isset($record['plane_id']) && $this->plane_id_exists($record['plane_id']) == false)
 		{// The plane does not exist, so it cannot be referenced
 			$message = "'$count'. The provided plane ID does not exist. Please enter an existing plane ID.\n";
 			$count++;
 			$error = true;
 		}
-		if (isset($record['org_id']) && $this->flight_id_exists($record['org_id']) == false)
+		if (isset($record['org_id']) && $this->airport_id_exists($record['org_id']) == false)
 		{// The airport does not exist, so it cannot be referenced
 			$message = "'$count'. The provided origin ID does not exist. Please enter an existing airport ID.\n";
 			$count++;
 			$error = true;
 		}
-		if (isset($record['dest_id']) && $this->seat_id_exists($record['dest_id'], $key))
+		if (isset($record['dest_id']) && $this->airport_id_exists($record['dest_id']) == false)
 		{// The airport does not exist, so it cannot be referenced
 			$message = "'$count'. The provided destination ID does not exist. Please enter an existing airport ID.\n";
 			$count++;
