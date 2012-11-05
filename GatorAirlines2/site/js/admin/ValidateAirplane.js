@@ -9,6 +9,7 @@ $(document).ready(function()
 	
     $("#AddAirplaneForm").validate({
 		// Apply rules
+		ignore: ".checkbox, .date, .chosen",
 		rules: {
 			"type":{
 				required: true, 

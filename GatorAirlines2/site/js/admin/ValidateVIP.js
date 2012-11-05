@@ -26,6 +26,7 @@ $(document).ready(function()
 	
     $("#AddVIPForm").validate({
 		// Apply rules
+		ignore: ".checkbox, .date, .chosen",
 		rules: {
 			"email":{
 				required: true, 

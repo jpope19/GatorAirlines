@@ -5,6 +5,7 @@ $(document).ready(function()
 {	
     $("#AddFlightForm").validate({
 		// Apply rules
+		ignore: ".checkbox, .date, .chosen",
 		rules: {
 			"plane_id":{
 				required: true, 
