@@ -33,6 +33,7 @@ foreach($to_routes as $option) {
     $val = $option->to_string();
     echo "$val";
     $option_num++;
+	echo '<br/>';
 }
 echo"<br/><br/><br/><br/><br/>";
 if($_POST['flight'] == 'Round-Trip') {
@@ -46,6 +47,7 @@ if($_POST['flight'] == 'Round-Trip') {
         $val = $option->to_string();
         echo "$val";
         $option_num++;
+		echo '<br/>';
     }
 }
 ?>
