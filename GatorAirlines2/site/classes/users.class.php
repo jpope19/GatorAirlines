@@ -526,8 +526,8 @@ class users extends db {
 			FROM tickets
 			WHERE ticket_id = $key
 			GROUP BY ticket_id";
-		$this->db->GetArray($sql);
-		if (isset($this[0]))
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
 		{
 			$response = true;
 		}
@@ -541,10 +541,10 @@ class users extends db {
 	function seat_id_exists($key, $flight){
 		$sql = "SELECT COUNT(ticket_id)
 			FROM tickets
-			WHERE ticket_id = $key AND flight_id = $flight
+			WHERE seat_id = $key AND flight_id = $flight
 			GROUP BY ticket_id";
-		$this->db->GetArray($sql);
-		if (isset($this[0]))
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
 		{
 			$response = true;
 		}
@@ -576,11 +576,11 @@ class users extends db {
 	function db_conflicts_customers($record, $key = "")
 	{
 		$error = false;
-		$message = "There were errors with your input:";
+		$message = 'There were errors with your input:\n';
 		// Check for conflicts with DB
 		if (isset($record['email']) && $this->email_exists($record['email']) == true)
 		{// This is an insert and so, if the email exists, reject it.
-			$message = "The email entered already exists. Please choose a different email.\n";
+			$message .= 'The email entered already exists. Please choose a different email.\n';
 			$error = true;
 		}
 		
@@ -597,11 +597,11 @@ class users extends db {
 	function db_conflicts_airports($record, $key = "")
 	{
 		$error = false;
-		$message = "There were errors with your input:";
+		$message = 'There were errors with your input:\n';
 		// Check for conflicts with DB
 		if (isset($record['iata']) && $this->iata_exists($record['iata']) == true)
 		{// There is an existing iata, do not insert
-			$message = "The IATA entered already exists. Please choose a different IATA.\n";
+			$message .= 'The IATA entered already exists. Please choose a different IATA.\n';
 			$error = true;
 		}
 		
@@ -618,12 +618,12 @@ class users extends db {
 	function db_conflicts_airplanes($record, $key = "")
 	{
 		$error = false;
-		$message = "There were errors with your input:";
+		$message = 'There were errors with your input:\n';
 		// Check for conflicts with DB
 		/*
 		if (isset($record['type']) && $this->type_exists($record['type']) == true)
 		{// There is an existing type, do not insert
-			$message = "The airplane type entered already exists. Please choose a different airplane type.\n";
+			$message .= 'The airplane type entered already exists. Please choose a different airplane type.\n';
 			$error = true;
 		}
 		I'm not sure if multiple planes should be allowed to have the same type. The code is here if necessarry*/
@@ -640,24 +640,24 @@ class users extends db {
 	function db_conflicts_flights($record, $key = "")
 	{
 		$error = false;
-		$message = "There were errors with your input: ";
+		$message = 'There were errors with your input:\n';
 		$count = 1;
 		// Check for conflicts with DB
 		if (isset($record['plane_id']) && $this->plane_id_exists($record['plane_id']) == false)
 		{// The plane does not exist, so it cannot be referenced
-			$message = "'$count'. The provided plane ID does not exist. Please enter an existing plane ID.\n";
+			$message .= $count . '. The provided plane ID does not exist. Please enter an existing plane ID.\n';
 			$count++;
 			$error = true;
 		}
 		if (isset($record['org_id']) && $this->airport_id_exists($record['org_id']) == false)
 		{// The airport does not exist, so it cannot be referenced
-			$message = "'$count'. The provided origin ID does not exist. Please enter an existing airport ID.\n";
+			$message .= $count . '. The provided origin ID does not exist. Please enter an existing airport ID.\n';
 			$count++;
 			$error = true;
 		}
 		if (isset($record['dest_id']) && $this->airport_id_exists($record['dest_id']) == false)
 		{// The airport does not exist, so it cannot be referenced
-			$message = "'$count'. The provided destination ID does not exist. Please enter an existing airport ID.\n";
+			$message .= $count . '. The provided destination ID does not exist. Please enter an existing airport ID.\n';
 			$count++;
 			$error = true;
 		}
@@ -675,26 +675,26 @@ class users extends db {
 	function db_conflicts_tickets($record, $key = "")
 	{
 		$error = false;
-		$message = "There were errors with your input: ";
+		$message = 'There were errors with your input:\n';
 		$count = 1;
 		// Check for conflicts with DB
 		
 		if (isset($record['cid']) && $this->cid_exists($record['cid']) == false)
 		{// The customer does not exist, so it cannot be referenced
-			$message = "'$count'. The provided customer ID does not exist. Please enter an customer plane ID.\n";
+			$message .= $count . '. The provided customer ID does not exist. Please enter an existing customer ID.\n';
 			$count++;
 			$error = true;
 		}
 		if (isset($record['flight_id']) && $this->flight_id_exists($record['flight_id']) == false)
 		{// The flight does not exist, so it cannot be referenced
-			$message = "'$count'. The provided flight ID does not exist. Please enter an flight airport ID.\n";
+			$message .= $count . '. The provided flight ID does not exist. Please enter an existing flight ID.\n';
 			$count++;
 			$error = true;
 		}
-		else if (isset($record['seat_id']) && $this->airport_id_exists($record['seat_id'], $record['flight_id']) == true)
+		else if (isset($record['seat_id']) && $this->seat_id_exists($record['seat_id'], $record['flight_id']) == true)
 		{// The seat referenced already exist in the table with the same flight id, so it will cause a conflict.
 			// Note that this is an else if because if the flight id is not valid, then it's not worth checking the seat id
-			$message = "'$count'. The provided seat ID is already taken. Please choose a different seat ID.\n";
+			$message .= $count . '. The provided seat ID is already taken. Please choose a different seat ID.\n';
 			$count++;
 			$error = true;
 		}
@@ -703,7 +703,7 @@ class users extends db {
 			$array = get_flight_from_ticket();
 			if (isset($array) && $array[0][$key] == $record['seat_id'])
 			{// This would mean there is a conflict
-				$message = "'$count'. The provided seat ID is already taken. Please choose a different seat ID.\n";
+				$message .= $count . '. The provided seat ID is already taken. Please choose a different seat ID.\n';
 				$count++;
 				$error = true;
 			}
@@ -722,11 +722,11 @@ class users extends db {
 	function db_conflicts_vip($record, $key = "")
 	{
 		$error = false;
-		$message = "There were errors with your input:";
+		$message = 'There were errors with your input:\n';
 		// Check for conflicts with DB
 		if (isset($record['cid']) && $this->cid_exists($record['cid']) == false)
 		{// The cid does not exist, so it cannot be referenced 
-			$message = "The customer ID does not exist. Please choose and existing customer ID.\n";
+			$message .= 'The customer ID does not exist. Please choose and existing customer ID.\n';
 			$error = true;
 		}
 		
