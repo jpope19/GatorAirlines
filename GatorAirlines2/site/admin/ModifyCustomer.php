@@ -87,14 +87,14 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		}
 		if (isset($_POST['passwordBox']))
 		{// password checked
-			if (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 30)
+			if (strlen($_POST['customer_password']) < 8 || strlen($_POST['customer_password']) > 30)
 			{// Password is not valid
 				$message .=  "Password is incorrect size\n";
 				$flag = 1;
 			}
 			else
 			{
-				$set['password'] = $_POST['password'];
+				$set['password'] = $_POST['customer_password'];
 			}
 		}
 		if (isset($_POST['addrBox']))
@@ -236,10 +236,10 @@ if (isset($_POST['ModifyCustomerSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" class="checkbox" value="1" name="passwordBox" id="passwordBox" onClick="enableDisable(this.checked, 'password')" />
+		<input type="checkbox" class="checkbox" value="1" name="passwordBox" id="passwordBox" onClick="enableDisable(this.checked, 'customer_password')" />
 	</td>
 	<td>
-		Password: <input type="password" name="password" id="password" disabled="disabled" class="required" id="password" >
+		Password: <input type="password" name="customer_password" id="customer_password" disabled="disabled" class="required" id="customer_password" >
 	</td> </br>
 </tr>
 <tr>

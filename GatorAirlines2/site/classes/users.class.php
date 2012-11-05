@@ -45,7 +45,7 @@ class users extends db {
             $record2['zip'] = trim($info[7]);
 			$record2['cc_num'] = trim($info[8]);
             $record2['u_type'] = 0;
-            $this->db->AutoExecute("customers", $record2, "INSERT");
+            $this->db->add_customers($record2);
         }
         echo "Created some flights";
         
@@ -170,6 +170,8 @@ class users extends db {
 	
 	//------------------------------------------------ Get Functions ------------------------------------------------
 	function get_user($email, $password){
+		$salt = $this->get_salt($this->get_cid($email));
+		$password = $this->generateHash($password, $salt); // hash the password to compare it to the "real" hashed password
 		$where = "email = \"" . $email . "\" AND password = \"" . $password . "\"";
         $sql = "SELECT first_name,cid, last_name, u_type FROM customers WHERE $where";
         return $this->db->GetArray($sql);
@@ -236,6 +238,14 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
+	function get_cid($email)
+	{
+		$sql = "SELECT cid 
+			FROM customers
+			WHERE email = $email";
+		return $this->db->GetArray($sql);
+	}
+	
 	//Returns all of the seat numbers that have been booked for a particular flight.
 	function get_seat($flight_id){
 		$sql = "SELECT seat_id FROM tickets WHERE $flight_id = flight_id";
@@ -260,14 +270,14 @@ class users extends db {
 	
 	//------------------------------------------------ Modify functions ------------------------------------------------
 	function modify_customers($set, $key){
-		$db_conflicts = db_conflicts_customers($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_customers($set, $key); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
 			if (isset($set['password']))
 			{// need to hash
-				$salt = get_salt($key);
-				$set['password'] = generateHash($set['password'], $salt[0]['salt']);
+				$salt = $this->get_salt($key);
+				$set['password'] = $this->generateHash($set['password'], $salt[0]['salt']);
 			}
 			$key = "cid = $key";
 			$this->db->AutoExecute("customers", $set, "UPDATE", $key);
@@ -281,12 +291,12 @@ class users extends db {
     }// end modify customers
 	
 	function modify_airports($set, $key){
-		$db_conflicts = db_conflicts_airports($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_airports($set, $key); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
 			$key = "airport_id = $key";
-		$this->db->AutoExecute("airports", $set, "UPDATE", $key);
+			$this->db->AutoExecute("airports", $set, "UPDATE", $key);
 			$modify = true;
 		}
 		else
@@ -297,7 +307,7 @@ class users extends db {
     }// end modify airports
 	
 	function modify_airplanes($set, $key){
-		$db_conflicts = db_conflicts_airplanes($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_airplanes($set, $key); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -313,7 +323,7 @@ class users extends db {
     }// end modify airplanes
     
 	function modify_flights($set, $key){
-		$db_conflicts = db_conflicts_flights($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_flights($set, $key); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -329,7 +339,7 @@ class users extends db {
     }// end modify flights
 	
 	function modify_tickets($set, $key){
-		$db_conflicts = db_conflicts_tickets($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_tickets($set, $key); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -345,7 +355,7 @@ class users extends db {
     }// end modify tickets
 	
 	function modify_vip($set, $key){
-		$db_conflicts = db_conflicts_vip($record, $key); // check for conflicts with the DB
+		$db_conflicts = $this->db_conflicts_vip($set, $key); // check for conflicts with the DB
 		
 		if ($db_conflicts == false)
 		{
@@ -569,7 +579,7 @@ class users extends db {
 		$message = "There were errors with your input:";
 		// Check for conflicts with DB
 		if (isset($record['email']) && $this->email_exists($record['email']) == true)
-		{// There is an existing key, do not insert
+		{// This is an insert and so, if the email exists, reject it.
 			$message = "The email entered already exists. Please choose a different email.\n";
 			$error = true;
 		}
@@ -757,21 +767,6 @@ class users extends db {
 	
 	//------------------------------------------------ Create the database ------------------------------------------------
     function create_db(){
-		$sql = "DROP TABLE IF EXISTS customers";
-		$this->db->Execute($sql);
-		
-		$sql = "DROP TABLE IF EXISTS airports";
-		$this->db->Execute($sql);
-		
-		$sql = "DROP TABLE IF EXISTS airplanes";
-		$this->db->Execute($sql);
-		
-		$sql = "DROP TABLE IF EXISTS flights";
-		$this->db->Execute($sql);
-		
-		$sql = "DROP TABLE IF EXISTS vip";
-		$this->db->Execute($sql);
-		
         $sql = "CREATE table if not exists customers (
             cid int auto_increment primary key,
             email varchar(30) not null,
@@ -849,7 +844,7 @@ class users extends db {
     }
     
     function clear_table($table) {
-    	$sql = "TRUNCATE TABLE `$table`";
+    	$sql = "DROP TABLE IF EXISTS `$table`";
     	$this->db->Execute($sql);
     }
     
