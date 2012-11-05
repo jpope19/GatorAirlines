@@ -473,7 +473,7 @@ class users extends db {
 	function type_exists($key){
 		$sql = "SELECT COUNT(type)
 			FROM airplanes
-			WHERE type = $key
+			WHERE type = '$key'
 			GROUP BY type";
 		$count = $this->db->GetArray($sql);
 		if (isset($count[0]))
