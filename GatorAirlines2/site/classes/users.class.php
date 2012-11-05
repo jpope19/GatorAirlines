@@ -572,6 +572,23 @@ class users extends db {
 		return $response;
 	}
 	
+	function cid_exists_in_vip($key){
+		$sql = "SELECT COUNT(cid)
+			FROM vip
+			WHERE cid = '$key'
+			GROUP BY cid";
+		$count = $this->db->GetArray($sql);
+		if (isset($count[0]))
+		{
+			$response = true;
+		}
+		else
+		{
+			$response = false;
+		}
+		return $response;
+	}
+	
 	//------------------------------------------------ Check for DB conflicts ------------------------------------------------
 	function db_conflicts_customers($record, $key = "")
 	{
@@ -723,10 +740,18 @@ class users extends db {
 	{
 		$error = false;
 		$message = 'There were errors with your input:\n';
+		$count = 1;
 		// Check for conflicts with DB
 		if (isset($record['cid']) && $this->cid_exists($record['cid']) == false)
 		{// The cid does not exist, so it cannot be referenced 
-			$message .= 'The customer ID does not exist. Please choose and existing customer ID.\n';
+			$message .= $count . '. The customer ID does not exist. Please choose and existing customer ID.\n';
+			$count++;
+			$error = true;
+		}
+		if (isset($record['cid']) && $this->cid_exists_in_vip($record['cid']) == true)
+		{// The cid does not exist, so it cannot be referenced 
+			$message .= $count . '.The customer is already a VIP. Please choose a non-VIP customer.\n';
+			$count++;
 			$error = true;
 		}
 		
