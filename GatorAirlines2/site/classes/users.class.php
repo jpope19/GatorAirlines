@@ -170,7 +170,8 @@ class users extends db {
 	
 	//------------------------------------------------ Get Functions ------------------------------------------------
 	function get_user($email, $password){
-		$salt = $this->get_salt($this->get_cid($email));
+		$cid = $this->get_cid($email);
+		$salt = $this->get_salt($cid[0]['cid']);
 		$password = $this->generateHash($password, $salt); // hash the password to compare it to the "real" hashed password
 		$where = "email = \"" . $email . "\" AND password = \"" . $password . "\"";
         $sql = "SELECT first_name,cid, last_name, u_type FROM customers WHERE $where";
@@ -242,7 +243,7 @@ class users extends db {
 	{
 		$sql = "SELECT cid 
 			FROM customers
-			WHERE email = $email";
+			WHERE email = '$email'";
 		return $this->db->GetArray($sql);
 	}
 	
