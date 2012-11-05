@@ -1,9 +1,19 @@
+<?php
+
+
+?>
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Seat Selection</title>
- <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+  <title>Services</title>
+  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="js/test.js"></script>
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
@@ -15,21 +25,26 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css" />
 
 </head>
 
-<body id="page6">
+
+<body id="page4">
+
+
 <div class="main">
 <!--header -->
-	<?include('section/header2.php')?> 
+	<?include('section/header2.php')?>
 <!-- / header -->
-<!--content -->
-<!-- Starting Content -->
-<br >
-</br>
 
-<h2> Select Desired Seat:</h2> 
+
+<!--content -->
+	<section id="content">
+		   <div class="wrapper pad1">
+		   
+		 <!--  DO YOU WORK HERE !!!! -->  
+		   
+<h2> Choose seats by clicking the corresponding seat in the layout below:</h2>
     <div id="holder">
         <ul  id="place">
         </ul>
@@ -40,16 +55,16 @@
         <li style="background:url('images/booked_seat.png') no-repeat scroll 0 0 transparent;">Booked Seat</li>
         <li style="background:url('images/selected_seat.png') no-repeat scroll 0 0 transparent;">Selected Seat</li>
     </ul>
+			<!-- PHP AND JAVASCRIPT REFERENCE -->		
+<script type="text/javascript" src="js/seat.js"></script>
     </div>
         <div style="clear:both;width:100%">
         <input type="button" id="btnShowNew" value="Show Selected Seats" />
         <input type="button" id="btnShow" value="Show All" />
         </div>
-	
-	<div id="extra" style="clear: both;">&nbsp;</div>
-	
-	
-	<h2>Baggage Cost</h2> 
+		   
+		   
+		  <h2>Baggage Cost</h2> 
 <FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;Estimate the total cost of your trip, baggage included!</p></FONT> 
 <form>   
 &nbsp&nbspTotal Number of Bags &nbsp: <select name="bags">
@@ -68,31 +83,23 @@
 </form>
 <FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;If you are unsure of the total weight of your luggage, please use the
 <a href="baggage_calc.php">baggage calculator.</a></p></FONT>  
-	
-</div>
-<!-- end page -->
+		   
+ 
+		   
+		   
+		   
+	  
+				        </div>
+			</section>
+			
+			
 
-
-<!-- JAVASCRIPT REFERENCE -->
-<script type="text/javascript" src="js/seat.js"></script>
+			
 			<!--content end-->
 			<!--footer -->
-			<!-- PHP AND JAVASCRIPT REFERENCE -->		
-
 			<?include('section/footer2.php')?>
 			<!--footer end-->
 		</div>
 
-
-<!-- <script type="text/javascript"> Cufon.now(); </script> -->
-<script type="text/javascript" src="seat.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-
-
-<ul>
-<!-- <script type="text/php" src="seat_selection.php"></script> -->
-</ul>
-
-			    
 </body>
 </html>

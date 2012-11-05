@@ -21,6 +21,7 @@ $time = microtime(true)- $time;
 
 echo "total time to run is: $time seconds";
 echo '</br>';
+echo "<b>Departure Trips</b><br/>";
 
 //output routes
 $to_routes = $routes->depart_routes;
@@ -35,7 +36,7 @@ foreach($to_routes as $option) {
     $option_num++;
 	echo '<br/>';
 }
-echo"<br/><br/><br/><br/><br/>";
+echo"<br/><br/><b>Return Trips</b><br/>";
 if($_POST['flight'] == 'Round-Trip') {
     $to_routes = $routes->return_routes;
     $a = Airport::get_name_by_id($_POST['org'], $user);
