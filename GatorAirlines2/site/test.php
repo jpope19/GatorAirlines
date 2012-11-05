@@ -20,7 +20,7 @@ $record['zip'] = "33029";
 $record['cc_num'] = "341335673042097";
 $record['u_type'] = "1";
 */
-$key = 433;
+$key = 500;
 $record['password'] = "password";
 
 //$res = $users->db_conflicts_customers ($record);
