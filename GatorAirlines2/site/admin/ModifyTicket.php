@@ -34,7 +34,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 	else
 	{// customer chosen
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$numeric = '/^[0-9]+$/';
@@ -43,7 +43,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		{// acid checked
 			if (preg_match($numeric,$_POST['cid']) == 0 || strlen($_POST['cid']) > 30)
 			{// acid is not valid
-				$message .=  "Customer ID is not valid\n";
+				$message = 'Customer ID is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -55,7 +55,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		{// first name checked
 			if (preg_match($numeric,$_POST['flight_id']) == 0 || strlen($_POST['flight_id']) > 30)
 			{// First name is not valid
-				$message .=  "Flight ID is not valid\n";
+				$message = 'Flight ID is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -67,7 +67,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		{// seat_id checked
 			if (preg_match($numeric,$_POST['seat_id']) == 0 || strlen($_POST['seat_id']) < 0 || strlen($_POST['seat_id']) > 3)
 			{// Password is not valid
-				$message .=  "Seat ID is not valid\n";
+				$message = 'Seat ID is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -79,7 +79,7 @@ if (isset($_POST['ModifyTicketSubmit']))
 		{// nameess checked
 			if (preg_match($numeric,$_POST['price']) == 0 || strlen($_POST['price']) > 30)
 			{// Address is not valid
-				$message .=  "Price is not valid\n";
+				$message = 'Price is not valid\n';
 				$flag = 1;
 			}
 			else

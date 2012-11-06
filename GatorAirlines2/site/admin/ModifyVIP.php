@@ -26,7 +26,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 	else
 	{// vip chosen
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$alphabet = '/^[A-Za-z]+$/';
@@ -40,7 +40,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		{// email checked
 			if (!filter_var($_POST['vemail'], FILTER_VALIDATE_EMAIL))
 			{// email is not valid
-				$message .=  "E-mail is not valid\n";
+				$message = 'E-mail is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -52,7 +52,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		{// distance checked
 			if (preg_match($numeric, $_POST['totalDistanceTraveled']) < 0)
 			{// Distance is not valid
-				$message .=  "Total distance traveled is not valid\n";
+				$message = 'Total distance traveled is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -64,7 +64,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		{// reward points checked
 			if (preg_match($numeric, $_POST['rewardPoints']) < 0)
 			{// reward points is not valid
-				$message .=  "Reward points is not valid\n";
+				$message = 'Reward points is not valid\n';
 				$flag = 1;
 			}
 			else

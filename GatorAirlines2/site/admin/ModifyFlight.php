@@ -40,7 +40,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 	else
 	{// customer chosen
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$date = '/^[0-9\/\\\\]+$/'; // modify
@@ -51,7 +51,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// plane_id checked
 			if (preg_match($numeric,$_POST['plane_id']) == 0 || strlen($_POST['plane_id']) > 30)
 			{// plane_id is not valid
-				$message .=  "Plane ID is not valid\n";
+				$message = 'Plane ID is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -63,7 +63,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// first name checked
 			if (preg_match($numeric,$_POST['org_id']) == 0 || strlen($_POST['org_id']) > 30)
 			{// First name is not valid
-				$message .=  "Origin ID is not valid\n";
+				$message = 'Origin ID is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -75,7 +75,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// last name checked
 			if (preg_match($numeric,$_POST['dest_id']) == 0 || strlen($_POST['dest_id']) > 30)
 			{// last name is not valid
-				$message .=  "Destination ID is not valid\n";
+				$message = 'Destination ID is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -87,7 +87,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// first_class_cost checked
 			if (preg_match($numeric,$_POST['first_class_cost']) == 0 || strlen($_POST['first_class_cost']) > 30)
 			{// Password is not valid
-				$message .=  "First class cost is not valid\n";
+				$message = 'First class cost is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -99,7 +99,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// coach_class_costess checked
 			if (preg_match($numeric,$_POST['coach_class_cost']) == 0 || strlen($_POST['coach_class_cost']) > 30)
 			{// Address is not valid
-				$message .=  "Coach class cost is not valid\n";
+				$message = 'Coach class cost is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -111,12 +111,12 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// depart_time checked
 			if (preg_match($date,$_POST['depart_date']) == 0 || strlen($_POST['depart_date']) < 10 || strlen($_POST['depart_date']) > 10)
 			{// City is not valid
-				$message .=  "Departure date is not valid\n";
+				$message = 'Departure date is not valid\n';
 				$flag = 1;
 			}
 			if (preg_match($time,$_POST['depart_time']) == 0 || strlen($_POST['depart_time']) > 30)
 			{// City is not valid
-				$message .=  "Departure time is not valid\n";
+				$message = 'Departure time is not valid\n';
 				$flag = 1;
 			}
 			
@@ -131,12 +131,12 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// arrival_time checked
 			if (preg_match($date,$_POST['arrival_date']) == 0 || strlen($_POST['arrival_date']) < 10 || strlen($_POST['arrival_date']) > 10)
 			{// State is not valid
-				$message .=  "Arrival date is not valid\n";
+				$message = 'Arrival date is not valid\n';
 				$flag = 1;
 			}	
 			if (preg_match($time,$_POST['arrival_time']) == 0 || strlen($_POST['arrival_time']) > 30)
 			{// State is not valid
-				$message .=  "Arrival time is not valid\n";
+				$message = 'Arrival time is not valid\n';
 				$flag = 1;
 			}
 			
@@ -151,7 +151,7 @@ if (isset($_POST['ModifyFlightSubmit']))
 		{// distance checked
 			if (preg_match($numeric,$_POST['distance']) == 0 || strlen($_POST['distance']) > 30)
 			{// Zip is not valid
-				$message .=  "Distance is not valid\n";
+				$message = 'Distance is not valid\n';
 				$flag = 1;
 			}
 			else

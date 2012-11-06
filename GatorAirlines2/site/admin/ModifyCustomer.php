@@ -40,7 +40,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 	else
 	{// customer chosen
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$alphabet = '/^[A-Za-z]+$/';
@@ -53,7 +53,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// email checked
 			if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 			{// email is not valid
-				$message .=  "E-mail is not valid\n";
+				$message = 'E-mail is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -65,7 +65,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// first name checked
 			if (preg_match($alphabet,$_POST['first_name']) == 0 || strlen($_POST['first_name']) > 30)
 			{// First name is not valid
-				$message .=  "First name is not valid\n";
+				$message = 'First name is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -77,7 +77,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// last name checked
 			if (preg_match($alphabet,$_POST['last_name']) == 0 || strlen($_POST['last_name']) > 30)
 			{// last name is not valid
-				$message .=  "Last is not valid\n";
+				$message = 'Last is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -89,7 +89,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// password checked
 			if (strlen($_POST['customer_password']) < 8 || strlen($_POST['customer_password']) > 30)
 			{// Password is not valid
-				$message .=  "Password is incorrect size\n";
+				$message = 'Password is incorrect size\n';
 				$flag = 1;
 			}
 			else
@@ -101,7 +101,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// address checked
 			if (preg_match($address,$_POST['addr']) == 0 || strlen($_POST['addr']) > 30)
 			{// Address is not valid
-				$message .=  "Address is not valid\n";
+				$message = 'Address is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -113,7 +113,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// city checked
 			if (preg_match($name,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
 			{// City is not valid
-				$message .=  "City is not valid\n";
+				$message = 'City is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -125,7 +125,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// state checked
 			if (preg_match($name,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
 			{// State is not valid
-				$message .=  "State is not valid\n";
+				$message = 'State is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -137,7 +137,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// zip checked
 			if (preg_match($numeric,$_POST['zip']) == 0 || strlen($_POST['zip']) > 5 || strlen($_POST['zip']) < 5)
 			{// Zip is not valid
-				$message .=  "Zip is not valid\n";
+				$message = 'Zip is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -149,7 +149,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// credit card checked
 			if (preg_match($numeric,$_POST['cc_num']) == 0 || strlen($_POST['cc_num']) > 16 || strlen($_POST['cc_num']) < 16)
 			{// Credit Card is not valid
-				$message .=  "Credit Card is not valid\n";
+				$message = 'Credit Card is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -161,7 +161,7 @@ if (isset($_POST['ModifyCustomerSubmit']))
 		{// user type checked
 			if (preg_match($numeric,$_POST['u_type']) == 0 || $_POST['u_type'] < 0 || $_POST['u_type'] > 2)
 			{// User Type not valid
-				$message .=  "User type is not valid\n";
+				$message = 'User type is not valid\n';
 				$flag = 1;
 			}
 			else

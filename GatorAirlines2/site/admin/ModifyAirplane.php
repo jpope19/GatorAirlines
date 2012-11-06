@@ -34,7 +34,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 	else
 	{// customer chosen
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$alphabet = '/^[A-Za-z]+$/';
@@ -45,7 +45,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		{// type checked
 			if (preg_match($alphabet,$_POST['type']) == 0 || strlen($_POST['type']) > 30)
 			{// type is not valid
-				$message .=  "Type is not valid\n";
+				$message = 'Type is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -57,7 +57,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		{// first name checked
 			if (preg_match($alphabet,$_POST['chart_addr']) == 0 || strlen($_POST['chart_addr']) > 30)
 			{// First name is not valid
-				$message .=  "Chart address is not valid\n";
+				$message = 'Chart address is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -69,7 +69,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		{// num_first_class checked
 			if (preg_match($numeric,$_POST['num_first_class']) == 0 || strlen($_POST['num_first_class']) > 30)
 			{// Password is not valid
-				$message .=  "The number of first class is not valid\n";
+				$message = 'The number of first class is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -81,7 +81,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		{// nameess checked
 			if (preg_match($numeric,$_POST['num_coach_class']) == 0 || strlen($_POST['num_coach_class']) > 30)
 			{// Address is not valid
-				$message .=  "The number of coach class is not valid\n";
+				$message = 'The number of coach class is not valid\n';
 				$flag = 1;
 			}
 			else
