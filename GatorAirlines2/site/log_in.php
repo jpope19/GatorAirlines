@@ -63,9 +63,6 @@ $the_error =null;
 	 header("Location:home.php");
 	
 	}
-
-
-
   }
 ?>
 

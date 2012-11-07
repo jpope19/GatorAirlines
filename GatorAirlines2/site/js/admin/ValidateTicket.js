@@ -5,6 +5,7 @@ $(document).ready(function()
 {	
     $("#AddTicketForm").validate({
 		// Apply rules
+		ignore: ".checkbox, .date, .chosen",
 		rules: {
 			"cid":{
 				required: true, 

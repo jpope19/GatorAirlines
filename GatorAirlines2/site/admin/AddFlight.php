@@ -35,7 +35,7 @@ if (isset($_POST['AddFlightSubmit']))
 	else
 	{	
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$time = '/^[A-Za-z0-9 ]+$/'; //modify
@@ -44,52 +44,52 @@ if (isset($_POST['AddFlightSubmit']))
 		
 		if (preg_match($numeric,$_POST['plane_id']) == 0 || strlen($_POST['plane_id']) > 30)
 		{// plane_id is not valid
-			$message .=  "Plane ID is not valid\n";
+			$message = 'Plane ID is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['org_id']) == 0 || strlen($_POST['org_id']) > 30)
 		{// First name is not valid
-			$message .=  "Origin ID is not valid\n";
+			$message = 'Origin ID is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['dest_id']) == 0 || strlen($_POST['dest_id']) > 30)
 		{// last name is not valid
-			$message .=  "Destination ID is not valid\n";
+			$message = 'Destination ID is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['first_class_cost']) == 0 || strlen($_POST['first_class_cost']) > 30)
 		{// Password is not valid
-			$message .=  "First class cost is not valid\n";
+			$message = 'First class cost is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['coach_class_cost']) == 0 || strlen($_POST['coach_class_cost']) > 30)
 		{// Address is not valid
-			$message .=  "Coach class cost is not valid\n";
+			$message = 'Coach class cost is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($date,$_POST['e_depart_date']) == 0 || strlen($_POST['e_depart_date']) < 10 || strlen($_POST['e_depart_date']) > 10)
 		{// City is not valid
-			$message .=  "Estimated departure date is not valid\n";
+			$message = 'Estimated departure date is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($time,$_POST['e_depart_time']) == 0 || strlen($_POST['e_depart_time']) > 30)
 		{// City is not valid
-			$message .=  "Estimated departure time is not valid\n";
+			$message = 'Estimated departure time is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($date,$_POST['e_arrival_date']) == 0 || strlen($_POST['e_arrival_date']) < 10 || strlen($_POST['e_arrival_date']) > 10)
 		{// State is not valid
-			$message .=  "Estimated arrival date is not valid\n";
+			$message = 'Estimated arrival date is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($time,$_POST['e_arrival_time']) == 0 || strlen($_POST['e_arrival_time']) > 30)
 		{// State is not valid
-			$message .=  "Estimated arrival time is not valid\n";
+			$message = 'Estimated arrival time is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['distance']) == 0 || strlen($_POST['distance']) > 30)
 		{// Zip is not valid
-			$message .=  "Distance is not valid\n";
+			$message = 'Distance is not valid\n';
 			$flag = 1;
 		}
 		

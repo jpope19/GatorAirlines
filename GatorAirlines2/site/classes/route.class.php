@@ -76,9 +76,14 @@ class Route {
         foreach($this->flights as $flight) {
             $a = Airport::get_name_by_id($flight['org_id'],new users());
             $b = Airport::get_name_by_id($flight['dest_id'],new users());
-            $res = "$res           $count : $a to $b </br>";
+            $res = $res . $count . " : " . $a . " to " .  $b . "</br>";
+            $res .= "     departs at: " .  date('D M j, Y - g:i', $flight['e_depart_time']) . "<br>";
+            $res .= "     arrives at: " .  date('D M j, Y - g:i', $flight['e_arrival_time']) . "<br>";
             $count++;
         }
+        
+        $res .= "<br>";
+        
         return $res;
     }
 }

@@ -29,7 +29,7 @@ if (isset($_POST['AddAirportSubmit']))
 	else
 	{	
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$alphabet = '/^[A-Za-z]+$/';
@@ -38,22 +38,22 @@ if (isset($_POST['AddAirportSubmit']))
 		
 		if (preg_match($alphabet,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
 		{// acity is not valid
-			$message .=  "City is not valid\n";
+			$message = 'City is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($alphabet,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
 		{// First name is not valid
-			$message .=  "State is not valid\n";
+			$message = 'State is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($capAlphabet,$_POST['iata']) == 0 || strlen($_POST['iata']) < 3 || strlen($_POST['iata']) > 3)
 		{// Password is not valid
-			$message .=  "IATA is not valid\n";
+			$message = 'IATA is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($name,$_POST['name']) == 0 || strlen($_POST['name']) > 30)
 		{// Address is not valid
-			$message .=  "Name is not valid\n";
+			$message = 'Name is not valid\n';
 			$flag = 1;
 		}
 		
