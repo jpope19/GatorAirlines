@@ -795,7 +795,7 @@ class users extends db {
 	//------------------------------------------------ Create the database ------------------------------------------------
 	function drop_db($table)
 	{
-		$sql = "DROP TABLE '$table'";
+		$sql = "DROP TABLE $table";
 		$this->db->Execute($sql);
 	}
 	
@@ -809,7 +809,7 @@ class users extends db {
 		$tables[] = "vip";
 		
 		foreach($tables as $table){
-			drop_db($table);
+			$this->drop_db($table);
 		}
 		
         $sql = "CREATE table if not exists customers (
