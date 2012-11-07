@@ -1,5 +1,5 @@
 <div id="login-box" class="login-popup">
-     <a href="#" class="close"><img src="images/close.png" width ="40" height= "40" class="btn_close" title="Close Window" alt="Close" /></a>
+     <a href="#" class="close" style="margin-left:210px;"><img src="images/close.png" width ="30" height= "30" class="btn_close" title="Close Window" alt="Close" /></a>
           <form method="post" class="signin" action="log_in.php">
                 <fieldset class="textbox">
             	<label class="username">

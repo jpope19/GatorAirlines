@@ -10,7 +10,6 @@
 	{
      $users = new users();
 $users->delete_tickets($_GET['id']);
-//$reservations= $result;
 header("Location:myaccount.php");
 
 	

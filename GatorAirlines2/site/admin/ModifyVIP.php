@@ -26,7 +26,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 	else
 	{// vip chosen
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$alphabet = '/^[A-Za-z]+$/';
@@ -40,7 +40,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		{// email checked
 			if (!filter_var($_POST['vemail'], FILTER_VALIDATE_EMAIL))
 			{// email is not valid
-				$message .=  "E-mail is not valid\n";
+				$message = 'E-mail is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -52,7 +52,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		{// distance checked
 			if (preg_match($numeric, $_POST['totalDistanceTraveled']) < 0)
 			{// Distance is not valid
-				$message .=  "Total distance traveled is not valid\n";
+				$message = 'Total distance traveled is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -64,7 +64,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		{// reward points checked
 			if (preg_match($numeric, $_POST['rewardPoints']) < 0)
 			{// reward points is not valid
-				$message .=  "Reward points is not valid\n";
+				$message = 'Reward points is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -87,7 +87,7 @@ if (isset($_POST['ModifyVIPSubmit']))
 		if($flag ==1)
 		{// There are errors in input, Notify user that there were errors
 			print "<script type=\"text/javascript\">"; 
-			print "alert('There were errors in your input.')"; 
+			print "alert('$message')"; 
 			print "</script>";
 		}// end if
 		else if (!isset($set))
@@ -136,7 +136,7 @@ $(function() {
 <li>Which fields would you like to modify from this user?:</li>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="vemailBox" id="vemailBox" onclick="enableDisable(this.checked, 'vemail')" />
+		<input type="checkbox" class="checkbox" value="1" name="vemailBox" id="vemailBox" onclick="enableDisable(this.checked, 'vemail')" />
 	</td>
 	<td>
 		Email: <input type="text" name="vemail" id="vemail" disabled="disabled" class="required email" id="vemail" >
@@ -144,7 +144,7 @@ $(function() {
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="total_distance_traveledBox" id="total_distance_traveledBox" onClick="enableDisable(this.checked, 'totalDistanceTraveled')" />
+		<input type="checkbox" class="checkbox" value="1" name="total_distance_traveledBox" id="total_distance_traveledBox" onClick="enableDisable(this.checked, 'totalDistanceTraveled')" />
 	</td>
 	<td>
 		Total Distance Traveled: <input type="text" name="totalDistanceTraveled" id="totalDistanceTraveled" disabled="disabled" class="required" id="totalDistanceTraveled">
@@ -152,7 +152,7 @@ $(function() {
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="reward_pointsBox" id="reward_pointsBox" onClick="enableDisable(this.checked, 'rewardPoints')" />
+		<input type="checkbox" class="checkbox" value="1" name="reward_pointsBox" id="reward_pointsBox" onClick="enableDisable(this.checked, 'rewardPoints')" />
 	</td>
 	<td>
 		Reward Points: <input type="text" name="rewardPoints" id="rewardPoints" disabled="disabled" class="required" id="rewardPoints" >
@@ -160,7 +160,7 @@ $(function() {
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="join_dateBox" id="join_dateBox" onClick="enableDisable(this.checked, 'modjoinDate')" />
+		<input type="checkbox" class="checkbox" value="1" name="join_dateBox" id="join_dateBox" onClick="enableDisable(this.checked, 'modjoinDate')" />
 	</td>
 	<td>
 		Join Date: <input type="text" name="modjoinDate" id="modjoinDate" disabled="disabled" class="required" id="modjoinDate" >

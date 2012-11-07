@@ -1,6 +1,15 @@
 
+			
 
-var settings = {
+$(document).ready(function(){
+	var array = [];
+		/* call the php that has the php array which is json_encoded */
+	$.getJSON("seat_selection.php", function(data) {
+						$.each(data, function(key,val) {
+							array.push(parseInt(val));
+						});
+						
+						var settings = {
                rows: 5,
                cols:20,
 			   brek: 12,
@@ -33,8 +42,8 @@ var init = function (reservedSeat) {
 				
             };
 			
-		   
-			
+						init(array);
+						
 $('.' + settings.seatCss).click(function () {
 if ($(this).hasClass(settings.selectedSeatCss)){
     alert('This seat is already reserved');
@@ -60,3 +69,7 @@ $('#btnShowNew').click(function () {
     });
     alert(str.join(','));
 })		
+					});
+					
+				}); 
+		

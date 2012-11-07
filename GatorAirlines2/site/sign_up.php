@@ -1,5 +1,5 @@
 <?php
-
+include("classes/users.class.php");
 $error = null;
 $con = mysql_connect("localhost","jpope","baseball19");
 if (!$con)
@@ -32,9 +32,22 @@ $error = "<p style=color:red>An account already exists with ".$_POST['email']."<
 
 //if email is valid, insert the user into the customers table.
 else{
-$query = "insert into customers values (0,'".$_POST['email']."','".$_POST['first_name']."','".$_POST['last_name']."','".$_POST['password']."','".$_POST['address']."','".$_POST['city']."','".$_POST['state']."',".$_POST['zip'].",".$_POST['cc_num'].",0)";
-
-            $result = mysql_query($query,$con);
+$users = new users();
+$record = array
+(
+	"email"=>$_POST['email'],
+	"first_name"=>$_POST['first_name'],
+	"last_name"=>$_POST['last_name'],
+	"password"=>$_POST['password'],
+	"addr"=>$_POST['address'],
+	"city"=>$_POST['city'],
+	"state"=>$_POST['state'],
+	"zip"=>$_POST['zip'],
+	"cc_num"=>$_POST['cc_num'],
+	"u_type"=>0
+);
+$result = $users->add_customers($record); // add_customers is a function that comes from the users class in users.class.php
+// $query = "insert into customers values (0,'".$_POST['email']."','".$_POST['first_name']."','".$_POST['last_name']."','".$_POST['password']."','".$_POST['address']."','".$_POST['city']."','".$_POST['state']."',".$_POST['zip'].",".$_POST['cc_num'].",0)";
 
 if(!$result)
 {
@@ -42,7 +55,7 @@ die("Invalid query! <br> The query is: " . $query.mysql_error());
 }
 
 
-header("Location:myaccount.php"); // redirects
+header("Location:home.php"); // redirects
 }
 
 

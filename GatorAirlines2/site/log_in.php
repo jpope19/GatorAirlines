@@ -1,5 +1,9 @@
 <?php
  
+    include("classes/users.class.php");
+	include("classes/email.class.php");  //in case user forgot their password.
+	$users = new users();
+ 
 if (!isset($_SESSION))
 {
 	session_start();
@@ -8,8 +12,6 @@ if (!isset($_SESSION))
 $the_error =null;
 	if (isset($_POST['submit']))
 	{
-		include("classes/users.class.php");
-		$users = new users();
 		$result = $users->get_user($_POST["email"],$_POST["password"]);
     		
 		if($result == false)
@@ -42,41 +44,25 @@ $the_error =null;
 	
 	   else if (isset($_POST['recovery'])) //come here if user forgot his/her password.
 	   {
-	     
-		 $con = mysql_connect('localhost','jpope','baseball19');
-		 mysql_select_db("gatorairlines", $con);
+	      //get the password for that email.
 
-         include("mail/sendMail.php"); //include mailing function (in mail folder).
-
-          $to = $_POST['email']; //where to send email.
-
-         $query = "select * from customers where email = '".$_POST['email']."'"; //get the password for that email.
-
-		$result = mysql_query($query,$con);	
-		
-		if(!$result)
-		{
-			die("Invalid query! <br> The query is: " . $query);
-		}
-		
-	$password = null;
+		$result = $users->get_user2($_POST['email']);			
+	    $password = null;
 	
-
-    if(count($result)>0){
+    if($result!=false){   //if email is in database, send the paasword to customer.
 	
-	$row = mysql_fetch_assoc($result);
-	$password = $row['password'];
+	 $password = $result[0]['password'];
+     $addresses = array();
+     $addresses[] = $_POST['email'];
+  
+     // email(array of addresses, message, subject);
+	 $message = "Your current password with GatorAirlines is ".$password."<br/> Hope to hear from you soon!!";	 
+	 $email = new email($addresses, $message, "Password Recovery (GA)");
+     $email->send_email();
 	
-	$message = "Your current password with GatorAirlines is ".$password."/n Hope to hear from you soon!!";
-	
-	mail_attachment(null,$to, null, 'Account Recovery', $message);
-	
-	header("Location:home.php");
+	 header("Location:home.php");
 	
 	}
-
-
-
   }
 ?>
 

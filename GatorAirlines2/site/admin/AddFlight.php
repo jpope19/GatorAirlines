@@ -26,7 +26,7 @@ if (isset($_POST['AddFlightSubmit']))
 	$_SESSION['action']="Add";
 	
 	// Filter form
-	if ((empty($_POST['plane_id'])) || (empty($_POST['org_id'])) || (empty($_POST['dest_id'])) || (empty($_POST['first_class_cost'])) ||	(empty($_POST['coach_class_cost'])) || (empty($_POST['e_depart_time'])) || (empty($_POST['e_arrival_time'])) || (empty($_POST['distance'])))
+	if ((empty($_POST['plane_id'])) || (empty($_POST['org_id'])) || (empty($_POST['dest_id'])) || (empty($_POST['first_class_cost'])) ||	(empty($_POST['coach_class_cost'])) || (empty($_POST['e_depart_date'])) || (empty($_POST['e_depart_time'])) || (empty($_POST['e_arrival_date'])) || (empty($_POST['e_arrival_time'])) || (empty($_POST['distance'])))
 	{
 		print "<script type=\"text/javascript\">"; 
 		print "alert('Please fill out all fields.')"; 
@@ -35,50 +35,61 @@ if (isset($_POST['AddFlightSubmit']))
 	else
 	{	
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
-		$timeDate = '/^[A-Za-z0-9 ]+$/';
+		$time = '/^[A-Za-z0-9 ]+$/'; //modify
+		$date = '/^[A-Za-z0-9 ]+$/'; //modify
 		$numeric = '/^[0-9]+$/';
 		
 		if (preg_match($numeric,$_POST['plane_id']) == 0 || strlen($_POST['plane_id']) > 30)
 		{// plane_id is not valid
-			$message .=  "Plane ID is not valid\n";
+			$message = 'Plane ID is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['org_id']) == 0 || strlen($_POST['org_id']) > 30)
 		{// First name is not valid
-			$message .=  "organization ID is not valid\n";
+			$message = 'Origin ID is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['dest_id']) == 0 || strlen($_POST['dest_id']) > 30)
 		{// last name is not valid
-			$message .=  "Destination ID is not valid\n";
+			$message = 'Destination ID is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['first_class_cost']) == 0 || strlen($_POST['first_class_cost']) > 30)
 		{// Password is not valid
-			$message .=  "First class cost is not valid\n";
+			$message = 'First class cost is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['coach_class_cost']) == 0 || strlen($_POST['coach_class_cost']) > 30)
 		{// Address is not valid
-			$message .=  "Coach class cost is not valid\n";
+			$message = 'Coach class cost is not valid\n';
 			$flag = 1;
 		}
-		if (preg_match($timeDate,$_POST['e_depart_time']) == 0 || strlen($_POST['e_depart_time']) > 30)
+		if (preg_match($date,$_POST['e_depart_date']) == 0 || strlen($_POST['e_depart_date']) < 10 || strlen($_POST['e_depart_date']) > 10)
 		{// City is not valid
-			$message .=  "Estimated departure time is not valid\n";
+			$message = 'Estimated departure date is not valid\n';
 			$flag = 1;
 		}
-		if (preg_match($timeDate,$_POST['e_arrival_time']) == 0 || strlen($_POST['e_arrival_time']) > 30)
+		if (preg_match($time,$_POST['e_depart_time']) == 0 || strlen($_POST['e_depart_time']) > 30)
+		{// City is not valid
+			$message = 'Estimated departure time is not valid\n';
+			$flag = 1;
+		}
+		if (preg_match($date,$_POST['e_arrival_date']) == 0 || strlen($_POST['e_arrival_date']) < 10 || strlen($_POST['e_arrival_date']) > 10)
 		{// State is not valid
-			$message .=  "Estimated arrival time is not valid\n";
+			$message = 'Estimated arrival date is not valid\n';
+			$flag = 1;
+		}
+		if (preg_match($time,$_POST['e_arrival_time']) == 0 || strlen($_POST['e_arrival_time']) > 30)
+		{// State is not valid
+			$message = 'Estimated arrival time is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['distance']) == 0 || strlen($_POST['distance']) > 30)
 		{// Zip is not valid
-			$message .=  "Distance is not valid\n";
+			$message = 'Distance is not valid\n';
 			$flag = 1;
 		}
 		
@@ -86,7 +97,7 @@ if (isset($_POST['AddFlightSubmit']))
 		if ($flag == 1)
 		{// Notify user that there were errors
 			print "<script type=\"text/javascript\">"; 
-			print "alert('There were errors in your input.')"; 
+			print "alert('$message')"; 
 			print "</script>";
 		}// end if
 		else
@@ -114,12 +125,12 @@ if (isset($_POST['AddFlightSubmit']))
 
 <form id="AddFlightForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 Plane ID: <input type="text" class="required" name="plane_id" /> </br>
-Organization ID: <input type="text" class="required" name="org_id" /> </br>
+Origin ID: <input type="text" class="required" name="org_id" /> </br>
 Destination ID: <input type="text" class="required" name="dest_id" /> </br>
 First Class Cost: <input type="text" class="required" name="first_class_cost" /> </br>
 Coach Class Cost: <input type="text" class="required" name="coach_class_cost" /> </br>
-Estimated Departure Time: <input type="text" class="required" name="e_depart_time" /> </br>
-Estimated Arrival Time: <input type="text" class="required" name="e_arrival_time" /> </br>
+Estimated Departure Date: <input type="text" class="date" name="e_depart_date" /> Time: <input type="text" class="required" name="e_depart_time" /> </br>
+Estimated Arrival Time: <input type="text" class="date" name="e_arrival_date" /> Time: <input type="text" class="required" name="e_arrival_time" /> </br>
 Distance: <input type="text" class="required" name="distance" /> </br>
 <input type="submit" name="AddFlightSubmit"/>
 </form>

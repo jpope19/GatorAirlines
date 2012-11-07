@@ -70,7 +70,9 @@ $airports = $users->get_airports();
 <body id="page1">
 <div class="main">
 <!--header -->
-	<?php include('section/header2.php')?>
+
+	<?PHP include('section/header2.php')?>
+
 <!-- / header -->
 <!--content -->
 	<section id="content">
@@ -93,7 +95,7 @@ $airports = $users->get_airports();
 
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
-<input type="radio" name="flight" value="One-way" /> One way <br />
+<input type="radio" name="flight" value="One-way" checked /> One way <br />
 
 Departure : <input type="text" id="departure" name ="depart" /></p>
 
@@ -110,7 +112,9 @@ From:  <br/>
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
+
         <option value=<?= $airport['iata']?>><?=$airport['iata']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
 <?php
         }
     }
@@ -125,7 +129,9 @@ To:  <br/>
     foreach($airports as $airport){
         if($airport['airport_id'] <= 50) {
 ?>
+
         <option value=<?= $airport['iata']?>><?=$airport['iata']?> - <?=$airport['city']?>, <?=$airport['state']?></option>
+
 
 <?php
         }
@@ -192,11 +198,15 @@ Flexible Return Date: <br>
 							</div>
 						</div>	
 					</article>
+					
 					<div id="slider">
 						<img src="images/banner1.jpg" alt="">
+						<!--
 						<img src="images/banner2.jpg" alt="">
 						<img src="images/banner3.jpg" alt="">
+						-->
 					</div>
+					
 				</div>
 		<div class="wrapper pad1">
 			<article class="col1">

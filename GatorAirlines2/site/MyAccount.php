@@ -4,33 +4,21 @@ if (!isset($_SESSION))
 	session_start();
     
 	}
-$ticket_id=0;	
-$result=null;
-$reservations=0;
+$ticket_id=0;	//ticket number for a reservation.
+$result=null;    //to hold the query set.
+$reservations=null; //to hold the number of reservations (integer) for a particular customer.
+
 include("classes/users.class.php");
 
      $users = new users();
 	 $results= $users->get_reservation($_SESSION['cid']);
-if($results!=false)
+	 
+if($results!=false)    
 {
    $reservations = $results;
 }
 ?>
  
- 
-<?
-//delete reservation after the user click "cancel" button.
-if(isset($_GET['id']))
-   {
-       $ticket_id = $_GET['id'];
-	  $users->delete_tickets($ticket_id); //this function remove reserv. from tickets table.
-       header("Location:myaccount.php"); // reload the page.
-     }
-
-
-?>
-
-
 
 
 
@@ -80,9 +68,9 @@ echo "you currently have ". count($reservations)." reservation(s) on your accoun
   echo   " <table width=77% border=1 cellpadding=5>
   <tr>
     <td><strong>Destination</strong></td>
-    <td><strong>Ticket</strong></td>
-    <td><strong>Flight</strong></td>
-    <td><strong>Seat</strong></td>
+    <td><strong>Ticket#</strong></td>
+    <td><strong>Flight#</strong></td>
+    <td><strong>Seat#</strong></td>
     <td><strong>Price</strong></td>
 	<td><strong>Action</strong></td>
   </tr>";
@@ -94,8 +82,8 @@ echo "<tr>
     <td>$result[ticket_id]</td>
     <td>$result[flight_id]</td>
     <td>$result[seat_id]</td>
-    <td>$result[price]</td>";
-	echo "<td><a href='delete.php?id=" . $result['ticket_id'] . "'>Delete</a></td>";
+    <td>$$result[price]</td>";
+	echo "<td><a href='delete.php?id=" . $result['ticket_id'] . "'><button class=button1 onclick='return doConfirmDelete(this.id);'>Delete</button></a></td>";
    echo "
   </tr>";
 	  	 } 

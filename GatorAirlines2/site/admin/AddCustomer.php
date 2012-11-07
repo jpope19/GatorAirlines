@@ -34,7 +34,7 @@ if (isset($_POST['AddCustomerSubmit']))
 	else
 	{	
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$alphabet = '/^[A-Za-z]+$/';
@@ -45,52 +45,52 @@ if (isset($_POST['AddCustomerSubmit']))
 		
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{// email is not valid
-			$message .=  "E-mail is not valid\n";
+			$message = 'E-mail is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($alphabet,$_POST['first_name']) == 0 || strlen($_POST['first_name']) > 30)
 		{// First name is not valid
-			$message .=  "First name is not valid\n";
+			$message = 'First name is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($alphabet,$_POST['last_name']) == 0 || strlen($_POST['last_name']) > 30)
 		{// last name is not valid
-			$message .=  "Last name is not valid\n";
+			$message = 'Last name is not valid\n';
 			$flag = 1;
 		}
 		if (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 30)
 		{// Password is not valid
-			$message .=  "Password is incorrect size\n";
+			$message = 'Password is incorrect size\n';
 			$flag = 1;
 		}
 		if (preg_match($address,$_POST['addr']) == 0 || strlen($_POST['addr']) > 30)
 		{// Address is not valid
-			$message .=  "Address is not valid\n";
+			$message = 'Address is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($name,$_POST['city']) == 0 || strlen($_POST['city']) > 30)
 		{// City is not valid
-			$message .=  "City is not valid\n";
+			$message = 'City is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($name,$_POST['state']) == 0 || strlen($_POST['state']) > 30)
 		{// State is not valid
-			$message .=  "State is not valid\n";
+			$message = 'State is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['zip']) == 0 || strlen($_POST['zip']) > 5 || strlen($_POST['zip']) < 5)
 		{// Zip is not valid
-			$message .=  "Zip is not valid\n";
+			$message = 'Zip is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['cc_num']) == 0 || strlen($_POST['cc_num']) > 16 || strlen($_POST['cc_num']) < 16)
 		{// Credit Card is not valid
-			$message .=  "Credit Card is not valid\n";
+			$message = 'Credit Card is not valid\n';
 			$flag = 1;
 		}
 		if (preg_match($numeric,$_POST['u_type']) == 0 || $_POST['u_type'] < 0 || $_POST['u_type'] > 2)
 		{// User Type not valid
-			$message .=  "User type is not valid\n";
+			$message = 'User type is not valid\n';
 			$flag = 1;
 		}
 		
@@ -98,7 +98,7 @@ if (isset($_POST['AddCustomerSubmit']))
 		if ($flag == 1)
 		{// Notify user that there were errors
 			print "<script type=\"text/javascript\">"; 
-			print "alert('There were errors in your input.')"; 
+			print "alert('$message')"; 
 			print "</script>";
 		}// end if
 		else
@@ -127,14 +127,13 @@ if (isset($_POST['AddCustomerSubmit']))
 <script type="text/javascript" src="js/admin/ValidateCustomer.js"></script>
 
 <form id="AddCustomerForm" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-First Name: <input type="text" class="required" name="first_name" /> 
+First Name: <input type="text" class="required" name="first_name" /> </br>
 Last Name: <input type="text" class="required" name="last_name" /> </br>
-Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="required email" name="email" /> 
+Email: <input type="text" class="required email" name="email" /> </br>
 Password: <input type="password" class="required" name="password" /> </br>
-Billing Address: <input type="text" class="required" name="addr" /> 
-City: <input type="text" class="required" name="city" />
-State: <input type="text" class="required" name="state" /> 
+Billing Address: <input type="text" class="required" name="addr" /> </br>
+City: <input type="text" class="required" name="city" /> </br>
+State: <input type="text" class="required" name="state" /> </br>
 Zip Code: <input type="text" class="required" name="zip" /> </br>
 Credit Card Number: <input type="text" class="required creditcard" name="cc_num" /> </br>
 User Type: <input type="text" class="required" name="u_type" /> </br>

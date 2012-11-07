@@ -53,13 +53,11 @@ function setAdminStyle($in)
 <!DOCTYPE html>  
 <html lang="en">
 <head>
-  <title>Admin</title>
-  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/adminStyle.css" type="text/css" media="all">
-    <link rel="stylesheet" href="/resources/demos/style.css" /> 
-	
+	<title>Admin</title>
+	<link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+	<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+	<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+	<link rel="stylesheet" href="css/adminStyle.css" type="text/css" media="all">
 	
 	<!-- This is necessarry for the Chosen plugin -->
 	<link rel="stylesheet" href="css/chosen.css" />
@@ -90,6 +88,13 @@ function setAdminStyle($in)
 	
 	<!-- The validation plugin -->
 	<script type="text/javascript" src="js/validation/dist/jquery.validate.js"></script>
+	
+	<!-- Jquery for calendar and validaiton of dates -->
+	<script>
+	$(function() {
+		$( ".date" ).datepicker();
+	});
+	</script>
 	<!-------------------------------------- END JQUERY ----------------------------->
 
 </head>

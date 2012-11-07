@@ -34,7 +34,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 	else
 	{// customer chosen
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$alphabet = '/^[A-Za-z]+$/';
@@ -45,7 +45,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		{// type checked
 			if (preg_match($alphabet,$_POST['type']) == 0 || strlen($_POST['type']) > 30)
 			{// type is not valid
-				$message .=  "Type is not valid\n";
+				$message = 'Type is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -57,7 +57,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		{// first name checked
 			if (preg_match($alphabet,$_POST['chart_addr']) == 0 || strlen($_POST['chart_addr']) > 30)
 			{// First name is not valid
-				$message .=  "Chart address is not valid\n";
+				$message = 'Chart address is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -69,7 +69,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		{// num_first_class checked
 			if (preg_match($numeric,$_POST['num_first_class']) == 0 || strlen($_POST['num_first_class']) > 30)
 			{// Password is not valid
-				$message .=  "The number of first class is not valid\n";
+				$message = 'The number of first class is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -81,7 +81,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		{// nameess checked
 			if (preg_match($numeric,$_POST['num_coach_class']) == 0 || strlen($_POST['num_coach_class']) > 30)
 			{// Address is not valid
-				$message .=  "The number of coach class is not valid\n";
+				$message = 'The number of coach class is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -95,7 +95,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 		if($flag ==1)
 		{// There are errors in input, Notify user that there were errors
 			print "<script type=\"text/javascript\">"; 
-			print "alert('There were errors in your input.')"; 
+			print "alert('$message')"; 
 			print "</script>";
 		}// end if
 		else if (!isset($set))
@@ -134,7 +134,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 <li>Which fields would you like to modify from this user?:</li>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="typeBox" id="typeBox" onClick="enableDisable(this.checked, 'type')" />
+		<input type="checkbox" class="checkbox" value="1" name="typeBox" id="typeBox" onClick="enableDisable(this.checked, 'type')" />
 	</td>
 	<td>
 		Type of Plane: <input type="text" class="required" name="type" disabled="disabled" id="type">
@@ -142,7 +142,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="chart_addrBox" id="last_idBox" onClick="enableDisable(this.checked, 'chart_addr')" />
+		<input type="checkbox" class="checkbox" value="1" name="chart_addrBox" id="last_idBox" onClick="enableDisable(this.checked, 'chart_addr')" />
 	</td>
 	<td>
 		Chart Address: <input type="text" class="required" name="chart_addr" disabled="disabled" id="chart_addr" >
@@ -150,7 +150,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="num_first_classBox" id="num_first_classBox" onClick="enableDisable(this.checked, 'num_first_class')" />
+		<input type="checkbox" class="checkbox" value="1" name="num_first_classBox" id="num_first_classBox" onClick="enableDisable(this.checked, 'num_first_class')" />
 	</td>
 	<td>
 		Number of First Class Seats: <input type="text" class="required" name="num_first_class" disabled="disabled" id="num_first_class" >
@@ -158,7 +158,7 @@ if (isset($_POST['ModifyAirplaneSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="num_coach_classBox" id="num_coach_classBox" onClick="enableDisable(this.checked, 'num_coach_class')" />
+		<input type="checkbox" class="checkbox" value="1" name="num_coach_classBox" id="num_coach_classBox" onClick="enableDisable(this.checked, 'num_coach_class')" />
 	</td>
 	<td>
 		Number of Coach Class Seats: <input type="text" class="required" name="num_coach_class" disabled="disabled" id="num_coach_class" >

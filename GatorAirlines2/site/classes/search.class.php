@@ -40,7 +40,7 @@ class Search {
         $result = Array();
         $queue = new SplPriorityQueue();
         foreach($flights as $flight) {
-            if($flight['org_id'] == $this->opts['org']) {
+            if($flight['org_id'] == $org) {
                 $route = new Route($this->route_opts);
                 $route->add_flight($flight);
                 $queue->insert($route, $route->get_joy());
@@ -52,7 +52,7 @@ class Search {
         while($queue->count() >0 && $count < $this->opts['max_results'])
         {
             $cur_route = $queue->extract();
-            if($cur_route->get_dest() == $this->opts['dest']) {
+            if($cur_route->get_dest() == $dest) {
                 $result[] = $cur_route;
                 $count++;
                 continue;

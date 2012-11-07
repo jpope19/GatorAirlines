@@ -34,7 +34,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 	else
 	{// customer chosen
 		$flag = 0; // flag to check for input errors.
-		$message = ""; // message to be given to user if errors are detected.
+		$message = ''; // message to be given to user if errors are detected.
 		
 		// Declare rules (patterns) to be evaluated by preg_match
 		$alphabet = '/^[A-Za-z]+$/';
@@ -45,7 +45,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 		{// acity checked
 			if (preg_match($name,$_POST['acity']) == 0 || strlen($_POST['acity']) > 30)
 			{// acity is not valid
-				$message .=  "City is not valid\n";
+				$message = 'City is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -57,7 +57,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 		{// first name checked
 			if (preg_match($name,$_POST['astate']) == 0 || strlen($_POST['astate']) > 30)
 			{// First name is not valid
-				$message .=  "State is not valid\n";
+				$message = 'State is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -69,7 +69,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 		{// iata checked
 			if (preg_match($capAlphabet,$_POST['iata']) == 0 || strlen($_POST['iata']) < 3 || strlen($_POST['iata']) > 3)
 			{// Password is not valid
-				$message .=  "IATA is not valid\n";
+				$message = 'IATA is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -81,7 +81,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 		{// nameess checked
 			if (preg_match($name,$_POST['name']) == 0 || strlen($_POST['name']) > 30)
 			{// Address is not valid
-				$message .=  "Name is not valid\n";
+				$message = 'Name is not valid\n';
 				$flag = 1;
 			}
 			else
@@ -95,7 +95,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 		if($flag ==1)
 		{// There are errors in input, Notify user that there were errors
 			print "<script type=\"text/javascript\">"; 
-			print "alert('There were errors in your input.')"; 
+			print "alert('$message')"; 
 			print "</script>";
 		}// end if
 		else if (!isset($set))
@@ -133,7 +133,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 <li>Which fields would you like to modify from this Airport?:</li>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="acityBox" id="acityBox" onClick="enableDisable(this.checked, 'acity')" />
+		<input type="checkbox" class="checkbox" value="1" name="acityBox" id="acityBox" onClick="enableDisable(this.checked, 'acity')" />
 	</td>
 	<td>
 		City: <input type="text" name="acity" disabled="disabled" id="acity" >
@@ -141,7 +141,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="astateBox" id="astateBox" onClick="enableDisable(this.checked, 'astate')" />
+		<input type="checkbox" class="checkbox" value="1" name="astateBox" id="astateBox" onClick="enableDisable(this.checked, 'astate')" />
 	</td>
 	<td>
 		State: <input type="text" name="astate" disabled="disabled" id="astate" >
@@ -149,7 +149,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="iataBox" id="iataBox" onClick="enableDisable(this.checked, 'iata')" />
+		<input type="checkbox" class="checkbox" value="1" name="iataBox" id="iataBox" onClick="enableDisable(this.checked, 'iata')" />
 	</td>
 	<td>
 		IATA: <input type="text" name="iata" disabled="disabled" id="iata" >
@@ -157,7 +157,7 @@ if (isset($_POST['ModifyAirportSubmit']))
 </tr>
 <tr>
 	<td width="235">
-		<input type="checkbox" value="1" name="nameBox" id="nameBox" onClick="enableDisable(this.checked, 'name')" />
+		<input type="checkbox" class="checkbox" value="1" name="nameBox" id="nameBox" onClick="enableDisable(this.checked, 'name')" />
 	</td>
 	<td>
 		Airport Name: <input type="text" name="name" disabled="disabled" id="name" >
