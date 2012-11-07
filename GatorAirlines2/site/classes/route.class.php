@@ -63,17 +63,22 @@ class Route {
     
     public function to_string() {
         $res = "Total cost: $this->cost</br>";
-        $res = "$res Total flights: $this->num_flights</br>";
+        $res = $res . "Total flights: " . $this->num_flights . "</br>";
         $fuck_php = $this->get_trip_time();
-        $res = "$res Total time (milliseconds): $fuck_php</br>";
-        $res = "$res Flights: </br>";
+        $res = $res . "Total time (milliseconds): " . $fuck_php . "</br><br>";
+        $res = $res . "Flights: </br>";
         $count = 1;
         foreach($this->flights as $flight) {
             $a = Airport::get_name_by_id($flight['org_id'],new users());
             $b = Airport::get_name_by_id($flight['dest_id'],new users());
-            $res = "$res           $count : $a to $b </br>";
+            $res = $res . $count . " : " . $a . " to " .  $b . "</br>";
+            $res .= "     departs at: " .  date('D M j, Y - g:i', $flight['e_depart_time']) . "<br>";
+            $res .= "     arrives at: " .  date('D M j, Y - g:i', $flight['e_arrival_time']) . "<br>";
             $count++;
         }
+        
+        $res .= "<br>";
+        
         return $res;
     }
 }

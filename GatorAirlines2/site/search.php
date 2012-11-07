@@ -3,8 +3,6 @@
 include("classes/search.class.php");
 include("classes/airport.class.php");
 include("classes/users.class.php");
-$time = microtime(true);
-var_dump($_POST);
 $user = new users();
 //convert passed in day/month/year into epoch times
 
@@ -17,32 +15,27 @@ $_POST['dest'] = Airport::get_id_by_name($_POST['dest'], $user);
 //find routes
 $routes = new Search($_POST, $user);
 
-$time = microtime(true)- $time;
-
-echo "total time to run is: $time seconds";
-echo '</br>';
-
 //output routes
 $to_routes = $routes->depart_routes;
 $a = Airport::get_name_by_id($_POST['org'], $user);
 $b = Airport::get_name_by_id($_POST['dest'], $user);
-echo "Routes from $a to $b </br>";
+echo "<font size=+2>Routes from $a to $b </font></br><br>";
 $option_num = 1;
 foreach($to_routes as $option) {
-    echo "Option $option_num <br/>";
+    echo "<b>Option " . $option_num  . " </b><br/>";
     $val = $option->to_string();
     echo "$val";
     $option_num++;
 }
-echo"<br/><br/><br/><br/><br/>";
+echo"<br/><br/><br/><br/>";
 if($_POST['flight'] == 'Round-Trip') {
     $to_routes = $routes->return_routes;
     $a = Airport::get_name_by_id($_POST['org'], $user);
     $b = Airport::get_name_by_id($_POST['dest'], $user);
-    echo "Routes from $a to $b </br>";
+    echo "<font size=+2>Routes from $b to $a </font></br><br>";
     $option_num = 1;
     foreach($to_routes as $option) {
-        echo "Option $option_num <br/>";
+        echo "<b>Option " . $option_num . "</b><br/>";
         $val = $option->to_string();
         echo "$val";
         $option_num++;
