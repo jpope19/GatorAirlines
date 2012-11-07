@@ -795,7 +795,7 @@ class users extends db {
 	//------------------------------------------------ Create the database ------------------------------------------------
 	function drop_db($table)
 	{
-		$sql = "DROP TABLE $table";
+		$sql = "DROP TABLE if exists $table";
 		$this->db->Execute($sql);
 	}
 	
