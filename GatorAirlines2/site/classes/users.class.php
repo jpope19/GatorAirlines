@@ -822,7 +822,7 @@ class users extends db {
 			city varchar(30),
 			state varchar(30),
 			zip int(5),
-            cc_num int(16),
+            cc_num varchar(16),
             u_type int(2),
 			salt varchar(16)
         )";
