@@ -18,7 +18,7 @@ class Search {
     # one_way: is it one way
     # class: what class of ticket
     public function __construct($params, $user) {
-        $this->default_opts = array('class' => 'coach','passengers' => 1, 'max_results' => 10);
+        $this->default_opts = array('class' => 'coach','passengers' => 1, 'max_results' => 4);
         $this->user = $user;
         $this->opts = array_merge($this->default_opts, $params);
         $this->route_opts = $this->opts;

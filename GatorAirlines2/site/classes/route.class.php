@@ -62,10 +62,15 @@ class Route {
     }
     
     public function to_string() {
-        $res = "Total cost: $this->cost</br>";
+		date_default_timezone_set('America/New_York');
+        $res = "Total cost: \$$this->cost</br>";
         $res = "$res Total flights: $this->num_flights</br>";
-        $fuck_php = $this->get_trip_time();
-        $res = "$res Total time (milliseconds): $fuck_php</br>";
+        $fuck_php = round($this->get_trip_time()/60,0);
+		$time = date('Y-m-d H:i:s', $this->flights[0]['e_depart_time']);
+		$res = "$res Departs at: $time </br>";
+		$time = date('Y-m-d H:i:s', $this->flights[$this->num_flights-1]['e_arrival_time']);
+        $res = "$res Arrives at: $time </br>";
+		$res = "$res Total time (minutes): $fuck_php</br>";
         $res = "$res Flights: </br>";
         $count = 1;
         foreach($this->flights as $flight) {

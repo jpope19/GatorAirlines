@@ -4,7 +4,7 @@ include("classes/search.class.php");
 include("classes/airport.class.php");
 include("classes/users.class.php");
 $time = microtime(true);
-var_dump($_POST);
+//var_dump($_POST);
 $user = new users();
 //convert passed in day/month/year into epoch times
 
@@ -19,7 +19,7 @@ $routes = new Search($_POST, $user);
 
 $time = microtime(true)- $time;
 
-echo "total time to run is: $time seconds";
+echo "Total time to run this search is: $time seconds";
 echo '</br>';
 echo "<b>Departure Trips</b><br/>";
 
@@ -41,7 +41,7 @@ if($_POST['flight'] == 'Round-Trip') {
     $to_routes = $routes->return_routes;
     $a = Airport::get_name_by_id($_POST['org'], $user);
     $b = Airport::get_name_by_id($_POST['dest'], $user);
-    echo "Routes from $a to $b </br>";
+    echo "Routes from $b to $a </br>";
     $option_num = 1;
     foreach($to_routes as $option) {
         echo "Option $option_num <br/>";
