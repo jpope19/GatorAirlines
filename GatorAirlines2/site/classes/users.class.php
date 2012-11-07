@@ -793,7 +793,25 @@ class users extends db {
 	}// end generateHash
 	
 	//------------------------------------------------ Create the database ------------------------------------------------
+	function drop_db($table)
+	{
+		$sql = "DROP TABLE '$table'";
+		$this->db->Execute($sql);
+	}
+	
     function create_db(){
+		$tables = array();
+		$tables[] = "customers";
+		$tables[] = "airports";
+		$tables[] = "airplanes";
+		$tables[] = "flights";
+		$tables[] = "tickets";
+		$tables[] = "vip";
+		
+		foreach($tables as $table){
+			drop_db($table);
+		}
+		
         $sql = "CREATE table if not exists customers (
             cid int auto_increment primary key,
             email varchar(30) not null,
