@@ -1,5 +1,5 @@
 <footer>
-				<div class="wrapper">
+				<div class="wrapper" >
 					<ul id="icons">
 						<li><a href="#" class="normaltip" title="Facebook"><img src="images/icon1.jpg" alt=""></a></li>
 						<li><a href="#" class="normaltip" title="Stumble Upon"><img src="images/icon3.jpg" alt=""></a></li>

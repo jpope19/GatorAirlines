@@ -31,7 +31,7 @@ mark, rp, rt, ruby, summary, time {display:inline}
 /* Left & Right alignment */
 .left {float:left}
 .right {float:right}
-.wrapper {width:100%;overflow:hidden}
+.wrapper {width:100%;overflow:hidden;}
 .relative {position:relative}
 * +html .relative {position:static}
 /* Global properties */

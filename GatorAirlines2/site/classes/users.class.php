@@ -62,11 +62,12 @@ class users extends db {
             $record3['dest_id'] = trim($info[2]);
             $record3['first_class_cost'] = trim($info[3]);
             $record3['coach_class_cost'] = trim($info[4]);
-            $record3['e_depart_time'] = trim($info[5]);
+            /*$record3['e_depart_time'] = trim($info[5]);
             $record3['e_arrival_time'] = trim($info[6]);
-            $record3['depart_time'] = trim($info[5]);
+           $record3['depart_time'] = trim($info[5]);
             $record3['arrival_time'] = trim($info[6]);
             $record3['distance'] = trim($info[7]);
+			*/
             $this->db->AutoExecute("flights", $record3, "INSERT");
         }
         
@@ -814,15 +815,15 @@ class users extends db {
 		
         $sql = "CREATE table if not exists customers (
             cid int auto_increment primary key,
-            email varchar(30) not null,
-            first_name varchar(30),
-            last_name varchar(30),
+            email varchar(100) not null,
+            first_name varchar(100),
+            last_name varchar(100),
             password varchar(256),
-            addr varchar(30),
-			city varchar(30),
+            addr varchar(100),
+			city varchar(100),
 			state varchar(30),
 			zip int(5),
-            cc_num int(16),
+            cc_num varchar(16),
             u_type int(2),
 			salt varchar(16)
         )";
@@ -830,10 +831,10 @@ class users extends db {
         
         $sql = "CREATE table if not exists airports (
             airport_id int auto_increment primary key,
-            city varchar(40),
+            city varchar(200),
             state varchar(2),
             iata varchar(3),
-            name varchar(65)  
+            name varchar(200)  
         )";
         $this->db->Execute($sql);
         
@@ -895,4 +896,6 @@ class users extends db {
     
     
 }
+
 ?>
+

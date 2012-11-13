@@ -223,19 +223,10 @@ Flexible Return Date: <br>
 								</ul>
 							</div>
 							
-							<div class="pad">
-								
-							</div>
-						</div>
-					</article>
-					<article class="col2">
-						<h3><span></span></h3>
-						<div class="wrapper">
-							
 							
 						</div>
-	
 					</article>
+					
 				</div>
 			</section>
 			<!--content end-->
