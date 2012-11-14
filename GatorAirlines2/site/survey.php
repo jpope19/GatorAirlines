@@ -58,7 +58,10 @@
 <br />
 <p>
 
-On a scale of 1 to 5 how easy was booking a ticket? 
+On a scale of 1 to 5 how easy was booking a ticket?
+<br />
+1 = very easy <br />
+5 = very difficult
 
 </p>
 
@@ -71,7 +74,20 @@ On a scale of 1 to 5 how easy was booking a ticket?
 <input type="radio" name="survey" value="five" /> 5
 </form>
 
+<p>
 
+On a scale of 1 to 5 how easy was selecting a seat?
+<br />
+1 = very easy <br />
+5 = very difficult
 
+</p>
+<form action="">
+<input type="radio" name="survey" value="one" /> 1 &#09;
+<input type="radio" name="survey" value="two" /> 2
+<input type="radio" name="survey" value="three" /> 3
+<input type="radio" name="survey" value="four" /> 4
+<input type="radio" name="survey" value="five" /> 5
+</form>
 
 </html>
