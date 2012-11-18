@@ -50,20 +50,25 @@ if (!isset($_SESSION))
 		 
 			<?php
 			
-			include("classes/search.class.php");
-			include("classes/airport.class.php");
 			include("classes/users.class.php");
+			
 			$user = new users();
 			
-			echo "<b>Departure Flights</b><br/>";
+			$result = $user->get_flight_info();
 			
-			$to_routes = $routes->depart_routes;
-			$option_num = 1;
-			foreach($to_routes as $option) {
-				$val = $option->to_string();
-				echo"$val";
-				$option_num++; 
-				echo '<br/>';
+			foreach($result as $output)
+			{
+				//echo $output['e_depart_time'];
+				$destId = $output['dest_id'];
+				$airport_info = $user->get_airport_info($destId);
+				echo $airport_info[0]['city'];
+				echo " ";
+				echo $airport_info[0]['iata'];
+				echo " ";
+				echo $airport_info[0]['state'];
+				echo " ";
+				echo $airport_info[0]['name'];
+				echo "<br/>";
 			}
 			?>
 		   
