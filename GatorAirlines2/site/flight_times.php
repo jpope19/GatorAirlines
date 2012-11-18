@@ -47,8 +47,25 @@ if (!isset($_SESSION))
 		   <div class="wrapper pad1">
 		   
 		 <!--  DO YOU WORK HERE !!!! -->  
-		   
-		   
+		 
+			<?php
+			
+			include("classes/search.class.php");
+			include("classes/airport.class.php");
+			include("classes/users.class.php");
+			$user = new users();
+			
+			echo "<b>Departure Flights</b><br/>";
+			
+			$to_routes = $routes->depart_routes;
+			$option_num = 1;
+			foreach($to_routes as $option) {
+				$val = $option->to_string();
+				echo"$val";
+				$option_num++; 
+				echo '<br/>';
+			}
+			?>
 		   
 		   
 		   
@@ -59,8 +76,8 @@ if (!isset($_SESSION))
 		   
 		   
 	  
-				        </div>
-			</section>
+			</div>
+	</section>
 			
 			
 			
