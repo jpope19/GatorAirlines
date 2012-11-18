@@ -28,7 +28,7 @@
 <!-- Starting Content -->
 <br >
 </br>
-
+<form id="SeatSelectionForm" action="home.php" method="post">
 <h2> Select Desired Seat:</h2> 
     <div id="holder">
         <ul  id="place">
@@ -48,10 +48,14 @@
 	
 	<div id="extra" style="clear: both;">&nbsp;</div>
 	
+<input type="submit" value="Done">
+<br>
+</br>
+</form>
 	
 	<h2>Baggage Cost</h2> 
 <FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;Estimate the total cost of your trip, baggage included!</p></FONT> 
-<form name ="baggageCalc" action="bagcalc.asp" method="get">   
+<form id="Fatass" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 &nbsp&nbspTotal Number of Bags &nbsp: <select name="bags">
 <option value="1">1</option>
 <option value="2">2</option>
@@ -64,12 +68,24 @@
 <option value="9">9</option>
 <option value="10">10</option>
 </select><br></br>
+
 &nbsp&nbspTotal Weight: <input type="text" name="weight">&nbsp Lbs &nbsp <input type="submit" value="Calculate"><br></br>
+&nbsp&nbspEstimated Baggage Cost: &nbsp&nbsp$
+	<?php
+	if (isset($_POST['weight']))
+	{
+		$cost = 1.5 * $_POST['weight']; 
+		echo $cost;
+	}
+	?>
 </form>
+
+<br>
+</br>
+
+
 <FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;If you are unsure of the total weight of your luggage, please use the
 <a href="baggage_calc.php">baggage calculator.</a></p></FONT>  
-	
-
 	
 	
 	

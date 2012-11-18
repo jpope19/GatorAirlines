@@ -104,6 +104,16 @@ if (isset($_POST['AddFlightSubmit']))
 		{// All fields are valid, put into database
 			// For the future, will have to hash and salt first_class_cost
 			// Also will need to check for existing plane_ids
+			
+			// Convert times
+			$date = explode("/", $_POST['e_arrival_date']);
+			$time = explode(":", $_POST['e_arrival_time']);
+			$set['e_arrival_time'] = mktime($time[0], $time[1], 0, $date[0], $date[1], $date[2]);
+			
+			$date = explode("/", $_POST['e_depart_date']);
+			$time = explode(":", $_POST['e_depart_time']);
+			$set['e_depart_time'] = mktime($time[0], $time[1], 0, $date[0], $date[1], $date[2]);
+			
 			$record = array
 			(
 				"plane_id"=>$_POST['plane_id'],
@@ -111,8 +121,8 @@ if (isset($_POST['AddFlightSubmit']))
 				"dest_id"=>$_POST['dest_id'],
 				"first_class_cost"=>$_POST['first_class_cost'],
 				"coach_class_cost"=>$_POST['coach_class_cost'],
-				"e_depart_time"=>$_POST['e_depart_time'],
-				"e_arrival_time"=>$_POST['e_arrival_time'],
+				"e_depart_time"=>$set['e_depart_time'],
+				"e_arrival_time"=>$set['e_arrival_time'],
 				"distance"=>$_POST['distance'],
 			);
 			$users->add_Flights($record);
