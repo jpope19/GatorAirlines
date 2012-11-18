@@ -210,6 +210,20 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
+	//Function used in flight_times.php
+	function get_flight_info() {
+		$sql = "SELECT * FROM flights ORDER BY e_depart_time";
+		return $this->db->GetArray($sql);
+	}
+	//Function used in flight_times.php to get airport information
+	function get_airport_info($dest_id) {
+		$sql = "SELECT * 
+				FROM airports
+				WHERE airport_id = $dest_id
+				ORDER BY airport_id";
+		return $this->db->GetArray($sql);
+	}
+	
 	function get_flights($date = "", $order = ""){
         $next_day = $date + 48*60*60;
         if ($order != "") $order = "ORDER BY $order ASC";

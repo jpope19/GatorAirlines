@@ -47,8 +47,30 @@ if (!isset($_SESSION))
 		   <div class="wrapper pad1">
 		   
 		 <!--  DO YOU WORK HERE !!!! -->  
-		   
-		   
+		 
+			<?php
+			
+			include("classes/users.class.php");
+			
+			$user = new users();
+			
+			$result = $user->get_flight_info();
+			
+			foreach($result as $output)
+			{
+				//echo $output['e_depart_time'];
+				$destId = $output['dest_id'];
+				$airport_info = $user->get_airport_info($destId);
+				echo $airport_info[0]['city'];
+				echo " ";
+				echo $airport_info[0]['iata'];
+				echo " ";
+				echo $airport_info[0]['state'];
+				echo " ";
+				echo $airport_info[0]['name'];
+				echo "<br/>";
+			}
+			?>
 		   
 		   
 		   
@@ -59,8 +81,8 @@ if (!isset($_SESSION))
 		   
 		   
 	  
-				        </div>
-			</section>
+			</div>
+	</section>
 			
 			
 			
