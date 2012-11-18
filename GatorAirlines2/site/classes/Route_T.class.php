@@ -1,5 +1,5 @@
 <?php
-class Route {
+class Route_T {
     var $avail_tickets;
     var $layover_time;
     var $num_flights;

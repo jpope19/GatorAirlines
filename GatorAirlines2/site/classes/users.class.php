@@ -248,12 +248,21 @@ class users extends db {
 		return $this->db->GetArray($sql);
 	}
 	
+		function get_flights_id($date = "", $order = ""){
+        $next_day = $date + 48*60*60;
+        if ($order != "") $order = "ORDER BY $order ASC";
+        $sql = "SELECT flight_id FROM flights $order";
+        if($date != "") $sql = "{$sql} WHERE e_depart_time BETWEEN {$date} AND {$next_day}";
+        return $this->db->GetArray($sql);
+    }
+	
 	//Returns all of the seat numbers that have been booked for a particular flight.
 	function get_seat($flight_id){
 		$sql = "SELECT seat_id FROM tickets WHERE $flight_id = flight_id";
 		return $this->db->GetArray($sql);
 	}
 	
+	//Not Complete
 	function get_ticket_number($ticket_id){
 		$sql = "SELECT";
 		return $this->db->getArray($sql);

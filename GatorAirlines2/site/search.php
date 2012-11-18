@@ -3,6 +3,8 @@
 include("classes/search.class.php");
 include("classes/airport.class.php");
 include("classes/users.class.php");
+include("classes/Search_F_ID.class.php");
+session_start();
 $user = new users();
 //convert passed in day/month/year into epoch times
 
@@ -14,25 +16,79 @@ $_POST['org'] = Airport::get_id_by_name($_POST['org'], $user);
 $_POST['dest'] = Airport::get_id_by_name($_POST['dest'], $user);
 //find routes
 $routes = new Search($_POST, $user);
+$FL = new Search_F_ID($_POST, $user);
 
-echo "<b>Departure Trips</b><br/>";
+?>
+<!-- echo "<b>Departure Trips</b><br/>"; -->
 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Services</title>
+  <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+
+</head>
+
+
+<body id="page4">
+
+
+<div class="main">
+<!--header -->
+	<?include('section/header2.php')?>
+<!-- / header -->
+
+
+<!--content -->
+	<section id="content">
+		   <div class="wrapper pad1">
+		   
+		 <!--  DO YOU WORK HERE !!!! -->
+		 
+		 
+
+<?php
 //output routes
 $to_routes = $routes->depart_routes;
+$F_id = $FL->id;
 $a = Airport::get_name_by_id($_POST['org'], $user);
 $b = Airport::get_name_by_id($_POST['dest'], $user);
 echo "<font size=+2>Routes from $a to $b </font></br><br>";
 $option_num = 1;
 foreach($to_routes as $option) {
-
     echo "<b>Option " . $option_num  . " </b>";
-	echo "<button class = button1>Click</button> <br/>";
+	//echo "<select name='flight_id'>";
+	$_SESSION["F"] = $F_id[$option_num -1] ;
+	//echo "<button name = 'button' type = 'submit' value = '".$F_id[$option_num -1]."'>Click</button> <br/>";	
+?>
+	<form action="seatAssignments.php" method="post">
+	<button name="button" type="sumbit"  value = "$F_id[$option_num -1]">
+	<form/>
+<?php
     $val = $option->to_string();
     echo "$val";
     $option_num++;
 	echo '<br/>';
 }
-
+?>
+	<form/>
+<?php
 if($_POST['flight'] == 'Round-Trip') {
     echo"<br/><br/><b>Return Trips</b><br/>";
     $to_routes = $routes->return_routes;
@@ -49,3 +105,29 @@ if($_POST['flight'] == 'Round-Trip') {
     }
 }
 ?>
+
+	 
+		 
+
+			</div>
+	</section>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!--content end-->
+			<!--footer -->
+			<?include('section/footer2.php')?>
+			<!--footer end-->
+		</div>
+
+</body>
+</html>

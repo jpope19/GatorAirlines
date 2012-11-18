@@ -1,13 +1,14 @@
 <?php
-include("route.class.php");
+include("Route_T.class.php");
 
-class Search {
+class Search_F_ID{
     
     var $opts;
     var $depart_routes;
     var $return_routes;
     var $user;
     var $default_opts;
+	var $id;
     
     # params is an array containing
     # e_depart_time: date to depart in epoch time
@@ -19,13 +20,20 @@ class Search {
     # class: what class of ticket
     public function __construct($params, $user) {
         $this->default_opts = array('class' => 'coach','passengers' => 1, 'max_results' => 4);
+		$this->id = Array();
         $this->user = $user;
         $this->opts = array_merge($this->default_opts, $params);
         $this->route_opts = $this->opts;
-        $this->set_routes();
-	}
-	
-    private function set_routes() {
+		$this->set_routes();
+    }
+    
+    
+	// private function id_flight(){
+		// $flights = $this->user->get_flights_id($this->opts['e_depart_time']);
+		// $this->id = $flights;
+	// }
+	   
+	   private function set_routes() {
         $flights = $this->user->get_flights($this->opts['e_depart_time']);
         $this->depart_routes = $this->find_routes($this->opts['org'], $this->opts['dest'], $flights);
         $this->return_routes = null;
@@ -43,6 +51,7 @@ class Search {
             if($flight['org_id'] == $org) {
                 $route = new Route($this->route_opts);
                 $route->add_flight($flight);
+				array_push($this->id,$flight['flight_id']);
                 $queue->insert($route, $route->get_joy());
             }
         }
@@ -61,6 +70,7 @@ class Search {
                 if($flight['org_id'] == $cur_route->get_dest() && $flight['e_depart_time'] > 30*60 + $cur_route->get_arrival_time()) {
                     $new_route = $cur_route->copy();
                     $new_route->add_flight($flight);
+					array_push($this->id,$flight['flight_id']);
                     if($new_route->get_trip_time() < 24*60*60) {
                         $queue->insert($new_route,$new_route->get_joy());
                     }
@@ -68,6 +78,6 @@ class Search {
             }
         }
         return $result;
-    }
-}
+		}
+ }
 ?>
