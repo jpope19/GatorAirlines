@@ -52,11 +52,17 @@ $the_error =null;
     if($result!=false){   //if email is in database, send the paasword to customer.
 	
 	 $password = $result[0]['password'];
+	 
+	 $password = $users->generateSalt(); // Generate new random password for user.
+	 $set['password'] = $password;
+	 $cid = $users->get_cid($_POST['email']);
+	 $key = $cid[0]['cid'];
+	 $users->modify_customers($set, $key); // change password to new random string
      $addresses = array();
      $addresses[] = $_POST['email'];
   
      // email(array of addresses, message, subject);
-	 $message = "Your current password with GatorAirlines is ".$password."<br/> Hope to hear from you soon!!";	 
+	 $message = "Your new password with GatorAirlines is ".$password."<br/> Hope to hear from you soon!!";	 
 	 $email = new email($addresses, $message, "Password Recovery (GA)");
      $email->send_email();
 	
