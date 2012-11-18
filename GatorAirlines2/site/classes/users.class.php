@@ -254,6 +254,11 @@ class users extends db {
 		return $this->db->GetArray($sql);
 	}
 	
+	function get_ticket_number($ticket_id){
+		$sql = "SELECT";
+		return $this->db->getArray($sql);
+	}
+	
 	function get_flight_from_ticket($ticket_id){
 		$sql = "SELECT flight_id, MIN(cid) 
 			FROM tickets 
