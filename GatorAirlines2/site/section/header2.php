@@ -50,7 +50,7 @@
 				<li><a href="reservation.php"><span><span>Reservations</span></span></a></li>
 				<li><a href="checkin.php"><span><span>Check-In</span></span></a></li>
 				<li><a href="flight_times.php"><span><span>Flight Times</span></span></a></li>
-				<li><a href="make_res.php"><span><span>Make</span></span></a></li>
+				
 				<?
 				if(isset($_SESSION['u_type']) && $_SESSION['u_type']==1){ echo "<li><a href=admin.php><span><span>Admin</span></span></a></li>";}
 				?>
