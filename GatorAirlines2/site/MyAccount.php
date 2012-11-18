@@ -76,6 +76,7 @@ echo "you currently have ". count($reservations)." reservation(s) on your accoun
   </tr>";
   foreach($results as $result)
 	  {	
+	 
 	  $ticket_id =$result['ticket_id'];
 echo "<tr>
     <td>&nbsp;</td>
