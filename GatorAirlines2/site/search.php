@@ -67,6 +67,7 @@ $FL = new Search_F_ID($_POST, $user);
 //output routes
 $to_routes = $routes->depart_routes;
 $F_id = $FL->id;
+$_SESSION['id_array'] = $F_id;
 $a = Airport::get_name_by_id($_POST['org'], $user);
 $b = Airport::get_name_by_id($_POST['dest'], $user);
 echo "<font size=+2>Routes from $a to $b </font></br><br>";
@@ -74,20 +75,31 @@ $option_num = 1;
 foreach($to_routes as $option) {
     echo "<b>Option " . $option_num  . " </b>";
 	//echo "<select name='flight_id'>";
-	$_SESSION["F"] = $F_id[$option_num -1] ;
 	//echo "<button name = 'button' type = 'submit' value = '".$F_id[$option_num -1]."'>Click</button> <br/>";	
-?>
-	<form action="seatAssignments.php" method="post">
-	<button name="button" type="sumbit"  value = "$F_id[$option_num -1]">
-	<form/>
-<?php
     $val = $option->to_string();
     echo "$val";
     $option_num++;
 	echo '<br/>';
 }
 ?>
-	<form/>
+
+<form action="SeatAssignments.php" method="post">
+Option &nbsp: <select name="id">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select>
+<br><br>
+<input type="submit" class="button1" value="Submit">	
+<form/>
+
 <?php
 if($_POST['flight'] == 'Round-Trip') {
     echo"<br/><br/><b>Return Trips</b><br/>";

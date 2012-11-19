@@ -10,7 +10,10 @@ session_start();
 //goes to the selection page, I need a variable $POST that
 //contains the flight id.
 //
-$reserved_seats = $users->get_seat($_SESSION["F"]); 
+$array_id = $_SESSION['id_array'];
+$num = $_SESSION['id'];
+$num = $num -1;
+$reserved_seats = $users->get_seat($array_id[$num]); 
 //$reserved_seats = $users->get_seat($_POST['button']);
 $length = count($reserved_seats);
 $array = array($reserved_seats);
@@ -21,16 +24,6 @@ echo json_encode($array);
 
 
 
-//This is a test array commet everything below and uncommet above
-//once this page has been linked.
-// $array = array( 
-	
-		// "number" => "1",
-		// "num" => "2"
-	
-// );
-
-// echo json_encode($array);
  ?>
 
 

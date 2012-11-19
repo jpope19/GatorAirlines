@@ -72,10 +72,15 @@
 &nbsp&nbspTotal Weight: <input type="text" name="weight">&nbsp Lbs &nbsp <input type="submit" value="Calculate"><br></br>
 &nbsp&nbspEstimated Baggage Cost: &nbsp&nbsp$
 	<?php
+	session_start();
 	if (isset($_POST['weight']))
 	{
 		$cost = 1.5 * $_POST['weight']; 
 		echo $cost;
+	}
+	if(isset($_POST['id']))
+	{
+		$_SESSION['id'] = $_POST['id'];
 	}
 	?>
 </form>
@@ -105,6 +110,7 @@
 
 
 <!-- <script type="text/javascript"> Cufon.now(); </script> -->
+
 <script type="text/javascript" src="seat.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
