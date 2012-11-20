@@ -61,32 +61,34 @@ class Route {
         return -1*($this->cost + $this->get_trip_time()/60000 * $this->num_flights);
     }
     
-    public function to_string() {
+    public function to_string($way) {
 		date_default_timezone_set('America/New_York');
-        $res = "Total cost: \$$this->cost</br>";
-        $res = "$res Total flights: $this->num_flights</br>";
-        $fuck_php = round($this->get_trip_time()/60,0);
-		$time = date('Y-m-d H:i:s', $this->flights[0]['e_depart_time']);
-		$res = "$res Departs at: $time </br>";
-		$time = date('Y-m-d H:i:s', $this->flights[$this->num_flights-1]['e_arrival_time']);
-        $res = "$res Arrives at: $time </br>";
-		$res = "$res Total time (minutes): $fuck_php</br>";
-        $res = "$res Flights: </br>";
-        $count = 1;
-        foreach($this->flights as $flight) {
-            $a = Airport::get_name_by_id($flight['org_id'],new users());
-            $b = Airport::get_name_by_id($flight['dest_id'],new users());
-            $res = $res . $count . " : " . $a . " to " .  $b . "</br>";
-            //$res .= "     departs at: " .  date('D M j, Y - g:i', $flight['e_depart_time']) . "<br>";
-            //$res .= "     arrives at: " .  date('D M j, Y - g:i', $flight['e_arrival_time']) . "<br>";
-			 $res .= "     departs at: " .  $flight['e_depart_time'] . "<br>";
-			  $res .= "     arrives at: " .  $flight['e_arrival_time'] . "<br>";
-            $count++;
+		$time = date('M j, Y - g:ia', $this->flights[0]['e_depart_time']);
+		$res = "<td><center>$time</center></td>";    // depart time
+		
+		$time = date('M j, Y - g:ia', $this->flights[$this->num_flights-1]['e_arrival_time']);
+        $res .= "<td><center>$time</center></td>";   // arrival time
+        
+        $res .= "<td><center>\$$this->cost</center></td>";   // cost
+        $layovers = $this->num_flights - 1;
+        $res .= "<td><center>$layovers</center></td>";  // layovers
+        
+        $id = "";
+        foreach($this->flights as $flight){
+            $id .= $flight['flight_id'] . " ";
         }
         
-        $res .= "<br>";
-        
+        $res .= "<td><center><input type='radio' name='$way' value='$id'></center></td>";  // id of flights space delimited 
         return $res;
+    }
+    
+    public function get_layovers(){
+        foreach($this->flights as $flight){
+            $a = Airport::get_name_by_id($flight['org_id'], new users());
+            $b = Airport::get_name_by_id($flight['dest_id'], new users());
+            $depart = $flight['e_depart_time'];
+            $arrive = $flight['e_arrival_time'];
+        }
     }
 }
 ?>

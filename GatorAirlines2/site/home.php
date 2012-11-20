@@ -1,11 +1,6 @@
 <?php
-if (!isset($_SESSION))
-{
-	session_start();
-}
-?>
+session_start();
 
-<?php
 include("classes/users.class.php");
 
 $users = new users();

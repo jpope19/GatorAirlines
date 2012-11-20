@@ -1,10 +1,10 @@
 <?php
-
+session_start();
 include("classes/search.class.php");
 include("classes/airport.class.php");
 include("classes/users.class.php");
 include("classes/Search_F_ID.class.php");
-session_start();
+include("js/select_flight.js");
 $user = new users();
 //convert passed in day/month/year into epoch times
 
@@ -66,43 +66,57 @@ $F_id = $FL->id;
 $_SESSION['id_array'] = $F_id;
 $a = Airport::get_name_by_id($_POST['org'], $user);
 $b = Airport::get_name_by_id($_POST['dest'], $user);
-echo "<font size=+2>Routes from $a to $b </font></br><br>";
 $option_num = 1;
 if(count($to_routes) == 0){
     echo "Sorry, no flights available";
-    header("location: home.php?e=1");
-}
-foreach($to_routes as $option) {
-    echo "<b>Option " . $option_num  . " </b>";
-	//echo "<select name='flight_id'>";
-	//echo "<button name = 'button' type = 'submit' value = '".$F_id[$option_num -1]."'>Click</button> <br/>";	
-    $val = $option->to_string();
-    echo "$val";
-    $option_num++;
-	echo '<br/>';
-}
-?>
+    //header("location: home.php?e=1");
+}?>
 
+<form class="flight_selection" action="#" method="POST">
+<center>
+<table>
+    <tr>
+        <td style='width: 50px'><center>Option</center></td>
+        <td style='width: 150px'><center>Depart Time</center></td>
+        <td style='width: 150px'><center>Arrival Time</center></td>
+        <td style='width: 50px'><center>Cost</center></td>
+        <td style='width: 50px'><center>Layovers</center></td>
+        <td style='width: 50px'></td>
+    </tr>    
+    <tr><td colspan='6'><b><?=$a?></b> to <b><?=$b?></b></td></tr>
 
+<?foreach($to_routes as $option) {?>
+    <tr>
+        <td><center><?=$option_num?></center></td>
+        <?=$option->to_string('leave')?>
+    </tr>
+<?$option_num++;}?>
+
+<?if($_POST['flight'] == 'Round-Trip'){?>
+    <tr><td colspan='6'><b><?=$b?></b> to <b><?=$a?></b></td></tr>
 <?php
-if($_POST['flight'] == 'Round-Trip') {
-    echo"<br/><br/><b>Return Trips</b><br/>";
     $to_routes = $routes->return_routes;
-    $a = Airport::get_name_by_id($_POST['org'], $user);
-    $b = Airport::get_name_by_id($_POST['dest'], $user);
-    echo "<font size=+2>Routes from $b to $a </font></br><br>";
     $option_num = 1;
-    foreach($to_routes as $option) {
-        echo "<b>Option " . $option_num . "</b><br/>";
-        $val = $option->to_string();
-        echo "$val";
-        $option_num++;
-		echo '<br/>';
+    foreach($to_routes as $option) {?>
+        <tr>
+            <td><center><?=$option_num?></center></td>
+            <?=$option->to_string('return')?>
+        </tr>
+<?  $option_num++;
     }
-}
-?>
+}?>
 
-	 
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type='submit' value='Reserve Flight'></td>
+    </tr>
+</table>
+</center>
+</form>
 		 
 
 			</div>

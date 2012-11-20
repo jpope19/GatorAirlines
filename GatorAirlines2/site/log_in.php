@@ -1,14 +1,9 @@
 <?php
- 
+session_start();
     include("classes/users.class.php");
 	include("classes/email.class.php");  //in case user forgot their password.
 	$users = new users();
  
-if (!isset($_SESSION))
-{
-	session_start();
-}
-
 $the_error =null;
 	if (isset($_POST['submit']))
 	{
