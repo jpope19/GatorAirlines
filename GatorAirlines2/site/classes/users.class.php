@@ -60,14 +60,10 @@ class users extends db {
             $record3['plane_id'] = trim($info[0]);
             $record3['org_id'] = trim($info[1]);
             $record3['dest_id'] = trim($info[2]);
-            $record3['first_class_cost'] = trim($info[3]);
-            $record3['coach_class_cost'] = trim($info[4]);
-            /*$record3['e_depart_time'] = trim($info[5]);
-            $record3['e_arrival_time'] = trim($info[6]);
-           $record3['depart_time'] = trim($info[5]);
-            $record3['arrival_time'] = trim($info[6]);
-            $record3['distance'] = trim($info[7]);
-			*/
+            $record3['first_class_cost'] = 150;
+            $record3['coach_class_cost'] = 89;
+            $record3['e_depart_time'] = time() + (rand(0,14)*(60*60*24));               // add beteen 0 and 2 weeks from todays date
+            $record3['e_arrival_time'] = $record3['e_depart_time'] + (rand(45,300)*60); // add between 45-300 minutes to depart time
             $this->db->AutoExecute("flights", $record3, "INSERT");
         }
         

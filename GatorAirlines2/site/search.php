@@ -50,16 +50,12 @@ $FL = new Search_F_ID($_POST, $user);
 
 
 <div class="main">
-<!--header -->
-	<?include('section/header2.php')?>
-<!-- / header -->
+	<?include('section/header2.php');?>
 
 
-<!--content -->
 	<section id="content">
 		   <div class="wrapper pad1">
 		   
-		 <!--  DO YOU WORK HERE !!!! -->
 		 
 		 
 
@@ -72,6 +68,10 @@ $a = Airport::get_name_by_id($_POST['org'], $user);
 $b = Airport::get_name_by_id($_POST['dest'], $user);
 echo "<font size=+2>Routes from $a to $b </font></br><br>";
 $option_num = 1;
+if(count($to_routes) == 0){
+    echo "Sorry, no flights available";
+    header("location: home.php?e=1");
+}
 foreach($to_routes as $option) {
     echo "<b>Option " . $option_num  . " </b>";
 	//echo "<select name='flight_id'>";
@@ -83,22 +83,6 @@ foreach($to_routes as $option) {
 }
 ?>
 
-<form action="SeatAssignments.php" method="post">
-Option &nbsp: <select name="id">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-</select>
-<br><br>
-<input type="submit" class="button1" value="Submit">	
-<form/>
 
 <?php
 if($_POST['flight'] == 'Round-Trip') {
@@ -137,7 +121,7 @@ if($_POST['flight'] == 'Round-Trip') {
 			
 			<!--content end-->
 			<!--footer -->
-			<?include('section/footer2.php')?>
+			<?include('section/footer2.php');?>
 			<!--footer end-->
 		</div>
 

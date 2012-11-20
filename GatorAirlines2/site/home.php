@@ -63,7 +63,11 @@ $airports = $users->get_airports();
 	});
 	</script>
 	
-
+<? if(isset($_GET['e'])){ ?>
+    <script>
+        alert("Sorry, no flights available");
+    </script>
+<?}?>
 
 
 </head>
@@ -71,7 +75,7 @@ $airports = $users->get_airports();
 <div class="main">
 <!--header -->
 
-	<?PHP include('section/header2.php')?>
+	<?PHP include('section/header2.php');?>
 
 <!-- / header -->
 <!--content -->
