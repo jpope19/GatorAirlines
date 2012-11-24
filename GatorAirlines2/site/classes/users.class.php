@@ -171,7 +171,7 @@ class users extends db {
 		$salt = $this->get_salt($cid[0]['cid']);
 		$password = $this->generateHash($password, $salt[0]['salt']); // hash the password to compare it to the "real" hashed password
 		$where = "email = \"" . $email . "\" AND password = \"" . $password . "\"";
-        $sql = "SELECT first_name,cid, last_name, u_type FROM customers WHERE $where";
+        $sql = "SELECT * from customers WHERE $where";
         return $this->db->GetArray($sql);
     }
 	
@@ -918,7 +918,18 @@ class users extends db {
     	$this->db->Execute($sql);
     }
     
+    /******UPDATE CUSTOMER'S INFO.************/
+	function cust_update($first_name,$last_name,$email,$password,$addr,$state,$zip,$cc_num) {
+	        $cid = $this->get_cid($_SESSION['email']);
+		    $salt = $this->get_salt($cid[0]['cid']);
+            $cid=$cid[0]['cid'];		
+			$password = $this->generateHash($password,$salt[0]['salt']); //generate hash.
+			
+    $this->db->Replace('customers',array('cid'=>$cid,'email'=>$email,'first_name'=>$first_name,'last_name'=>$last_name,
+		             'password'=>$password,'addr'=>$addr, 'state'=>$state,'zip'=>$zip,'cc_num'=>$cc_num),'cid',$autoquote = true);
+    }
     
+	
 }
 
 ?>

@@ -22,6 +22,12 @@ $the_error =null;
 			$_SESSION['last_name'] = $result[0]['last_name'];
 			$_SESSION['u_type'] = $result[0]['u_type']; 
 			$_SESSION['cid'] = $result[0]['cid']; 
+			$_SESSION['password'] = $_POST[0]['password'];
+            $_SESSION['addr'] = $result[0]['addr'];
+            $_SESSION['state'] = $result[0]['state'];
+            $_SESSION['zip'] = $result[0]['zip'];
+            $_SESSION['cc_num'] = $result[0]['cc_num'];
+             $_SESSION['city'] = $result[0]['city'];			
 			
 			header("Location:myaccount.php"); // redirects								
 		}
