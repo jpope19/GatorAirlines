@@ -47,20 +47,59 @@ if (!isset($_SESSION))
 		   <div class="wrapper pad1">
 		   
 		 <!--  DO YOU WORK HERE !!!! -->  
-		 
+		<table>
+		<tr>
+        <td style='width: 50px'><center>Option</center></td>
+        <td style='width: 150px'><center>Depart Time</center></td>
+        <td style='width: 150px'><center>Arrival Time</center></td>
+        <td style='width: 50px'><center>Cost</center></td>
+        <td style='width: 50px'></td>
+		</tr>  
+		</table>
+		
 			<?php
 			
 			include("classes/users.class.php");
 			
 			$user = new users();
-			
+	
 			$result = $user->get_flight_info();
 			
 			foreach($result as $output)
 			{
 				//echo $output['e_depart_time'];
 				$destId = $output['dest_id'];
-				$airport_info = $user->get_airport_info($destId);
+				$orgId = $output['org_id'];
+				
+				$origin_info = $user->get_airport_info($orgId);
+				$destination_info = $user->get_airport_info($destId);
+				
+				//Print origin to destination info
+			
+				echo $origin_info[0]['name']; echo ": ";
+				echo $origin_info[0]['city']; echo ", ";
+				echo $origin_info[0]['state'];
+				echo " to ";
+				echo $destination_info[0]['name']; echo ": ";
+				echo $destination_info[0]['city']; echo ", ";
+				echo $destination_info[0]['state'];
+				echo " ";
+			
+				//Print cost
+				$cost = $output['coach_class_cost'];
+				echo "$";
+				echo $cost;
+				echo "<br/>";
+				
+				/*
+				//Print depart time
+				$depart_time = $output['e_depart_time'];
+				$convert = mktime(0,0,0,intval(substr($depart_time,0,2)),intval(substr($depart_time,3,5)),intval(substr($depart_time,6,9)));
+				echo $convert;
+				echo "<br/>";
+				*/
+				
+				/*
 				echo $airport_info[0]['city'];
 				echo " ";
 				echo $airport_info[0]['iata'];
@@ -69,10 +108,12 @@ if (!isset($_SESSION))
 				echo " ";
 				echo $airport_info[0]['name'];
 				echo "<br/>";
+				*/
 			}
+		
 			?>
 		   
-		   
+		  
 		   
 		   
 		   
