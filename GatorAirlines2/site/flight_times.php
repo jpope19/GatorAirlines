@@ -105,6 +105,11 @@ if (!isset($_SESSION))
 					echo $depart_time;
 					echo " ";
 				
+					//Print arrival time
+					$arrival_time = date('M j, Y - g:ia', $flight_info[0]['e_arrival_time']);
+					echo $arrival_time;
+					echo " ";
+					
 					//Print cost
 					$cost = $output['coach_class_cost'];
 					echo "$";
@@ -114,7 +119,7 @@ if (!isset($_SESSION))
 				}
 				
 				
-				if($counter > 10) {
+				if($counter > 20) {
 					break;
 				}
 				
