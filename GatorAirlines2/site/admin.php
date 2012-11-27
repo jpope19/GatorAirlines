@@ -70,8 +70,8 @@ function setAdminStyle($in)
 	<link rel="stylesheet" href="css/chosen.css" />
 	
 	<!--------------------------------------- Include JQuery ------------------------------->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/admin/initiateForm.js"></script>
 	<script type="text/javascript" src="js/admin/sessionActionRadio.js"></script>
 	<script type="text/javascript" src="js/admin/sessionAdminStyleRadio.js"></script>
