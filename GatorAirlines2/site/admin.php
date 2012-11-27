@@ -5,6 +5,19 @@ if (!isset($_SESSION))
 	session_start();
 }
 
+// First, make sure that non-admis cannot use the admin page. Redirect them to home.
+if(!isset($_SESSION['u_type']) || $_SESSION['u_type'] != 1)
+{// The user is not an admin, do not allow access
+	header("Location:home.php"); // redirects
+}
+
+// Check for https. If https is not being used, force it.
+if($_SERVER['SERVER_PORT'] != 443) {
+   header("HTTP/1.1 301 Moved Permanently");
+   header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+   exit();
+}
+
 // This user will also be used in most of the referenced php files here
 include("classes/users.class.php");
 $users = new users(); // class from user.class.php that will be used to manipulate the database
@@ -30,12 +43,6 @@ if(!isset($_SESSION['table']))
 {
 	$_SESSION['table'] = "none";
 }
-
-/* Enable this after production
-if(!isset($_SESSION['u_type']) || $_SESSION['u_type'] != 1)
-{// The user is not an admin, do not allow access
-	header("Location:home.php"); // redirects
-}*/
 
 //if (isset())
 function setAdminStyle($in)
