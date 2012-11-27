@@ -208,15 +208,23 @@ class users extends db {
 	
 	//Function used in flight_times.php
 	function get_flight_info() {
-		$sql = "SELECT * FROM flights ORDER BY e_depart_time";
+		$sql = "SELECT * FROM flights";
 		return $this->db->GetArray($sql);
 	}
+	
 	//Function used in flight_times.php to get airport information
 	function get_airport_info($dest_id) {
 		$sql = "SELECT * 
 				FROM airports
-				WHERE airport_id = $dest_id
-				ORDER BY airport_id";
+				WHERE airport_id = $dest_id";
+		return $this->db->GetArray($sql);
+	}
+	
+	//Function used in flight_times.php to get flight info for a certain id
+	function get_flight_by_id($orgid, $destid) {
+		$sql = "SELECT *
+				FROM flights
+				WHERE org_id = $orgid AND dest_id = $destid";
 		return $this->db->GetArray($sql);
 	}
 	

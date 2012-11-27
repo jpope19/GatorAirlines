@@ -49,7 +49,7 @@ if (!isset($_SESSION))
 		 <!--  DO YOU WORK HERE !!!! -->  
 		<table>
 		<tr>
-        <td style='width: 50px'><center>Option</center></td>
+        <td style='width: 250px'><center>Option</center></td>
         <td style='width: 150px'><center>Depart Time</center></td>
         <td style='width: 150px'><center>Arrival Time</center></td>
         <td style='width: 50px'><center>Cost</center></td>
@@ -59,58 +59,63 @@ if (!isset($_SESSION))
 		
 			<?php
 			
+			
 			include("classes/users.class.php");
+			
+			
+			include("classes/search.class.php");
+			include("classes/airport.class.php");
+			
+			include("classes/Search_F_ID.class.php");
+			include("js/select_flight.js");
 			
 			$user = new users();
 	
 			$result = $user->get_flight_info();
 			
+			//get current date timestamp
+			$today = getdate();
+			
 			foreach($result as $output)
 			{
+				
 				//echo $output['e_depart_time'];
 				$destId = $output['dest_id'];
 				$orgId = $output['org_id'];
+				$flight_info = $user->get_flight_by_id($orgId, $destId);
+				//604800 is the amount of time to get the next 7 days from a time stamp
+				if($flight_info[0]['e_depart_time'] >= $today[0] && $flight_info[0]['e_depart_time'] <= ($today[0] + 604800)) {
 				
-				$origin_info = $user->get_airport_info($orgId);
-				$destination_info = $user->get_airport_info($destId);
+					$origin_info = $user->get_airport_info($orgId);
+					$destination_info = $user->get_airport_info($destId);
 				
-				//Print origin to destination info
+					//Print origin to destination info
 			
-				echo $origin_info[0]['name']; echo ": ";
-				echo $origin_info[0]['city']; echo ", ";
-				echo $origin_info[0]['state'];
-				echo " to ";
-				echo $destination_info[0]['name']; echo ": ";
-				echo $destination_info[0]['city']; echo ", ";
-				echo $destination_info[0]['state'];
-				echo " ";
-			
-				//Print cost
-				$cost = $output['coach_class_cost'];
-				echo "$";
-				echo $cost;
-				echo "<br/>";
+					//echo $origin_info[0]['name']; echo ": ";
+					echo $origin_info[0]['city']; echo ", ";
+					echo $origin_info[0]['state'];
+					echo " to ";
+					//echo $destination_info[0]['name']; echo ": ";
+					echo $destination_info[0]['city']; echo ", ";
+					echo $destination_info[0]['state'];
+					echo " ";
 				
-				/*
-				//Print depart time
-				$depart_time = $output['e_depart_time'];
-				$convert = mktime(0,0,0,intval(substr($depart_time,0,2)),intval(substr($depart_time,3,5)),intval(substr($depart_time,6,9)));
-				echo $convert;
-				echo "<br/>";
-				*/
+					//Print depart time
+					$depart_time = date('M j, Y - g:ia', $flight_info[0]['e_depart_time']);
+					//$convert = mktime(0,0,0,intval(substr($depart_time,0,2)),intval(substr($depart_time,3,5)),intval(substr($depart_time,6,9)));
+					//echo $convert;
+					echo $depart_time;
+					echo " ";
 				
-				/*
-				echo $airport_info[0]['city'];
-				echo " ";
-				echo $airport_info[0]['iata'];
-				echo " ";
-				echo $airport_info[0]['state'];
-				echo " ";
-				echo $airport_info[0]['name'];
-				echo "<br/>";
-				*/
+					//Print cost
+					$cost = $output['coach_class_cost'];
+					echo "$";
+					echo $cost;
+					echo "<br/>";
+				}
+				
 			}
-		
+			
 			?>
 		   
 		  
