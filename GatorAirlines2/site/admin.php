@@ -5,6 +5,15 @@ if (!isset($_SESSION))
 	session_start();
 }
 
+// First, make sure that non-admis cannot use the admin page. Redirect them to home.
+if(!isset($_SESSION['u_type']) || $_SESSION['u_type'] != 1)
+{// The user is not an admin, do not allow access
+	header("Location:home.php"); // redirects
+}
+
+// Variable for https
+$https = true;
+
 // This user will also be used in most of the referenced php files here
 include("classes/users.class.php");
 $users = new users(); // class from user.class.php that will be used to manipulate the database
@@ -30,12 +39,6 @@ if(!isset($_SESSION['table']))
 {
 	$_SESSION['table'] = "none";
 }
-
-/* Enable this after production
-if(!isset($_SESSION['u_type']) || $_SESSION['u_type'] != 1)
-{// The user is not an admin, do not allow access
-	header("Location:home.php"); // redirects
-}*/
 
 //if (isset())
 function setAdminStyle($in)
@@ -63,8 +66,8 @@ function setAdminStyle($in)
 	<link rel="stylesheet" href="css/chosen.css" />
 	
 	<!--------------------------------------- Include JQuery ------------------------------->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/admin/initiateForm.js"></script>
 	<script type="text/javascript" src="js/admin/sessionActionRadio.js"></script>
 	<script type="text/javascript" src="js/admin/sessionAdminStyleRadio.js"></script>

@@ -1,3 +1,18 @@
+<?php
+// Check to see if the site requires https and is in http. If needs https, force it.
+if(isset($https) && ($https==true) && $_SERVER['SERVER_PORT'] != 443) {
+   header("HTTP/1.1 301 Moved Permanently");
+   header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+   exit();
+}
+// Check to see if the site does not need to be in https. If not and it is, force it into http.
+if((!isset($https) || ($https==false)) && $_SERVER['SERVER_PORT'] != 80) {
+   header("HTTP/1.1 301 Moved Permanently");
+   header("Location: http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+   exit();
+}
+?>
+
 <div id="login-box" class="login-popup">
      <a href="#" class="close" style="margin-left:210px;"><img src="images/close.png" width ="30" height= "30" class="btn_close" title="Close Window" alt="Close" /></a>
           <form method="post" class="signin" action="log_in.php">
