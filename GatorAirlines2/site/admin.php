@@ -11,12 +11,8 @@ if(!isset($_SESSION['u_type']) || $_SESSION['u_type'] != 1)
 	header("Location:home.php"); // redirects
 }
 
-// Check for https. If https is not being used, force it.
-if($_SERVER['SERVER_PORT'] != 443) {
-   header("HTTP/1.1 301 Moved Permanently");
-   header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-   exit();
-}
+// Variable for https
+$https = true;
 
 // This user will also be used in most of the referenced php files here
 include("classes/users.class.php");
