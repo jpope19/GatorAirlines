@@ -75,7 +75,7 @@ if (!isset($_SESSION))
 			
 			//get current date timestamp
 			$today = getdate();
-			
+			$counter = 0;	//Making a counter to limit how many flights appear for now
 			foreach($result as $output)
 			{
 				
@@ -83,7 +83,7 @@ if (!isset($_SESSION))
 				$destId = $output['dest_id'];
 				$orgId = $output['org_id'];
 				$flight_info = $user->get_flight_by_id($orgId, $destId);
-				//604800 is the amount of time to get the next 7 days from a time stamp
+				//604800 is the amount of time to get the date a week from todays
 				if($flight_info[0]['e_depart_time'] >= $today[0] && $flight_info[0]['e_depart_time'] <= ($today[0] + 604800)) {
 				
 					$origin_info = $user->get_airport_info($orgId);
@@ -102,8 +102,6 @@ if (!isset($_SESSION))
 				
 					//Print depart time
 					$depart_time = date('M j, Y - g:ia', $flight_info[0]['e_depart_time']);
-					//$convert = mktime(0,0,0,intval(substr($depart_time,0,2)),intval(substr($depart_time,3,5)),intval(substr($depart_time,6,9)));
-					//echo $convert;
 					echo $depart_time;
 					echo " ";
 				
@@ -112,6 +110,12 @@ if (!isset($_SESSION))
 					echo "$";
 					echo $cost;
 					echo "<br/>";
+					$counter++;
+				}
+				
+				
+				if($counter > 10) {
+					break;
 				}
 				
 			}
