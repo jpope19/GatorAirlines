@@ -1,3 +1,21 @@
+<?php
+session_start();
+	if (isset($_POST['weight']))
+	{
+		$cost = 1.5 * $_POST['weight']; 
+		//echo $cost;
+	}
+	 if(isset($_POST['leave']))
+	 {
+		$ids = $_POST['leave'];
+		$_SESSION['leave_ids'] = $ids;
+	 }
+	 
+	 if(isset($_POST['return'])){
+		$return_ids = $_POST['return'];
+		$_SESSION['return_ids'] = $return_ids;
+	 }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +46,7 @@
 <!-- Starting Content -->
 <br >
 </br>
-<form id="SeatSelectionForm" action="home.php" method="post">
+<form id="SeatSelectionForm" action="Reciept.php" method="post">
 <h2> Select Desired Seat:</h2> 
     <div id="holder">
         <ul  id="place">
@@ -42,13 +60,14 @@
     </ul>
     </div>
         <div style="clear:both;width:100%">
-        <input type="button" id="btnShowNew" value="Show Selected Seats" />
+        <input type="button" id="btnShowNew" value="Done">
         <input type="button" id="btnShow" value="Show All" />
         </div>
 	
 	<div id="extra" style="clear: both;">&nbsp;</div>
 	
-<input type="submit" value="Done">
+<!-- <input type="submit" id ="btnShowNew" value="Done> 
+-->
 <br>
 </br>
 </form>
@@ -71,18 +90,7 @@
 
 &nbsp&nbspTotal Weight: <input type="text" name="weight">&nbsp Lbs &nbsp <input type="submit" value="Calculate"><br></br>
 &nbsp&nbspEstimated Baggage Cost: &nbsp&nbsp$
-	<?php
-	session_start();
-	if (isset($_POST['weight']))
-	{
-		$cost = 1.5 * $_POST['weight']; 
-		echo $cost;
-	}
-	if(isset($_POST['id']))
-	{
-		$_SESSION['id'] = $_POST['id'];
-	}
-	?>
+
 </form>
 
 <br>
