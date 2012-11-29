@@ -19,6 +19,35 @@
 	$d_date=date("c", $d_time);
 	$a_date=date("c", $a_time);
 	
+	$record = array();
+	$record['seat_id'] = $seat;
+	
+	if(isset($_SESSION['leave_ids'])){
+			if(isset($_SESSION['loggedIn'])){
+			$record['cid'] = $_SESSION['cid'];
+			}
+			else{
+			$record['cid'] = 503;
+			}
+			$record['flight_id'] = $flight[0]['flight_id'];
+			$price = $users->get_price($flight[0]['flight_id']);
+			$record['price'] = $price[0];
+			//insert
+			
+			$insert = $users->add_tickets($record);
+		
+	}
+	//Multiple tickets
+	//if(isset($_SESSION['return_ids'])){
+	//	$ids = trim($_SESSION['leave_ids']);
+	//	$id_array = explode(" ", $ids);
+	//	foreach($id_array as $new_fid){
+	//		$record['price']
+	//		$record['flight_id']
+			//insert
+	//	}
+	//}
+	
 	
 	
 		   ?>
@@ -86,35 +115,13 @@
 	<? echo $a_date	?>
 	</br>
 	
+	<td>Price: </td>
+	<? echo $record['price']	?>
+	</br>
+	
 	<input type="submit" id ="Sumbit" value="Done">
 	
 	
-	<!--
-	</tr></br>
-	<tr>
-	<td>Last Name</td>
-	<td><input type="text" name="Last_N" id="last" value=<?echo $last_name ?> "" required/></td>
-	</tr></br>
-	<td>Billing Address</td>
-	<td><input type="text" name="B_addres" id="address" value=<?echo $addr ?> "" required/></td>
-	</tr></br>
-	<td>Zip Code</td>
-	<td><input type="text" name="Zip" id="address" value=<?echo $zip ?> "" required/></td>
-	</tr></br>
-	<td>City</td>
-	<td><input type="text" name="City" id="address" value=<?echo $city ?> "" required/></td>
-	</tr></br>
-	<td>State</td>
-	<td><input type="text" name="State" id="address" value=<?echo $state ?> "" required/></td>
-	</tr></br>
-	<td>Credit Card Number</td>
-	<td><input type="text" name="CC" id="money" value=<?echo $cc_num ?> "" required/></td>
-	</tr></br>
-	<input type="submit" id ="Sumbit" value="Submit">
-	</form>
-	<section id="content">
-		   <div class="wrapper pad1">
-		-->
 </form>		
 		</div>
 	</section>

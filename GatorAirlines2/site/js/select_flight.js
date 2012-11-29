@@ -5,7 +5,7 @@
 
 $(function(){
    $(".flight_selection").live('submit', function(){
-		alert($(this).serialize());
+		//alert($(this).serialize());
 		return true;
    });
 })
