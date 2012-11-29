@@ -90,11 +90,11 @@ if (!isset($_SESSION))
 			
 					//echo $origin_info[0]['name']; echo ": ";
 					echo "<tr>";
-					echo "<td>"; echo $origin_info[0]['city'];
+					echo "<td>"; echo $origin_info[0]['city']; echo ", ";
 					echo $origin_info[0]['state'];
 					echo " to ";
 					//echo $destination_info[0]['name']; echo ": ";
-					echo $destination_info[0]['city']; 
+					echo $destination_info[0]['city']; echo ", ";
 					echo $destination_info[0]['state'];
 					echo "</td>";
 				
