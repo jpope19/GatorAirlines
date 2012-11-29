@@ -50,7 +50,7 @@ if (!isset($_SESSION))
         <td style='width: 50px'><center>Cost</center></td>
         <td style='width: 50px'></td>
 		</tr>  
-		</table>
+
 		
 			<?php
 			
@@ -89,30 +89,35 @@ if (!isset($_SESSION))
 					//Print origin to destination info
 			
 					//echo $origin_info[0]['name']; echo ": ";
-					echo $origin_info[0]['city']; echo ", ";
+					echo "<tr>";
+					echo "<td>"; echo $origin_info[0]['city'];
 					echo $origin_info[0]['state'];
 					echo " to ";
 					//echo $destination_info[0]['name']; echo ": ";
-					echo $destination_info[0]['city']; echo ", ";
+					echo $destination_info[0]['city']; 
 					echo $destination_info[0]['state'];
-					echo " ";
+					echo "</td>";
 				
 					//Print depart time
+					echo "<td>";
 					$depart_time = date('M j, Y - g:ia', $flight_info[0]['e_depart_time']);
 					echo $depart_time;
-					echo " ";
+					echo "</td>";
 				
 					//Print arrival time
+					echo "<td>";
 					$arrival_time = date('M j, Y - g:ia', $flight_info[0]['e_arrival_time']);
 					echo $arrival_time;
-					echo " ";
+					echo "</td>";
 					
 					//Print cost
+					echo "<td>";
 					$cost = $output['coach_class_cost'];
-					echo "$";
-					echo $cost;
+					echo "$$cost";
+					  echo "</td>";
 					echo "<br/>";
 					//$counter++;
+					echo "</tr>";
 				}
 				
 				/*
@@ -121,8 +126,9 @@ if (!isset($_SESSION))
 				}
 				*/
 			}
-			
+		
 			?>
+			</table>
 	  
 			</div>
 	</section>

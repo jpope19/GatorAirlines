@@ -46,7 +46,7 @@ session_start();
 <!-- Starting Content -->
 <br >
 </br>
-<form id="SeatSelectionForm" action="Reciept.php" method="post">
+<form id="SeatSelectionForm" action="Receipt.php" method="post">
 <h2> Select Desired Seat:</h2> 
     <div id="holder">
         <ul  id="place">

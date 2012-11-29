@@ -90,12 +90,6 @@
 		
 			
 			
-			
-			
-			
-			
-			
-			
 			<!--content end-->
 			<!--footer -->
 			<?include('section/footer2.php');?>

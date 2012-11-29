@@ -20,7 +20,7 @@ $result=null;    //to hold the query set.
 $reservations=null; //to hold the number of reservations (integer) for a particular customer.
 
 include("classes/users.class.php");
-
+include("classes/airport.class.php");
      $users = new users();
 	 $results= $users->get_reservation($_SESSION['cid']);
 	 
@@ -172,23 +172,29 @@ jQuery(document).ready(function() {
      echo "you currently have ". count($reservations)." reservation(s) on your account.";	  
   echo   " <table width=77% border=1 cellpadding=5>
   <tr>
+  <td><strong>Departure</strong></td>
     <td><strong>Destination</strong></td>
     <td><strong>Ticket#</strong></td>
     <td><strong>Flight#</strong></td>
     <td><strong>Seat#</strong></td>
     <td><strong>Price</strong></td>
+	<td><strong>Status</strong></td>
 	<td><strong>Action</strong></td>
   </tr>";
   foreach($results as $result)
 	  {	
-	 
+	 $depart = Airport::get_name_by_id($result['org_id'], $users);
+     $arrival = Airport::get_name_by_id($result['dest_id'], $users);
 	  $ticket_id =$result['ticket_id'];
 echo "<tr>
-    <td>&nbsp;</td>
+    <td>$depart</td>
+	<td>$arrival</td>
     <td>$result[ticket_id]</td>
     <td>$result[flight_id]</td>
     <td>$result[seat_id]</td>
-    <td>$$result[price]</td>";
+    <td>$$result[price]</td>
+	<td><strong style=color:green;>Active</strong></td>";
+	
 	echo "<td><a href='delete.php?id=" . $result['ticket_id'] . "'><button class=button1 onclick='return doConfirmDelete(this.id);'>Delete</button></a></td>";
    echo "
   </tr>";

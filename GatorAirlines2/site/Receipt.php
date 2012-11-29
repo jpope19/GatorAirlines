@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Services</title>
+  <title>Receipt</title>
   <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="js/test.js"></script>
