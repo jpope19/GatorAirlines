@@ -50,8 +50,8 @@
 <div class="main">
 	<?include('section/header2.php');?>
 
-	
-	<form id="CheckOutForm" action="survey.php" method="post">
+	   <div id="receipt" >
+	<form id="CheckOutForm" action="survey.php" method="post" >
 	<tr>
 	<td>First Name</td>
 	<?	echo $_POST['First_N']	?>
@@ -115,7 +115,8 @@
 	<section id="content">
 		   <div class="wrapper pad1">
 		-->
-</form>		
+</form>	
+  </div>	
 		</div>
 	</section>
 			
