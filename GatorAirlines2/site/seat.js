@@ -7,6 +7,7 @@ $(document).ready(function(){
 	$.getJSON("seat_selection.php", function(data) {
 						$.each(data, function(key,val) {
 							array.push(parseInt(val));
+							console.log(val);
 						});
 						
 						var settings = {
@@ -21,16 +22,19 @@ $(document).ready(function(){
 			   blankCss: 'blank_row',
                selectedSeatCss: 'selectedSeat',
                selectingSeatCss: 'selectingSeat'
+			   
            };
-		   
+
 var init = function (reservedSeat) {
                 var str = [], seatNo, className;
                 for (i = 0; i < settings.rows; i++) {
                     for (j = 0; j < settings.cols; j++) {
                         seatNo = (i + j * settings.rows + 1);
                         className = settings.seatCss + ' ' + settings.rowCssPrefix + i.toString() + ' ' + settings.colCssPrefix + j.toString();
+	
                         if ($.isArray(reservedSeat) && $.inArray(seatNo, reservedSeat) != -1) {
                             className += ' ' + settings.selectedSeatCss;
+							
                         }
                         str.push('<li class="' + className + '"' +
                                   'style="top:' + (i * settings.seatHeight).toString() + 'px;left:' + (j * settings.seatWidth).toString() + 'px">' +
@@ -66,10 +70,13 @@ $('#btnShowNew').click(function () {
     $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
         item = $(this).attr('title');
         str.push(item);
+		//change when going to the real website
+		window.location.href = "http://localhost/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=" + item;
     });
     alert(str.join(','));
 })		
 					});
 					
 				}); 
+
 		

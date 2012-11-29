@@ -73,6 +73,7 @@ $airports = $users->get_airports();
 	<?PHP include('section/header2.php');?>
 
 <!-- / header -->
+<h5> If you are already a member please log in before searching a flight. Thank You </h5>
 <!--content -->
 	<section id="content">
 		<div class="for_banners">

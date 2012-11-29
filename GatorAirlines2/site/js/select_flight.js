@@ -4,10 +4,10 @@
 <script>
 
 $(function(){
-    $(".flight_selection").live('submit', function(){
-        alert("hello");
-        return false;
-    });
+   $(".flight_selection").live('submit', function(){
+		alert($(this).serialize());
+		return true;
+   });
 })
 
 </script>

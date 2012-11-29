@@ -75,7 +75,7 @@ class Route {
         
         $id = "";
         foreach($this->flights as $flight){
-            $id .= $flight['flight_id'] . " ";
+            $id .= $flight['flight_id'] . "_";
         }
         
         $res .= "<td><center><input type='radio' name='$way' value='$id'></center></td>";  // id of flights space delimited 
