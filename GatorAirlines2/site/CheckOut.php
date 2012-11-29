@@ -25,6 +25,7 @@
 		$cc_num = "";
 		$city = "";
 		}
+		
 		   ?>
 
 <!DOCTYPE html>

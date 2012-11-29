@@ -236,6 +236,10 @@ class users extends db {
 		return $this->db->GetArray($sql);
 	}
 	
+	function get_price($flight_id){
+		$sql = "SELECT coach_class_cost FROM flights WHERE flight_id = $flight_id";
+		return $this->db->GetArray($sql);
+	}
 	function get_flights($date = "", $order = ""){
         $next_day = $date + 48*60*60;
         if ($order != "") $order = "ORDER BY $order ASC";
