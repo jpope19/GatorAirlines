@@ -86,9 +86,10 @@ jQuery(document).ready(function() {
 <!-- / header -->
 
 
-
+<?echo "<h2>Welcome back ".$_SESSION['first_name']."!</h2><br/>";?>
  <div id="sidebar1">
     <b>Personal Info</b>
+	
 	
  <button class="but1" id="edit" style="background-color:red;">Edit</button>
      <div class="content_1">
@@ -152,7 +153,9 @@ jQuery(document).ready(function() {
 </table>
 </form>
   </div>
-	     </div>
+  
+	     
+</div>
 		 
 <!--content -->
 	<section id="content">
@@ -163,12 +166,10 @@ jQuery(document).ready(function() {
 		 
 	 
 		   
-Hello <? echo $_SESSION['first_name'].",<br/>";
-
-echo "you currently have ". count($reservations)." reservation(s) on your account.";
-
- echo "<br/><br/>";     
-	  
+ <?      
+	echo "<strong>My Flights</strong><img src= images/plus.png class=but1 />";  
+	  echo "<div class=content_1 style=background-color:gray;>";	 
+     echo "you currently have ". count($reservations)." reservation(s) on your account.";	  
   echo   " <table width=77% border=1 cellpadding=5>
   <tr>
     <td><strong>Destination</strong></td>
@@ -194,6 +195,7 @@ echo "<tr>
 	  	 } 
 
 			 echo "</table>";
+			 echo "</div>";
            
    ?>     
 		   
