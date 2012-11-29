@@ -16,6 +16,7 @@
 		$city = $_SESSION['city'];
 		}
 		else{
+		
 		$first_name = "";
 		$last_name= "";	
 		$addr = "";
@@ -24,6 +25,7 @@
 		$cc_num = "";
 		$city = "";
 		}
+		
 		   ?>
 
 <!DOCTYPE html>

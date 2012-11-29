@@ -14,7 +14,6 @@ $users = new users(); // class from user.class.php that will be used to manipula
 $num = trim($_SESSION['leave_ids']);
 $id_array = explode("_", $num);
 $this_id = $id_array[0];
-//$pass = 
 $reserved_seats = $users->get_seat($this_id);
 $length = count($reserved_seats);
 $array = array($reserved_seats);
@@ -25,6 +24,7 @@ echo json_encode($array);
 
 
 /*
+	passengers!
 	$record = array();
 	$record['cid']
 	$record['seat_id']

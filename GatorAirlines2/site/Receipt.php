@@ -19,6 +19,31 @@
 	$d_date=date("c", $d_time);
 	$a_date=date("c", $a_time);
 	
+	$record = array();
+	$record['seat_id'] = $seat;
+	
+	if(isset($_SESSION['leave_ids'])){
+		if(isset($_SESSION['loggedIn'])){
+			$record['cid'] = $_SESSION['cid'];
+		}
+		else{
+			$record['cid'] = 1;
+		}
+			$price = $users->get_price($flight[0]['flight_id']);
+			$record['price'] = $price(0);
+			$record['flight_id'] = $flight[0]['flight_id'];
+			//insert
+			add_tickets($record);
+	}
+	//if(isset($_SESSION['return_ids'])){
+	//	$ids = trim($_SESSION['leave_ids']);
+	//	$id_array = explode(" ", $ids);
+	//	foreach($id_array as $new_fid){
+	//		$record['price']
+	//		$record['flight_id']
+			//insert
+	//	}
+	//}
 	
 	
 		   ?>
