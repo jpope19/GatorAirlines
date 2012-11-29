@@ -3,7 +3,6 @@ session_start();
 include("classes/search.class.php");
 include("classes/airport.class.php");
 include("classes/users.class.php");
-include("classes/Search_F_ID.class.php");
 include("js/select_flight.js");
 $user = new users();
 //convert passed in day/month/year into epoch times
@@ -14,9 +13,10 @@ $_POST['e_return_time'] = mktime(0,0,0,intval(substr($_POST['return'],0,2)),intv
 //convert airport iata names to IDs
 $_POST['org'] = Airport::get_id_by_name($_POST['org'], $user);
 $_POST['dest'] = Airport::get_id_by_name($_POST['dest'], $user);
+$_SESSION['passengers'] = $_POST['passengers'];
 //find routes
 $routes = new Search($_POST, $user);
-$FL = new Search_F_ID($_POST, $user);
+
 
 ?>
 <!-- echo "<b>Departure Trips</b><br/>"; -->
@@ -62,17 +62,17 @@ $FL = new Search_F_ID($_POST, $user);
 <?php
 //output routes
 $to_routes = $routes->depart_routes;
-$F_id = $FL->id;
-$_SESSION['id_array'] = $F_id;
 $a = Airport::get_name_by_id($_POST['org'], $user);
 $b = Airport::get_name_by_id($_POST['dest'], $user);
+
+
 $option_num = 1;
 if(count($to_routes) == 0){
     echo "Sorry, no flights available";
     //header("location: home.php?e=1");
 }?>
 
-<form class="flight_selection" action="#" method="POST">
+<form class="flight_selection" action="SeatAssignments.php" method="POST">
 <center>
 <table>
     <tr>
@@ -100,10 +100,10 @@ if(count($to_routes) == 0){
     foreach($to_routes as $option) {?>
         <tr>
             <td><center><?=$option_num?></center></td>
-            <?=$option->to_string('return')?>
+            <?=$option->to_string('return');?>
+			
         </tr>
-<?  $option_num++;
-    }
+<?  $option_num++;}
 }?>
 
     <tr>

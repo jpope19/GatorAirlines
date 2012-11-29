@@ -51,7 +51,7 @@
 
 
 
-
+<form id="DoneGoHome" action="home.php" method="post">
 </head>
 <h1>THANK YOU FOR CHOOSING GATOR AIRLINES!!</h1>
 <p>Please take a couple minutes to fill out our survey on your experience</p>
@@ -66,13 +66,13 @@ On a scale of 1 to 5 how easy was booking a ticket?
 </p>
 
 
-<form action="">
+
 <input type="radio" name="survey" value="one" /> 1 &#09;
 <input type="radio" name="survey" value="two" /> 2
 <input type="radio" name="survey" value="three" /> 3
 <input type="radio" name="survey" value="four" /> 4
 <input type="radio" name="survey" value="five" /> 5
-</form>
+
 
 <p>
 
@@ -82,12 +82,42 @@ On a scale of 1 to 5 how easy was selecting a seat?
 5 = very difficult
 
 </p>
-<form action="">
+
 <input type="radio" name="survey" value="one" /> 1 &#09;
 <input type="radio" name="survey" value="two" /> 2
 <input type="radio" name="survey" value="three" /> 3
 <input type="radio" name="survey" value="four" /> 4
 <input type="radio" name="survey" value="five" /> 5
+
+
+
+<p>
+
+On a scale of 1 to 5 how likely will you return to fly with us?
+<br />
+1 = very likely <br />
+5 = very unlikely
+
+</p>
+
+<input type="radio" name="survey" value="one" /> 1 &#09;
+<input type="radio" name="survey" value="two" /> 2
+<input type="radio" name="survey" value="three" /> 3
+<input type="radio" name="survey" value="four" /> 4
+<input type="radio" name="survey" value="five" /> 5
+
+</br><br/>
+    
+        <input type="submit" id="done" value="Done">
+       
+        </div>
+	
+	<div id="extra" style="clear: both;">&nbsp;</div>
+	
+<!-- <input type="submit" id ="btnShowNew" value="Done> 
+-->
+<br>
+</br>
 </form>
 
 </html>

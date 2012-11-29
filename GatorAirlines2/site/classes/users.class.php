@@ -206,6 +206,14 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
+	function get_specific_flight($f_id)
+	{
+		$sql = "SELECT * FROM flights WHERE flight_id = $f_id";
+		return $this->db->GetArray($sql);
+	}
+	
+	
+	
 	//Function used in flight_times.php
 	function get_flight_info() {
 		$sql = "SELECT * FROM flights";
@@ -280,6 +288,10 @@ class users extends db {
 		return $this->db->GetArray($sql);
 	}
 	
+	function get_price($flight_id){
+		$sql = "SELECT coach_class_cost FROM flights WHERE flight_id = $flight_id";
+		return $this->db->GetArray($sql);
+		}
 	//Not Complete
 	function get_ticket_number($ticket_id){
 		$sql = "SELECT";
@@ -937,6 +949,9 @@ class users extends db {
 		             'password'=>$password,'addr'=>$addr, 'state'=>$state,'zip'=>$zip,'cc_num'=>$cc_num),'cid',$autoquote = true);
     }
     
+	
+	
+	
 	
 }
 
