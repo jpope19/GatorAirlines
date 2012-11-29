@@ -2,28 +2,25 @@
 	 if (!isset($_SESSION))
 	{
 	session_start();
-    
+		
 	}
-	  $seat = $_GET['item'];
-	  $_SESSION['seat_id'] = $seat;
-		if(isset($_SESSION['loggedIn'])){
-		$first_name = $_SESSION['first_name'];
-		$last_name= $_SESSION['last_name'];	
-		$addr = $_SESSION['addr'];
-		$state = $_SESSION['state'];
-		$zip = $_SESSION['zip'];
-		$cc_num = $_SESSION['cc_num'];
-		$city = $_SESSION['city'];
-		}
-		else{
-		$first_name = "";
-		$last_name= "";	
-		$addr = "";
-		$state = "";
-		$zip = "";
-		$cc_num = "";
-		$city = "";
-		}
+	include("classes/users.class.php");
+	include("classes/airport.class.php");
+	$users = new users();
+	$num = trim($_SESSION['leave_ids']);
+	$id_array = explode("_", $num);
+	$this_id = $id_array[0];
+	$seat = $_SESSION['seat_id'];
+	$flight = $users->get_specific_flight($this_id);
+	$d_time = $flight[0]['depart_time'];
+	$a_time = $flight[0]['arrival_time'];
+	$a = Airport::get_name_by_id($flight[0]['org_id'], $users);
+	$b = Airport::get_name_by_id($flight[0]['dest_id'], $users);
+	$d_date=date("c", $d_time);
+	$a_date=date("c", $a_time);
+	
+	
+	
 		   ?>
 
 <!DOCTYPE html>
@@ -54,10 +51,45 @@
 	<?include('section/header2.php');?>
 
 	
-	<form id="CheckOutForm" action="Receipt.php" method="post">
+	<form id="CheckOutForm" action="survey.php" method="post">
 	<tr>
 	<td>First Name</td>
-	<td><input type="text" name="First_N" id="first" value=<?echo $first_name ?> "" required/> </td>
+	<?	echo $_POST['First_N']	?>
+	</br>
+	
+	<td>Last Name</td>
+	<?	echo $_POST['Last_N']	?>
+	</br>
+	
+	<td>Your Flight ID: </td>
+	<?	echo $this_id	?>
+	</br>
+	
+	<!-- ONLY DOES FOR 1 SEAT SELECTED -->
+	<td>Your Seat(s) ID: </td>
+	<?	echo $_SESSION['seat_id'];	?>
+	</br>
+	
+	<td>From: </td>
+	<? echo $a	?>
+	</br>
+	
+	<td>TO: </td>
+	<? echo $b	?>
+	</br>
+	
+	<td>Departure Time: </td>
+	<? echo $d_date	?>
+	</br>
+	
+	<td>Arrival Time: </td>
+	<? echo $a_date	?>
+	</br>
+	
+	<input type="submit" id ="Sumbit" value="Done">
+	
+	
+	<!--
 	</tr></br>
 	<tr>
 	<td>Last Name</td>
@@ -82,7 +114,8 @@
 	</form>
 	<section id="content">
 		   <div class="wrapper pad1">
-		   
+		-->
+</form>		
 		</div>
 	</section>
 			

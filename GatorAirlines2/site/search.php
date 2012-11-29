@@ -64,6 +64,8 @@ $routes = new Search($_POST, $user);
 $to_routes = $routes->depart_routes;
 $a = Airport::get_name_by_id($_POST['org'], $user);
 $b = Airport::get_name_by_id($_POST['dest'], $user);
+
+
 $option_num = 1;
 if(count($to_routes) == 0){
     echo "Sorry, no flights available";

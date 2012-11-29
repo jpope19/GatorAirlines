@@ -206,6 +206,14 @@ class users extends db {
         return $this->db->GetArray($sql);
     }
 	
+	function get_specific_flight($f_id)
+	{
+		$sql = "SELECT * FROM flights WHERE flight_id = $f_id";
+		return $this->db->GetArray($sql);
+	}
+	
+	
+	
 	//Function used in flight_times.php
 	function get_flight_info() {
 		$sql = "SELECT * FROM flights";
