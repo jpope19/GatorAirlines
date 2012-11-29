@@ -49,45 +49,48 @@
 
 <div class="main">
 	<?include('section/header2.php');?>
-
-	   <div id="receipt" >
+ 
+	   <div   style="background-image:url('images/ticket.jpg'); width:959px;height:500px;"><strong>Print ticket<strong>
+	   <img input type="image" src="images/print.png" height="40px" width="40px" onClick="window.print()"/>
 	<form id="CheckOutForm" action="survey.php" method="post" >
-	<tr>
-	<td>First Name</td>
+	<div style="margin-left:400px;">
+	<tr><br/><br/><br/><br/>
+	<strong><td>First Name</td></strong>
 	<?	echo $_POST['First_N']	?>
 	</br>
 	
-	<td>Last Name</td>
+	<strong><td>Last Name</td></strong>
 	<?	echo $_POST['Last_N']	?>
 	</br>
 	
-	<td>Your Flight ID: </td>
+	<strong><td>Your Flight ID: </td></strong>
 	<?	echo $this_id	?>
 	</br>
 	
 	<!-- ONLY DOES FOR 1 SEAT SELECTED -->
-	<td>Your Seat(s) ID: </td>
+	<strong><td>Your Seat(s) ID: </td></strong>
 	<?	echo $_SESSION['seat_id'];	?>
 	</br>
 	
-	<td>From: </td>
+	<strong><td>From: </td></strong>
 	<? echo $a	?>
 	</br>
 	
-	<td>TO: </td>
+	<strong><td>TO: </td></strong>
 	<? echo $b	?>
 	</br>
 	
-	<td>Departure Time: </td>
+	<strong><td>Departure Time: </td></strong>
 	<? echo $d_date	?>
 	</br>
 	
-	<td>Arrival Time: </td>
+	<strong><td>Arrival Time: </td></strong>
 	<? echo $a_date	?>
 	</br>
 	
-	<input type="submit" id ="Sumbit" value="Done">
+	<button><input type="submit" id ="Sumbit" class=button1 value="Take quick survey"><button>
 	
+	</div>
 	
 	<!--
 	</tr></br>
@@ -117,7 +120,7 @@
 		-->
 </form>	
   </div>	
-		</div>
+	
 	</section>
 			
 			

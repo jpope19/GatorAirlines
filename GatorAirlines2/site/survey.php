@@ -83,11 +83,11 @@ On a scale of 1 to 5 how easy was selecting a seat?
 
 </p>
 
-<input type="radio" name="survey" value="one" /> 1 &#09;
-<input type="radio" name="survey" value="two" /> 2
-<input type="radio" name="survey" value="three" /> 3
-<input type="radio" name="survey" value="four" /> 4
-<input type="radio" name="survey" value="five" /> 5
+<input type="radio" name="survey2" value="one" /> 1 &#09;
+<input type="radio" name="survey2" value="two" /> 2
+<input type="radio" name="survey2" value="three" /> 3
+<input type="radio" name="survey2" value="four" /> 4
+<input type="radio" name="survey2" value="five" /> 5
 
 
 
@@ -100,11 +100,11 @@ On a scale of 1 to 5 how likely will you return to fly with us?
 
 </p>
 
-<input type="radio" name="survey" value="one" /> 1 &#09;
-<input type="radio" name="survey" value="two" /> 2
-<input type="radio" name="survey" value="three" /> 3
-<input type="radio" name="survey" value="four" /> 4
-<input type="radio" name="survey" value="five" /> 5
+<input type="radio" name="survey3" value="one" /> 1 &#09;
+<input type="radio" name="survey3" value="two" /> 2
+<input type="radio" name="survey3" value="three" /> 3
+<input type="radio" name="survey3" value="four" /> 4
+<input type="radio" name="survey3" value="five" /> 5
 
 </br><br/>
     
