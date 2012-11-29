@@ -7,11 +7,6 @@ if (!isset($_SESSION))
 
 ?>
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,7 +79,9 @@ if (!isset($_SESSION))
 				$orgId = $output['org_id'];
 				$flight_info = $user->get_flight_by_id($orgId, $destId);
 				//604800 is the amount of time to get the date a week from todays
-				if($flight_info[0]['e_depart_time'] >= $today[0] && $flight_info[0]['e_depart_time'] <= ($today[0] + 604800)) {
+				//86400 is the amount of time to the next day
+				//if($flight_info[0]['e_depart_time'] >= $today[0] && $flight_info[0]['e_depart_time'] <= ($today[0] + 604800)) {
+				if($flight_info[0]['e_depart_time'] >= $today[0] && $flight_info[0]['e_depart_time'] <= ($today[0] + 86400)) {
 				
 					$origin_info = $user->get_airport_info($orgId);
 					$destination_info = $user->get_airport_info($destId);
@@ -119,36 +116,16 @@ if (!isset($_SESSION))
 				}
 				
 				
-				if($counter > 20) {
+				if($counter > 10) {
 					break;
 				}
 				
 			}
 			
 			?>
-		   
-		  
-		   
-		   
-		   
-		   
-		   
-		   
-		   
 	  
 			</div>
 	</section>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			<!--content end-->
 			<!--footer -->
