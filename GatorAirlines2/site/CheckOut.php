@@ -1,3 +1,31 @@
+<?php
+	 if (!isset($_SESSION))
+	{
+	session_start();
+    
+	}
+	  $seat = $_GET['item'];
+	  $_SESSION['seat_id'] = $seat;
+		if(isset($_SESSION['loggedIn'])){
+		$first_name = $_SESSION['first_name'];
+		$last_name= $_SESSION['last_name'];	
+		$addr = $_SESSION['addr'];
+		$state = $_SESSION['state'];
+		$zip = $_SESSION['zip'];
+		$cc_num = $_SESSION['cc_num'];
+		$city = $_SESSION['city'];
+		}
+		else{
+		$first_name = "";
+		$last_name= "";	
+		$addr = "";
+		$state = "";
+		$zip = "";
+		$cc_num = "";
+		$city = "";
+		}
+		   ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,23 +53,30 @@
 <div class="main">
 	<?include('section/header2.php');?>
 
-	<?php
-		  $seat = $_GET['item'];
-		   ?>
+	
 	<form id="CheckOutForm" action="survey.php" method="post">
 	<tr>
 	<td>First Name</td>
-	<td><input type="text" name="First_N" id="first" required/></td>
+	<td><input type="text" name="First_N" id="first" value=<?echo $first_name ?> "" required/> </td>
 	</tr></br>
 	<tr>
 	<td>Last Name</td>
-	<td><input type="text" name="Last_N" id="last" required/></td>
+	<td><input type="text" name="Last_N" id="last" value=<?echo $last_name ?> "" required/></td>
 	</tr></br>
 	<td>Billing Address</td>
-	<td><input type="text" name="B_addres" id="address" required/></td>
+	<td><input type="text" name="B_addres" id="address" value=<?echo $addr ?> "" required/></td>
+	</tr></br>
+	<td>Zip Code</td>
+	<td><input type="text" name="Zip" id="address" value=<?echo $zip ?> "" required/></td>
+	</tr></br>
+	<td>City</td>
+	<td><input type="text" name="City" id="address" value=<?echo $city ?> "" required/></td>
+	</tr></br>
+	<td>State</td>
+	<td><input type="text" name="State" id="address" value=<?echo $state ?> "" required/></td>
 	</tr></br>
 	<td>Credit Card Number</td>
-	<td><input type="text" name="CC" id="money" required/></td>
+	<td><input type="text" name="CC" id="money" value=<?echo $cc_num ?> "" required/></td>
 	</tr></br>
 	<input type="submit" id ="Sumbit" value="Submit">
 	</form>
@@ -52,7 +87,6 @@
 	</section>
 			
 			
-		
 		
 			
 			
