@@ -71,7 +71,7 @@ $('#btnShowNew').click(function () {
         item = $(this).attr('title');
         str.push(item);
 		//change when going to the real website
-		window.location.href = "http://localhost/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=" + item;
+		window.location.href = "http://localhost:8080/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=" + item;
     });
     alert(str.join(','));
 })		

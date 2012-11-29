@@ -53,32 +53,42 @@
 <div class="main">
 	<?include('section/header2.php');?>
 
-	
-	<form id="CheckOutForm" action="Receipt.php" method="post">
+	<h2 style="color:red;">LAST CHANCE TO CHANGE PERSONAL INFO.</h2>
+	<form id="CheckOutForm" action="Receipt.php" method="post" style="background-color:gray;">
+	<table>
 	<tr>
 	<td>First Name</td>
 	<td><input type="text" name="First_N" id="first" value=<?echo $first_name ?> "" required/> </td>
-	</tr></br>
+	</tr>
 	<tr>
 	<td>Last Name</td>
-	<td><input type="text" name="Last_N" id="last" value=<?echo $last_name ?> "" required/></td>
-	</tr></br>
+	<td><input type="text" name="Last_N" id="last" value=<?echo $last_name ?> "" required/></td>	
+	</tr>
+	<tr>
 	<td>Billing Address</td>
 	<td><input type="text" name="B_addres" id="address" value=<?echo $addr ?> "" required/></td>
-	</tr></br>
+	</tr>
+	<tr>
 	<td>Zip Code</td>
 	<td><input type="text" name="Zip" id="address" value=<?echo $zip ?> "" required/></td>
-	</tr></br>
+	</tr>
+	<tr>
 	<td>City</td>
 	<td><input type="text" name="City" id="address" value=<?echo $city ?> "" required/></td>
-	</tr></br>
+	</tr>
+	<tr>
 	<td>State</td>
 	<td><input type="text" name="State" id="address" value=<?echo $state ?> "" required/></td>
-	</tr></br>
+	</tr>
+	<tr>
 	<td>Credit Card Number</td>
 	<td><input type="text" name="CC" id="money" value=<?echo $cc_num ?> "" required/></td>
-	</tr></br>
-	<input type="submit" id ="Sumbit" value="Submit">
+	</tr>
+	
+	<tr>
+	<td><br/><button class=button1><input type="submit" id ="Sumbit" value="submit"></button><td>
+	<tr>
+	</table>
 	</form>
 	<section id="content">
 		   <div class="wrapper pad1">

@@ -6,7 +6,10 @@
 }
 
 
+#receipt{
 
+background-image:url(/images/ticket.jpg);
+}
 
 input:focus
 {
