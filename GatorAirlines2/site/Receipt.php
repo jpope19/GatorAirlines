@@ -30,10 +30,10 @@
 			$record['cid'] = 1;
 		}
 			$price = $users->get_price($flight[0]['flight_id']);
-			$record['price'] = $price(0);
+			$record['price'] = $price[0];
 			$record['flight_id'] = $flight[0]['flight_id'];
 			//insert
-			add_tickets($record);
+			$users->add_tickets($record);
 	}
 	//if(isset($_SESSION['return_ids'])){
 	//	$ids = trim($_SESSION['leave_ids']);
