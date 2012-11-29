@@ -89,9 +89,9 @@ $airports = $users->get_airports();
 									<form action="search.php" method="post">
 
 
-<div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
+<div id="content" style="background-color:#E6E6E6; height 200px;width:287px;float:left;">
 
-<div id="content" style="background-color:#EEEEEE; height 200px;width:287px;float:left;">
+<div id="content" style="background-color:#E6E6E6; height 200px;width:287px;float:left;">
 
 <b>Book A Flight</b> <br>
 <input type="radio" name="flight" value="Round-Trip" /> Round Trip &#09;
@@ -169,11 +169,11 @@ Advanced
 <!-- This is the advanced section of the home page -->
 
 <form action="post">
-<div id="advanced" style="background-color:#EEEEEE; height 200px;width:600px;float:left;">
+<div id="advanced" style="background-color:#E6E6E6; height 200px;width:600px;float:left;">
 <br>
 <hr><b>Advanced	</b> <br>  <!-- hr creates the horizontal line -->
 
-Budget &nbsp &nbsp &nbsp &nbsp : &nbsp Between: <input type="text" name="floorbudget" size="3"> &nbsp &nbsp And: <input type="text" size="3" name="ceilingbudget">
+Budget &nbsp &nbsp &nbsp &nbsp : &nbsp <br></br>Between: <input type="text" name="floorbudget" size="3"> &nbsp &nbsp And: <input type="text" size="3" name="ceilingbudget">
 <br>
 <!-- Create the radio buttons for tickets -->
 <input type="radio" name="class" value="firstclass">First Class<br>
