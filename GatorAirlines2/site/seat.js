@@ -72,8 +72,12 @@ $('#btnShowNew').click(function () {
         str.push(item);
 		//change when going to the real website
 		window.location.href = "http://ec2-75-101-205-194.compute-1.amazonaws.com/CheckOut.php?item=" + item;
+
     }); //"http://ec2-75-101-205-194.compute-1.amazonaws.com/CheckOut.php?item="
 	     //http://localhost:8080/gatorairlines/gatorairlines2/site/CheckOut.php?item=
+
+	
+    });
     //alert(str.join(','));
 })		
 					});
