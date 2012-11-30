@@ -47,7 +47,7 @@ if (!isset($_SESSION))
         <td style='width: 250px'><center>Option</center></td>
         <td style='width: 150px'><center>Depart Time</center></td>
         <td style='width: 150px'><center>Arrival Time</center></td>
-        <td style='width: 50px'><center>Cost</center></td>
+        <td style='width: 25px'><center>Cost</center></td>
         <td style='width: 50px'></td>
 		</tr>  
 
