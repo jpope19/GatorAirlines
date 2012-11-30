@@ -5,6 +5,21 @@ if (!isset($_SESSION))
     
 	}
 
+	include("classes/users.class.php");
+			
+			
+			include("classes/search.class.php");
+			include("classes/airport.class.php");
+			
+			include("classes/Search_F_ID.class.php");
+			include("js/select_flight.js");
+			
+			$user = new users();
+	
+			$result = $user->get_flight_info();
+			
+			//get current date timestamp
+			$today = getdate();
 ?>
 
 <!DOCTYPE html>
@@ -55,21 +70,6 @@ if (!isset($_SESSION))
 			<?php
 			
 			
-			include("classes/users.class.php");
-			
-			
-			include("classes/search.class.php");
-			include("classes/airport.class.php");
-			
-			include("classes/Search_F_ID.class.php");
-			include("js/select_flight.js");
-			
-			$user = new users();
-	
-			$result = $user->get_flight_info();
-			
-			//get current date timestamp
-			$today = getdate();
 			//$counter = 0;	//Making a counter to limit how many flights appear for now
 			foreach($result as $output)
 			{
@@ -140,6 +140,5 @@ if (!isset($_SESSION))
 		</div>
 		
 		
-
 </body>
 </html>
