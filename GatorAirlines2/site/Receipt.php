@@ -12,12 +12,12 @@
 	$this_id = $id_array[0];
 	$seat = $_SESSION['seat_id'];
 	$flight = $users->get_specific_flight($this_id);
-	$d_time = $flight[0]['depart_time'];
-	$a_time = $flight[0]['arrival_time'];
+	$d_time = $flight[0]['e_depart_time'];
+	$a_time = $flight[0]['e_arrival_time'];
 	$a = Airport::get_name_by_id($flight[0]['org_id'], $users);
 	$b = Airport::get_name_by_id($flight[0]['dest_id'], $users);
-	$d_date=date("c", $d_time);
-	$a_date=date("c", $a_time);
+	$d_date=date('M j, Y - g:ia', $d_time);
+	$a_date=date('M j, Y - g:ia', $a_time);
 	
 	$record = array();
 	$record['seat_id'] = $seat;
