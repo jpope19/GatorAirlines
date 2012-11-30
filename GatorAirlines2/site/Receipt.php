@@ -6,18 +6,72 @@
 	}
 	include("classes/users.class.php");
 	include("classes/airport.class.php");
+	
+	if(isset($_POST['go']))
+	{
+	$message= 
+	" <div   style=background-image:url(images/ticket.jpg); width:959px;height:500px;><strong>Print ticket<strong>
+	   <img input type=image src=images/print.png height=40px width=40px onClick=window.print()/>
+	<form id=CheckOutForm action=survey.php method=post >
+	<div style=margin-left:400px;>
+	<tr><br/><br/><br/><br/>
+	<strong><td>First Name</td></strong>
+	<?	echo $_POST[First_N]	?>
+	</br>
+	
+	<strong><td>Last Name</td></strong>
+	<?	echo $_POST[Last_N]	?>
+	</br>
+	
+	<strong><td>Email</td></strong>
+	<?	echo $_POST[email]	?>
+	</br>
+	
+	<strong><td>Your Flight ID: </td></strong>
+	<?	echo $this_id	?>
+	</br>
+	
+	<!-- ONLY DOES FOR 1 SEAT SELECTED -->
+	<strong><td>Your Seat(s) ID: </td></strong>
+	<?	echo $_SESSION[seat_id];	?>
+	</br>
+	
+	<strong><td>From: </td></strong>
+	<? echo $a	?>
+	</br>
+	
+	<strong><td>TO: </td></strong>
+	<? echo $b	?>
+	</br>
+	
+	<strong><td>Departure Time: </td></strong>
+	<? echo $d_date	?>
+	</br>
+	
+	<strong><td>Arrival Time: </td></strong>
+	<? echo $a_date	?>
+	</br>
+	
+	<button><input type=submit id =Sumbit class=button1 value=Take quick survey><button>
+	
+	</div>";
+	
+	 $email = new email($_POST['email'], $message, "Password Recovery (GA)");
+     $email->send_email();
+	 
+		}
 	$users = new users();
 	$num = trim($_SESSION['leave_ids']);
 	$id_array = explode("_", $num);
 	$this_id = $id_array[0];
 	$seat = $_SESSION['seat_id'];
 	$flight = $users->get_specific_flight($this_id);
-	$d_time = $flight[0]['depart_time'];
-	$a_time = $flight[0]['arrival_time'];
+	$d_time = $flight[0]['e_depart_time'];
+	$a_time = $flight[0]['e_arrival_time'];
 	$a = Airport::get_name_by_id($flight[0]['org_id'], $users);
 	$b = Airport::get_name_by_id($flight[0]['dest_id'], $users);
-	$d_date=date("c", $d_time);
-	$a_date=date("c", $a_time);
+	$d_date=date('M j, Y - g:ia', $d_time);
+	$a_date=date('M j, Y - g:ia', $a_time);
 	
 	$record = array();
 	$record['seat_id'] = $seat;
@@ -30,10 +84,10 @@
 			$record['cid'] = 1;
 		}
 			$price = $users->get_price($flight[0]['flight_id']);
-			$record['price'] = $price(0);
+			$record['price'] = $price[0]['coach_class_cost'];
 			$record['flight_id'] = $flight[0]['flight_id'];
 			//insert
-			add_tickets($record);
+			$users->add_tickets($record);
 	}
 	//if(isset($_SESSION['return_ids'])){
 	//	$ids = trim($_SESSION['leave_ids']);
@@ -88,6 +142,10 @@
 	<?	echo $_POST['Last_N']	?>
 	</br>
 	
+	<strong><td>Email</td></strong>
+	<?	echo $_POST['email']	?>
+	</br>
+	
 	<strong><td>Your Flight ID: </td></strong>
 	<?	echo $this_id	?>
 	</br>
@@ -113,7 +171,7 @@
 	<? echo $a_date	?>
 	</br>
 	
-	<button><input type="submit" id ="Sumbit" class=button1 value="Take quick survey"><button>
+	<button><input type="submit" id ="Sumbit" class=button1 name="go" value="Submit"><button>
 	
 	</div>
 	

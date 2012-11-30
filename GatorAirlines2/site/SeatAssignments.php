@@ -107,7 +107,7 @@ session_start();
 
 
 <!-- JAVASCRIPT REFERENCE -->
-<script type="text/javascript" src="js/seat.js"></script>
+
 			<!--content end-->
 			<!--footer -->
 			<!-- PHP AND JAVASCRIPT REFERENCE -->		
