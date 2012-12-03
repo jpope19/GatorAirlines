@@ -14,6 +14,7 @@
 		$zip = $_SESSION['zip'];
 		$cc_num = $_SESSION['cc_num'];
 		$city = $_SESSION['city'];
+		$email = $_SESSION['email'];
 		}
 		else{
 		
@@ -24,6 +25,7 @@
 		$zip = "";
 		$cc_num = "";
 		$city = "";
+		$email = "";
 		}
 		
 		   ?>
@@ -55,7 +57,7 @@
 <div class="main">
 	<?include('section/header2.php');?>
 
-	<h2 style="color:red;">LAST CHANCE TO CHANGE PERSONAL INFO.</h2>
+	<?if (isset($_SESSION['first_name'])){echo "<h2 style=color:red;>LAST CHANCE TO CHANGE PERSONAL INFO.</h2>";}?>
 	<form id="CheckOutForm" action="Receipt.php" method="post" style="background-color:gray;">
 	<table>
 	<tr>
@@ -66,6 +68,12 @@
 	<td>Last Name</td>
 	<td><input type="text" name="Last_N" id="last" value=<?echo $last_name ?> "" required/></td>	
 	</tr>
+	
+	<tr>
+	<td>Email</td>
+	<td><input type="text" name="email" id="email" value=<?echo $email ?> "" required/></td>
+	</tr>
+	
 	<tr>
 	<td>Billing Address</td>
 	<td><input type="text" name="B_addres" id="address" value=<?echo $addr ?> "" required/></td>

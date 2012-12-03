@@ -1,4 +1,7 @@
 <?php
+	if(!isset($_SESSION)){
+		session_start();
+	}
 class Route {
     var $avail_tickets;
     var $layover_time;
@@ -70,9 +73,11 @@ class Route {
     public function to_string($way) {
 		date_default_timezone_set('America/New_York');
 		$time = date('M j, Y - g:ia', $this->flights[0]['e_depart_time']);
+		$_SESSION['d_time']= $time;
 		$res = "<td><center>$time</center></td>";    // depart time
 		
 		$time = date('M j, Y - g:ia', $this->flights[$this->num_flights-1]['e_arrival_time']);
+		$_SESSION['a_time']= $time;
         $res .= "<td><center>$time</center></td>";   // arrival time
         
         $res .= "<td><center>\$$this->cost</center></td>";   // cost
