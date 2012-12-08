@@ -216,7 +216,8 @@ class users extends db {
 	
 	//Function used in flight_times.php
 	function get_flight_info() {
-		$sql = "SELECT * FROM flights";
+	 $today = getdate();
+		$sql = "SELECT * FROM flights where e_depart_time >= $today[0] and e_depart_time<= $today[0]+86400";
 		return $this->db->GetArray($sql);
 	}
 	
