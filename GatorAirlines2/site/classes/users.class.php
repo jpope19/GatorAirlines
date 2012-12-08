@@ -216,8 +216,9 @@ class users extends db {
 	
 	//Function used in flight_times.php
 	function get_flight_info() {
-	 $today = getdate();
-		$sql = "SELECT * FROM flights where e_depart_time >= $today[0] and e_depart_time<= $today[0]+86400";
+		$today = getdate();
+		$sql = "SELECT * FROM flights where e_depart_time >= $today[0] and e_depart_time<= $today[0]+86400 ORDER BY e_depart_time asc
+				  LIMIT 0, 50";
 		return $this->db->GetArray($sql);
 	}
 	
@@ -233,7 +234,8 @@ class users extends db {
 	function get_flight_by_id($orgid, $destid) {
 		$sql = "SELECT *
 				FROM flights
-				WHERE org_id = $orgid AND dest_id = $destid";
+				WHERE org_id = $orgid AND dest_id = $destid
+				ORDER BY e_depart_time ASC";
 		return $this->db->GetArray($sql);
 	}
 	
