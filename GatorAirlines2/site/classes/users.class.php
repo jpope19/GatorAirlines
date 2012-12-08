@@ -253,7 +253,18 @@ class users extends db {
         $sql = "SELECT * FROM tickets $order";
         return $this->db->GetArray($sql);
     }
-	
+    
+    function get_tickets_for_flight($flight_id, $order="") {
+        if ($order != "") $order = "ORDER BY $order ASC";
+        $sql = "SELECT * FROM tickets $order";
+        $sql = "$sql WHERE flight_id = $flight_id";
+        return $this->db->GetArray($sql);
+    }
+    
+    function get_seats_on_flight($flight_id, $order="") {
+        //TODO call db for plane of flight and check # of seats.
+        return 100;
+    }
 	function get_vip($order = ""){
 		if ($order != "") $order = "ORDER BY $order ASC";
         $sql = "SELECT * FROM vip $order";
