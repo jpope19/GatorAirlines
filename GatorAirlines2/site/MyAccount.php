@@ -168,7 +168,7 @@ jQuery(document).ready(function() {
 		   
  <?      
 	echo "<strong>My Flights</strong><img src= images/plus.png class=but1 />";  
-	  echo "<div class=content_1 style=background-color:gray;>";	 
+	  echo "<div class=content_1 style=background-color:#eee9e9;>";	 
      echo "you currently have ". count($reservations)." reservation(s) on your account.";	  
   echo   " <table width=77% border=1 cellpadding=5>
   <tr>
