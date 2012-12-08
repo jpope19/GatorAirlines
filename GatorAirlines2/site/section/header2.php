@@ -1,7 +1,7 @@
 <?php
 // Check to see if the site requires https and is in http. If needs https, force it.
 
-/*if(isset($https) && ($https==true) && $_SERVER['SERVER_PORT'] != 443) {
+if(isset($https) && ($https==true) && $_SERVER['SERVER_PORT'] != 443) {
    header("HTTP/1.1 301 Moved Permanently");
    header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
    exit();
@@ -11,7 +11,7 @@ if((!isset($https) || ($https==false)) && $_SERVER['SERVER_PORT'] != 80) {
    header("HTTP/1.1 301 Moved Permanently");
    header("Location: http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
    exit();
-}*/
+}
 ?>
 
 <div id="login-box" class="login-popup">
@@ -63,7 +63,6 @@ if((!isset($https) || ($https==false)) && $_SERVER['SERVER_PORT'] != 80) {
 			<ul id="menu">
 				<li><a href="home.php"><span><span>Home</span></span></a></li>
 				<?if(isset($_SESSION['u_type']) ) {echo "<li><a href=MyAccount.php><span><span>My Account</span></span></a></li>";}  ?>
-				<li><a href="reservation.php"><span><span>Reservations</span></span></a></li>
 				<li><a href="checkin.php"><span><span>Check-In</span></span></a></li>
 				<li><a href="flight_times.php"><span><span>Flight Times</span></span></a></li>
 				

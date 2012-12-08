@@ -159,10 +159,10 @@ Passenger &nbsp: <select name="passengers">
 <input type="submit" class="button1" value="Submit">		<!-- Creates the submit button -->
 <br>
 <br>
-Advanced
+<!--Advanced-->
  <br>
-<input type="radio" name="advanced" class="advanced" value="Yes">Yes
-<input type="radio" name="advanced" class="advanced" value="No">No<br>
+<!--<input type="radio" name="advanced" class="advanced" value="Yes">Yes
+<input type="radio" name="advanced" class="advanced" value="No">No<br>-->
 
 </form>
 

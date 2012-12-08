@@ -74,22 +74,15 @@ session_start();
 	
 	<h2>Baggage Cost</h2> 
 <FONT FACE="calibri"><p style="font-size:16px">&#160;&#160;Estimate the total cost of your trip, baggage included!</p></FONT> 
-<form id="Fatass" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-&nbsp&nbspTotal Number of Bags &nbsp: <select name="bags">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-</select><br></br>
+<form id="Fatass" method="post">
 
-&nbsp&nbspTotal Weight: <input type="text" name="weight">&nbsp Lbs &nbsp <input type="submit" value="Calculate"><br></br>
-&nbsp&nbspEstimated Baggage Cost: &nbsp&nbsp$
+&nbsp&nbspTotal Number of Bags: <input id = "bags" input type="text" name="bags"><br></br>
+
+&nbsp&nbspTotal Weight: <input id = "weight" input type="text" name="weight">&nbsp Lbs &nbsp <input id = "calc" type="submit" value="Calculate"><br></br>
+ <p id="cost"> &nbsp&nbspEstimated Baggage Cost: </p>
+
+
+
 
 </form>
 
