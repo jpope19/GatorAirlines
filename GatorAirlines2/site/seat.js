@@ -9,8 +9,10 @@ $(document).ready(function(){
 							array.push(parseInt(val));
 							console.log(val);
 						});
-						
-						var settings = {
+	});
+});
+					
+	var settings = {
                rows: 5,
                cols:20,
 			   brek: 12,
@@ -24,6 +26,8 @@ $(document).ready(function(){
                selectingSeatCss: 'selectingSeat'
 			   
            };
+	    			
+
 
 var init = function (reservedSeat) {
                 var str = [], seatNo, className;
@@ -46,7 +50,7 @@ var init = function (reservedSeat) {
 				
             };
 			
-						init(array);
+						init();
 						
 $('.' + settings.seatCss).click(function () {
 if ($(this).hasClass(settings.selectedSeatCss)){
@@ -76,8 +80,7 @@ $('#btnShowNew').click(function () {
     });
     //alert(str.join(','));
 })		
-					});
 					
-				}); 
+					
 
 		
