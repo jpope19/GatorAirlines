@@ -72,10 +72,20 @@ $(document).ready(function(){
 		$.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
 			item = $(this).attr('title');
 			str.push(item);
-			//change when going to the real website
-			window.location.href = "http://ec2-75-101-205-194.compute-1.amazonaws.com/CheckOut.php?item=" + item;
-			//window.location.href = "http://localhost/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=" + item;
+			
 		});
+		var num = str.length;
+		//var urlString = "http://ec2-75-101-205-194.compute-1.amazonaws.com/CheckOut.php?item=";
+		var urlString = "http://localhost/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=";
+		for( var i = 0; i < num; i++)
+		{
+				urlString = urlString + str[i] + ",";
+		}
+			
+		//change when going to the real website
+		//window.location.href = "http://localhost/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=" + item;
+		//window.location.href = "http://ec2-75-101-205-194.compute-1.amazonaws.com/CheckOut.php?item=" + item;
+		window.location.href = urlString;
 		//alert(str.join(','));
 	})		
 						
