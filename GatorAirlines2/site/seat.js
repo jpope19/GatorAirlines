@@ -79,6 +79,10 @@ $(document).ready(function(){
 		//alert(str.join(','));
 	})		
 						
-						
+	$('#calc').click(function(e) {
+		e.preventDefault();
+		
+		$("#cost").html("&nbsp&nbspEstimated Baggage Cost:   $" + ($("#bags").val() * 2.5 * $("#weight").val()));
+	});
 });
 		
