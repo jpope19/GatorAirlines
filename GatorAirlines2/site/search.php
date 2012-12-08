@@ -81,6 +81,7 @@ if(count($to_routes) == 0){
         <td style='width: 150px'><center>Arrival Time</center></td>
         <td style='width: 50px'><center>Cost</center></td>
         <td style='width: 50px'><center>Layovers</center></td>
+        <td style='width: 50px'><center>Open Seats</center></td>
         <td style='width: 50px'></td>
     </tr>    
     <tr><td colspan='6'><b><?=$a?></b> to <b><?=$b?></b></td></tr>

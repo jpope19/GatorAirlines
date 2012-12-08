@@ -1,5 +1,6 @@
 <?php
 include("route.class.php");
+include("flight.class.php");
 
 class Search {
     
@@ -18,7 +19,7 @@ class Search {
     # one_way: is it one way
     # class: what class of ticket
     public function __construct($params, $user) {
-        $this->default_opts = array('class' => 'coach','passengers' => 1, 'max_results' => 4);
+        $this->default_opts = array('class' => 'coach','passengers' => 1, 'max_results' => 10);
         $this->user = $user;
         $this->opts = array_merge($this->default_opts, $params);
         $this->route_opts = $this->opts;
@@ -42,7 +43,8 @@ class Search {
         foreach($flights as $flight) {
             if($flight['org_id'] == $org) {
                 $route = new Route($this->route_opts);
-                $route->add_flight($flight);
+                $num_seats = Flight::get_open_seats_on_flight($flight['flight_id'], $this->user);
+                $route->add_flight($flight, $num_seats);
                 $queue->insert($route, $route->get_joy());
             }
         }
@@ -58,10 +60,11 @@ class Search {
                 continue;
             }
             foreach($flights as $flight) {
-                if($flight['org_id'] == $cur_route->get_dest() && $flight['e_depart_time'] > 30*60 + $cur_route->get_arrival_time()) {
+                if(!array_key_exists($flight['dest_id'], $cur_route->visited) && $flight['org_id'] == $cur_route->get_dest() && $flight['e_depart_time'] > 30*60 + $cur_route->get_arrival_time()) {
                     $new_route = $cur_route->copy();
-                    $new_route->add_flight($flight);
-                    if($new_route->get_trip_time() < 24*60*60) {
+                    $num_seats = Flight::get_open_seats_on_flight($flight['flight_id'], $this->user);
+                    $new_route->add_flight($flight, $num_seats);
+                    if($new_route->get_trip_time() < 24*60*60 && $new_route->seats >= $this->opts['passengers']) {
                         $queue->insert($new_route,$new_route->get_joy());
                     }
                 }
