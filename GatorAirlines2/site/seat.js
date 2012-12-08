@@ -75,8 +75,8 @@ $(document).ready(function(){
 			
 		});
 		var num = str.length;
-		//var urlString = "http://ec2-75-101-205-194.compute-1.amazonaws.com/CheckOut.php?item=";
-		var urlString = "http://localhost/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=";
+		var urlString = "http://ec2-75-101-205-194.compute-1.amazonaws.com/CheckOut.php?item=";
+		//var urlString = "http://localhost/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=";
 		for( var i = 0; i < num; i++)
 		{
 				urlString = urlString + str[i] + ",";
