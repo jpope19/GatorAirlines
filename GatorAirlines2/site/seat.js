@@ -74,7 +74,7 @@ $(document).ready(function(){
 			str.push(item);
 			//change when going to the real website
 			window.location.href = "http://ec2-75-101-205-194.compute-1.amazonaws.com/CheckOut.php?item=" + item;
-			//window.location.href = "http://localhost/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=" + item;
+			//window.location.href = "http://localhost:8080/GatorAirlines/GatorAirlines2/site/CheckOut.php?item=" + item;
 		});
 		//alert(str.join(','));
 	})		

@@ -1,13 +1,12 @@
 <?php
-// if (!isset($_SESSION))
-// {
-	// session_start();
+ if (!isset($_SESSION))
+ {
+	 session_start();
     
-	// }
+	 }
 
 	// This user will also be used in most of the referenced php files here
 	include("classes/users.class.php");
-	$users = new users(); // class from user.class.php that will be used to manipulate the database
 	
 ?>
 
@@ -42,7 +41,7 @@
 
 <div class="main">
 <!--header -->
-	<?include('section/header2.php')?>
+<?include('section/header2.php')?>
 <!-- / header -->
 
 

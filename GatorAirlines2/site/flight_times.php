@@ -59,10 +59,10 @@ if (!isset($_SESSION))
 		 <!--  DO YOU WORK HERE !!!! -->  
 		<table>
 		<tr>
-        <td style='width: 250px'><center>Option</center></td>
-        <td style='width: 150px'><center>Depart Time</center></td>
-        <td style='width: 150px'><center>Arrival Time</center></td>
-        <td style='width: 50px'><center>Cost</center></td>
+        <td style='width: 275px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Option</strong></td>
+        <td style='width: 175px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Depart Time</strong></td>
+        <td style='width: 175px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Arrival Time</strong></td>
+        <td style='width: 25px'><strong>Cost</strong></td>
         <td style='width: 50px'></td>
 		</tr>  
 
@@ -89,13 +89,13 @@ if (!isset($_SESSION))
 					//Print origin to destination info
 			
 					//echo $origin_info[0]['name']; echo ": ";
-					echo "<tr>";
-					echo "<td>"; echo $origin_info[0]['city']; echo ", ";
+					echo "<tr >";
+					echo "<td >"; echo $origin_info[0]['city']; echo ", ";
 					echo $origin_info[0]['state'];
 					echo " to ";
 					//echo $destination_info[0]['name']; echo ": ";
 					echo $destination_info[0]['city']; echo ", ";
-					echo $destination_info[0]['state'];
+					echo $destination_info[0]['state']; 
 					echo "</td>";
 				
 					//Print depart time
@@ -115,7 +115,6 @@ if (!isset($_SESSION))
 					$cost = $output['coach_class_cost'];
 					echo "$$cost";
 					  echo "</td>";
-					echo "<br/>";
 					//$counter++;
 					echo "</tr>";
 				//}

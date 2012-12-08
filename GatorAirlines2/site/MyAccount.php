@@ -196,6 +196,7 @@ echo "<tr>
 	<td><strong style=color:green;>Active</strong></td>";
 	
 	echo "<td><a href='delete.php?id=" . $result['ticket_id'] . "'><button class=button1 onclick='return doConfirmDelete(this.id);'>Delete</button></a></td>";
+  // echo"<td><a href='checkin.php?id=". $result['ticket']."'><input type=submit  value=check-in></td>";
    echo "
   </tr>";
 	  	 } 
