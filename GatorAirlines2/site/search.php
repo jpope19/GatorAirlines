@@ -113,7 +113,14 @@ if(count($to_routes) == 0){
         <td></td>
         <td></td>
         <td></td>
-        <td><input type='submit' value='Reserve Flight'></td>
+<?php
+	if( $to_routes != null)
+	{
+        ?><td><input type='submit' value='Reserve Flight'></td> <?
+	}
+	else
+		
+?>
     </tr>
 </table>
 </center>

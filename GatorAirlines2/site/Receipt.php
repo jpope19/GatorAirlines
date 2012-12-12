@@ -76,8 +76,7 @@
 	//$d_date = $_SESSION['d_time'];
 	//$a_date = $_SESSION['a_time'];
 	$record = array();
-	$record['seat_id'] = $seat;
-	
+	//$record['seat_id'] = $seat;
 	if(isset($_SESSION['leave_ids'])){
 		if(isset($_SESSION['loggedIn'])){
 			$record['cid'] = $_SESSION['cid'];
@@ -89,7 +88,31 @@
 			$record['price'] = $price[0]['coach_class_cost'];
 			$record['flight_id'] = $flight[0]['flight_id'];
 			//insert
-			$users->add_tickets($record);
+			$number = $_SESSION['passengers'];
+			print_r($number);
+			print_r(count($seat));
+			if( $number - 1 > count($seat))
+			{
+				for($i = 0; $i <  $number; $i++)
+				{
+					$record['seat_id'] = $seat[$i];
+					$users->add_tickets($record);
+				}
+			}
+			else
+			{
+				$diff = $number - count($seat) -1;
+				for($i = 0; $i <  count($seat)-1; $i++)
+				{
+					$record['seat_id'] = $seat[$i];
+					$users->add_tickets($record);
+				}
+				for($t = 0; $t < $diff; $t++)
+				{
+					$record['seat_id'] = 100;
+					$users->add_tickets($record);
+				}
+			}
 	}
 	//if(isset($_SESSION['return_ids'])){
 	//	$ids = trim($_SESSION['leave_ids']);
@@ -154,7 +177,13 @@
 	
 	<!-- ONLY DOES FOR 1 SEAT SELECTED -->
 	<strong><td>Your Seat(s) ID: </td></strong>
-	<?	echo $_SESSION['seat_id'];	?>
+	<?	
+		for($i = 0; $i < $number; $i++)
+		{
+			echo $seat[$i] ;
+			echo " ";
+		}
+	?>
 	</br>
 	
 	<strong><td>From: </td></strong>

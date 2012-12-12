@@ -4,8 +4,10 @@
 	session_start();
     
 	}
-	  $seat = $_GET['item'];
-	  $_SESSION['seat_id'] = $seat;
+		//$num = trim($_SESSION['leave_ids']);
+		//$id_array = explode("_", $num);
+		$seat = explode(",",$_GET['item']);
+		$_SESSION['seat_id'] = $seat;
 		if(isset($_SESSION['loggedIn'])){
 		$first_name = $_SESSION['first_name'];
 		$last_name= $_SESSION['last_name'];	
