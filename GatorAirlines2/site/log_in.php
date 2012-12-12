@@ -11,7 +11,7 @@ $the_error =null;
     		
 		if($result == false)
 		{
-			die($result);
+		echo "<p style=color:red;>Wrong username and/or password!</p>";
 		}
 		 //if the user is valid, redirect to their account.
 		if(count($result) == 1)
@@ -36,11 +36,8 @@ $the_error =null;
 		else
 		{
 			
-			$the_error= 'Invalid email and/or password!';
 		}
 		
-		//Close connection
-		mysql_close($con);
 	}
 	
 	   else if (isset($_POST['recovery'])) //come here if user forgot his/her password.
